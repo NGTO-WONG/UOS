@@ -5,7 +5,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// {{ AOT assemblies
 	public static readonly IReadOnlyList<string> PatchedAOTAssemblyList = new List<string>
 	{
-		"mscorlib.dll",
+		"UniTask.dll",
 	};
 	// }}
 
@@ -17,7 +17,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 
 	public void RefMethods()
 	{
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Game.Script.HotUpdate.TestPanel.<<Start>b__1_0>d>(Game.Script.HotUpdate.TestPanel.<<Start>b__1_0>d&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Game.Script.HotUpdate.TitleScene.<Start>d__0>(Game.Script.HotUpdate.TitleScene.<Start>d__0&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,TestPrefab.<LoadScene>d__3>(Cysharp.Threading.Tasks.UniTask.Awaiter&,TestPrefab.<LoadScene>d__3&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,TestPrefab.<LoadScene>d__3>(System.Runtime.CompilerServices.TaskAwaiter&,TestPrefab.<LoadScene>d__3&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<TestPrefab.<LoadScene>d__3>(TestPrefab.<LoadScene>d__3&)
 	}
 }

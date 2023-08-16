@@ -27,12 +27,12 @@ MonoBehaviour:
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/Game/Assets/Scene
+      - CollectPath: Assets/Game/Scene
         CollectorGUID: 3e098a57f27de4c32b66d9d64c5b4404
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
-        FilterRuleName: CollectAll
+        FilterRuleName: CollectScene
         AssetTags: 
         UserData: 
     - GroupName: Prefab
@@ -40,12 +40,12 @@ MonoBehaviour:
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/Game/Assets/Prefab
+      - CollectPath: Assets/Game/Prefab
         CollectorGUID: 61499e40f72034a9b9390aa687cbcb4e
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
-        FilterRuleName: CollectAll
+        FilterRuleName: CollectPrefab
         AssetTags: 
         UserData: 
     - GroupName: HotUpdateDll
@@ -53,7 +53,7 @@ MonoBehaviour:
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/Game/Assets/HotUpdateDll
+      - CollectPath: Assets/HotUpdateDll
         CollectorGUID: ef64241b2bb57412283f801947eded20
         CollectorType: 0
         AddressRuleName: AddressByFileName
