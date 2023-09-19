@@ -51,8 +51,40 @@ namespace Game.Script.AOT
         /// 资源系统运行模式
         /// </summary>
         public EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
-        public string HostURL;
-        public string Version;
+       // string HostURL="";
+       
+        
+       private string GetHostServerURL()
+       {
+           //string hostServerIP = "http://10.0.2.2"; //安卓模拟器地址
+           string hostServerIP = "https://a.unity.cn/client_api/v1/buckets/f80670d2-d509-47a4-a68f-56900cbdb0a8/entry_by_path/content/?path=";
+           string buildVersion = "V1.0";
+
+#if UNITY_EDITOR
+           if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
+               return $"{hostServerIP}Android/DefaultPackage/{buildVersion}";
+           else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
+               return $"{hostServerIP}IPhone/DefaultPackage/{buildVersion}";
+           else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
+               return $"{hostServerIP}WebGL/DefaultPackage/{buildVersion}";
+           else
+               return $"{hostServerIP}StandaloneWindows64/DefaultPackage/{buildVersion}";
+#else
+    if (Application.platform == RuntimePlatform.Android)
+        return $"{hostServerIP}Android/DefaultPackage/{buildVersion}";
+    else if (Application.platform == RuntimePlatform.IPhonePlayer)
+        return $"{hostServerIP}IPhone/DefaultPackage/{buildVersion}";
+    else if (Application.platform == RuntimePlatform.WebGLPlayer)
+        return $"{hostServerIP}WebGL/DefaultPackage/{buildVersion}";
+    else
+        return $"{hostServerIP}StandaloneWindows64/DefaultPackage/{buildVersion}";
+#endif
+       }
+        
+        
+        
+        
+        // public string Version;
 
         private async UniTask InitializeYooAsset()
         {
@@ -81,8 +113,8 @@ namespace Game.Script.AOT
                     var initParameters = new HostPlayModeParameters();
                     initParameters.QueryServices = new GameQueryServices(); //太空战机DEMO的脚本类，详细见StreamingAssetsHelper
                     initParameters.DecryptionServices = new GameDecryptionServices();
-                    initParameters.DefaultHostServer = $"http://{HostURL}/{Version}";
-                    initParameters.FallbackHostServer = $"http://{HostURL}/{Version}";
+                    initParameters.DefaultHostServer = GetHostServerURL();
+                    initParameters.FallbackHostServer = GetHostServerURL();
                     var initOperation = package.InitializeAsync(initParameters);
                     await initOperation.Task;
                     if (initOperation.Status == EOperationStatus.Succeed)
@@ -90,6 +122,7 @@ namespace Game.Script.AOT
                         Debug.Log("资源包初始化成功！");
                     }
                     else
+                    
                     {
                         Debug.LogError($"资源包初始化失败：{initOperation.Error}");
                     }
@@ -103,7 +136,7 @@ namespace Game.Script.AOT
         private async UniTask<string> UpdatePackageVersion()
         {
             var package = YooAssets.GetPackage("DefaultPackage");
-            var operation = package.UpdatePackageVersionAsync();
+            var operation = package.UpdatePackageVersionAsync(false);
             await operation.Task;
             if (operation.Status == EOperationStatus.Succeed)
             {
