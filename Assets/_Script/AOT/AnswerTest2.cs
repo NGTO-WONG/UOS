@@ -1,10 +1,9 @@
 using System;
-using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Game.Script.AOT;
 
-public class AnswerTest : MonoBehaviour
+public class AnswerTest2 : MonoBehaviour
 {
     void Start()
     {
@@ -23,12 +22,15 @@ public class AnswerTest : MonoBehaviour
 
     async UniTask HideMe(int time)
     {
-        
-        Debug.Log("1跑");
+        Debug.Log("2跑");
         gameObject.SetActive(false);
         await UniTask.Delay(time);
         gameObject.SetActive(true);
-        Debug.Log("1跑完");
+        await UniTask.Delay(time);
+        gameObject.SetActive(false);
+        await UniTask.Delay(time);
+        gameObject.SetActive(true);
+        Debug.Log("2跑完");
     }
     
 }

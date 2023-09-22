@@ -6,17 +6,19 @@ using Game.Script.AOT;
 
 public class AskerTest : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("A");
-    }
 
     private async void OnEnable()
     {
-        await GlobalCommandManager.Instance.ExecuteEvent("AllDie",
-            executeType: GlobalCommandManager.GlobalCommandExecuteType.Any);
-        
+        Debug.Log("触发事件 等待跑");
+        await GlobalCommandManager<int>.Instance.ExecuteEvent("AllDie",
+            executeType: GlobalCommandExecuteType.All,1000);
+        Debug.Log("触发事件 跑完");
+    }
+
+    private void OnDisable()
+    {
+         GlobalCommandManager<int>.Instance.CancelCommand("AllDie");
+         
     }
 
     // Update is called once per frame
