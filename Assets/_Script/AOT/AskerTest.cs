@@ -13,11 +13,12 @@ public class AskerTest : MonoBehaviour
         await GlobalCommandManager<int>.Instance.ExecuteEvent("AllDie",
             executeType: GlobalCommandExecuteType.All,1000);
         Debug.Log("触发事件 跑完");
+        gameObject.SetActive(false);
     }
 
     private void OnDisable()
     {
-         GlobalCommandManager<int>.Instance.CancelCommand("AllDie");
+         //GlobalCommandManager<int>.Instance.CancelCommand("AllDie");
          
     }
 

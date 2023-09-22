@@ -66,6 +66,7 @@ namespace Game.Script.AOT
         {
             if (!_commandDictionary.ContainsKey(commandName)) return;
 
+            _commandDictionary[commandName].CancellationTokenSource=new CancellationTokenSource();
             var tasks = new List<UniTask>();
             foreach (var item in _commandDictionary[commandName].Funcs)
             {
