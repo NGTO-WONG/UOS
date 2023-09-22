@@ -14,7 +14,9 @@ public class AskerTest : MonoBehaviour
 
     private async void OnEnable()
     {
-        await AwaitableEvent.Instance.TriggerEvent("AllDie");
+        await GlobalCommandManager.Instance.ExecuteEvent("AllDie",
+            executeType: GlobalCommandManager.GlobalCommandExecuteType.Any);
+        
     }
 
     // Update is called once per frame

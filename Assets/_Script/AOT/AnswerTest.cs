@@ -9,11 +9,7 @@ public class AnswerTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!AwaitableEvent.HasInstance)
-        {
-            AwaitableEvent.CreateInstance();
-        }
-        AwaitableEvent.Instance.AddListener("AllDie",HideMe);
+        GlobalCommandManager.Instance.RegisterEvent("AllDie",HideMe);
     }
 
     private void OnEnable()
@@ -23,7 +19,7 @@ public class AnswerTest : MonoBehaviour
 
     private void OnDestroy()
     {
-       AwaitableEvent.Instance.RemoveListener("AllDie",HideMe);
+       GlobalCommandManager.Instance.RemoveListener("AllDie",HideMe);
     }
 
     async UniTask HideMe()
