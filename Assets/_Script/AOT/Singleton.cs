@@ -1,71 +1,68 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using System;
 
-namespace Pheonix.Core
+public class Singleton<TInstance> : IDisposable
+    where TInstance : Singleton<TInstance>, new()
 {
-    public class Singleton<TInstance> : IDisposable
-        where TInstance : Singleton<TInstance>, new()
+    private static TInstance _mInstance;
+
+    public static bool HasInstance => _mInstance != null;
+
+    public static TInstance Instance
     {
-        private static TInstance mInstance;
-
-        public static bool HasInstance => mInstance != null;
-        public static TInstance Instance
+        get
         {
-            get
+            if (_mInstance == null)
             {
-                if (mInstance==null)
-                {
-                    CreateInstance();
-                }
-                return mInstance;
+                CreateInstance();
             }
+
+            return _mInstance;
+        }
+    }
+
+    /// <summary>
+    /// 创建实例
+    /// </summary>
+    private static IDisposable CreateInstance()
+    {
+        if (HasInstance)
+        {
+            return _mInstance;
         }
 
-        /// <summary>
-        /// 创建实例
-        /// </summary>
-        public static IDisposable CreateInstance()
+        _mInstance = new TInstance();
+        _mInstance.OnCreated();
+        return _mInstance;
+    }
+
+    // ------------------------------
+    /// <summary>
+    /// 销毁
+    /// </summary>
+    public void Dispose()
+    {
+        if (!HasInstance)
         {
-            if (HasInstance)
-            {
-                return mInstance;
-            }
-            mInstance = new TInstance();
-            mInstance.OnCreated();
-            return mInstance;
+            return;
         }
 
-        // ------------------------------
-        /// <summary>
-        /// 销毁
-        /// </summary>
-        public void Dispose()
-        {
-            if (!HasInstance)
-            {
-                return;
-            }
-            mInstance.OnDisposed();
-            mInstance = null;
-        }
+        _mInstance.OnDisposed();
+        _mInstance = null;
+    }
 
-        // ------------------------------
-        /// <summary>
-        /// 创建实例时调用
-        /// </summary>
-        protected virtual void OnCreated()
-        {
-        }
+    // ------------------------------
+    /// <summary>
+    /// 创建实例时调用
+    /// </summary>
+    protected virtual void OnCreated()
+    {
+    }
 
-        // ------------------------------
-        /// <summary>
-        /// 销毁实例时调用
-        /// </summary>
-        protected virtual void OnDisposed()
-        {
-            
-        }
+    // ------------------------------
+    /// <summary>
+    /// 销毁实例时调用
+    /// </summary>
+    protected virtual void OnDisposed()
+    {
     }
 }

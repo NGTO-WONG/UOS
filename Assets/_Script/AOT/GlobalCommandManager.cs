@@ -4,102 +4,99 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Pheonix.Core;
 
-namespace Game.Script.AOT
+public enum GlobalCommandExecuteType
 {
-    public enum GlobalCommandExecuteType
+    All,
+    Any,
+}
+
+public class GlobalCommandManager<T> : Singleton<GlobalCommandManager<T>>
+{
+
+    private class GlobalCommand<TT>
     {
-        All,
-        Any,
+        public readonly List<Func<TT, CancellationToken, UniTask>> Works = new();
+        public CancellationTokenSource CancellationTokenSource = new();
     }
     
-    public class GlobalCommandManager<T> : Singleton<GlobalCommandManager<T>>
+    private readonly Dictionary<string, GlobalCommand<T>> _commandDictionary = new();
+
+    /// <summary>
+    /// 添加事件监听
+    /// </summary>
+    /// <param name="commandName"></param>
+    /// <param name="func"></param>
+    public void RegisterEvent(string commandName, Func<T, CancellationToken, UniTask> func)
     {
-        private Dictionary<string, GlobalCommand<T>> _commandDictionary = new();
-
-        public class GlobalCommand<T>
+        if (!_commandDictionary.ContainsKey(commandName))
         {
-            public string CommandName;
-            public List<Func<T,UniTask>> Funcs = new();
-            public CancellationTokenSource CancellationTokenSource = new();
+            _commandDictionary.Add(commandName, new GlobalCommand<T>());
         }
 
+        GlobalCommand<T> command = _commandDictionary[commandName];
+        command.Works.Add(func);
+    }
 
-        #region 添加事件监听
+    /// <summary>
+    /// 移除监听
+    /// </summary>
+    /// <param name="commandName"></param>
+    /// <param name="func"></param>
+    public void RemoveListener(string commandName, Func<T, CancellationToken, UniTask> func)
+    {
+        if (!_commandDictionary.ContainsKey(commandName)) return;
+        if (!_commandDictionary[commandName].Works.Contains(func)) return;
 
-        public void RegisterEvent(string commandName, Func<T,UniTask> func)
+        _commandDictionary[commandName].Works.Remove(func);
+        if (_commandDictionary[commandName].Works.Count == 0)
         {
-            if (!_commandDictionary.ContainsKey(commandName))
-            {
-                _commandDictionary.Add(commandName, new GlobalCommand<T>());
-            }
-
-            GlobalCommand<T> command = _commandDictionary[commandName];
-            command.Funcs.Add(func);
+            _commandDictionary.Remove(commandName);
         }
-        
+    }
 
-        #endregion
+    /// <summary>
+    /// 触发事件
+    /// </summary>
+    /// <param name="commandName"></param>
+    /// <param name="executeType"></param>
+    /// <param name="param"></param>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    public async UniTask ExecuteEvent(string commandName,
+        GlobalCommandExecuteType executeType = GlobalCommandExecuteType.All,
+        T param = default)
+    {
+        if (!_commandDictionary.ContainsKey(commandName)) return;
 
-
-        #region 移除监听
-
-        public void RemoveListener(string commandName, Func<T,UniTask> func)
+        _commandDictionary[commandName].CancellationTokenSource?.Cancel();
+        _commandDictionary[commandName].CancellationTokenSource = new CancellationTokenSource();
+        var tasks = new List<UniTask>();
+        foreach (var item in _commandDictionary[commandName].Works)
         {
-            if (!_commandDictionary.ContainsKey(commandName)) return;
-            if (!_commandDictionary[commandName].Funcs.Contains(func)) return;
-
-            _commandDictionary[commandName].Funcs.Remove(func);
-            if (_commandDictionary[commandName].Funcs.Count == 0)
-            {
-                _commandDictionary.Remove(commandName);
-            }
-        }
-
-        #endregion
-
-
-        #region 触发事件
-
-        public async UniTask ExecuteEvent(string commandName,
-            GlobalCommandExecuteType executeType = GlobalCommandExecuteType.All,
-            T param=default)
-        {
-            if (!_commandDictionary.ContainsKey(commandName)) return;
-
-            _commandDictionary[commandName].CancellationTokenSource=new CancellationTokenSource();
-            var tasks = new List<UniTask>();
-            foreach (var item in _commandDictionary[commandName].Funcs)
-            {
-                tasks.Add(item.Invoke(param));
-            }
-
-            switch (executeType)
-            {
-                case GlobalCommandExecuteType.All:
-                    await UniTask.WhenAll(tasks)
-                        .AttachExternalCancellation(_commandDictionary[commandName].CancellationTokenSource.Token);
-                    break;
-                case GlobalCommandExecuteType.Any:
-                    await UniTask.WhenAny(tasks)
-                        .AttachExternalCancellation(_commandDictionary[commandName].CancellationTokenSource.Token);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(executeType), executeType, null);
-            }
-        }
-        
-
-        #endregion
-
-
-        #region 取消运行中的事件
-
-        public void CancelCommand(string commandName)
-        {
-            if (!_commandDictionary.ContainsKey(commandName)) return;
-            _commandDictionary[commandName].CancellationTokenSource.Cancel();
+            tasks.Add(item.Invoke(param, _commandDictionary[commandName].CancellationTokenSource.Token));
         }
 
-        #endregion
+        switch (executeType)
+        {
+            case GlobalCommandExecuteType.All:
+                await UniTask.WhenAll(tasks)
+                    .AttachExternalCancellation(_commandDictionary[commandName].CancellationTokenSource.Token);
+                break;
+            case GlobalCommandExecuteType.Any:
+                await UniTask.WhenAny(tasks)
+                    .AttachExternalCancellation(_commandDictionary[commandName].CancellationTokenSource.Token);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(executeType), executeType, null);
+        }
+    }
+
+    /// <summary>
+    /// 取消运行中的事件
+    /// </summary>
+    /// <param name="commandName"></param>
+    public void CancelCommand(string commandName)
+    {
+        if (!_commandDictionary.ContainsKey(commandName)) return;
+        _commandDictionary[commandName].CancellationTokenSource.Cancel();
     }
 }
