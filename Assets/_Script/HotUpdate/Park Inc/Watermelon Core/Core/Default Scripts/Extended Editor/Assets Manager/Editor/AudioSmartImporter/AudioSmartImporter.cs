@@ -321,7 +321,6 @@ namespace Watermelon
 
                 for (int i = 0; i < PRESETS[selectedPresetID].presets.Length; i++)
                 {
-
                     AudioImporterSampleSettings audioImporterSettings = audioImporter.defaultSampleSettings;                   
                     audioImporterSettings.preloadAudioData = PRESETS[selectedPresetID].presets[i].preloadAudioData;
                     audioImporterSettings.loadType = PRESETS[selectedPresetID].presets[i].loadType;

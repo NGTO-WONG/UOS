@@ -27,7 +27,7 @@ namespace Watermelon
         [InitializeOnLoadMethod]
         public static void Initialize()
         {
-            EditorCoroutines.Execute(RecheckDefines());
+            //EditorCoroutines.Execute(RecheckDefines());
         }
 
         private static IEnumerator RecheckDefines()

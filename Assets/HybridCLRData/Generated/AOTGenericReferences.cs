@@ -6,6 +6,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	public static readonly IReadOnlyList<string> PatchedAOTAssemblyList = new List<string>
 	{
 		"UniTask.dll",
+		"mscorlib.dll",
 	};
 	// }}
 
@@ -13,12 +14,13 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// }} 
 
 	// {{ AOT generic types
+	// Cysharp.Threading.Tasks.UniTask.Awaiter<int>
+	// Cysharp.Threading.Tasks.UniTask<int>
+	// System.Collections.Generic.List<Cysharp.Threading.Tasks.UniTask>
 	// }}
 
 	public void RefMethods()
 	{
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,TestPrefab.<LoadScene>d__3>(Cysharp.Threading.Tasks.UniTask.Awaiter&,TestPrefab.<LoadScene>d__3&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,TestPrefab.<LoadScene>d__3>(System.Runtime.CompilerServices.TaskAwaiter&,TestPrefab.<LoadScene>d__3&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<TestPrefab.<LoadScene>d__3>(TestPrefab.<LoadScene>d__3&)
+		// Cysharp.Threading.Tasks.UniTask<int> Cysharp.Threading.Tasks.UniTaskExtensions.AttachExternalCancellation<int>(Cysharp.Threading.Tasks.UniTask<int>,System.Threading.CancellationToken)
 	}
 }
