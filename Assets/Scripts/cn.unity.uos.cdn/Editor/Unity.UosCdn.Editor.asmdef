@@ -2,7 +2,9 @@
     "name": "Unity.UosCdn.Editor",
     "references": [
         "Unity.Addressables.Editor",
-        "Unity.Addressables"
+        "Unity.Addressables",
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner"
     ],
     "includePlatforms": [
         "Editor"
