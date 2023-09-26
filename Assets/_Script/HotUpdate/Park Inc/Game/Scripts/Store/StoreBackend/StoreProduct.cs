@@ -6,7 +6,7 @@ namespace Watermelon
     //Store Module v0.9.2
     public abstract class StoreProduct : ScriptableObject
     {
-        [ReadOnly]
+        [Unity.Collections.ReadOnly]
         [SerializeField] int id;
         public int ID { get { return id; } }
 
