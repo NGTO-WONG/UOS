@@ -90,7 +90,7 @@ namespace Game.Script.AOT
             if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
                 return $"{hostServerIP}Android/DefaultPackage/{buildVersion}";
             else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-                return $"{hostServerIP}IPhone/DefaultPackage/{buildVersion}";
+                return $"{hostServerIP}iOS/DefaultPackage/{buildVersion}";
             else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
                 return $"{hostServerIP}WebGL/DefaultPackage/{buildVersion}";
             else
@@ -99,7 +99,7 @@ namespace Game.Script.AOT
     if (Application.platform == RuntimePlatform.Android)
         return $"{hostServerIP}Android/DefaultPackage/{buildVersion}";
     else if (Application.platform == RuntimePlatform.IPhonePlayer)
-        return $"{hostServerIP}IPhone/DefaultPackage/{buildVersion}";
+        return $"{hostServerIP}iOS/DefaultPackage/{buildVersion}";
     else if (Application.platform == RuntimePlatform.WebGLPlayer)
         return $"{hostServerIP}WebGL/DefaultPackage/{buildVersion}";
     else

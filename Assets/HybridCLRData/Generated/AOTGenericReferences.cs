@@ -7,7 +7,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	{
 		"System.Core.dll",
 		"UniTask.dll",
-		"UnityEngine.AndroidJNIModule.dll",
 		"UnityEngine.CoreModule.dll",
 		"UnityEngine.UI.dll",
 		"mscorlib.dll",
@@ -64,9 +63,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void System.Array.Resize<object>(object[]&,int)
 		// System.Collections.Generic.List<object> System.Linq.Enumerable.ToList<object>(System.Collections.Generic.IEnumerable<object>)
 		// object System.Threading.Interlocked.CompareExchange<object>(object&,object,object)
-		// byte UnityEngine.AndroidJavaObject.Call<byte>(string,object[])
-		// object UnityEngine.AndroidJavaObject.Call<object>(string,object[])
-		// object UnityEngine.AndroidJavaObject.GetStatic<object>(string)
 		// object UnityEngine.Component.GetComponent<object>()
 		// bool UnityEngine.EventSystems.ExecuteEvents.Execute<object>(UnityEngine.GameObject,UnityEngine.EventSystems.BaseEventData,UnityEngine.EventSystems.ExecuteEvents.EventFunction<object>)
 		// object UnityEngine.GameObject.AddComponent<object>()

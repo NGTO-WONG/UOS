@@ -53,8 +53,8 @@ MonoBehaviour:
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/HotUpdateDll
-        CollectorGUID: ef64241b2bb57412283f801947eded20
+      - CollectPath: Assets/Game/HotUpdateDll
+        CollectorGUID: f372f44f8340b48a2ad683b60118a3f1
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackRawFile
