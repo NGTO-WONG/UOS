@@ -89,11 +89,6 @@ namespace COSXML.Network
                 }
                 
             }
-            catch (Exception ex)
-            {
-                //QLog.E(TAG, ex.Message, ex);
-                throw;
-            }
             finally
             {
                 if (httpWebResponse != null)

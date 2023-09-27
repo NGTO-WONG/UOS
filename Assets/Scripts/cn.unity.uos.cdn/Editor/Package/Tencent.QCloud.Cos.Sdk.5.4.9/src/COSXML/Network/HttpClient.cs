@@ -34,7 +34,6 @@ namespace COSXML.Network
         private static Object sync = new Object();
         private static Object syncInstance = new Object();
         private const int MAX_ACTIVIE_TASKS = 5;
-        private volatile int activieTasks = 0;
 
         public static HttpClient GetInstance()
         {

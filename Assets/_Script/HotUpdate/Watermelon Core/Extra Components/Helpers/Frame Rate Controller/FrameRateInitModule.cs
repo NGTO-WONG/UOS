@@ -1,5 +1,6 @@
 ﻿#pragma warning disable 0414
 
+using System;
 using UnityEngine;
 
 namespace Watermelon
@@ -17,7 +18,7 @@ namespace Watermelon
         {
             if(setFrameRateAutomatically)
             {
-                Application.targetFrameRate = Screen.currentResolution.refreshRate;
+                Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value;
             }
             else
             {
