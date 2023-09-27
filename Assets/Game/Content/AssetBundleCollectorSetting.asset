@@ -43,7 +43,7 @@ MonoBehaviour:
       - CollectPath: Assets/Game/Prefab
         CollectorGUID: 61499e40f72034a9b9390aa687cbcb4e
         CollectorType: 0
-        AddressRuleName: AddressByFileName
+        AddressRuleName: AddressByFolderAndFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectPrefab
         AssetTags: 
@@ -58,6 +58,32 @@ MonoBehaviour:
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackRawFile
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Content
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Game/Content
+        CollectorGUID: 2a5c7a1ed19c317489dce39df6d1ae6d
+        CollectorType: 1
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: DependRes
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Game/DependRes
+        CollectorGUID: cb4017d0239a09c4d8aaa251330b66ae
+        CollectorType: 2
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 

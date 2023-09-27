@@ -136,5 +136,5 @@ Material:
     - _RampMin: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
     - _SpecColor: {r: 0.19999236, g: 0.19999236, b: 0.19999236, a: 0.5}
-    - _Tint: {r: 1, g: 1, b: 1, a: 1}
+    - _Tint: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   m_BuildTextureStacks: []
