@@ -24,6 +24,10 @@
   <assembly fullname="Unity.RenderPipelines.Universal.Runtime">
     <type fullname="UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset" preserve="all" />
   </assembly>
+  <assembly fullname="UnityEngine.AndroidJNIModule">
+    <type fullname="UnityEngine.AndroidJavaClass" preserve="all" />
+    <type fullname="UnityEngine.AndroidJavaObject" preserve="all" />
+  </assembly>
   <assembly fullname="UnityEngine.AnimationModule">
     <type fullname="UnityEngine.Animator" preserve="all" />
   </assembly>
@@ -50,6 +54,7 @@
     <type fullname="UnityEngine.Events.UnityEvent" preserve="all" />
     <type fullname="UnityEngine.Events.UnityEvent`1" preserve="all" />
     <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.Handheld" preserve="all" />
     <type fullname="UnityEngine.HeaderAttribute" preserve="all" />
     <type fullname="UnityEngine.HelpURLAttribute" preserve="all" />
     <type fullname="UnityEngine.HideInInspector" preserve="all" />
@@ -69,6 +74,7 @@
     <type fullname="UnityEngine.Ray" preserve="all" />
     <type fullname="UnityEngine.Rect" preserve="all" />
     <type fullname="UnityEngine.RectTransform" preserve="all" />
+    <type fullname="UnityEngine.RefreshRate" preserve="all" />
     <type fullname="UnityEngine.Renderer" preserve="all" />
     <type fullname="UnityEngine.RequireComponent" preserve="all" />
     <type fullname="UnityEngine.Resolution" preserve="all" />
