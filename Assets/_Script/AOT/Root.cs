@@ -1,11 +1,15 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
-using System.Threading.Tasks;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using Game.Script.AOT.YooAsset;
+using HybridCLR;
 using UnityEngine;
 using YooAsset;
+#if !UNITY_EDITOR
+using System.Reflection;
+#endif
 
 namespace Game.Script.AOT
 {
@@ -23,10 +27,30 @@ namespace Game.Script.AOT
             await Download();
             //5 拷贝HotUpdate热更新文件
             await CopyHotUpdateDll();
-            //6 读取HotUpdate热更新文件 如果你不想用yooAsset 请删除1-4 自己实现5 
+            //6 读取HotUpdate热更新文件 
             await LoadHotUpdateDll();
-            //7 更新结束 开始游戏
+            //7 补充AOT泛型
+            await LoadMetadataForAOTAssemblies();
+            //8 更新结束 开始游戏
             await StartGame(GamePlayScene);
+        }
+
+        /// <summary>
+        /// 7 补充AOT泛型
+        /// </summary>
+        private async UniTask LoadMetadataForAOTAssemblies()
+        {
+            HomologousImageMode mode = HomologousImageMode.SuperSet;
+            foreach (var aotDllName in AOTGenericReferences.PatchedAOTAssemblyList)
+            {
+                var package = YooAssets.GetPackage("DefaultPackage");
+                RawFileOperationHandle handle = package.LoadRawFileAsync(aotDllName);
+                await handle.Task;
+                var assemblyData = handle.GetRawFileData();
+                // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
+                LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(assemblyData, mode);
+                Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
+            }
         }
 
         /// <summary>
@@ -46,29 +70,31 @@ namespace Game.Script.AOT
 
         #region YooAsset
 
-        public string GamePlayScene="_1_GamePlay";
+        public string GamePlayScene = "_1_GamePlay";
+
         /// <summary>
         /// 资源系统运行模式
         /// </summary>
         public EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
-       // string HostURL="";
-       
-        
-       private string GetHostServerURL()
-       {
-           //string hostServerIP = "http://10.0.2.2"; //安卓模拟器地址
-           string hostServerIP = "https://a.unity.cn/client_api/v1/buckets/f80670d2-d509-47a4-a68f-56900cbdb0a8/entry_by_path/content/?path=";
-           string buildVersion = "V1.0";
+        // string HostURL="";
+
+
+        private string GetHostServerURL()
+        {
+            //string hostServerIP = "http://10.0.2.2"; //安卓模拟器地址
+            string hostServerIP =
+                "https://a.unity.cn/client_api/v1/buckets/f80670d2-d509-47a4-a68f-56900cbdb0a8/entry_by_path/content/?path=";
+            string buildVersion = "V1.0";
 
 #if UNITY_EDITOR
-           if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-               return $"{hostServerIP}Android/DefaultPackage/{buildVersion}";
-           else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-               return $"{hostServerIP}IPhone/DefaultPackage/{buildVersion}";
-           else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-               return $"{hostServerIP}WebGL/DefaultPackage/{buildVersion}";
-           else
-               return $"{hostServerIP}StandaloneWindows64/DefaultPackage/{buildVersion}";
+            if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
+                return $"{hostServerIP}Android/DefaultPackage/{buildVersion}";
+            else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
+                return $"{hostServerIP}IPhone/DefaultPackage/{buildVersion}";
+            else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
+                return $"{hostServerIP}WebGL/DefaultPackage/{buildVersion}";
+            else
+                return $"{hostServerIP}StandaloneWindows64/DefaultPackage/{buildVersion}";
 #else
     if (Application.platform == RuntimePlatform.Android)
         return $"{hostServerIP}Android/DefaultPackage/{buildVersion}";
@@ -79,11 +105,9 @@ namespace Game.Script.AOT
     else
         return $"{hostServerIP}StandaloneWindows64/DefaultPackage/{buildVersion}";
 #endif
-       }
-        
-        
-        
-        
+        }
+
+
         // public string Version;
 
         private async UniTask InitializeYooAsset()
@@ -122,7 +146,7 @@ namespace Game.Script.AOT
                         Debug.Log("资源包初始化成功！");
                     }
                     else
-                    
+
                     {
                         Debug.LogError($"资源包初始化失败：{initOperation.Error}");
                     }
@@ -213,6 +237,7 @@ namespace Game.Script.AOT
                 Debug.Log("下载失败");
             }
         }
+
 
         /// <summary>
         /// 5 获取HotUpdate.dll.bytes 覆盖拷贝到Application.persistentDataPath

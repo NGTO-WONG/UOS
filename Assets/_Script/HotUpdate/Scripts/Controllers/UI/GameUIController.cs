@@ -55,15 +55,9 @@ public class GameUIController : UICanvasAbstract
     public void SkipButton()
     {
         GameAudioController.PlayButtonAudio();
-
-        AdsManager.ShowRewardBasedVideo((hasWatched) => 
-        {
-            if (hasWatched)
-            {
-                GameController.TurnsAfterRewardVideo = 0;
-                GameController.SkipLevel();
-            }
-        });
+        
+        GameController.TurnsAfterRewardVideo = 0;
+        GameController.SkipLevel();
         
     }
 
