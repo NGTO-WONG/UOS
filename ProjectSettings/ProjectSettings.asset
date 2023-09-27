@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 7b279f5b74488f9459f354d8fbba5cb2
+  productGUID: 00000000000000000000000000000000
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -191,7 +191,6 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.DefaultCompany.ParkingInc
-    Standalone: com.DefaultCompany.PCRPVZ
     iPhone: com.wowie.parking
   buildNumber:
     Standalone: 0
