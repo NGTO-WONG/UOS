@@ -121,7 +121,7 @@ public class Builder : MonoBehaviour
             BuildOutputRoot = BundlePath,
             BuildTarget = EditorUserBuildSettings.activeBuildTarget,
             BuildPipeline = EBuildPipeline.BuiltinBuildPipeline,
-            BuildMode = EBuildMode.ForceRebuild,
+            BuildMode = eBuildMode,
             PackageName = "DefaultPackage",
             PackageVersion = eBuildMode == EBuildMode.ForceRebuild ? "V1.0" : DateTime.Now.ToString("V_yyyyMMdd_HHmm"),
             EnableLog = true,
