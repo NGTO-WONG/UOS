@@ -11,40 +11,51 @@ using YooAsset.Editor;
 public class Builder : MonoBehaviour
 {
     private static readonly string HotfixAssembliesDstDir = Application.dataPath + "/Game/HotUpdateDll";
+    private static readonly string BundlePath = Application.dataPath + "/Bundle";
 
     [MenuItem("HybridCLR/Build/BuildIOS", priority = 200)]
     public static void BuildIOS()
     {
-        //0 切换平台
-        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS,BuildTarget.iOS);
-        
-        //1 华佗生成
-        GenerateAll();
-        
-        //2  华佗生成+改名+拷贝dll
-        Debug.Log("1 华佗生成dll + 2 改名+拷贝dll");
+        //1 切换平台
+        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
+        Build();
+    }
+
+    [MenuItem("HybridCLR/Build/BuildAndroid", priority = 201)]
+    public static void BuildAndroid()
+    {
+        //1 切换平台
+        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+        Build();
+    }
+
+    [MenuItem("HybridCLR/Build/BuildPC", priority = 202)]
+    public static void BuildPC()
+    {
+        //1 切换平台
+        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows64);
+        Build();
+    }
+
+    private static void Build()
+    {
+        //2 华佗生成+改名+拷贝dll
+        Debug.Log("2 华佗生成dll + 2 改名+拷贝dll");
         BuildAndCopyAndRenameDll();
-        
         //3 yooAsset打包
         Debug.Log("3 yooAsset打包");
         YooAssetBuild(EBuildMode.ForceRebuild);
-        
-        //4 拷贝资源
-        
-        AssetDatabase.Refresh();
+        //4 上传到cdn
+        Debug.Log("4 上传到cdn");
+        UpdateBundleToCDN_UOS();
+        // 刷新unity
+        //AssetDatabase.Refresh();
     }
 
-
-    [MenuItem("HybridCLR/Build/1.GenerateAll", priority = 101)]
-    public static void GenerateAll()
-    {
-        PrebuildCommand.GenerateAll();
-    }
-
-    
-    [MenuItem("HybridCLR/Build/2.BuildAndCopyAndRenameDll", priority = 102)]
+    [MenuItem("HybridCLR/Build/1.GenerateAll+BuildActiveDll+CopyDll", priority = 102)]
     public static void BuildAndCopyAndRenameDll()
     {
+        PrebuildCommand.GenerateAll();
         //热更新dll
         CompileDllCommand.CompileDllActiveBuildTarget();
         var target = EditorUserBuildSettings.activeBuildTarget;
@@ -56,7 +67,7 @@ public class Builder : MonoBehaviour
             File.Copy(sourcePath, dstPath, true);
             Debug.Log($"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
         }
-        
+
         //补充AOT范型dll
         string aotDllSrcDir = SettingsUtil.GetAssembliesPostIl2CppStripDir(target);
         foreach (var dll in AOTGenericReferences.PatchedAOTAssemblyList)
@@ -66,8 +77,6 @@ public class Builder : MonoBehaviour
             File.Copy(sourcePath, dstPath, true);
             Debug.Log($"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
         }
-        
-
     }
 
     /// <summary>
@@ -79,18 +88,18 @@ public class Builder : MonoBehaviour
     {
         YooAssetBuild(EBuildMode.ForceRebuild);
     }
-    
+
     /// <summary>
-    /// 上传到uos的cdn 必须手动设置好路径
+    /// 上传到uos的cdn 必须先手动创建buckets 才能load
     /// </summary>
     /// <returns></returns>
-    [MenuItem("HybridCLR/Build/4.UpdateToUos ", priority = 103)]
-    public static void SyncToUosCdn()
+    [MenuItem("HybridCLR/Build/4.UpdateBundleToCDN_UOS", priority = 104)]
+    public static void UpdateBundleToCDN_UOS()
     {
-        ParametersEntry pe = ParametersEntry.GetParametersEntry();
-        Thread thread = new Thread(new ParameterizedThreadStart(EntryController.SyncEntries));
-        thread.Start(pe.syncPath);
+        BucketController.LoadBuckets();
+        EntryController.SyncEntries(BundlePath);
     }
+
     /// <summary>
     /// build资源
     /// </summary>
@@ -100,25 +109,33 @@ public class Builder : MonoBehaviour
     {
         YooAssetBuild(EBuildMode.IncrementalBuild);
     }
-    
-    
+
+
     private static void YooAssetBuild(EBuildMode eBuildMode)
     {
         // 构建参数
-        string defaultOutputRoot = AssetBundleBuilderHelper.GetDefaultBuildOutputRoot();
-        BuildParameters buildParameters = new BuildParameters();
-        buildParameters.BuildOutputRoot = defaultOutputRoot;
-        buildParameters.BuildTarget = EditorUserBuildSettings.activeBuildTarget;
-        buildParameters.BuildPipeline = EBuildPipeline.BuiltinBuildPipeline;
-        buildParameters.BuildMode = eBuildMode;
-        buildParameters.PackageName = "DefaultPackage";
-        buildParameters.PackageVersion = eBuildMode== EBuildMode.ForceRebuild?"V1.0": DateTime.Now.ToString("V_yyyyMMdd_HHmm");
-        buildParameters.VerifyBuildingResult = true;
-        buildParameters.SharedPackRule = new ZeroRedundancySharedPackRule();
-        buildParameters.CompressOption = ECompressOption.LZ4;
-        buildParameters.OutputNameStyle = EOutputNameStyle.HashName;
-        buildParameters.CopyBuildinFileOption = ECopyBuildinFileOption.None;
-    
+        BuildParameters buildParameters = new BuildParameters
+        {
+            SBPParameters = null,
+            StreamingAssetsRoot = Application.streamingAssetsPath,
+            BuildOutputRoot = BundlePath,
+            BuildTarget = EditorUserBuildSettings.activeBuildTarget,
+            BuildPipeline = EBuildPipeline.BuiltinBuildPipeline,
+            BuildMode = EBuildMode.ForceRebuild,
+            PackageName = "DefaultPackage",
+            PackageVersion = eBuildMode == EBuildMode.ForceRebuild ? "V1.0" : DateTime.Now.ToString("V_yyyyMMdd_HHmm"),
+            EnableLog = true,
+            VerifyBuildingResult = true,
+            SharedPackRule = new ZeroRedundancySharedPackRule(),
+            EncryptionServices = null,
+            OutputNameStyle = EOutputNameStyle.BundleName_HashName,
+            CopyBuildinFileOption = ECopyBuildinFileOption.None,
+            CopyBuildinFileTags = null,
+            CompressOption = ECompressOption.LZ4,
+            DisableWriteTypeTree = false,
+            IgnoreTypeTreeChanges = false
+        };
+
         // 执行构建
         AssetBundleBuilder builder = new AssetBundleBuilder();
         var buildResult = builder.Run(buildParameters);
@@ -131,18 +148,4 @@ public class Builder : MonoBehaviour
             Debug.LogError($"构建失败 : {buildResult.ErrorInfo}");
         }
     }
-
-    // 从构建命令里获取参数示例
-    private static string GetBuildPackageName()
-    {
-        foreach (string arg in System.Environment.GetCommandLineArgs())
-        {
-            if (arg.StartsWith("buildPackage"))
-                return arg.Split("="[0])[1];
-        }
-        return string.Empty;
-    }
-    
-    
-    
 }

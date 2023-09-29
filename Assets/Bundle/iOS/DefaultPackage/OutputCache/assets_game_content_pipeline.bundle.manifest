@@ -1,0 +1,51 @@
+ManifestFileVersion: 0
+CRC: 52085227
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 466422b898b04a14267c82343cedfb79
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 687b3acebd729b8708edf2c12a5ab942
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 466422b898b04a14267c82343cedfb79
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: bf2edee5c58d82540a51f03df9d42094, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 307a736764ebbce44b54d72f8467b6fd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2ec995e51a6e251468d2a3fd8a686257, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 572910c10080c0945a0ef731ccedc739, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: de640fe3d0db1804a85f9fc8f5cadab6, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.RenderPipelines.Universal.Runtime
+  ClassName: UnityEngine.Rendering.Universal.PostProcessData/ShaderResources
+- AssemblyName: Unity.RenderPipelines.Universal.Runtime
+  ClassName: UnityEngine.Rendering.Universal.PostProcessData/TextureResources
+- AssemblyName: Unity.RenderPipelines.Universal.Runtime
+  ClassName: UnityEngine.Rendering.Universal.ScriptableRendererData/DebugShaderResources
+- AssemblyName: Unity.RenderPipelines.Universal.Runtime
+  ClassName: UnityEngine.Rendering.Universal.StencilStateData
+- AssemblyName: Unity.RenderPipelines.Universal.Runtime
+  ClassName: UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset/TextureResources
+- AssemblyName: Unity.RenderPipelines.Universal.Runtime
+  ClassName: UnityEngine.Rendering.Universal.UniversalRendererData/ShaderResources
+- AssemblyName: Unity.RenderPipelines.Universal.Runtime
+  ClassName: UnityEngine.Rendering.Universal.XRSystemData/ShaderResources
+Assets:
+- Assets/Game/Content/Pipeline/ForwardRenderer.asset
+- Assets/Game/Content/Pipeline/UniversalRenderPipelineGlobalSettings.asset
+- Assets/Game/Content/Pipeline/UniversalRP-General.asset
+Dependencies:
+- /Users/huangqiang/RiderProjects/UOS/Assets/Bundle/iOS/DefaultPackage/OutputCache/unityshaders.bundle
