@@ -26,7 +26,7 @@ namespace Game.Script.AOT.YooAsset
     /// <summary>
     /// StreamingAssets目录下资源查询帮助类
     /// </summary>
-    public sealed class StreamingAssetsHelper
+    public static class StreamingAssetsHelper
     {
         public static void Init()
         {
@@ -79,44 +79,4 @@ public sealed class StreamingAssetsHelper
 }
 #endif
 
-
-#if UNITY_EDITOR
-    internal class PreprocessBuild : UnityEditor.Build.IPreprocessBuildWithReport
-    {
-        public int callbackOrder
-        {
-            get { return 0; }
-        }
-
-        /// <summary>
-        /// 在构建应用程序前处理
-        /// </summary>
-        public void OnPreprocessBuild(UnityEditor.Build.Reporting.BuildReport report)
-        {
-            var manifest = ScriptableObject.CreateInstance<BuildinFileManifest>();
-
-            string folderPath = $"{Application.dataPath}/StreamingAssets/{StreamingAssetsDefine.RootFolderName}";
-            DirectoryInfo root = new DirectoryInfo(folderPath);
-            FileInfo[] files = root.GetFiles("*", SearchOption.AllDirectories);
-            foreach (var fileInfo in files)
-            {
-                if (fileInfo.Extension == ".meta")
-                    continue;
-                if (fileInfo.Name.StartsWith("PackageManifest_"))
-                    continue;
-                manifest.BuildinFiles.Add(fileInfo.Name);
-            }
-
-            string saveFilePath = "Assets/Resources/BuildinFileManifest.asset";
-            if (File.Exists(saveFilePath))
-                File.Delete(saveFilePath);
-            if (Directory.Exists("Assets/Resources") == false)
-                Directory.CreateDirectory("Assets/Resources");
-            UnityEditor.AssetDatabase.CreateAsset(manifest, saveFilePath);
-            UnityEditor.AssetDatabase.SaveAssets();
-            UnityEditor.AssetDatabase.Refresh();
-            Debug.Log($"一共{manifest.BuildinFiles.Count}个内置文件，内置资源清单保存成功 : {saveFilePath}");
-        }
-    }
-#endif
 }
