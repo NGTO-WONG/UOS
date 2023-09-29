@@ -61,12 +61,12 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
-    - GroupName: Content
+    - GroupName: Settings
       GroupDesc: 
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/Game/Content
+      - CollectPath: Assets/Game/Settings
         CollectorGUID: 2a5c7a1ed19c317489dce39df6d1ae6d
         CollectorType: 1
         AddressRuleName: AddressByFolderAndFileName
