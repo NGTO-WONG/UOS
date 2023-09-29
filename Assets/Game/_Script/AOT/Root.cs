@@ -1,13 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Cysharp.Threading.Tasks;
 using Game.Script.AOT.YooAsset;
 using HybridCLR;
 using UnityEngine;
 using YooAsset;
-#if !UNITY_EDITOR
+#if UNITY_EDITOR
 using System.Reflection;
 #endif
 
@@ -32,7 +30,7 @@ namespace Game.Script.AOT
             //7 补充AOT泛型
             await LoadMetadataForAOTAssemblies();
             //8 更新结束 开始游戏
-            await StartGame(GamePlayScene);
+            await StartGame(gamePlayScene);
         }
 
         /// <summary>
@@ -59,7 +57,7 @@ namespace Game.Script.AOT
         private async UniTask LoadHotUpdateDll()
         {
             // Editor环境下，HotUpdate.dll.bytes已经被自动加载，不需要加载，重复加载反而会出问题。
-#if UNITY_EDITOR
+#if !NITY_EDITOR
             await UniTask.DelayFrame(1);
             Debug.Log("编辑器模式无需加载热更Dll ");
 #else
@@ -69,13 +67,12 @@ namespace Game.Script.AOT
         }
 
         #region YooAsset
-
-        public string GamePlayScene = "_1_GamePlay";
-
+        
+        public string gamePlayScene = "_1_GamePlay";
         /// <summary>
         /// 资源系统运行模式
         /// </summary>
-        public EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
+        public EPlayMode playMode = EPlayMode.EditorSimulateMode;
         // string HostURL="";
 
 
@@ -121,12 +118,13 @@ namespace Game.Script.AOT
             // 设置该资源包为默认的资源包，可以使用YooAssets相关加载接口加载该资源包内容。
             YooAssets.SetDefaultPackage(package);
 
-            switch (PlayMode)
+            switch (playMode)
             {
                 case EPlayMode.EditorSimulateMode:
-                    var initParametersEditor = new EditorSimulateModeParameters();
-                    initParametersEditor.SimulateManifestFilePath =
-                        EditorSimulateModeHelper.SimulateBuild("DefaultPackage");
+                    var initParametersEditor = new EditorSimulateModeParameters
+                    {
+                        SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild("DefaultPackage")
+                    };
                     await package.InitializeAsync(initParametersEditor).Task;
                     break;
                 case EPlayMode.OfflinePlayMode: //其实没有做离线模式的逻辑
@@ -134,11 +132,13 @@ namespace Game.Script.AOT
                     await package.InitializeAsync(initParametersOffline).Task;
                     break;
                 case EPlayMode.HostPlayMode:
-                    var initParameters = new HostPlayModeParameters();
-                    initParameters.QueryServices = new GameQueryServices(); //太空战机DEMO的脚本类，详细见StreamingAssetsHelper
-                    initParameters.DecryptionServices = new GameDecryptionServices();
-                    initParameters.DefaultHostServer = GetHostServerURL();
-                    initParameters.FallbackHostServer = GetHostServerURL();
+                    var initParameters = new HostPlayModeParameters
+                    {
+                        QueryServices = new GameQueryServices(), //太空战机DEMO的脚本类，详细见StreamingAssetsHelper
+                        DecryptionServices = new GameDecryptionServices(),
+                        DefaultHostServer = GetHostServerURL(),
+                        FallbackHostServer = GetHostServerURL()
+                    };
                     var initOperation = package.InitializeAsync(initParameters);
                     await initOperation.Task;
                     if (initOperation.Status == EOperationStatus.Succeed)
@@ -181,9 +181,8 @@ namespace Game.Script.AOT
         {
             // 更新成功后自动保存版本号，作为下次初始化的版本。
             // 也可以通过operation.SavePackageVersion()方法保存。
-            bool savePackageVersion = true;
             var package = YooAssets.GetPackage("DefaultPackage");
-            var operation = package.UpdatePackageManifestAsync(packageVersion, savePackageVersion);
+            var operation = package.UpdatePackageManifestAsync(packageVersion);
             await operation.Task;
             if (operation.Status == EOperationStatus.Succeed)
             {
@@ -210,32 +209,26 @@ namespace Game.Script.AOT
                 return;
             }
 
-            //需要下载的文件总数和总大小
-            int totalDownloadCount = downloader.TotalDownloadCount;
-            long totalDownloadBytes = downloader.TotalDownloadBytes;
+            /*需要下载的文件总数和总大小
+           int totalDownloadCount = downloader.TotalDownloadCount;
+           long totalDownloadBytes = downloader.TotalDownloadBytes;
+           */
 
-            /*注册回调方法 
+           /*注册回调方法
 
-            downloader.OnDownloadErrorCallback = OnDownloadErrorFunction;
-            downloader.OnDownloadProgressCallback = OnDownloadProgressUpdateFunction;
-            downloader.OnDownloadOverCallback = OnDownloadOverFunction;
-            downloader.OnStartDownloadFileCallback = OnStartDownloadFileFunction;
-            
-            */
+           downloader.OnDownloadErrorCallback = OnDownloadErrorFunction;
+           downloader.OnDownloadProgressCallback = OnDownloadProgressUpdateFunction;
+           downloader.OnDownloadOverCallback = OnDownloadOverFunction;
+           downloader.OnStartDownloadFileCallback = OnStartDownloadFileFunction;
+
+           */
 
             //开启下载
             downloader.BeginDownload();
             await downloader.Task;
 
             //检测下载结果
-            if (downloader.Status == EOperationStatus.Succeed)
-            {
-                Debug.Log("下载成功");
-            }
-            else
-            {
-                Debug.Log("下载失败");
-            }
+            Debug.Log(downloader.Status == EOperationStatus.Succeed ? "下载成功" : "下载失败");
         }
 
 
@@ -255,8 +248,7 @@ namespace Game.Script.AOT
         async UniTask StartGame(string sceneName)
         {
             var sceneMode = UnityEngine.SceneManagement.LoadSceneMode.Single;
-            bool suspendLoad = false;
-            SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName, sceneMode, suspendLoad);
+            SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName, sceneMode);
             await handle.Task;
             Debug.Log($"Scene name is {sceneName}");
         }
