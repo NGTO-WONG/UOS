@@ -11,6 +11,7 @@
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -92,7 +93,7 @@ namespace Tayx.Graphy.Advanced
 
                 m_sb.Append(m_windowStrings[0]).Append(Screen.width.ToStringNonAlloc())
                     .Append(m_windowStrings[1]).Append(Screen.height.ToStringNonAlloc())
-                    .Append(m_windowStrings[2]).Append(Screen.currentResolution.refreshRate.ToStringNonAlloc())
+                    .Append(m_windowStrings[2]).Append(Convert.ToInt32(Screen.currentResolution.refreshRateRatio.value).ToStringNonAlloc())
                     .Append(m_windowStrings[3])
                     .Append(m_windowStrings[4]).Append(((int)Screen.dpi).ToStringNonAlloc())
                     .Append(m_windowStrings[5]);
