@@ -28,8 +28,10 @@ namespace Game._Script.AOT.Editor
             foreach (var subDirectory in directories)
             {
                 var newName = Path.GetFileName(subDirectory).Replace(" ", "_");
-                var newPath = path + "/" + newName;
-                Directory.Move(subDirectory, newPath);
+                var newPath = path + "/" + newName; try
+                {
+                    Directory.Move(subDirectory, newPath);
+                }catch{}
                 if (File.Exists(subDirectory + ".meta"))
                 {
                     File.Delete(subDirectory + ".meta");
