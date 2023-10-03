@@ -86,6 +86,7 @@ public class Builder : MonoBehaviour
     [MenuItem("HybridCLR/Build/3.YooAssetBuild_ForceRebuild", priority = 103)]
     public static void YooAssetBuild_ForceRebuild()
     {
+        Directory.Delete(BundlePath,true);
         YooAssetBuild(EBuildMode.ForceRebuild);
     }
 
