@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 501f48fac3834875bf63ed809af365ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePlayScene: Game
+  GamePlayScene: 2_-_Mobile_Human
   PlayMode: 2
 --- !u!1001 &1561136122
 PrefabInstance:
