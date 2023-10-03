@@ -9,7 +9,7 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/ReplaceSpace", priority = 401)]
         public static void ReplaceSpacesWithUnderscores()
         {
-            var path = Application.dataPath + "/Game/_Script/HotUpdate/Test";
+            var path = Application.dataPath + "/Game/_Script/HotUpdate/Malbers_Animations";
             Debug.Log(path);
             ReplacePathSpace(path);
         }
