@@ -20,14 +20,14 @@ namespace Game._Script.AOT.Editor
             var files = Directory.GetFiles(path);
             foreach (var file in files)
             {
-                var newName = Path.GetFileName(file).Replace(" ", "_");
+                var newName = Path.GetFileName(file).Replace(" ", "_").Replace("(","_").Replace(")","_").Replace("&","_");
                 var newPath = path + "/" + newName;
                 File.Move(file, newPath);
             }
 
             foreach (var subDirectory in directories)
             {
-                var newName = Path.GetFileName(subDirectory).Replace(" ", "_");
+                var newName = Path.GetFileName(subDirectory).Replace(" ", "_").Replace("(","_").Replace(")","_").Replace("&","_");
                 var newPath = path + "/" + newName; try
                 {
                     Directory.Move(subDirectory, newPath);

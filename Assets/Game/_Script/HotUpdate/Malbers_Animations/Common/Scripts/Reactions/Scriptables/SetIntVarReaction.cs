@@ -2,7 +2,6 @@ using MalbersAnimations.Reactions;
 using MalbersAnimations.Scriptables;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace MalbersAnimations
 {
