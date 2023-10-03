@@ -19,23 +19,20 @@ namespace Game._Script.AOT.Editor
         static void ReplacePathSpace(string path)
         {
             var directories = Directory.GetDirectories(path);
-            foreach (var subDirectory in directories)
+            var files = Directory.GetFiles(path).Concat(directories);
+            foreach (var subDirectory in files)
             {
                 var oldPath = path + "/" + Path.GetFileName(subDirectory);
                 var newName = Path.GetFileName(subDirectory).Replace(" ", "_");
                 var newPath = path+"/"+newName;
                 Directory.Move(oldPath,newPath);
+                if (File.Exists(oldPath+".meta"))
+                {
+                    File.Delete(oldPath+".meta");
+                }
+                ReplacePathSpace(newPath);
             }
             
-            var files = Directory.GetFiles(path);
-            foreach (var file in files)
-            {
-                if (Path.GetFileName(file).Contains(".meta"))
-                {
-                    continue;
-                }
-                Debug.Log(Path.GetFileName(file));
-            }
             
         }
         
