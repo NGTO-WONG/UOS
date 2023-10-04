@@ -7,7 +7,7 @@ public class test : MonoBehaviour
 {
     private void OnCollisionEnter(Collision other)
     {
-        UnityEngine.Debug.Log(other.gameObject.name);
+        UnityEngine.Debug.Log(other.gameObject.name+"ABC");
     }
 
     // Start is called before the first frame update

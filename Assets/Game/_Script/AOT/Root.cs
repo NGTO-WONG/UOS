@@ -5,6 +5,7 @@ using UnityEngine;
 using YooAsset;
 using HybridCLR;
 using System.Reflection;
+using HybridCLR.Editor;
 
 namespace Game._Script.AOT
 {
@@ -26,7 +27,7 @@ namespace Game._Script.AOT
             //4 资源包下载 
             await Download();
             //5 补充AOT泛型
-            await LoadMetadataForAOTAssemblies();
+            await LoadMetadataForAOTAssembly();
             //6 读取HotUpdate热更新文件 
             await LoadHotUpdateDll();
             //7 更新结束 开始游戏
@@ -34,28 +35,27 @@ namespace Game._Script.AOT
         }
 
         /// <summary>
-        /// 5 补充AOT泛型
+        /// 5 补充aot元数据
         /// </summary>
-        private async UniTask LoadMetadataForAOTAssemblies()
+        private async UniTask LoadMetadataForAOTAssembly()
         {
 #if UNITY_EDITOR
             await UniTask.DelayFrame(1);
             Debug.Log("编辑器模式无需加载AOT元数据");
 #else
             HomologousImageMode mode = HomologousImageMode.SuperSet;
-            foreach (var aotDllName in AOTGenericReferences.PatchedAOTAssemblyList)
+            var package = YooAssets.GetPackage("DefaultPackage");
+            foreach (var aotDll in AOTGenericReferences.PatchedAOTAssemblyList)
             {
-                var package = YooAssets.GetPackage("DefaultPackage");
-                RawFileOperationHandle handle = package.LoadRawFileAsync(aotDllName);
+                RawFileOperationHandle handle = package.LoadRawFileAsync(aotDll);
                 await handle.Task;
                 var assemblyData = handle.GetRawFileData();
                 // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
                 LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(assemblyData, mode);
-                Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
+                Debug.Log($"LoadMetadataForAOTAssembly:{aotDll}. mode:{mode} ret:{err}");
             }
 #endif
         }
-        
 
         /// <summary>
         /// 6 读取HotUpdate热更新文件 
@@ -67,12 +67,15 @@ namespace Game._Script.AOT
             await UniTask.DelayFrame(1);
             Debug.Log("编辑器模式无需加载热更Dll ");
 #else
-            string location = "HotUpdate.dll";
             var package = YooAssets.GetPackage("DefaultPackage");
-            RawFileOperationHandle handle = package.LoadRawFileAsync(location);
-            await handle.Task;
-            byte[] hotUpdateData= handle.GetRawFileData();
-            Assembly.Load(hotUpdateData);
+            foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
+            {
+                RawFileOperationHandle handle = package.LoadRawFileAsync(hotUpdateDll);
+                await handle.Task;
+                byte[] hotUpdateData= handle.GetRawFileData();
+                Assembly.Load(hotUpdateData);
+            }
+
 #endif
         }
 

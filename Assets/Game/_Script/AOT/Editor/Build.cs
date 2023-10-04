@@ -115,6 +115,18 @@ public class Builder : MonoBehaviour
     [MenuItem("HybridCLR/Update/1.YooAssetBuild_IncrementalBuild And UpdateToCdn", priority = 200)]
     public static void YooAssetBuild_IncrementalBuild()
     {
+        //生成热更新dll
+        CompileDllCommand.CompileDllActiveBuildTarget();
+        var target = EditorUserBuildSettings.activeBuildTarget;
+        string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
+        foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
+        {
+            string sourcePath = $"{hotfixDllSrcDir}/{hotUpdateDll}";
+            string dstPath = $"{HotfixAssembliesDstDir}/{hotUpdateDll}.bytes";
+            File.Copy(sourcePath, dstPath, true);
+            Debug.Log($"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
+        }
+        //yooAsset打包
         var packageVersion = DateTime.Now.ToString("V_yyyyMMdd_HHmm");
         var outputPackageDirectory= YooAssetBuild(EBuildMode.IncrementalBuild,packageVersion);
         if (outputPackageDirectory!="")
@@ -126,21 +138,12 @@ public class Builder : MonoBehaviour
                 var fileName = Path.GetFileName(file);
                 File.Copy(file,targetDirectory+"/"+fileName,true);
             }
+
+            Debug.Log(files +" to " + targetDirectory);
         }
+        
         UpdateBundleToCDN_UOS();
     }
-    
-    /// <summary>
-    /// build资源
-    /// </summary>
-    /// <returns></returns>
-    [MenuItem("HybridCLR/Update/1TESt", priority = 201)]
-    public static void Te()
-    {
-       // Debug.Log(buildResult.OutputPackageDirectory);
-        
-    }
-
 
     private static string YooAssetBuild(EBuildMode eBuildMode,string packageVersion)
     {
