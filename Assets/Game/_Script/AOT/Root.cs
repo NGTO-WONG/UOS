@@ -1,11 +1,10 @@
 using System;
-using System.IO;
 using Cysharp.Threading.Tasks;
 using Game.Script.AOT.YooAsset;
-using HybridCLR;
 using UnityEngine;
 using YooAsset;
 #if !UNITY_EDITOR
+using HybridCLR;
 using System.Reflection;
 #endif
 
@@ -13,6 +12,12 @@ namespace Game.Script.AOT
 {
     public class Root : MonoBehaviour
     {
+        
+        public string GamePlayScene = "_1_GamePlay";
+        public string HostServerIP = "https://a.unity.cn/client_api/v1/buckets/f80670d2-d509-47a4-a68f-56900cbdb0a8/entry_by_path/content/?path=";
+        public string BuildVersion = "V1.0";
+        public EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
+        
         private async void Start()
         {
             //1 初始化
@@ -23,13 +28,11 @@ namespace Game.Script.AOT
             await UpdatePackageManifest(packageVersion);
             //4 资源包下载 
             await Download();
-            //5 拷贝HotUpdate热更新文件
-            await CopyHotUpdateDll();
+            //5 补充AOT泛型
+            await LoadMetadataForAOTAssemblies();
             //6 读取HotUpdate热更新文件 
             await LoadHotUpdateDll();
-            //7 补充AOT泛型
-            await LoadMetadataForAOTAssemblies();
-            //8 更新结束 开始游戏
+            //7 更新结束 开始游戏
             await StartGame(GamePlayScene);
         }
 
@@ -38,7 +41,9 @@ namespace Game.Script.AOT
         /// </summary>
         private async UniTask LoadMetadataForAOTAssemblies()
         {
-#if !UNITY_EDITOR
+#if UNITY_EDITOR
+            await UniTask.DelayFrame(1);
+            Debug.Log("编辑器模式无需加载AOT元数据");
 #else
             HomologousImageMode mode = HomologousImageMode.SuperSet;
             foreach (var aotDllName in AOTGenericReferences.PatchedAOTAssemblyList)
@@ -51,9 +56,9 @@ namespace Game.Script.AOT
                 LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(assemblyData, mode);
                 Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
             }
-
 #endif
         }
+        
 
         /// <summary>
         /// 6 读取HotUpdate热更新文件 
@@ -65,52 +70,39 @@ namespace Game.Script.AOT
             await UniTask.DelayFrame(1);
             Debug.Log("编辑器模式无需加载热更Dll ");
 #else
-            byte[] assemblyData = await File.ReadAllBytesAsync(Application.persistentDataPath + "/HotUpdatumae.dll.bytes");
+            string location = "HotUpdate.dll";
+            var package = YooAssets.GetPackage("DefaultPackage");
+            RawFileOperationHandle handle = package.LoadRawFileAsync(location);
+            await handle.Task;
+            byte[] hotUpdateData= handle.GetRawFileData();
             Assembly.Load(assemblyData);
 #endif
         }
 
-        #region YooAsset
-
-        public string GamePlayScene = "_1_GamePlay";
-
-        /// <summary>
-        /// 资源系统运行模式
-        /// </summary>
-        public EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
-        // string HostURL="";
 
 
         private string GetHostServerURL()
         {
-            //string hostServerIP = "http://10.0.2.2"; //安卓模拟器地址
-            string hostServerIP =
-                "https://a.unity.cn/client_api/v1/buckets/f80670d2-d509-47a4-a68f-56900cbdb0a8/entry_by_path/content/?path=";
-            string buildVersion = "V1.0";
-
 #if UNITY_EDITOR
             if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-                return $"{hostServerIP}Android/DefaultPackage/{buildVersion}";
+                return $"{HostServerIP}Android/DefaultPackage/{BuildVersion}";
             else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-                return $"{hostServerIP}iOS/DefaultPackage/{buildVersion}";
+                return $"{HostServerIP}iOS/DefaultPackage/{BuildVersion}";
             else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-                return $"{hostServerIP}WebGL/DefaultPackage/{buildVersion}";
+                return $"{HostServerIP}WebGL/DefaultPackage/{BuildVersion}";
             else
-                return $"{hostServerIP}StandaloneWindows64/DefaultPackage/{buildVersion}";
+                return $"{HostServerIP}StandaloneWindows64/DefaultPackage/{BuildVersion}";
 #else
     if (Application.platform == RuntimePlatform.Android)
-        return $"{hostServerIP}Android/DefaultPackage/{buildVersion}";
+        return $"{HostServerIP}Android/DefaultPackage/{BuildVersion}";
     else if (Application.platform == RuntimePlatform.IPhonePlayer)
-        return $"{hostServerIP}iOS/DefaultPackage/{buildVersion}";
+        return $"{HostServerIP}iOS/DefaultPackage/{BuildVersion}";
     else if (Application.platform == RuntimePlatform.WebGLPlayer)
-        return $"{hostServerIP}WebGL/DefaultPackage/{buildVersion}";
+        return $"{HostServerIP}WebGL/DefaultPackage/{BuildVersion}";
     else
-        return $"{hostServerIP}StandaloneWindows64/DefaultPackage/{buildVersion}";
+        return $"{HostServerIP}StandaloneWindows64/DefaultPackage/{BuildVersion}";
 #endif
         }
-
-
-        // public string Version;
 
         private async UniTask InitializeYooAsset()
         {
@@ -216,13 +208,13 @@ namespace Game.Script.AOT
             int totalDownloadCount = downloader.TotalDownloadCount;
             long totalDownloadBytes = downloader.TotalDownloadBytes;
 
-            /*注册回调方法 
+            /*注册回调方法
 
             downloader.OnDownloadErrorCallback = OnDownloadErrorFunction;
             downloader.OnDownloadProgressCallback = OnDownloadProgressUpdateFunction;
             downloader.OnDownloadOverCallback = OnDownloadOverFunction;
             downloader.OnStartDownloadFileCallback = OnStartDownloadFileFunction;
-            
+
             */
 
             //开启下载
@@ -241,28 +233,13 @@ namespace Game.Script.AOT
         }
 
 
-        /// <summary>
-        /// 5 获取HotUpdate.dll.bytes 覆盖拷贝到Application.persistentDataPath
-        /// </summary>
-        private async UniTask CopyHotUpdateDll()
-        {
-            string location = "HotUpdate.dll";
-            var package = YooAssets.GetPackage("DefaultPackage");
-            RawFileOperationHandle handle = package.LoadRawFileAsync(location);
-            await handle.Task;
-            string filePath = handle.GetRawFilePath();
-            File.Copy(filePath, Application.persistentDataPath + "/HotUpdate.dll.bytes", true);
-        }
 
         async UniTask StartGame(string sceneName)
         {
             var sceneMode = UnityEngine.SceneManagement.LoadSceneMode.Single;
-            bool suspendLoad = false;
-            SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName, sceneMode, suspendLoad);
+            SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName, sceneMode, false);
             await handle.Task;
             Debug.Log($"Scene name is {sceneName}");
         }
-
-        #endregion
     }
 }
