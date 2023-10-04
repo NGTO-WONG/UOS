@@ -13,7 +13,7 @@ namespace UosCdn
     {
 
         [MenuItem("Window/Unity Online Service/CDN/Manager", priority = 10)]
-        internal static void Init()
+        public static void Init()
         {
             var window = GetWindow<UosCdnManager>();
             window.titleContent = new GUIContent("UOS CDN");

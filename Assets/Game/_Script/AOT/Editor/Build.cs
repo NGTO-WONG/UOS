@@ -102,9 +102,10 @@ public class Builder : MonoBehaviour
     [MenuItem("HybridCLR/Build/4.UpdateBundleToCDN_UOS", priority = 104)]
     public static void UpdateBundleToCDN_UOS()
     {
-        BucketController.CreateBucket(DateTime.Now.ToString("V_yyyyMMdd_HHmm"));
-        BucketController.ViewBucket();
-        BucketController.LoadBuckets(BucketController.pb.totalBucketPages);
+        UosCdnWindow.Init();
+        BucketController.LoadBuckets( BucketController.pb.totalBucketPages);
+       // BucketController.ViewBucket();
+        //EntryController.SyncEntries(BundlePath);
         EntryController.SyncEntries(BundlePath);
     }
 

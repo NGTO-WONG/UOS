@@ -65,7 +65,7 @@ namespace Game.Script.AOT
             await UniTask.DelayFrame(1);
             Debug.Log("编辑器模式无需加载热更Dll ");
 #else
-            byte[] assemblyData = await File.ReadAllBytesAsync(Application.persistentDataPath + "/HotUpdate.dll.bytes");
+            byte[] assemblyData = await File.ReadAllBytesAsync(Application.persistentDataPath + "/HotUpdatumae.dll.bytes");
             Assembly.Load(assemblyData);
 #endif
         }
