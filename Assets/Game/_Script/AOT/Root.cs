@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using Game.Script.AOT.YooAsset;
 using UnityEngine;
 using YooAsset;
-#if !UNITY_EDITOR
+#if UNITY_EDITOR
 using HybridCLR;
 using System.Reflection;
 #endif
@@ -12,7 +12,6 @@ namespace Game._Script.AOT
 {
     public class Root : MonoBehaviour
     {
-        
         public string GamePlayScene = "_1_GamePlay";
         public string HostServerIP = "https://a.unity.cn/client_api/v1/buckets/f80670d2-d509-47a4-a68f-56900cbdb0a8/entry_by_path/content/?path=";
         public string BuildVersion = "V1.0";
@@ -237,7 +236,6 @@ namespace Game._Script.AOT
                 };
             }
         }
-
 
         static async UniTask StartGame(string sceneName)
         {

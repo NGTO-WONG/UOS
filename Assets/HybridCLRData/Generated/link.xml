@@ -13,9 +13,6 @@
     <type fullname="Cysharp.Threading.Tasks.UniTask`1" preserve="all" />
     <type fullname="Cysharp.Threading.Tasks.UniTask`1/Awaiter" preserve="all" />
   </assembly>
-  <assembly fullname="UnityEngine.CoreModule">
-    <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
-  </assembly>
   <assembly fullname="mscorlib">
     <type fullname="System.Activator" preserve="all" />
     <type fullname="System.ArgumentOutOfRangeException" preserve="all" />
