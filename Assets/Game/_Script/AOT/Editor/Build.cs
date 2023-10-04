@@ -44,7 +44,7 @@ public class Builder : MonoBehaviour
         BuildAndCopyAndRenameDll();
         //3 yooAsset打包
         Debug.Log("3 yooAsset打包");
-        YooAssetBuild(EBuildMode.ForceRebuild);
+        YooAssetBuild_ForceRebuild();
         //4 上传到cdn
         Debug.Log("4 上传到cdn");
         UpdateBundleToCDN_UOS();
@@ -91,7 +91,6 @@ public class Builder : MonoBehaviour
             Directory.CreateDirectory(BundlePath);
         }
         Directory.Delete(BundlePath,true);
-        
         YooAssetBuild(EBuildMode.ForceRebuild);
     }
 

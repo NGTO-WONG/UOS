@@ -209,7 +209,7 @@ namespace Game._Script.AOT
             //注册回调方法
             downloader.OnDownloadErrorCallback = (filename, error) => Debug.LogError(filename + " 下载失败 " + error);
             downloader.OnDownloadProgressCallback = (count, downloadCount, bytes, downloadBytes) => Debug.Log(
-                "下载速度: " +FormatBytes( (long)(bytes/Time.deltaTime))+ " 已下载: "+ FormatBytes(downloadBytes));
+                "下载速度: " +FormatBytes((bytes*Application.targetFrameRate))+ " 已下载: "+ FormatBytes(downloadBytes));
 
             //开启下载
             downloader.BeginDownload();
