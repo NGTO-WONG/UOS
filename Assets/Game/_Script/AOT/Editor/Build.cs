@@ -86,7 +86,12 @@ public class Builder : MonoBehaviour
     [MenuItem("HybridCLR/Build/3.YooAssetBuild_ForceRebuild", priority = 103)]
     public static void YooAssetBuild_ForceRebuild()
     {
+        if (!Directory.Exists(BundlePath))
+        {
+            Directory.CreateDirectory(BundlePath);
+        }
         Directory.Delete(BundlePath,true);
+        
         YooAssetBuild(EBuildMode.ForceRebuild);
     }
 
@@ -97,7 +102,9 @@ public class Builder : MonoBehaviour
     [MenuItem("HybridCLR/Build/4.UpdateBundleToCDN_UOS", priority = 104)]
     public static void UpdateBundleToCDN_UOS()
     {
-        BucketController.LoadBuckets();
+        BucketController.CreateBucket(DateTime.Now.ToString("V_yyyyMMdd_HHmm"));
+        BucketController.ViewBucket();
+        BucketController.LoadBuckets(BucketController.pb.totalBucketPages);
         EntryController.SyncEntries(BundlePath);
     }
 
