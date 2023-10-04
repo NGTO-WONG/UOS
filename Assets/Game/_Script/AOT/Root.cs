@@ -99,7 +99,7 @@ namespace Game._Script.AOT
                     };
                     await package.InitializeAsync(initParametersEditor).Task;
                     break;
-                case EPlayMode.OfflinePlayMode: //其实没有做离线模式的逻辑
+                case EPlayMode.OfflinePlayMode:
                     var initParametersOffline = new OfflinePlayModeParameters();
                     await package.InitializeAsync(initParametersOffline).Task;
                     break;
@@ -207,15 +207,12 @@ namespace Game._Script.AOT
             //需要下载的文件总数和总大小
             int totalDownloadCount = downloader.TotalDownloadCount;
             long totalDownloadBytes = downloader.TotalDownloadBytes;
-
             Debug.Log("需下载"+FormatBytes(totalDownloadBytes)+"文件数量"+totalDownloadCount);
 
-            /*注册回调方法
-            downloader.OnDownloadErrorCallback = OnDownloadErrorFunction;
-            downloader.OnDownloadProgressCallback = OnDownloadProgressUpdateFunction;
-            downloader.OnDownloadOverCallback = OnDownloadOverFunction;
-            downloader.OnStartDownloadFileCallback = OnStartDownloadFileFunction;
-            */
+            //注册回调方法
+            downloader.OnDownloadErrorCallback = (filename, error) => Debug.LogError(filename + " 下载失败 " + error);
+            downloader.OnDownloadProgressCallback = (count, downloadCount, bytes, downloadBytes) => Debug.Log(
+                "下载速度: " +FormatBytes( (long)(bytes/Time.deltaTime))+ " 已下载: "+ FormatBytes(downloadBytes));
 
             //开启下载
             downloader.BeginDownload();
