@@ -44,7 +44,7 @@ public class Builder : MonoBehaviour
         BuildAndCopyAndRenameDll();
         //3 yooAsset打包
         Debug.Log("3 yooAsset打包");
-        YooAssetBuild_ForceRebuild();
+        var outputPackageDirectory= YooAssetBuild_ForceRebuild();
         //4 上传到cdn
         Debug.Log("4 上传到cdn");
         UpdateBundleToCDN_UOS();
@@ -84,14 +84,14 @@ public class Builder : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     [MenuItem("HybridCLR/Build/3.YooAssetBuild_ForceRebuild", priority = 103)]
-    public static void YooAssetBuild_ForceRebuild()
+    public static string YooAssetBuild_ForceRebuild()
     {
         if (!Directory.Exists(BundlePath))
         {
             Directory.CreateDirectory(BundlePath);
         }
         Directory.Delete(BundlePath,true);
-        YooAssetBuild(EBuildMode.ForceRebuild);
+        return YooAssetBuild(EBuildMode.ForceRebuild,"V1.0");
     }
 
     /// <summary>
@@ -112,14 +112,37 @@ public class Builder : MonoBehaviour
     /// build资源
     /// </summary>
     /// <returns></returns>
-    [MenuItem("HybridCLR/Update/1.YooAssetBuild_IncrementalBuild", priority = 200)]
+    [MenuItem("HybridCLR/Update/1.YooAssetBuild_IncrementalBuild And UpdateToCdn", priority = 200)]
     public static void YooAssetBuild_IncrementalBuild()
     {
-        YooAssetBuild(EBuildMode.IncrementalBuild);
+        var packageVersion = DateTime.Now.ToString("V_yyyyMMdd_HHmm");
+        var outputPackageDirectory= YooAssetBuild(EBuildMode.IncrementalBuild,packageVersion);
+        if (outputPackageDirectory!="")
+        {
+            var files = Directory.GetFiles(outputPackageDirectory);
+            var targetDirectory = Directory.GetParent(outputPackageDirectory) + "/V1.0";
+            foreach (var file in files)
+            {
+                var fileName = Path.GetFileName(file);
+                File.Copy(file,targetDirectory+"/"+fileName,true);
+            }
+        }
+        UpdateBundleToCDN_UOS();
+    }
+    
+    /// <summary>
+    /// build资源
+    /// </summary>
+    /// <returns></returns>
+    [MenuItem("HybridCLR/Update/1TESt", priority = 201)]
+    public static void Te()
+    {
+       // Debug.Log(buildResult.OutputPackageDirectory);
+        
     }
 
 
-    private static void YooAssetBuild(EBuildMode eBuildMode)
+    private static string YooAssetBuild(EBuildMode eBuildMode,string packageVersion)
     {
         // 构建参数
         BuildParameters buildParameters = new BuildParameters
@@ -131,7 +154,7 @@ public class Builder : MonoBehaviour
             BuildPipeline = EBuildPipeline.BuiltinBuildPipeline,
             BuildMode = eBuildMode,
             PackageName = "DefaultPackage",
-            PackageVersion = eBuildMode == EBuildMode.ForceRebuild ? "V1.0" : DateTime.Now.ToString("V_yyyyMMdd_HHmm"),
+            PackageVersion = packageVersion,
             EnableLog = true,
             VerifyBuildingResult = true,
             SharedPackRule = new ZeroRedundancySharedPackRule(),
@@ -150,10 +173,12 @@ public class Builder : MonoBehaviour
         if (buildResult.Success)
         {
             Debug.Log($"构建成功 : {buildResult.OutputPackageDirectory}");
+            return buildResult.OutputPackageDirectory;
         }
         else
         {
             Debug.LogError($"构建失败 : {buildResult.ErrorInfo}");
+            return "";
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         UnityEngine.Debug.Log(other.gameObject.name);
     }
