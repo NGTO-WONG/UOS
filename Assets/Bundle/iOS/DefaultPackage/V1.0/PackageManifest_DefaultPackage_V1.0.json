@@ -1,0 +1,399 @@
+{
+    "FileVersion": "1.4.17",
+    "EnableAddressable": true,
+    "LocationToLower": false,
+    "IncludeAssetGUID": false,
+    "OutputNameStyle": 4,
+    "PackageName": "DefaultPackage",
+    "PackageVersion": "V1.0",
+    "AssetList": [
+        {
+            "Address": "_0_Download",
+            "AssetPath": "Assets/Game/Scene/_0_Download.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependIDs": []
+        },
+        {
+            "Address": "_1_GamePlay",
+            "AssetPath": "Assets/Game/Scene/_1_GamePlay.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependIDs": []
+        },
+        {
+            "Address": "0_-_Forest",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/0_-_Forest.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "1_-_PlayGround_Empty_Controller",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/1_-_PlayGround_Empty_Controller.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "1_-_PlayGround_Human__1_-_Holsters_",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/1_-_PlayGround_Human__1_-_Holsters_.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "1_-_PlayGround_Human__2_-_External_",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/1_-_PlayGround_Human__2_-_External_.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "1_-_PlayGround_Human__3_-_Assasin_Creed_",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/1_-_PlayGround_Human__3_-_Assasin_Creed_.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "1_-_PlayGround_Wolf_Lite",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/1_-_PlayGround_Wolf_Lite.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "1_-_Sandbox_Utilities",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/1_-_Sandbox_Utilities.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "2_-_Mobile",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/2_-_Mobile.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "2_-_Mobile_Human",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/2_-_Mobile_Human.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "3_-_AI_Sample",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/3_-_AI_Sample.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "4_-_Point_Click",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/4_-_Point_Click.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "4_-_Top_Down",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/4_-_Top_Down.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "5_-_2.5_Platformer",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/5_-_2.5_Platformer.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "6_-_AI_Brain",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/6_-_AI_Brain.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "6_-_AI_Brain_-_Human_Commands_Wolf",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/6_-_AI_Brain_-_Human_Commands_Wolf.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "6_-_AI_Brain_Human_Enemy",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/6_-_AI_Brain_Human_Enemy.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "6_-_AI_Sample_Fetch_Ball",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/6_-_AI_Sample_Fetch_Ball.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "6_-_AI_Sample_Fetch_Ball__Steve_",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/6_-_AI_Sample_Fetch_Ball__Steve_.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "7_-_TimeLine",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/7_-_TimeLine.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "8_-_MPath_Constraint",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/8_-_MPath_Constraint.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "9_-_Replace_States_At_Runtime",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/9_-_Replace_States_At_Runtime.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "10_-_Swap_Characters",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/10_-_Swap_Characters.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "11_-_Stat_Health__Heart_Style_",
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos/11_-_Stat_Health__Heart_Style_.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": [
+                8
+            ]
+        },
+        {
+            "Address": "HotUpdate.dll",
+            "AssetPath": "Assets/Game/HotUpdateDll/HotUpdate.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependIDs": []
+        },
+        {
+            "Address": "mscorlib.dll",
+            "AssetPath": "Assets/Game/HotUpdateDll/mscorlib.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 3,
+            "DependIDs": []
+        },
+        {
+            "Address": "System.Core.dll",
+            "AssetPath": "Assets/Game/HotUpdateDll/System.Core.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 4,
+            "DependIDs": []
+        },
+        {
+            "Address": "UniTask.dll",
+            "AssetPath": "Assets/Game/HotUpdateDll/UniTask.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 5,
+            "DependIDs": []
+        },
+        {
+            "Address": "UnityEngine.CoreModule.dll",
+            "AssetPath": "Assets/Game/HotUpdateDll/UnityEngine.CoreModule.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 6,
+            "DependIDs": []
+        },
+        {
+            "Address": "UnityEngine.UI.dll",
+            "AssetPath": "Assets/Game/HotUpdateDll/UnityEngine.UI.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 7,
+            "DependIDs": []
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "assets_game_scene.bundle",
+            "FileHash": "303b981289733efe9cf8e9e46b0e2da4",
+            "FileCRC": "cc1725ce",
+            "FileSize": 248743,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "assets_game__script_hotupdate_malbers_animations_animal_controller_1_-_demos.bundle",
+            "FileHash": "a9978f681ea5ecf93aedbe313c4d6651",
+            "FileCRC": "59c07006",
+            "FileSize": 30863744,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "assets_game_hotupdatedll_hotupdate_dll_bytes.rawfile",
+            "FileHash": "5606a1eea0ea3758c1c757f6d2e38530",
+            "FileCRC": "eb75e1f0",
+            "FileSize": 9216,
+            "IsRawFile": true,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "assets_game_hotupdatedll_mscorlib_dll_bytes.rawfile",
+            "FileHash": "bdbce9d002c3beb6ccd05fe7a3631f3c",
+            "FileCRC": "e4f3f7a7",
+            "FileSize": 2207744,
+            "IsRawFile": true,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "assets_game_hotupdatedll_system_core_dll_bytes.rawfile",
+            "FileHash": "b3ddfbe052891587b3623dd423132969",
+            "FileCRC": "0600cf88",
+            "FileSize": 65536,
+            "IsRawFile": true,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "assets_game_hotupdatedll_unitask_dll_bytes.rawfile",
+            "FileHash": "94e8d160c45299c25dd0240c9e52e6cd",
+            "FileCRC": "cf053e82",
+            "FileSize": 526336,
+            "IsRawFile": true,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "assets_game_hotupdatedll_unityengine_coremodule_dll_bytes.rawfile",
+            "FileHash": "42dc7fe35e59e2ecb9a1ba653ded51ab",
+            "FileCRC": "67252cee",
+            "FileSize": 589824,
+            "IsRawFile": true,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "assets_game_hotupdatedll_unityengine_ui_dll_bytes.rawfile",
+            "FileHash": "17dc56d737a449fe10b12d60a53e5ac0",
+            "FileCRC": "8bd5f5da",
+            "FileSize": 264192,
+            "IsRawFile": true,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "unityshaders.bundle",
+            "FileHash": "0586e46e2130c9ea666b10abd5493dbb",
+            "FileCRC": "7e4fba9d",
+            "FileSize": 81153,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [
+                1
+            ]
+        }
+    ]
+}

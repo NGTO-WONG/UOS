@@ -7,14 +7,14 @@ using UnityEditor;
 using UnityEngine;
 using UosCdn;
 using YooAsset.Editor;
-
+            
 public class Builder : MonoBehaviour
 {
     private static readonly string HotfixAssembliesDstDir = Application.dataPath + "/Game/HotUpdateDll";
     private static readonly string BundlePath = Application.dataPath + "/Bundle";
 
     [MenuItem("HybridCLR/Build/BuildIOS", priority = 200)]
-    public static void BuildIOS()
+    public static void BuildIOS()               
     {
         //1 切换平台
         EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
