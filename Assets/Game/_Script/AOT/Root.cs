@@ -67,15 +67,12 @@ namespace Game._Script.AOT
             await UniTask.DelayFrame(1);
             Debug.Log("编辑器模式无需加载热更Dll ");
 #else
+            string location = "HotUpdate.dll";
             var package = YooAssets.GetPackage("DefaultPackage");
-            foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
-            {
-                RawFileOperationHandle handle = package.LoadRawFileAsync(hotUpdateDll);
-                await handle.Task;
-                byte[] hotUpdateData= handle.GetRawFileData();
-                Assembly.Load(hotUpdateData);
-            }
-
+            RawFileOperationHandle handle = package.LoadRawFileAsync(location);
+            await handle.Task;
+            byte[] hotUpdateData= handle.GetRawFileData();
+            Assembly.Load(hotUpdateData);
 #endif
         }
 
