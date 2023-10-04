@@ -19,9 +19,9 @@ public class SceneSwitchLeftButton
     {
         GUILayout.FlexibleSpace();
         
-        if (GUILayout.Button(new GUIContent("Boot", "Start _0_Download Scene "), ToolbarStyles.commandButtonStyle))
+        if (GUILayout.Button(new GUIContent("Root", "Start Root Scene "), ToolbarStyles.commandButtonStyle))
         {
-            SceneHelper.StartScene("_0_Download");
+            SceneHelper.StartScene("Root");
         }
     }
 }
