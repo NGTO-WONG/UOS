@@ -72,7 +72,7 @@ namespace Game._Script.AOT
             RawFileOperationHandle handle = package.LoadRawFileAsync(location);
             await handle.Task;
             byte[] hotUpdateData= handle.GetRawFileData();
-            Assembly.Load(assemblyData);
+            Assembly.Load(hotUpdateData);
 #endif
         }
 
