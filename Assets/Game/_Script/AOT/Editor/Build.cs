@@ -101,10 +101,7 @@ public class Builder : MonoBehaviour
     [MenuItem("HybridCLR/Build/4.UpdateBundleToCDN_UOS", priority = 104)]
     public static void UpdateBundleToCDN_UOS()
     {
-        //UosCdnWindow.Init();
         BucketController.LoadBuckets();
-       // BucketController.ViewBucket();
-        //EntryController.SyncEntries(BundlePath);
         EntryController.SyncEntries(BundlePath);
     }
 
@@ -127,7 +124,7 @@ public class Builder : MonoBehaviour
             Debug.Log($"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
         }
         //yooAsset打包
-        var packageVersion = DateTime.Now.ToString("V_yyyyMMdd_HHmm");
+        var packageVersion = DateTime.Now.ToString("V_yyyyMMdd_HH:mm:ss");
         var outputPackageDirectory= YooAssetBuild(EBuildMode.IncrementalBuild,packageVersion);
         if (outputPackageDirectory!="")
         {
