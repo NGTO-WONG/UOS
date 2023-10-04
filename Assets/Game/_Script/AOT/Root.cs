@@ -8,7 +8,7 @@ using HybridCLR;
 using System.Reflection;
 #endif
 
-namespace Game.Script.AOT
+namespace Game._Script.AOT
 {
     public class Root : MonoBehaviour
     {
@@ -16,7 +16,7 @@ namespace Game.Script.AOT
         public string GamePlayScene = "_1_GamePlay";
         public string HostServerIP = "https://a.unity.cn/client_api/v1/buckets/f80670d2-d509-47a4-a68f-56900cbdb0a8/entry_by_path/content/?path=";
         public string BuildVersion = "V1.0";
-        public EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
+        public EPlayMode PlayMode = EPlayMode.HostPlayMode;
         
         private async void Start()
         {
@@ -37,7 +37,7 @@ namespace Game.Script.AOT
         }
 
         /// <summary>
-        /// 7 补充AOT泛型
+        /// 5 补充AOT泛型
         /// </summary>
         private async UniTask LoadMetadataForAOTAssemblies()
         {
@@ -79,31 +79,6 @@ namespace Game.Script.AOT
 #endif
         }
 
-
-
-        private string GetHostServerURL()
-        {
-#if UNITY_EDITOR
-            if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-                return $"{HostServerIP}Android/DefaultPackage/{BuildVersion}";
-            else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-                return $"{HostServerIP}iOS/DefaultPackage/{BuildVersion}";
-            else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-                return $"{HostServerIP}WebGL/DefaultPackage/{BuildVersion}";
-            else
-                return $"{HostServerIP}StandaloneWindows64/DefaultPackage/{BuildVersion}";
-#else
-    if (Application.platform == RuntimePlatform.Android)
-        return $"{HostServerIP}Android/DefaultPackage/{BuildVersion}";
-    else if (Application.platform == RuntimePlatform.IPhonePlayer)
-        return $"{HostServerIP}iOS/DefaultPackage/{BuildVersion}";
-    else if (Application.platform == RuntimePlatform.WebGLPlayer)
-        return $"{HostServerIP}WebGL/DefaultPackage/{BuildVersion}";
-    else
-        return $"{HostServerIP}StandaloneWindows64/DefaultPackage/{BuildVersion}";
-#endif
-        }
-
         private async UniTask InitializeYooAsset()
         {
             // 初始化资源系统
@@ -118,9 +93,10 @@ namespace Game.Script.AOT
             switch (PlayMode)
             {
                 case EPlayMode.EditorSimulateMode:
-                    var initParametersEditor = new EditorSimulateModeParameters();
-                    initParametersEditor.SimulateManifestFilePath =
-                        EditorSimulateModeHelper.SimulateBuild("DefaultPackage");
+                    var initParametersEditor = new EditorSimulateModeParameters
+                    {
+                        SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild("DefaultPackage")
+                    };
                     await package.InitializeAsync(initParametersEditor).Task;
                     break;
                 case EPlayMode.OfflinePlayMode: //其实没有做离线模式的逻辑
@@ -128,11 +104,13 @@ namespace Game.Script.AOT
                     await package.InitializeAsync(initParametersOffline).Task;
                     break;
                 case EPlayMode.HostPlayMode:
-                    var initParameters = new HostPlayModeParameters();
-                    initParameters.QueryServices = new GameQueryServices(); //太空战机DEMO的脚本类，详细见StreamingAssetsHelper
-                    initParameters.DecryptionServices = new GameDecryptionServices();
-                    initParameters.DefaultHostServer = GetHostServerURL();
-                    initParameters.FallbackHostServer = GetHostServerURL();
+                    var initParameters = new HostPlayModeParameters
+                    {
+                        QueryServices = new GameQueryServices(), //太空战机DEMO的脚本类，详细见StreamingAssetsHelper
+                        DecryptionServices = new GameDecryptionServices(),
+                        DefaultHostServer = GetHostServerURL(),
+                        FallbackHostServer = GetHostServerURL()
+                    };
                     var initOperation = package.InitializeAsync(initParameters);
                     await initOperation.Task;
                     if (initOperation.Status == EOperationStatus.Succeed)
@@ -148,6 +126,29 @@ namespace Game.Script.AOT
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+
+            string GetHostServerURL()
+            {
+#if UNITY_EDITOR
+                if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
+                    return $"{HostServerIP}Android/DefaultPackage/{BuildVersion}";
+                else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
+                    return $"{HostServerIP}iOS/DefaultPackage/{BuildVersion}";
+                else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
+                    return $"{HostServerIP}WebGL/DefaultPackage/{BuildVersion}";
+                else
+                    return $"{HostServerIP}StandaloneWindows64/DefaultPackage/{BuildVersion}";
+#else
+                if (Application.platform == RuntimePlatform.Android)
+                    return $"{HostServerIP}Android/DefaultPackage/{BuildVersion}";
+                else if (Application.platform == RuntimePlatform.IPhonePlayer)
+                    return $"{HostServerIP}iOS/DefaultPackage/{BuildVersion}";
+                else if (Application.platform == RuntimePlatform.WebGLPlayer)
+                    return $"{HostServerIP}WebGL/DefaultPackage/{BuildVersion}";
+                else
+                    return $"{HostServerIP}StandaloneWindows64/DefaultPackage/{BuildVersion}";
+#endif
             }
         }
 
@@ -175,9 +176,8 @@ namespace Game.Script.AOT
         {
             // 更新成功后自动保存版本号，作为下次初始化的版本。
             // 也可以通过operation.SavePackageVersion()方法保存。
-            bool savePackageVersion = true;
             var package = YooAssets.GetPackage("DefaultPackage");
-            var operation = package.UpdatePackageManifestAsync(packageVersion, savePackageVersion);
+            var operation = package.UpdatePackageManifestAsync(packageVersion);
             await operation.Task;
             if (operation.Status == EOperationStatus.Succeed)
             {
@@ -192,8 +192,8 @@ namespace Game.Script.AOT
 
         private async UniTask Download()
         {
-            int downloadingMaxNum = 10;
-            int failedTryAgain = 3;
+            const int downloadingMaxNum = 10;
+            const int failedTryAgain = 3;
             var package = YooAssets.GetPackage("DefaultPackage");
             var downloader = package.CreateResourceDownloader(downloadingMaxNum, failedTryAgain);
 
@@ -208,13 +208,13 @@ namespace Game.Script.AOT
             int totalDownloadCount = downloader.TotalDownloadCount;
             long totalDownloadBytes = downloader.TotalDownloadBytes;
 
-            /*注册回调方法
+            Debug.Log("需下载"+FormatBytes(totalDownloadBytes)+"文件数量"+totalDownloadCount);
 
+            /*注册回调方法
             downloader.OnDownloadErrorCallback = OnDownloadErrorFunction;
             downloader.OnDownloadProgressCallback = OnDownloadProgressUpdateFunction;
             downloader.OnDownloadOverCallback = OnDownloadOverFunction;
             downloader.OnStartDownloadFileCallback = OnStartDownloadFileFunction;
-
             */
 
             //开启下载
@@ -222,22 +222,29 @@ namespace Game.Script.AOT
             await downloader.Task;
 
             //检测下载结果
-            if (downloader.Status == EOperationStatus.Succeed)
+            Debug.Log(downloader.Status == EOperationStatus.Succeed ? "下载成功" : "下载失败");
+
+            return;
+
+            string FormatBytes(long bytes)
             {
-                Debug.Log("下载成功");
-            }
-            else
-            {
-                Debug.Log("下载失败");
+                return bytes switch
+                {
+                    // 大于等于1GB
+                    >= 1024 * 1024 * 1024 => $"{(double)bytes / (1024 * 1024 * 1024):0.00} GB",
+                    // 大于等于1MB
+                    >= 1024 * 1024 => $"{(double)bytes / (1024 * 1024):0.00} MB",
+                    // 大于等于1KB
+                    >= 1024 => $"{(double)bytes / 1024:0.00} KB",
+                    _ => $"{bytes} B"
+                };
             }
         }
 
 
-
-        async UniTask StartGame(string sceneName)
+        static async UniTask StartGame(string sceneName)
         {
-            var sceneMode = UnityEngine.SceneManagement.LoadSceneMode.Single;
-            SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName, sceneMode, false);
+            SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName);
             await handle.Task;
             Debug.Log($"Scene name is {sceneName}");
         }
