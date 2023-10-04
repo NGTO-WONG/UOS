@@ -38,6 +38,8 @@ namespace Game.Script.AOT
         /// </summary>
         private async UniTask LoadMetadataForAOTAssemblies()
         {
+#if !UNITY_EDITOR
+#else
             HomologousImageMode mode = HomologousImageMode.SuperSet;
             foreach (var aotDllName in AOTGenericReferences.PatchedAOTAssemblyList)
             {
@@ -49,6 +51,8 @@ namespace Game.Script.AOT
                 LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(assemblyData, mode);
                 Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
             }
+
+#endif
         }
 
         /// <summary>

@@ -83,7 +83,7 @@ public sealed class StreamingAssetsHelper
 #if UNITY_EDITOR
     internal class PreprocessBuild : UnityEditor.Build.IPreprocessBuildWithReport
     {
-        public int callbackOrder
+        public int callbackOrder        
         {
             get { return 0; }
         }

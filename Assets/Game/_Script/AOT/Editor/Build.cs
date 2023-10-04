@@ -11,7 +11,7 @@ using YooAsset.Editor;
 public class Builder : MonoBehaviour
 {
     private static readonly string HotfixAssembliesDstDir = Application.dataPath + "/Game/HotUpdateDll";
-    private static readonly string BundlePath = Application.dataPath + "/Bundle";
+    private static string BundlePath =>System.IO.Directory.GetParent( Application.dataPath) + "/Bundles";
 
     [MenuItem("HybridCLR/Build/BuildIOS", priority = 200)]
     public static void BuildIOS()               
