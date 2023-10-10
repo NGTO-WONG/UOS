@@ -3,22 +3,28 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-public enum GlobalCommandExecuteType
+
+public static class EventNames
+{
+    public static string DragEvent = "DragEvent";
+}
+
+public enum AwaitableEventType
 {
     All,
     Any,
 }
 
-public class GlobalCommandManager<T> : Singleton<GlobalCommandManager<T>>
+public class EventManager<T> : Singleton<EventManager<T>>
 {
 
-    private class GlobalCommand<TT>
+    private class AwaitableCommand<TT>
     {
         public readonly List<Func<TT, CancellationToken, UniTask>> Works = new();
         public CancellationTokenSource CancellationTokenSource = new();
     }
     
-    private readonly Dictionary<string, GlobalCommand<T>> _commandDictionary = new();
+    private readonly Dictionary<string, AwaitableCommand<T>> _commandDictionary = new();
 
     /// <summary>
     /// 添加事件监听
@@ -29,10 +35,10 @@ public class GlobalCommandManager<T> : Singleton<GlobalCommandManager<T>>
     {
         if (!_commandDictionary.ContainsKey(commandName))
         {
-            _commandDictionary.Add(commandName, new GlobalCommand<T>());
+            _commandDictionary.Add(commandName, new AwaitableCommand<T>());
         }
 
-        GlobalCommand<T> command = _commandDictionary[commandName];
+        AwaitableCommand<T> command = _commandDictionary[commandName];
         command.Works.Add(func);
     }
 
@@ -57,12 +63,12 @@ public class GlobalCommandManager<T> : Singleton<GlobalCommandManager<T>>
     /// 触发事件
     /// </summary>
     /// <param name="commandName"></param>
-    /// <param name="executeType"></param>
     /// <param name="param"></param>
+    /// <param name="executeType"></param>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
-    public async UniTask ExecuteEvent(string commandName,
-        GlobalCommandExecuteType executeType = GlobalCommandExecuteType.All,
-        T param = default)
+    public async UniTask TriggerEvent(string commandName,
+        T param = default,
+        AwaitableEventType executeType = AwaitableEventType.All)
     {
         if (!_commandDictionary.ContainsKey(commandName)) return;
 
@@ -76,11 +82,11 @@ public class GlobalCommandManager<T> : Singleton<GlobalCommandManager<T>>
 
         switch (executeType)
         {
-            case GlobalCommandExecuteType.All:
+            case AwaitableEventType.All:
                 await UniTask.WhenAll(tasks)
                     .AttachExternalCancellation(_commandDictionary[commandName].CancellationTokenSource.Token);
                 break;
-            case GlobalCommandExecuteType.Any:
+            case AwaitableEventType.Any:
                 await UniTask.WhenAny(tasks)
                     .AttachExternalCancellation(_commandDictionary[commandName].CancellationTokenSource.Token);
                 break;

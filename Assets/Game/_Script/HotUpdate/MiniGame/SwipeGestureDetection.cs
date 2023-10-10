@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,9 @@ public class SwipeGestureDetection : MonoBehaviour
     public float swipeThreshold = 50f; // 滑动识别的阈值，可以根据需要调整
     public TextMeshProUGUI swipeDirectionText; // 用于显示滑动方向的文本
 
-    void Update()
+    [SerializeField] private bool _draging = false;
+
+    async void Update()
     {
         if (Input.touchCount > 0)
         {
@@ -21,7 +24,6 @@ public class SwipeGestureDetection : MonoBehaviour
                 case TouchPhase.Began:
                     touchStartPos = touch.position;
                     break;
-
                 case TouchPhase.Ended:
                     touchEndPos = touch.position;
                     Vector2 swipeDirection = touchEndPos - touchStartPos;
@@ -29,28 +31,41 @@ public class SwipeGestureDetection : MonoBehaviour
                     if (swipeDirection.magnitude > swipeThreshold)
                     {
                         float angle = Vector2.SignedAngle(Vector2.right, swipeDirection);
-
+                        if (_draging)return;
                         if (angle > -45 && angle <= 45)
                         {
                             // 右滑动
+                            _draging = true;
+                            await EventManager<Vector3>.Instance.TriggerEvent(EventNames.DragEvent, Vector3.right);
+                            _draging = false;
                             swipeDirectionText.text = "右滑动";
                         }
                         else if (angle > 45 && angle <= 135)
                         {
                             // 上滑动
+                            _draging = true;
+                            await EventManager<Vector3>.Instance.TriggerEvent(EventNames.DragEvent, Vector3.up);
+                            _draging = false;
                             swipeDirectionText.text = "上滑动";
                         }
                         else if (angle > 135 || angle <= -135)
                         {
                             // 左滑动
+                            _draging = true;
+                            await EventManager<Vector3>.Instance.TriggerEvent(EventNames.DragEvent, Vector3.left);
+                            _draging = false;
                             swipeDirectionText.text = "左滑动";
                         }
                         else if (angle > -135 && angle <= -45)
                         {
                             // 下滑动
+                            _draging = true;
+                            await EventManager<Vector3>.Instance.TriggerEvent(EventNames.DragEvent, Vector3.down);
+                            _draging = false;
                             swipeDirectionText.text = "下滑动";
                         }
                     }
+
                     break;
             }
         }
