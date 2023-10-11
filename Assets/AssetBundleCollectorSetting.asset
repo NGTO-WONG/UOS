@@ -24,7 +24,7 @@ MonoBehaviour:
     Groups:
     - GroupName: Scene
       GroupDesc: 
-      AssetTags: 
+      AssetTags: Scene
       ActiveRuleName: EnableGroup
       Collectors:
       - CollectPath: Assets/Game/Scene
@@ -35,8 +35,8 @@ MonoBehaviour:
         FilterRuleName: CollectScene
         AssetTags: 
         UserData: 
-      - CollectPath: Assets/Game/_Script/HotUpdate/Malbers_Animations/Animal_Controller/1_-_Demos
-        CollectorGUID: ac29238b3dcb1084ca4e1562c82d72d2
+      - CollectPath: Assets/Game/_Script/HotUpdate/MiniGame
+        CollectorGUID: 1fbb9c8946607421c80d96cd5f334df8
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory

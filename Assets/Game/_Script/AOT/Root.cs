@@ -11,7 +11,7 @@ namespace Game._Script.AOT
     public class Root : MonoBehaviour
     {
         public string GamePlayScene = "_1_GamePlay";
-        public string HostServerIP = "https://a.unity.cn/client_api/v1/buckets/f80670d2-d509-47a4-a68f-56900cbdb0a8/entry_by_path/content/?path=";
+        public string HostServerIP = "https://a.unity.cn/client_api/v1/buckets/96026445-ad7a-49de-b003-4a5302009960/entry_by_path/content/?path=";
         public string BuildVersion = "V1.0";
         public EPlayMode PlayMode = EPlayMode.HostPlayMode;
         

@@ -18,7 +18,8 @@ public class CubePlayer : MonoBehaviour
 
     private async UniTask Move(Vector3 dir, CancellationToken token)
     {
-        if ( Physics.Raycast(new Ray(gameObject.transform.position,dir),out var hitInfo))
+        var ray=new Ray(gameObject.transform.position,dir);
+        if (Physics.Raycast(ray,out var hitInfo,9999f,LayerMask.GetMask("Ground")))
         {
             Debug.Log(dir+" "+hitInfo.point);
             await transform.DOMove(hitInfo.point-(dir/2f),hitInfo.distance/Speed).SetEase(MoveEase);

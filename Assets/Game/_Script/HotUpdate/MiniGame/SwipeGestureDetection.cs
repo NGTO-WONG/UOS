@@ -1,5 +1,3 @@
-using Cysharp.Threading.Tasks;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +7,7 @@ public class SwipeGestureDetection : MonoBehaviour
     private Vector2 touchEndPos;
 
     public float swipeThreshold = 50f; // 滑动识别的阈值，可以根据需要调整
-    public TextMeshProUGUI swipeDirectionText; // 用于显示滑动方向的文本
+    public Text swipeDirectionText; // 用于显示滑动方向的文本
 
     [SerializeField] private bool _draging = false;
 

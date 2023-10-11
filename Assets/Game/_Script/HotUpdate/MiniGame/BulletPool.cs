@@ -6,17 +6,6 @@ using UnityEngine.Pool;
 
 namespace Game._Script.HotUpdate.MiniGame
 {
-    public class Bullet: MonoBehaviour
-    {
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.layer== LayerMask.GetMask("Enemy"))
-            {
-                BulletPool.Instance.Get()
-            }
-        }
-    }
-    
     public class BulletPool:SingletonMonoBehaviour<BulletPool>, IObjectPool<Bullet>
     {
         private Queue<Bullet> bulletPool = new();
@@ -28,25 +17,27 @@ namespace Game._Script.HotUpdate.MiniGame
             {
                 var tempObj = Instantiate(bulletPrefab,this.transform);
                 bulletPool.Enqueue(tempObj);
-                pooledObject.
             }
-            return bulletPool.Dequeue();
+            var bullet = bulletPool.Dequeue();
+            bullet.gameObject.SetActive(true);
+            return bullet;
         }
 
         public PooledObject<Bullet> Get(out Bullet bullet)
         {
             bullet = Get();
-            return bulletPool;
+            return default;
         }
 
         public void Release(Bullet element)
         {
-            throw new NotImplementedException();
+            element.gameObject.SetActive(false);
+            bulletPool.Enqueue(element);
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            Debug.Log("clear"); //todo clear
         }
 
         public int CountInactive => bulletPool.Count;
