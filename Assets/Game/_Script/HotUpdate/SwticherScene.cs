@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YooAsset;
@@ -14,21 +16,24 @@ namespace Game._Script.HotUpdate
             // 注意：location只需要填写资源包里的任意资源地址。
             var package = YooAssets.GetPackage("DefaultPackage");
             Debug.Log(package.GetAssetInfos("Scene").Length);
-            // AllAssetsOperationHandle handle = package.LoadAllAssetsAsync<SceneAsset>("Root");
-            // await  handle.Task;
-            // Debug.Log(handle.AllAssetObjects.Length);
-            // foreach(var assetObj in handle.AllAssetObjects)
-            // {    
-            //     UnityEngine.TextAsset textAsset = assetObj as UnityEngine.TextAsset;
-            // }
-        
-        
+            foreach (var item in package.GetAssetInfos("Scene"))
+            {
+                var tempButton = Instantiate(originButton , originButton.transform.parent);
+                tempButton.gameObject.SetActive(true);
+                tempButton.GetComponentInChildren<TextMeshProUGUI>().text = item.Address;
+                var t = item.Address;
+                tempButton.onClick.AddListener(async () =>
+                {
+                    await SwitchScene(t);
+                });
+            }
         }
 
-        // Update is called once per frame
-        void Update()
+        static async UniTask SwitchScene(string sceneName)
         {
-        
+            SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName);
+            await handle.Task;
+            Debug.Log($"Scene name is {sceneName}");
         }
     }
 }

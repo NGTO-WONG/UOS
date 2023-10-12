@@ -1,9 +1,7 @@
 {
     "name": "IngameDebugConsole.Editor",
     "references": [
-        "IngameDebugConsole.Runtime",
-        "UnityEditor.TestRunner",
-        "UnityEngine.TestRunner"
+        "IngameDebugConsole.Runtime"
     ],
     "includePlatforms": [
         "Editor"

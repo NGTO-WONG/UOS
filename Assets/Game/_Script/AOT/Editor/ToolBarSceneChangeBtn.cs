@@ -23,6 +23,12 @@ public class SceneSwitchLeftButton
         {
             SceneHelper.StartScene("Root");
         }
+        
+        if (GUILayout.Button(new GUIContent("MiniGame", "Open Root Scene "), ToolbarStyles.commandButtonStyle))
+        {
+            SceneHelper.ChangeScene("MiniGame");
+        }
+        
     }
 }
 
@@ -39,6 +45,7 @@ static class ToolbarStyles
             imagePosition = ImagePosition.ImageAbove,
             fontStyle = FontStyle.Bold,
             stretchWidth = true,
+            
         };
     }
 }

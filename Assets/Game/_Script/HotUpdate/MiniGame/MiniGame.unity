@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -713,8 +713,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u4F60\u597D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2762de88008b64226b02ccbecaab0994, type: 2}
-  m_sharedMaterial: {fileID: -5036115122520645208, guid: 2762de88008b64226b02ccbecaab0994, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 335309bc089d4455eb67ca7787ddb02d, type: 2}
+  m_sharedMaterial: {fileID: -4618076727815439431, guid: 335309bc089d4455eb67ca7787ddb02d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
