@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Game._Script.HotUpdate.Base
 {
 
-    public class ScreenGuardManager : SingletonMonoBehaviour<ScreenGuardManager>
+    public class ScreenGuardManager : Singleton<ScreenGuardManager>
     {
-        
         public bool IsGuarded => _guardDic.Count > 0;
+        public GameObject _guardCanvas;
         private readonly Dictionary<string, int> _guardDic = new();
 
         public void AddGuard(string key)
         {
+            TryToCreateGuard();
             if (!_guardDic.ContainsKey(key))
             {
                 _guardDic.Add(key, 0);
@@ -20,7 +21,7 @@ namespace Game._Script.HotUpdate.Base
 
             _guardDic[key]++;
 
-            gameObject.SetActive(true);
+            _guardCanvas.SetActive(true);
         }
 
         public void RemoveGuard(string key)
@@ -40,8 +41,20 @@ namespace Game._Script.HotUpdate.Base
 
             if (_guardDic.Count == 0)
             {
-                gameObject.SetActive(false);
+                _guardCanvas.SetActive(false);
             }
         }
+
+        void TryToCreateGuard()
+        {
+            if(_guardCanvas != null)
+            {
+                return;
+            }
+
+            _guardCanvas = GameObject.Instantiate(Resources.Load<GameObject>("UIGuardCanvas"));
+            //GameObject.DontDestroyOnLoad(_guardCanvas);
+        }
+        
     }
 }

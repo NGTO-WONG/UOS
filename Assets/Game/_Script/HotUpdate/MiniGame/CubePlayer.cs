@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Game._Script.HotUpdate.Base;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CubePlayer : MonoBehaviour
 {
@@ -22,14 +18,11 @@ public class CubePlayer : MonoBehaviour
     private async UniTask Move(Vector3 dir, CancellationToken token)
     {
         var ray=new Ray(gameObject.transform.position,dir);
-        if (Physics.Raycast(ray,out var hitInfo,9999f,LayerMask.GetMask("Ground")))
+        if (Physics.Raycast(ray, out var hitInfo, 9999f, LayerMask.GetMask("Ground")))
         {
-            Debug.Log(dir+" "+hitInfo.point);
-            await transform.DOMove(hitInfo.point-(dir/2f),hitInfo.distance/Speed).SetEase(MoveEase);
-        }
-        else
-        {
-            Debug.Log("A");
+            await transform.DOMove(hitInfo.point - (dir / 2f), hitInfo.distance / Speed)
+                .SetEase(MoveEase)
+                .WithCancellation(cancellationToken: token);
         }
        
     }

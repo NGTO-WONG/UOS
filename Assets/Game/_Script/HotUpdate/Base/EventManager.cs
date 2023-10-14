@@ -49,14 +49,14 @@ namespace Game._Script.HotUpdate.Base
             AwaitableEventType executeType = AwaitableEventType.All)
         {
             ScreenGuardManager.Instance.AddGuard(commandName);
-            var succ= await TriggerEvent(commandName, param, executeType).SuppressCancellationThrow();
-            if (succ)
+            var cancel= await TriggerEvent(commandName, param, executeType).SuppressCancellationThrow();
+            if (cancel)
             {
-                Debug.Log($"事件: {commandName} 执行成功");
+                Debug.Log($"事件: {commandName} 被取消");
             }
             else
             {
-                Debug.Log($"事件: {commandName} 被取消");
+                Debug.Log($"事件: {commandName} 执行成功");
             }
             ScreenGuardManager.Instance.RemoveGuard(commandName);
         }
@@ -96,6 +96,8 @@ namespace Game._Script.HotUpdate.Base
                 default:
                     throw new ArgumentOutOfRangeException(nameof(executeType), executeType, null);
             }
+
+            _commandDictionary[commandName].CancellationTokenSource = null;
         }
 
         /// <summary>
