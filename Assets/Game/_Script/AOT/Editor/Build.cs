@@ -124,7 +124,7 @@ public class Builder : MonoBehaviour
             Debug.Log($"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
         }
         //yooAsset打包
-        var packageVersion = DateTime.Now.ToString("V_yyyyMMdd_HH:mm:ss");
+        var packageVersion = DateTime.Now.ToString("V_yyyyMMdd_HH_mm_ss");
         var outputPackageDirectory= YooAssetBuild(EBuildMode.IncrementalBuild,packageVersion);
         if (outputPackageDirectory!="")
         {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game._Script.HotUpdate.Base;
 using UnityEngine;
 using UnityEngine.Pool;
 

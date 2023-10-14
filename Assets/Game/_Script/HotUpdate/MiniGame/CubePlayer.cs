@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Game._Script.HotUpdate.Base;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -13,8 +15,9 @@ public class CubePlayer : MonoBehaviour
 
     void Start()
     {
-        EventManager<Vector3>.Instance.RegisterEvent(EventNames.DragEvent,Move);
+       EventManager<Vector3>.Instance.SubscribeEvent(EventNames.DragEvent,Move);
     }
+
 
     private async UniTask Move(Vector3 dir, CancellationToken token)
     {
@@ -32,10 +35,4 @@ public class CubePlayer : MonoBehaviour
     }
 
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
