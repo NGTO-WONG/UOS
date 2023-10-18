@@ -33,7 +33,6 @@ public static class GitHelper
         RunGitCommand("fetch");
         var (output, error) =  RunGitCommand("pull");
         
-        ToolBarEditor.ClearGitCache();
         if (string.IsNullOrEmpty(error))
         {
             EditorUtility.DisplayDialog("更新成功","更新成功","ok");
@@ -45,6 +44,7 @@ public static class GitHelper
             EditorUtility.DisplayDialog("更新","更新失败 摇人 不要清log","ok");
             Debug.LogError(error);
         }
+        ToolBarEditor.ClearGitCache();
     }
     /// <summary>
     /// 获取分支信息  分支名，当前分支的index

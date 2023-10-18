@@ -85,6 +85,7 @@ public class ToolBarEditor
         catch
         {
             Debug.LogWarning("err");
+            ClearGitCache();
         }
     }
 
