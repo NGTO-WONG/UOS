@@ -12,7 +12,6 @@ public static class GitHelper
         RunGitCommand("clean -df");
         RunGitCommand("fetch");
         var (output, error) = RunGitCommand($"checkout {displayedOption}");
-        ToolBarEditor.ClearGitCache();
         if (string.IsNullOrEmpty(error))
         {
             EditorUtility.DisplayDialog("切分支成功","切分支成功","ok");
@@ -24,6 +23,7 @@ public static class GitHelper
             EditorUtility.DisplayDialog("切分支","切分支失败 摇人 不要清log","ok");
             Debug.LogError(error);
         }
+        ToolBarEditor.ClearGitCache();
         
     }
     public static void GitPull()
