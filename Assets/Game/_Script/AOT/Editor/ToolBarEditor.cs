@@ -65,10 +65,8 @@ public class ToolBarEditor
         {
             // 创建一个下拉框
             var oldIndex = selectedIndex;
-            // var tryToCheckOutIndex = EditorGUILayout.Popup(selectedIndex, displayedOptions,
-            //     GUILayout.Width(displayedOptions[selectedIndex].Length * 6 + 30));
             var tryToCheckOutIndex = EditorGUILayout.Popup(selectedIndex, displayedOptions,
-                GUILayout.Width(130));
+                GUILayout.Width(displayedOptions[selectedIndex].Length * 6 + 30));
             if (tryToCheckOutIndex == oldIndex) return;
             if (oldIndex==-1)
             {
