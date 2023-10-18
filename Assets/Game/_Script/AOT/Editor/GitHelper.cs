@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEditor;
 using Debug = UnityEngine.Debug;
@@ -50,7 +51,7 @@ public static class GitHelper
     /// <returns></returns>
     public static (string[] branches,string currentBranchName) GetBranchInfo()
     {        
-        // 获取所有分支名
+        // 获取所有远端分支名
         var (output,error)= RunGitCommand("ls-remote --heads origin");
         var branches=new List<string>();
         if (string.IsNullOrEmpty(error))
@@ -72,6 +73,20 @@ public static class GitHelper
             Debug.LogError("Error: " + error);
         }
         
+        (output,error)= RunGitCommand("branch");
+        
+        // 执行 "git branch" 命令以获取本地分支
+        foreach (var item in ParseBranchOutput(output))
+        {
+            if (!branches.Contains(item))
+            {
+                branches.Add(item);
+            }
+        }
+        
+        
+        
+        
         // 获取当前分支名称
         (output,error)  = RunGitCommand("rev-parse --abbrev-ref HEAD");
         string currentBranch = "";
@@ -87,6 +102,19 @@ public static class GitHelper
         return (branches.ToArray(),currentBranch);
     }
     
+    static List<string> ParseBranchOutput(string branchOutput)
+    {
+        List<string> branchNames = new List<string>();
+        string[] lines = branchOutput.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (string line in lines)
+        {
+            string branchName = line.TrimStart('*', ' ').Trim();
+            branchNames.Add(branchName);
+        }
+
+        return branchNames;
+    }
     
    static  (string,string) RunGitCommand(string command)
     {
