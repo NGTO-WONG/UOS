@@ -8,7 +8,7 @@ public static class GitHelper
     
     public static void CheckOut(string displayedOption)
     {
-        var (output,error)= RunGitCommand($"reset --hard HEAD && git clean -df && git checkout {displayedOption} && git pull");
+        var (output,error)= RunGitCommand($"reset --hard && git clean -df && git checkout {displayedOption} && git pull");
         if (string.IsNullOrEmpty(error))
         {
             EditorUtility.DisplayDialog("切分支成功","切分支成功","ok");
@@ -22,7 +22,7 @@ public static class GitHelper
     }
     public static void GitPull()
     {
-        var (output,error)= RunGitCommand("reset --hard HEAD && git clean -df && git pull");
+        var (output,error)= RunGitCommand("reset --hard && git clean -df && git pull");
         
         if (string.IsNullOrEmpty(error))
         {
