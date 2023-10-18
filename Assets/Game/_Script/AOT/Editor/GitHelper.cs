@@ -5,6 +5,20 @@ using Debug = UnityEngine.Debug;
 
 public static class GitHelper 
 {
+    
+    public static void CheckOut(string displayedOption)
+    {
+        var (output,error)= RunGitCommand($"checkout . && git clean -df && git checkout {displayedOption} && git pull");
+        if (string.IsNullOrEmpty(error))
+        {
+            EditorUtility.DisplayDialog("更新成功","更新成功","ok");
+            AssetDatabase.Refresh();
+        }
+        else
+        {
+            EditorUtility.DisplayDialog("git pull","更新失败 摇人 不要清log","ok");
+        }
+    }
     public static void GitPull()
     {
         var (output,error)= RunGitCommand("checkout . && git clean -df && git pull");
@@ -87,4 +101,5 @@ public static class GitHelper
         process.Close();
         return (output, error);
     }
+
 }

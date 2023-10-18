@@ -68,6 +68,7 @@ public class ToolBarEditor
                 var coloredLabelStyle = new GUIStyle(EditorStyles.label);
                 coloredLabelStyle.normal.textColor = Color.red;
                 EditorGUILayout.LabelField("当前分支:" + displayedOptions[selectedIndex], coloredLabelStyle);
+                GitHelper.CheckOut(displayedOptions[tryToCheckOutIndex]);
                 selectedIndex = tryToCheckOutIndex;
             }
             else
