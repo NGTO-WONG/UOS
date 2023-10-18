@@ -8,21 +8,84 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [InitializeOnLoad]
-public class SceneSwitchButton
+public class ToolBarEditor
 {
-    static SceneSwitchButton()
+    static class ToolbarStyles
     {
-        ToolbarExtender.LeftToolbarGUI.Add(OnLeftToolbarGUI);
-        ToolbarExtender.RightToolbarGUI.Add(OnRightToolbarGUI);
+        public static readonly GUIStyle commandButtonStyle;
+
+        static ToolbarStyles()
+        {
+            commandButtonStyle = new GUIStyle("Command")
+            {
+                font = null,
+                fontSize = 10,
+                alignment = TextAnchor.MiddleCenter,
+                wordWrap = false,
+                clipping = TextClipping.Overflow,
+                contentOffset = default,
+                fixedWidth = 50,
+                fixedHeight = 20,
+                imagePosition = ImagePosition.ImageAbove,
+                fontStyle = FontStyle.Bold,
+                richText = true,
+            };
+        }
     }
 
-    static void OnLeftToolbarGUI()
+    static ToolBarEditor()
     {
-        if (GUILayout.Button(new GUIContent("更新git", "更新git"), ToolbarStyles.commandButtonStyle))
+        //git工具
+        ToolbarExtender.LeftToolbarGUI.Add(DropDown);        
+        ToolbarExtender.LeftToolbarGUI.Add(UpdateGit);
+        //场景切换
+        ToolbarExtender.RightToolbarGUI.Add(OnRightToolbarGUI);
+    }
+    
+    private static bool isDropdownOpen = false;
+    static int selectedIndex=0;
+    static string[] displayedOptions ;
+    private static void DropDown()
+    {
+        if (displayedOptions==null)
         {
-            Debug.Log("Left button clicked");
-            GitUpdate.UpdateGitProject();
-            // 在左侧按钮点击时执行的操作
+            (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
+        }
+        try
+        {
+            // 创建一个下拉框
+            var oldIndex = selectedIndex;
+            var tryToCheckOutIndex = EditorGUILayout.Popup(selectedIndex, displayedOptions,
+                GUILayout.Width(displayedOptions[selectedIndex].Length * 6 + 30));
+            if (tryToCheckOutIndex == oldIndex) return;
+            //询问是否切换
+            if (EditorUtility.DisplayDialog("切分支",
+                    $"是否要从{displayedOptions[oldIndex]}切换到{displayedOptions[tryToCheckOutIndex]}分支？" +
+                    $"\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空"
+                    , "确认","取消"))
+            {
+                // 在编辑器中显示所选值
+                var coloredLabelStyle = new GUIStyle(EditorStyles.label);
+                coloredLabelStyle.normal.textColor = Color.red;
+                EditorGUILayout.LabelField("当前分支:" + displayedOptions[selectedIndex], coloredLabelStyle);
+                selectedIndex = tryToCheckOutIndex;
+            }
+            else
+            {
+                selectedIndex = oldIndex;
+            }
+        }
+        catch
+        {
+            Debug.LogWarning("err");
+        }
+    }
+
+    private static void UpdateGit()
+    {
+        if (GUILayout.Button("更新工程", ToolbarStyles.commandButtonStyle))
+        {
+            GitHelper.GitPull();
         }
     }
 
@@ -33,40 +96,28 @@ public class SceneSwitchButton
         {
             SceneHelper.StartScene("Root");
         }
-        
-        if (GUILayout.Button(new GUIContent("MiniGame", "Open Root Scene "), ToolbarStyles.commandButtonStyle))
+
+        if (GUILayout.Button(new GUIContent("MiniGame", "Open Root Scene "),ToolbarStyles.commandButtonStyle))
         {
             SceneHelper.ChangeScene("MiniGame");
         }
-        if (GUILayout.Button(new GUIContent("更新git", "更新git"), ToolbarStyles.commandButtonStyle))
-        {
-            GitUpdate.UpdateGitProject();
-            // 在左侧按钮点击时执行的操作
-        }
+
     }
 }
 
-static class ToolbarStyles
-{
-    public static readonly GUIStyle commandButtonStyle;
 
-    static ToolbarStyles()
-    {
-        commandButtonStyle = new GUIStyle("Command")
-        {
-            fontSize = 10,
-            alignment = TextAnchor.MiddleCenter,
-            imagePosition = ImagePosition.ImageAbove,
-            fontStyle = FontStyle.Bold,
-            stretchWidth = true,
-        };
-    }
-}
+#region git
+
+
+#endregion
+#region 场景切换
+
 
 static class SceneHelper
 {
     static string sceneToOpen;
     private static bool isRun;
+
     public static void ChangeScene(string sceneName)
     {
         if (EditorApplication.isPlaying)
@@ -78,7 +129,7 @@ static class SceneHelper
         isRun = false;
         EditorApplication.update += OnUpdate;
     }
-    
+
     public static void StartScene(string sceneName)
     {
         if (EditorApplication.isPlaying)
@@ -123,63 +174,32 @@ static class SceneHelper
     }
 }
 
+#endregion
+
+#region ToolbarExtender
 [InitializeOnLoad]
 public static class ToolbarExtender
 {
-    static int m_toolCount;
-    static GUIStyle m_commandStyle = null;
+    //static int m_toolCount;
+    //static GUIStyle m_commandStyle = null;
 
     public static readonly List<Action> LeftToolbarGUI = new List<Action>();
     public static readonly List<Action> RightToolbarGUI = new List<Action>();
 
     static ToolbarExtender()
     {
-        Type toolbarType = typeof(Editor).Assembly.GetType("UnityEditor.Toolbar");
-#if UNITY_2019_1_OR_NEWER
-        string fieldName = "k_ToolCount";
-#else
-			string fieldName = "s_ShownToolIcons";
-#endif
-
-        FieldInfo toolIcons = toolbarType.GetField(fieldName,
-            BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
-
-#if UNITY_2019_3_OR_NEWER
-        m_toolCount = toolIcons != null ? ((int) toolIcons.GetValue(null)) : 8;
-#elif UNITY_2019_1_OR_NEWER
-			m_toolCount = toolIcons != null ? ((int) toolIcons.GetValue(null)) : 7;
-#elif UNITY_2018_1_OR_NEWER
-			m_toolCount = toolIcons != null ? ((Array) toolIcons.GetValue(null)).Length : 6;
-#else
-			m_toolCount = toolIcons != null ? ((Array) toolIcons.GetValue(null)).Length : 5;
-#endif
-#if !UWA
-        //ToolbarCallback.OnToolbarGUI = OnGUI;
-#endif
         ToolbarCallback.OnToolbarGUILeft = GUILeft;
         ToolbarCallback.OnToolbarGUIRight = GUIRight;
     }
 
-#if UNITY_2019_3_OR_NEWER
-    public const float space = 8;
-#else
-		public const float space = 10;
-#endif
-    public const float largeSpace = 20;
-    public const float buttonWidth = 42;
-    public const float dropdownWidth = 80;
 #if UNITY_2019_1_OR_NEWER
     public const float playPauseStopWidth = 140;
 #else
-		public const float playPauseStopWidth = 100;
+    public const float playPauseStopWidth = 100;
 #endif
 
-    public static void GUILeft()
+    private static void GUILeft()
     {
-        var screenWidth = EditorGUIUtility.currentViewWidth;
-        float playButtonsPosition = Mathf.RoundToInt((screenWidth - playPauseStopWidth) / 2);
-        Rect leftRect = new Rect(playButtonsPosition-200, 0, playButtonsPosition - space, Screen.height);
-        GUILayout.BeginArea(leftRect);
         GUILayout.BeginHorizontal();
         foreach (var handler in LeftToolbarGUI)
         {
@@ -187,10 +207,9 @@ public static class ToolbarExtender
         }
 
         GUILayout.EndHorizontal();
-        GUILayout.EndArea();
     }
 
-    public static void GUIRight()
+    private static void GUIRight()
     {
         GUILayout.BeginHorizontal();
         foreach (var handler in RightToolbarGUI)
@@ -246,7 +265,7 @@ public static class ToolbarCallback
         {
             // Find the toolbar
             var toolbars = Resources.FindObjectsOfTypeAll(m_toolbarType);
-            m_currentToolbar = toolbars.Length > 0 ? (ScriptableObject) toolbars[0] : null;
+            m_currentToolbar = toolbars.Length > 0 ? (ScriptableObject)toolbars[0] : null;
             if (m_currentToolbar != null)
             {
 #if UNITY_2021_1_OR_NEWER
@@ -306,3 +325,6 @@ public static class ToolbarCallback
             handler();
     }
 }
+
+#endregion
+
