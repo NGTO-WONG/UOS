@@ -43,13 +43,13 @@ public class ToolBarEditor
         ToolbarExtender.RightToolbarGUI.Add(OnRightToolbarGUI);
     }
     
+    static int selectedIndex=0;
+    private static string[] displayedOptions;
+    private static string currentBranchName = "";
+    
 
     private static void DropDown()
     {
-        int selectedIndex=0;
-        string[] displayedOptions=null;
-        string currentBranchName = "";
-
         if (displayedOptions==null)
         {
             (displayedOptions, currentBranchName) = GitHelper.GetBranchInfo();
@@ -96,22 +96,21 @@ public class ToolBarEditor
     {
         if (GUILayout.Button("更新工程", ToolbarStyles.commandButtonStyle))
         {
-            GitHelper.GitPull();
-            //
-            // try
-            // {
-            //     if (EditorUtility.DisplayDialog("更新工程",
-            //             $"是否要更新{displayedOptions[selectedIndex]} 分支？" +
-            //             $"\n\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空"
-            //             , "确认", "取消"))
-            //     {
-            //     
-            //     }
-            // }
-            // catch
-            // {
-            //     (displayedOptions, currentBranchName) = GitHelper.GetBranchInfo();
-            // }
+            try
+            {
+                if (EditorUtility.DisplayDialog("更新工程",
+                        $"是否要更新{displayedOptions[selectedIndex]} 分支？" +
+                        $"\n\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空"
+                        , "确认", "取消"))
+                {
+                
+                    GitHelper.GitPull();
+                }
+            }
+            catch
+            {
+                (displayedOptions, currentBranchName) = GitHelper.GetBranchInfo();
+            }
 
         }
     }
