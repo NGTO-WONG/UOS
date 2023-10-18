@@ -65,7 +65,7 @@ public class ToolBarEditor
             if (tryToCheckOutIndex == oldIndex) return;
             if (oldIndex==-1)
             {
-                oldIndex = 0;
+                oldIndex = tryToCheckOutIndex;
             }
             Debug.Log(displayedOptions.Length+" "+tryToCheckOutIndex+" "+oldIndex);
             //询问是否切换
