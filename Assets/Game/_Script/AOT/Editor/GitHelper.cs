@@ -51,7 +51,6 @@ public static class GitHelper
     public static (string[] branches,int currentBranchIndex) GetBranchInfo()
     {        
         // 获取所有分支名
-        RunGitCommand("fetch");
         var (output,error)= RunGitCommand("ls-remote --heads origin");
         var branches=new List<string>();
         if (string.IsNullOrEmpty(error))

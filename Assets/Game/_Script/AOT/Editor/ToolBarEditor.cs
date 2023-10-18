@@ -89,7 +89,6 @@ public class ToolBarEditor
     {
         if (GUILayout.Button("更新工程", ToolbarStyles.commandButtonStyle))
         {
-
             try
             {
                 if (EditorUtility.DisplayDialog("更新工程",
