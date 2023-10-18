@@ -48,6 +48,7 @@ public class ToolBarEditor
 
     public static void ClearGitCache()
     {
+        return;
         selectedIndex = 0;
         displayedOptions = null;
     }
@@ -94,14 +95,23 @@ public class ToolBarEditor
         if (GUILayout.Button("更新工程", ToolbarStyles.commandButtonStyle))
         {
 
-            if (EditorUtility.DisplayDialog("更新工程",
-                    $"是否要更新{displayedOptions[selectedIndex]} 分支？" +
-                    $"\n\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空"
-                    , "确认", "取消"))
+            try
             {
+                if (EditorUtility.DisplayDialog("更新工程",
+                        $"是否要更新{displayedOptions[selectedIndex]} 分支？" +
+                        $"\n\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空"
+                        , "确认", "取消"))
+                {
                 
-                GitHelper.GitPull();
+                    GitHelper.GitPull();
+                }
             }
+            catch
+            {
+                ClearGitCache();
+                (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
+            }
+
         }
     }
 

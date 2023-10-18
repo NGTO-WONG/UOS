@@ -87,7 +87,6 @@ public static class GitHelper
         {
             Debug.LogError("GetCurrentBranch Fail: " + error);
         }        
-        ToolBarEditor.ClearGitCache();
         return (branches.ToArray(),branches.IndexOf(currentBranch));
     }
     
