@@ -43,7 +43,7 @@ public class ToolBarEditor
     }
     
     static int selectedIndex=0;
-    static string[] displayedOptions=new string[99];
+    private static string[] displayedOptions;
     
 
     private static void DropDown()
