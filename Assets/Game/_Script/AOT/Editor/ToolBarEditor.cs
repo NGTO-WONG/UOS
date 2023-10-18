@@ -63,6 +63,10 @@ public class ToolBarEditor
             var tryToCheckOutIndex = EditorGUILayout.Popup(selectedIndex, displayedOptions,
                 GUILayout.Width(130));
             if (tryToCheckOutIndex == oldIndex) return;
+            if (oldIndex==-1)
+            {
+                oldIndex = 0;
+            }
             Debug.Log(displayedOptions.Length+" "+tryToCheckOutIndex+" "+oldIndex);
             //询问是否切换
             if (EditorUtility.DisplayDialog("切分支",
