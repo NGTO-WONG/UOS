@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Game._Script.AOT.Editor;
 using UnityEditor;
@@ -44,13 +45,15 @@ public class ToolBarEditor
     
     static int selectedIndex=0;
     private static string[] displayedOptions;
+    private static string currentBranchName = "";
     
 
     private static void DropDown()
     {
         if (displayedOptions==null)
         {
-            (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
+            (displayedOptions, currentBranchName) = GitHelper.GetBranchInfo();
+            selectedIndex = displayedOptions.ToList().IndexOf(currentBranchName);
         }
         {
             // 创建一个下拉框
@@ -62,13 +65,13 @@ public class ToolBarEditor
             if (tryToCheckOutIndex == oldIndex) return;
             if (displayedOptions.Length<oldIndex)
             {
-                (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
+                (displayedOptions, currentBranchName) = GitHelper.GetBranchInfo();
                 return;
             }
             
             if (displayedOptions.Length<tryToCheckOutIndex)
             {
-                (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
+                (displayedOptions, currentBranchName) = GitHelper.GetBranchInfo();
                 return;
             }
             Debug.Log(displayedOptions.Length+" "+tryToCheckOutIndex+" "+oldIndex);
@@ -113,7 +116,7 @@ public class ToolBarEditor
             }
             catch
             {
-                (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
+                (displayedOptions, currentBranchName) = GitHelper.GetBranchInfo();
             }
 
         }

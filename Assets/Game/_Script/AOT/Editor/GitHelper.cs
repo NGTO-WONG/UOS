@@ -48,7 +48,7 @@ public static class GitHelper
     /// 获取分支信息  分支名，当前分支的index
     /// </summary>
     /// <returns></returns>
-    public static (string[] branches,int currentBranchIndex) GetBranchInfo()
+    public static (string[] branches,string currentBranchName) GetBranchInfo()
     {        
         // 获取所有分支名
         var (output,error)= RunGitCommand("ls-remote --heads origin");
@@ -84,7 +84,7 @@ public static class GitHelper
         {
             Debug.LogError("GetCurrentBranch Fail: " + error);
         }        
-        return (branches.ToArray(),branches.IndexOf(currentBranch));
+        return (branches.ToArray(),currentBranch);
     }
     
     
