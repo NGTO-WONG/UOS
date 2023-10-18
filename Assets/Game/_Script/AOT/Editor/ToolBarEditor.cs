@@ -52,12 +52,13 @@ public class ToolBarEditor
         {
             (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
         }
-        try
         {
             // 创建一个下拉框
             var oldIndex = selectedIndex;
+            // var tryToCheckOutIndex = EditorGUILayout.Popup(selectedIndex, displayedOptions,
+            //     GUILayout.Width(displayedOptions[selectedIndex].Length * 6 + 30));
             var tryToCheckOutIndex = EditorGUILayout.Popup(selectedIndex, displayedOptions,
-                GUILayout.Width(displayedOptions[selectedIndex].Length * 6 + 30));
+                GUILayout.Width(130));
             if (tryToCheckOutIndex == oldIndex) return;
             //询问是否切换
             if (EditorUtility.DisplayDialog("切分支",
@@ -78,7 +79,6 @@ public class ToolBarEditor
             }
             
         }
-        catch
         {
             Debug.LogWarning("err");
         }
