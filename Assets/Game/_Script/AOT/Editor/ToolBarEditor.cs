@@ -60,8 +60,8 @@ public class ToolBarEditor
             if (tryToCheckOutIndex == oldIndex) return;
             //询问是否切换
             if (EditorUtility.DisplayDialog("切分支",
-                    $"是否要从{displayedOptions[oldIndex]}切换到{displayedOptions[tryToCheckOutIndex]}分支？" +
-                    $"\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空"
+                    $"是否要从  {displayedOptions[oldIndex]}\n  切换到    {displayedOptions[tryToCheckOutIndex]} 分支？" +
+                    $"\n\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空"
                     , "确认","取消"))
             {
                 // 在编辑器中显示所选值
