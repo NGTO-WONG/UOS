@@ -47,17 +47,16 @@ public static class GitHelper
     /// <returns></returns>
     public static (string[] branches,int currentBranchIndex) GetBranchInfo()
     {        
+        // 获取所有分支名
         var (output,error)= RunGitCommand("ls-remote --heads origin");
         var branches=new List<string>();
         if (string.IsNullOrEmpty(error))
         {
-            // 按行分割并打印输出
             string[] lines = output.Split('\n');
             foreach (string line in lines)
             {
                 if (!string.IsNullOrEmpty(line))
                 {
-                    // 提取分支名称
                     string[] parts = line.Split('\t');
                     string branchName = parts[1].Replace("refs/heads/", "");
                     Debug.Log(branchName);
@@ -70,13 +69,12 @@ public static class GitHelper
             Debug.LogError("Error: " + error);
         }
         
-        // 执行 git rev-parse --abbrev-ref HEAD 命令以获取当前分支名称
+        // 获取当前分支名称
         (output,error)  = RunGitCommand("rev-parse --abbrev-ref HEAD");
         string currentBranch = "";
         
         if (string.IsNullOrEmpty(error))
         {
-            // 去除输出中的换行符并返回分支名称
             currentBranch= output.Trim();
         }
         else
