@@ -85,8 +85,6 @@ public class ToolBarEditor
         catch
         {
             Debug.LogWarning("err");
-            selectedIndex = 0;
-            displayedOptions =new []{"空"};
         }
     }
 
