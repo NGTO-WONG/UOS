@@ -84,9 +84,6 @@ public static class GitHelper
             }
         }
         
-        
-        
-        
         // 获取当前分支名称
         (output,error)  = RunGitCommand("rev-parse --abbrev-ref HEAD");
         string currentBranch = "";
