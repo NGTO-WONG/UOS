@@ -23,7 +23,6 @@ public static class GitHelper
             EditorUtility.DisplayDialog("切分支","切分支失败 摇人 不要清log","ok");
             Debug.LogError(error);
         }
-        ToolBarEditor.ClearGitCache();
         
     }
     public static void GitPull()
@@ -44,7 +43,6 @@ public static class GitHelper
             EditorUtility.DisplayDialog("更新","更新失败 摇人 不要清log","ok");
             Debug.LogError(error);
         }
-        ToolBarEditor.ClearGitCache();
     }
     /// <summary>
     /// 获取分支信息  分支名，当前分支的index

@@ -42,16 +42,9 @@ public class ToolBarEditor
         ToolbarExtender.RightToolbarGUI.Add(OnRightToolbarGUI);
     }
     
-    private static bool isDropdownOpen = false;
     static int selectedIndex=0;
     static string[] displayedOptions ;
 
-    public static void ClearGitCache()
-    {
-        return;
-        selectedIndex = 0;
-        displayedOptions = null;
-    }
     private static void DropDown()
     {
         if (displayedOptions==null)
@@ -110,7 +103,6 @@ public class ToolBarEditor
             }
             catch
             {
-                ClearGitCache();
                 (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
             }
 
