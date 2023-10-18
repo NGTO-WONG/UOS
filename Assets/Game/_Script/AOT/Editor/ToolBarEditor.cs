@@ -82,11 +82,13 @@ public class ToolBarEditor
             {
                 selectedIndex = oldIndex;
             }
+            
         }
         catch
         {
             Debug.LogWarning("err");
-            ClearGitCache();
+            selectedIndex = 0;
+            displayedOptions = null;
         }
     }
 
