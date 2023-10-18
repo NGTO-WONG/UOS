@@ -22,7 +22,8 @@ public static class GitHelper
     }
     public static void GitPull()
     {
-        var (output,error)= RunGitCommand("reset --hard && git clean -df && git pull");
+        var (output,error)= RunGitCommand("reset --hard");
+        RunGitCommand("clean -df && git pull");
         
         if (string.IsNullOrEmpty(error))
         {
