@@ -43,14 +43,17 @@ public class ToolBarEditor
     }
     
     static int selectedIndex=0;
-    static string[] displayedOptions =new []{"空"};
-
+    static string[] displayedOptions;
+    
 
     private static void DropDown()
     {
-        try
+        if (displayedOptions==null)
         {
             (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
+        }
+        try
+        {
             // 创建一个下拉框
             var oldIndex = selectedIndex;
             var tryToCheckOutIndex = EditorGUILayout.Popup(selectedIndex, displayedOptions,
