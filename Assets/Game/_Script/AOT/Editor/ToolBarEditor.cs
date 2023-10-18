@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Game._Script.AOT.Editor;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -48,6 +48,13 @@ public class ToolBarEditor
     private static string currentBranchName = "";
     
 
+    [DidReloadScripts]
+    static void OnScriptsReloaded() {
+        Debug.Log("Compilation finished");
+        (displayedOptions, currentBranchName) = GitHelper.GetBranchInfo();
+        selectedIndex = displayedOptions.ToList().IndexOf(currentBranchName);
+    }
+    
     private static void DropDown()
     {
         if (displayedOptions==null)
