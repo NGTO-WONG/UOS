@@ -43,11 +43,11 @@ public class ToolBarEditor
     }
     
     static int selectedIndex=0;
-    static string[] displayedOptions ;
+    static string[] displayedOptions =new []{"空"};
 
     private static void DropDown()
     {
-        if (displayedOptions==null)
+        if (displayedOptions[0]=="空" )
         {
             (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
         }
@@ -81,7 +81,7 @@ public class ToolBarEditor
         {
             Debug.LogWarning("err");
             selectedIndex = 0;
-            displayedOptions = null;
+            displayedOptions =new []{"空"};
         }
     }
 
