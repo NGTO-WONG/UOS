@@ -8,10 +8,13 @@ public static class GitHelper
     
     public static void CheckOut(string displayedOption)
     {
-        var (output,error)= RunGitCommand($"reset --hard && git clean -df && git checkout {displayedOption} && git pull");
+        RunGitCommand("reset --hard");
+        RunGitCommand("clean -df");
+        var (output, error) = RunGitCommand($"checkout {displayedOption}");
         if (string.IsNullOrEmpty(error))
         {
             EditorUtility.DisplayDialog("切分支成功","切分支成功","ok");
+            Debug.Log(output);
             AssetDatabase.Refresh();
         }
         else
@@ -22,12 +25,14 @@ public static class GitHelper
     }
     public static void GitPull()
     {
-        var (output,error)= RunGitCommand("reset --hard");
-        RunGitCommand("clean -df && git pull");
+        RunGitCommand("reset --hard");
+        RunGitCommand("clean -df");
+        var (output, error) =  RunGitCommand("pull");
         
         if (string.IsNullOrEmpty(error))
         {
             EditorUtility.DisplayDialog("更新成功","更新成功","ok");
+            Debug.Log(output);
             AssetDatabase.Refresh();
         }
         else
