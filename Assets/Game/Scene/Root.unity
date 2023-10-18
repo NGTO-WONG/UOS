@@ -588,7 +588,7 @@ MonoBehaviour:
   GamePlayScene: Switcher
   HostServerIP: https://a.unity.cn/client_api/v1/buckets/96026445-ad7a-49de-b003-4a5302009960/entry_by_path/content/?path=
   BuildVersion: V1.0
-  PlayMode: 0
+  PlayMode: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
