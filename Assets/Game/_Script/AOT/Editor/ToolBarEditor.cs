@@ -60,6 +60,17 @@ public class ToolBarEditor
             var tryToCheckOutIndex = EditorGUILayout.Popup(selectedIndex, displayedOptions,
                 GUILayout.Width(130));
             if (tryToCheckOutIndex == oldIndex) return;
+            if (displayedOptions.Length<oldIndex)
+            {
+                (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
+                return;
+            }
+            
+            if (displayedOptions.Length<tryToCheckOutIndex)
+            {
+                (displayedOptions, selectedIndex) = GitHelper.GetBranchInfo();
+                return;
+            }
             //询问是否切换
             if (EditorUtility.DisplayDialog("切分支",
                     $"是否要从  {displayedOptions[oldIndex]}\n  切换到    {displayedOptions[tryToCheckOutIndex]} 分支？" +
