@@ -10,6 +10,7 @@ public static class GitHelper
     {
         RunGitCommand("reset --hard");
         RunGitCommand("clean -df");
+        RunGitCommand("fetch");
         var (output, error) = RunGitCommand($"checkout {displayedOption}");
         if (string.IsNullOrEmpty(error))
         {
@@ -27,6 +28,7 @@ public static class GitHelper
     {
         RunGitCommand("reset --hard");
         RunGitCommand("clean -df");
+        RunGitCommand("fetch");
         var (output, error) =  RunGitCommand("pull");
         
         if (string.IsNullOrEmpty(error))
@@ -48,6 +50,7 @@ public static class GitHelper
     public static (string[] branches,int currentBranchIndex) GetBranchInfo()
     {        
         // 获取所有分支名
+        RunGitCommand("fetch");
         var (output,error)= RunGitCommand("ls-remote --heads origin");
         var branches=new List<string>();
         if (string.IsNullOrEmpty(error))
