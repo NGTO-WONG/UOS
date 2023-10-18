@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using UnityEditor;
-using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 namespace Game._Script.AOT.Editor
@@ -8,10 +7,10 @@ namespace Game._Script.AOT.Editor
     public static class GitUpdate 
     {
         public static string gitCommand = "git";
-        public static string gitArguments = "checkout . && git clean -df && git pull";
+        public static string gitArguments = "clean -df && checkout . && pull";
 
         public static void UpdateGitProject()
-        {
+        {                    
             ProcessStartInfo psi = new ProcessStartInfo(gitCommand, gitArguments);
             psi.CreateNoWindow = true;
             psi.UseShellExecute = false;
@@ -23,6 +22,14 @@ namespace Game._Script.AOT.Editor
 
             try
             {
+                // 获取当前 Git 分支信息
+                string branchInfo = GetGitBranchInfo();
+                bool confirm= ShowBranchInfoDialog(branchInfo);
+                if (confirm==false)
+                {
+                    return;
+                }
+                
                 process.Start();
                 string output = process.StandardOutput.ReadToEnd();
                 string error = process.StandardError.ReadToEnd();
@@ -33,9 +40,6 @@ namespace Game._Script.AOT.Editor
                     Debug.Log("Git pull executed successfully.");
                     Debug.Log("Output: " + output);
 
-                    // 获取当前 Git 分支信息
-                    string branchInfo = GetGitBranchInfo();
-                    ShowBranchInfoDialog(branchInfo);
 
                     // 刷新 Unity 编辑器项目
                     AssetDatabase.Refresh();
@@ -73,9 +77,9 @@ namespace Game._Script.AOT.Editor
             return branch;
         }
 
-        private static void ShowBranchInfoDialog(string branchInfo)
+        private static bool ShowBranchInfoDialog(string branchInfo)
         {
-            EditorUtility.DisplayDialog("Git Branch Info", "Current Git Branch: " + branchInfo, "OK");
+            return EditorUtility.DisplayDialog("Git Branch Info", "Current Git Branch: " + branchInfo, "确认","取消");
         }
     }
 }

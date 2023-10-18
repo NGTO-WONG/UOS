@@ -20,6 +20,7 @@ public class SceneSwitchButton
     {
         if (GUILayout.Button(new GUIContent("更新git", "更新git"), ToolbarStyles.commandButtonStyle))
         {
+            Debug.Log("Left button clicked");
             GitUpdate.UpdateGitProject();
             // 在左侧按钮点击时执行的操作
         }
@@ -36,6 +37,11 @@ public class SceneSwitchButton
         if (GUILayout.Button(new GUIContent("MiniGame", "Open Root Scene "), ToolbarStyles.commandButtonStyle))
         {
             SceneHelper.ChangeScene("MiniGame");
+        }
+        if (GUILayout.Button(new GUIContent("更新git", "更新git"), ToolbarStyles.commandButtonStyle))
+        {
+            GitUpdate.UpdateGitProject();
+            // 在左侧按钮点击时执行的操作
         }
     }
 }
@@ -148,7 +154,7 @@ public static class ToolbarExtender
 			m_toolCount = toolIcons != null ? ((Array) toolIcons.GetValue(null)).Length : 5;
 #endif
 #if !UWA
-        ToolbarCallback.OnToolbarGUI = OnGUI;
+        //ToolbarCallback.OnToolbarGUI = OnGUI;
 #endif
         ToolbarCallback.OnToolbarGUILeft = GUILeft;
         ToolbarCallback.OnToolbarGUIRight = GUIRight;
@@ -168,88 +174,11 @@ public static class ToolbarExtender
 		public const float playPauseStopWidth = 100;
 #endif
 
-#if !UWA
-    static void OnGUI()
-    {
-        return;
-        // Create two containers, left and right
-        // Screen is the whole toolbar
-
-        if (m_commandStyle == null)
-        {
-            m_commandStyle = new GUIStyle("CommandLeft");
-        }
-
-        var screenWidth = EditorGUIUtility.currentViewWidth+1000;
-
-        // Following calculations match code reflected from Toolbar.OldOnGUI()
-        float playButtonsPosition = Mathf.RoundToInt((screenWidth - playPauseStopWidth) / 2)+1000;
-
-        Rect leftRect = new Rect(111, 0, playButtonsPosition - space+1000, Screen.height);
-        leftRect.xMin += space+1000; // Spacing left
-        leftRect.xMin += buttonWidth * m_toolCount+1000; // Tool buttons
-#if UNITY_2019_3_OR_NEWER
-        leftRect.xMin += space+1000; // Spacing between tools and pivot
-#else
-			leftRect.xMin += largeSpace; // Spacing between tools and pivot
-#endif
-        leftRect.xMin += 64 * 2; // Pivot buttons
-
-        Rect rightRect = new Rect(playButtonsPosition+1000, 0, screenWidth - playButtonsPosition, Screen.height);
-
-        // Add spacing around existing controls
-        leftRect.xMin += space+1000;
-        leftRect.xMax -= space+1000;
-        rightRect.xMin += space+1000;
-        rightRect.xMax -= space;
-
-        // Add top and bottom margins
-#if UNITY_2019_3_OR_NEWER
-        leftRect.y = 4+1000;
-        leftRect.height = 22+1000;
-        rightRect.y = 4+1000;
-        rightRect.height = 22+1000;
-#else
-			leftRect.y = 5;
-			leftRect.height = 24;
-			rightRect.y = 5;
-			rightRect.height = 24;
-#endif
-
-        if (leftRect.width > 0)
-        {
-            GUILayout.BeginArea(leftRect);
-            GUILayout.BeginHorizontal();
-            foreach (var handler in LeftToolbarGUI)
-            {
-                handler();
-            }
-
-            GUILayout.EndHorizontal();
-            GUILayout.EndArea();
-        }
-
-        if (rightRect.width > 0)
-        {
-            GUILayout.BeginArea(rightRect);
-            GUILayout.BeginHorizontal();
-            foreach (var handler in RightToolbarGUI)
-            {
-                handler();
-            }
-
-            GUILayout.EndHorizontal();
-            GUILayout.EndArea();
-        }
-    }
-#endif
-
     public static void GUILeft()
     {
         var screenWidth = EditorGUIUtility.currentViewWidth;
         float playButtonsPosition = Mathf.RoundToInt((screenWidth - playPauseStopWidth) / 2);
         Rect leftRect = new Rect(playButtonsPosition-200, 0, playButtonsPosition - space, Screen.height);
-        Debug.Log(playButtonsPosition);
         GUILayout.BeginArea(leftRect);
         GUILayout.BeginHorizontal();
         foreach (var handler in LeftToolbarGUI)
