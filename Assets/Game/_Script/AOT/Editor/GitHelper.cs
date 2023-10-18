@@ -90,6 +90,7 @@ public static class GitHelper
     
    static  (string,string) RunGitCommand(string command)
     {
+        Debug.Log(command);
         // 创建一个新的 ProcessStartInfo
         ProcessStartInfo psi = new ProcessStartInfo("git");
         psi.UseShellExecute = false;
