@@ -86,7 +86,15 @@ public class ToolBarEditor
     {
         if (GUILayout.Button("更新工程", ToolbarStyles.commandButtonStyle))
         {
-            GitHelper.GitPull();
+
+            if (EditorUtility.DisplayDialog("更新工程",
+                    $"是否要更新{displayedOptions[selectedIndex]} 分支？" +
+                    $"\n\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空\n       本地未提交的修改会被清空"
+                    , "确认", "取消"))
+            {
+                
+                GitHelper.GitPull();
+            }
         }
     }
 
