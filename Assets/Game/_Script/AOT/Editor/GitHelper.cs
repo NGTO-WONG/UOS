@@ -11,12 +11,13 @@ public static class GitHelper
         var (output,error)= RunGitCommand($"checkout . && git clean -df && git checkout {displayedOption} && git pull");
         if (string.IsNullOrEmpty(error))
         {
-            EditorUtility.DisplayDialog("更新成功","更新成功","ok");
+            EditorUtility.DisplayDialog("切分支成功","切分支成功","ok");
             AssetDatabase.Refresh();
         }
         else
         {
-            EditorUtility.DisplayDialog("git pull","更新失败 摇人 不要清log","ok");
+            EditorUtility.DisplayDialog("切分支","切分支失败 摇人 不要清log","ok");
+            Debug.LogError(error);
         }
     }
     public static void GitPull()
@@ -30,7 +31,7 @@ public static class GitHelper
         }
         else
         {
-            EditorUtility.DisplayDialog("git pull","更新失败 摇人 不要清log","ok");
+            EditorUtility.DisplayDialog("更新","更新失败 摇人 不要清log","ok");
         }
     }
     /// <summary>
