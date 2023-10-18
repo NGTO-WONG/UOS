@@ -26,7 +26,7 @@ public static class GitHelper
         
         if (string.IsNullOrEmpty(error))
         {
-            EditorUtility.DisplayDialog("更新成功","更新成功","ok");
+            EditorUtility.DisplayDialog("更新成功1","更新成功","ok");
             Debug.Log(output);
             AssetDatabase.Refresh();
         }
