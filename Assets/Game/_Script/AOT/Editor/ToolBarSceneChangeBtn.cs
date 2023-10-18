@@ -1,24 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Game._Script.AOT.Editor;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
 [InitializeOnLoad]
-public class SceneSwitchLeftButton
+public class SceneSwitchButton
 {
-    static SceneSwitchLeftButton()
+    static SceneSwitchButton()
     {
-        ToolbarExtender.RightToolbarGUI.Add(OnToolbarGUI);
+        ToolbarExtender.LeftToolbarGUI.Add(OnLeftToolbarGUI);
+        ToolbarExtender.RightToolbarGUI.Add(OnRightToolbarGUI);
     }
 
-    static void OnToolbarGUI()
+    static void OnLeftToolbarGUI()
+    {
+        if (GUILayout.Button(new GUIContent("更新git", "更新git"), ToolbarStyles.commandButtonStyle))
+        {
+            GitUpdate.UpdateGitProject();
+            // 在左侧按钮点击时执行的操作
+        }
+    }
+
+    static void OnRightToolbarGUI()
     {
         GUILayout.FlexibleSpace();
-        
         if (GUILayout.Button(new GUIContent("Root", "Start Root Scene "), ToolbarStyles.commandButtonStyle))
         {
             SceneHelper.StartScene("Root");
@@ -28,7 +37,6 @@ public class SceneSwitchLeftButton
         {
             SceneHelper.ChangeScene("MiniGame");
         }
-        
     }
 }
 
@@ -45,7 +53,6 @@ static class ToolbarStyles
             imagePosition = ImagePosition.ImageAbove,
             fontStyle = FontStyle.Bold,
             stretchWidth = true,
-            
         };
     }
 }
@@ -122,7 +129,6 @@ public static class ToolbarExtender
     static ToolbarExtender()
     {
         Type toolbarType = typeof(Editor).Assembly.GetType("UnityEditor.Toolbar");
-
 #if UNITY_2019_1_OR_NEWER
         string fieldName = "k_ToolCount";
 #else
@@ -154,7 +160,7 @@ public static class ToolbarExtender
 		public const float space = 10;
 #endif
     public const float largeSpace = 20;
-    public const float buttonWidth = 32;
+    public const float buttonWidth = 42;
     public const float dropdownWidth = 80;
 #if UNITY_2019_1_OR_NEWER
     public const float playPauseStopWidth = 140;
@@ -165,61 +171,44 @@ public static class ToolbarExtender
 #if !UWA
     static void OnGUI()
     {
+        return;
         // Create two containers, left and right
-        // Screen is whole toolbar
+        // Screen is the whole toolbar
 
         if (m_commandStyle == null)
         {
             m_commandStyle = new GUIStyle("CommandLeft");
         }
 
-        var screenWidth = EditorGUIUtility.currentViewWidth;
+        var screenWidth = EditorGUIUtility.currentViewWidth+1000;
 
         // Following calculations match code reflected from Toolbar.OldOnGUI()
-        float playButtonsPosition = Mathf.RoundToInt((screenWidth - playPauseStopWidth) / 2);
+        float playButtonsPosition = Mathf.RoundToInt((screenWidth - playPauseStopWidth) / 2)+1000;
 
-        Rect leftRect = new Rect(0, 0, screenWidth, Screen.height);
-        leftRect.xMin += space; // Spacing left
-        leftRect.xMin += buttonWidth * m_toolCount; // Tool buttons
+        Rect leftRect = new Rect(111, 0, playButtonsPosition - space+1000, Screen.height);
+        leftRect.xMin += space+1000; // Spacing left
+        leftRect.xMin += buttonWidth * m_toolCount+1000; // Tool buttons
 #if UNITY_2019_3_OR_NEWER
-        leftRect.xMin += space; // Spacing between tools and pivot
+        leftRect.xMin += space+1000; // Spacing between tools and pivot
 #else
 			leftRect.xMin += largeSpace; // Spacing between tools and pivot
 #endif
         leftRect.xMin += 64 * 2; // Pivot buttons
-        leftRect.xMax = playButtonsPosition;
 
-        Rect rightRect = new Rect(0, 0, screenWidth, Screen.height);
-        rightRect.xMin = playButtonsPosition;
-        rightRect.xMin += m_commandStyle.fixedWidth * 3; // Play buttons
-        rightRect.xMax = screenWidth;
-        rightRect.xMax -= space; // Spacing right
-        rightRect.xMax -= dropdownWidth; // Layout
-        rightRect.xMax -= space; // Spacing between layout and layers
-        rightRect.xMax -= dropdownWidth; // Layers
-#if UNITY_2019_3_OR_NEWER
-        rightRect.xMax -= space; // Spacing between layers and account
-#else
-			rightRect.xMax -= largeSpace; // Spacing between layers and account
-#endif
-        rightRect.xMax -= dropdownWidth; // Account
-        rightRect.xMax -= space; // Spacing between account and cloud
-        rightRect.xMax -= buttonWidth; // Cloud
-        rightRect.xMax -= space; // Spacing between cloud and collab
-        rightRect.xMax -= 78; // Colab
+        Rect rightRect = new Rect(playButtonsPosition+1000, 0, screenWidth - playButtonsPosition, Screen.height);
 
         // Add spacing around existing controls
-        leftRect.xMin += space;
-        leftRect.xMax -= space;
-        rightRect.xMin += space;
+        leftRect.xMin += space+1000;
+        leftRect.xMax -= space+1000;
+        rightRect.xMin += space+1000;
         rightRect.xMax -= space;
 
         // Add top and bottom margins
 #if UNITY_2019_3_OR_NEWER
-        leftRect.y = 4;
-        leftRect.height = 22;
-        rightRect.y = 4;
-        rightRect.height = 22;
+        leftRect.y = 4+1000;
+        leftRect.height = 22+1000;
+        rightRect.y = 4+1000;
+        rightRect.height = 22+1000;
 #else
 			leftRect.y = 5;
 			leftRect.height = 24;
@@ -257,6 +246,11 @@ public static class ToolbarExtender
 
     public static void GUILeft()
     {
+        var screenWidth = EditorGUIUtility.currentViewWidth;
+        float playButtonsPosition = Mathf.RoundToInt((screenWidth - playPauseStopWidth) / 2);
+        Rect leftRect = new Rect(playButtonsPosition-200, 0, playButtonsPosition - space, Screen.height);
+        Debug.Log(playButtonsPosition);
+        GUILayout.BeginArea(leftRect);
         GUILayout.BeginHorizontal();
         foreach (var handler in LeftToolbarGUI)
         {
@@ -264,6 +258,7 @@ public static class ToolbarExtender
         }
 
         GUILayout.EndHorizontal();
+        GUILayout.EndArea();
     }
 
     public static void GUIRight()
@@ -278,11 +273,11 @@ public static class ToolbarExtender
     }
 }
 
-
 public static class ToolbarCallback
 {
     static Type m_toolbarType = typeof(Editor).Assembly.GetType("UnityEditor.Toolbar");
     static Type m_guiViewType = typeof(Editor).Assembly.GetType("UnityEditor.GUIView");
+
 #if UNITY_2020_1_OR_NEWER
     static Type m_iWindowBackendType = typeof(Editor).Assembly.GetType("UnityEditor.IWindowBackend");
 
@@ -295,6 +290,7 @@ public static class ToolbarCallback
 		static PropertyInfo m_viewVisualTree = m_guiViewType.GetProperty("visualTree",
 			BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 #endif
+
     static FieldInfo m_imguiContainerOnGui = typeof(IMGUIContainer).GetField("m_OnGUIHandler",
         BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -316,10 +312,10 @@ public static class ToolbarCallback
 
     static void OnUpdate()
     {
-        // Relying on the fact that toolbar is ScriptableObject and gets deleted when layout changes
+        // Relying on the fact that the toolbar is a ScriptableObject and gets deleted when layout changes
         if (m_currentToolbar == null)
         {
-            // Find toolbar
+            // Find the toolbar
             var toolbars = Resources.FindObjectsOfTypeAll(m_toolbarType);
             m_currentToolbar = toolbars.Length > 0 ? (ScriptableObject) toolbars[0] : null;
             if (m_currentToolbar != null)
@@ -353,14 +349,14 @@ public static class ToolbarCallback
 #if UNITY_2020_1_OR_NEWER
 					var windowBackend = m_windowBackend.GetValue(m_currentToolbar);
 
-					// Get it's visual tree
+					// Get its visual tree
 					var visualTree = (VisualElement) m_viewVisualTree.GetValue(windowBackend, null);
 #else
-					// Get it's visual tree
+					// Get its visual tree
 					var visualTree = (VisualElement) m_viewVisualTree.GetValue(m_currentToolbar, null);
 #endif
 
-					// Get first child which 'happens' to be toolbar IMGUIContainer
+					// Get the first child which 'happens' to be the toolbar IMGUIContainer
 					var container = (IMGUIContainer) visualTree[0];
 
 					// (Re)attach handler
@@ -374,12 +370,10 @@ public static class ToolbarCallback
         }
     }
 
-#if !UWA
     static void OnGUI()
     {
         var handler = OnToolbarGUI;
         if (handler != null)
             handler();
     }
-#endif
 }
