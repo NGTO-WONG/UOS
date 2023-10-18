@@ -13,17 +13,8 @@ public static class GitHelper
         RunGitCommand("clean -df");
         RunGitCommand("fetch");
         var (output, error) = RunGitCommand($"checkout {displayedOption}");
-        if (string.IsNullOrEmpty(error))
-        {
-            EditorUtility.DisplayDialog("切分支成功","切分支成功","ok");
-            Debug.Log(output);
-            AssetDatabase.Refresh();
-        }
-        else
-        {
-            EditorUtility.DisplayDialog("切分支","切分支失败 摇人 不要清log","ok");
-            Debug.LogError(error);
-        }
+        Debug.Log(output);
+        AssetDatabase.Refresh();
         
     }
     public static void GitPull()
