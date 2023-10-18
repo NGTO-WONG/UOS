@@ -45,6 +45,12 @@ public class ToolBarEditor
     private static bool isDropdownOpen = false;
     static int selectedIndex=0;
     static string[] displayedOptions ;
+
+    public static void ClearGitCache()
+    {
+        selectedIndex = 0;
+        displayedOptions = null;
+    }
     private static void DropDown()
     {
         if (displayedOptions==null)
