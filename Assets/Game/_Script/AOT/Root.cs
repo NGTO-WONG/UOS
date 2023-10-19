@@ -29,7 +29,6 @@ namespace Game._Script.AOT
             await LoadMetadataForAOTAssembly();
             //6 读取HotUpdate热更新文件 
             await LoadHotUpdateDll();
-            await UniTask.Delay(2000);
             //7 更新结束 开始游戏
             await StartGame(GamePlayScene);
         }
