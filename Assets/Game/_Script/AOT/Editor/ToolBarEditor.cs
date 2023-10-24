@@ -155,6 +155,7 @@ public class ToolBarEditor
     private static int _selectedIndex = 0;
     private static string[] _displayedOptions;
     private static string _currentBranchName;
+    private static bool _running=false;
 
 
     private static void DropDown()
@@ -164,12 +165,14 @@ public class ToolBarEditor
 
         async UniTask T()
         {
+            if (_running) return;
+            _running = true;
             if (_displayedOptions == null)
             {
                 (_displayedOptions, _currentBranchName) = await GitHelper.GetBranchInfo();
                 _selectedIndex = _displayedOptions.ToList().IndexOf(_currentBranchName);
             }
-
+            _running = false;
             // 创建一个下拉框
             var oldIndex = _selectedIndex;
             var width = GUILayout.Width(_displayedOptions[_selectedIndex].Length * 5 + 70);
@@ -314,9 +317,7 @@ public class ToolBarEditor
         }
     }
 }
-
-
-#region git
+#region Git
 
 public class GitBlockWindow : EditorWindow
 {
@@ -482,7 +483,6 @@ public static class GitHelper
     /// <summary>
     /// 检查是否有未推送的提交
     /// </summary>
-    /// <returns></returns>
     public static async UniTask<bool> CheckCommit()
     {
         var (output, error) = await RunGitCommand("log origin/master..HEAD");
@@ -510,48 +510,35 @@ public static class GitHelper
                 return (window.selectedFiles, window.CommitMessage);
                 break;
         }
-
         return (null, "");
     }
 
     public static async UniTask<bool> CommitAndPush(List<string> files, string message)
     {
-        if (files == null || files.Count == 0)
+        if (files== null || files.Count==0)
         {
-            EditorUtility.DisplayDialog("未选择文件", "未选择文件", "ok");
+            EditorUtility.DisplayDialog("未选择文件","未选择文件","ok");
             return false;
         }
-
+        
         StringBuilder addCommand = new StringBuilder("add");
         foreach (var file in files)
         {
             addCommand.Append($" {file}");
         }
 
-        var (output, error) = await RunGitCommand(addCommand.ToString());
-        Debug.Log(output);
-        Debug.LogError(error);
-        (output, error) = await RunGitCommand($"commit -m {message}");
-        Debug.Log(output);
-        Debug.LogError(error);
-        (output, error) = await RunGitCommand($"pull");
-        Debug.Log(output);
-        Debug.LogError(error);
+        await RunGitCommand(addCommand.ToString());
+        await RunGitCommand($"commit -m {message}");
+        var (output,error) = await RunGitCommand($"pull");
         if (output.Contains("CONFLICT"))
         {
-            EditorUtility.DisplayDialog("提交的文件与远端冲突 摇人", "提交的文件与远端冲突 摇人 保留现场", "ok");
-            EditorPrefs.SetBool("Git_Conflict", true);
+            EditorUtility.DisplayDialog("提交的文件与远端冲突 摇人","提交的文件与远端冲突 摇人 保留现场","ok");
+            EditorPrefs.SetBool("Git_Conflict",true);
             return false;
         }
-
-        (output, error) = await RunGitCommand($"push");
-        Debug.Log(output);
-        Debug.LogError(error);
-
-
+        await RunGitCommand($"push");
         return true;
     }
-
 
     /// <summary>
     /// 切分支
@@ -559,36 +546,14 @@ public static class GitHelper
     /// <param name="targetBranch"></param>
     public static async UniTask CheckOut(string targetBranch)
     {
-        string output;
-        string error;
-        (_, error) = await RunGitCommand("reset --hard");
-        if (!string.IsNullOrEmpty(error))
-        {
-            Debug.LogError($"reset :{error}");
-        }
-
-        (_, error) = await RunGitCommand("clean -df");
-        if (!string.IsNullOrEmpty(error))
-        {
-            Debug.LogError($"clean :{error}");
-        }
-
-        (_, error) = await RunGitCommand("fetch");
-        if (!string.IsNullOrEmpty(error))
-        {
-            Debug.LogError($"fetch :{error}");
-        }
-
-        (output, error) = await RunGitCommand($"checkout {targetBranch}");
-        if (!string.IsNullOrEmpty(error))
-        {
-            Debug.LogError($"checkout :{error}");
-        }
-
-        Debug.Log(output);
+        await RunGitCommand("reset --hard");
+        await RunGitCommand("clean -df");
+        await RunGitCommand("fetch");
+        await RunGitCommand($"checkout {targetBranch}");
         AssetDatabase.Refresh();
     }
 
+    
     /// <summary>
     /// 获取git变更的文件列表
     /// </summary>
@@ -598,12 +563,9 @@ public static class GitHelper
     {
         var modifiedFiles = new List<string>();
         var (outPut, error) = await RunGitCommand("status --porcelain");
-
         if (string.IsNullOrEmpty(outPut)) return null;
-
         StringBuilder addCommand = null;
         var lines = outPut.Split('\n');
-
         foreach (var line in lines)
         {
             if (line.Length <= 3) continue;
@@ -612,67 +574,37 @@ public static class GitHelper
             switch (status)
             {
                 case 'M' or 'A' or '?' or 'D':
-                    if (filePath.Contains("Assets/ResLocalize")) continue; //不显示本地化的的asset
+                    if (filePath.Contains("Assets/ResLocalize"))continue; //不显示本地化的的asset
                     modifiedFiles.Add(filePath);
                     break;
-                //case '?':
-                //    addCommand ??= new StringBuilder("add");
-                //    addCommand.Append($" {filePath}");
-                //    modifiedFiles.Add(filePath);
-                //    break;
             }
         }
-
-        //   if (addCommand != null)
-        //   {
-        //       Debug.Log(addCommand);
-        //       await RunGitCommand(addCommand.ToString());
-        //   }
-
         return modifiedFiles.OrderBy(str => str).ToList();
     }
 
-
+    
     /// <summary>
     /// git更新 
     /// </summary>
     public static async UniTask GitPull()
     {
-        string output;
         string error;
-        (_, error) = await RunGitCommand("reset --hard");
-        if (!string.IsNullOrEmpty(error))
-        {
-            Debug.LogError($"reset :{error}");
-        }
-
-        (_, error) = await RunGitCommand("clean -df");
-        if (!string.IsNullOrEmpty(error))
-        {
-            Debug.LogError($"clean :{error}");
-        }
-
-        (_, error) = await RunGitCommand("fetch");
-        if (!string.IsNullOrEmpty(error))
-        {
-            Debug.LogError($"fetch :{error}");
-        }
-
-        (output, error) = await RunGitCommand("pull");
+        await RunGitCommand("reset --hard");
+        await RunGitCommand("clean -df");
+        await RunGitCommand("fetch");
+        (_, error) = await RunGitCommand("pull");
         if (!string.IsNullOrEmpty(error) && !error.Contains("SECURITY WARNING"))
         {
             EditorUtility.DisplayDialog("更新", "更新失败 摇人 不要清log", "ok");
-            Debug.LogError(error);
         }
         else
         {
             EditorUtility.DisplayDialog("更新成功1", "更新成功", "ok");
-            Debug.Log(output);
-            Debug.LogError(error);
             AssetDatabase.Refresh();
         }
     }
 
+   
     /// <summary>
     /// 获取分支信息  分支名，当前分支的index
     /// </summary>
@@ -681,16 +613,10 @@ public static class GitHelper
     {
         // 获取所有分支名
         var (output, error) = await RunGitCommand("branch -a");
-        if (!string.IsNullOrEmpty(error))
-        {
-            Debug.LogError($"GetBranchInfo:{error}");
-        }
-
         var branches = new List<string>();
         string currentBranch = "";
         // 分割输出并提取分支名称
         string[] branchLines = output.Replace("remotes/origin/", "").Split('\n', StringSplitOptions.RemoveEmptyEntries);
-
         for (int i = 0; i < branchLines.Length; i++)
         {
             var item = branchLines[i];
@@ -700,10 +626,9 @@ public static class GitHelper
                 currentBranch = item.Trim();
             }
 
-            Debug.Log(item);
             branches.Add(item.Trim());
         }
-
+        Debug.Log(string.Join("\n", branchLines));
         Debug.Log("currentBranch: " + currentBranch);
 
         return (branches.ToArray(), currentBranch);
@@ -711,6 +636,7 @@ public static class GitHelper
 
     static async UniTask<(string output, string error)> RunGitCommand(string command)
     {
+        Debug.Log("git "+ command);
         // 执行 git 命令
         using (Process process = new Process())
         {
@@ -741,12 +667,21 @@ public static class GitHelper
                 error = await reader.ReadToEndAsync();
             }
 
+            if (!string.IsNullOrEmpty(output))
+            {
+                Debug.Log(output);
+            }
+            if (!string.IsNullOrEmpty(error))
+            {
+                Debug.Log(error);
+            }
             return (output, error);
         }
     }
 }
 
 #endregion
+
 
 #region 场景切换
 
