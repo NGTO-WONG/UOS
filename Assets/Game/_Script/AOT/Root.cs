@@ -3,8 +3,10 @@ using Cysharp.Threading.Tasks;
 using Game.Script.AOT.YooAsset;
 using UnityEngine;
 using YooAsset;
+#if !UNITY_EDITOR
 using HybridCLR;
 using System.Reflection;
+#endif
 
 namespace Game._Script.AOT
 {
