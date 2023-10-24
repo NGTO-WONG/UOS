@@ -10,7 +10,6 @@ namespace Game._Script.HotUpdate.MiniGame
     public class BulletPool:SingletonMonoBehaviour<BulletPool>, IObjectPool<Bullet>
     {
         private Queue<Bullet> bulletPool = new();
-        private PooledObject<Bullet> pooledObject = new();
         public Bullet bulletPrefab;
         public Bullet Get()
         {

@@ -35,7 +35,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 
 	public void RefMethods()
 	{
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.DOTweenAsyncExtensions.TweenAwaiter,CubePlayer.<Move>d__3>(Cysharp.Threading.Tasks.DOTweenAsyncExtensions.TweenAwaiter&,CubePlayer.<Move>d__3&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,CubePlayer.<Move>d__3>(Cysharp.Threading.Tasks.UniTask.Awaiter&,CubePlayer.<Move>d__3&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Game._Script.HotUpdate.MiniGame.AttackArea.<LifeTimeCheck>d__2>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Game._Script.HotUpdate.MiniGame.AttackArea.<LifeTimeCheck>d__2&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<byte>,Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1>(Cysharp.Threading.Tasks.UniTask.Awaiter<byte>&,Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1&)
@@ -51,15 +51,17 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object System.Activator.CreateInstance<object>()
 		// object System.Linq.Enumerable.FirstOrDefault<object>(System.Collections.Generic.IEnumerable<object>)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Game._Script.HotUpdate.SwticherScene.<>c__DisplayClass1_0.<<Start>b__0>d>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Game._Script.HotUpdate.SwticherScene.<>c__DisplayClass1_0.<<Start>b__0>d&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,SwipHandler.<Update>d__4>(Cysharp.Threading.Tasks.UniTask.Awaiter&,SwipHandler.<Update>d__4&)
+		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,SwipHandler.<OnEndDrag>d__5>(Cysharp.Threading.Tasks.UniTask.Awaiter&,SwipHandler.<OnEndDrag>d__5&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<int>,Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0>(Cysharp.Threading.Tasks.UniTask.Awaiter<int>&,Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0>(Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Game._Script.HotUpdate.SwticherScene.<>c__DisplayClass1_0.<<Start>b__0>d>(Game._Script.HotUpdate.SwticherScene.<>c__DisplayClass1_0.<<Start>b__0>d&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Game._Script.HotUpdate.SwticherScene.<Start>d__1>(Game._Script.HotUpdate.SwticherScene.<Start>d__1&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SwipHandler.<Update>d__4>(SwipHandler.<Update>d__4&)
+		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SwipHandler.<OnEndDrag>d__5>(SwipHandler.<OnEndDrag>d__5&)
 		// object UnityEngine.Component.GetComponentInChildren<object>()
 		// bool UnityEngine.GameObject.TryGetComponent<object>(object&)
 		// object UnityEngine.Object.FindObjectOfType<object>()
+		// object UnityEngine.Object.Instantiate<object>(object)
 		// object UnityEngine.Object.Instantiate<object>(object,UnityEngine.Transform)
+		// object UnityEngine.Resources.Load<object>(string)
 	}
 }

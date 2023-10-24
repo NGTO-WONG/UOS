@@ -9,7 +9,7 @@ namespace Game._Script.HotUpdate
     public class SwticherScene : MonoBehaviour
     {
         [SerializeField] private Button originButton;
-        async void Start()
+        void Start()
         {
             // 注意：location只需要填写资源包里的任意资源地址。
             var package = YooAssets.GetPackage("DefaultPackage");
