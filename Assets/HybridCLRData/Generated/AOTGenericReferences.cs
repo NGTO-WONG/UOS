@@ -55,7 +55,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<int>,Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0>(Cysharp.Threading.Tasks.UniTask.Awaiter<int>&,Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0>(Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Game._Script.HotUpdate.SwticherScene.<>c__DisplayClass1_0.<<Start>b__0>d>(Game._Script.HotUpdate.SwticherScene.<>c__DisplayClass1_0.<<Start>b__0>d&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Game._Script.HotUpdate.SwticherScene.<Start>d__1>(Game._Script.HotUpdate.SwticherScene.<Start>d__1&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SwipHandler.<OnEndDrag>d__5>(SwipHandler.<OnEndDrag>d__5&)
 		// object UnityEngine.Component.GetComponentInChildren<object>()
 		// bool UnityEngine.GameObject.TryGetComponent<object>(object&)

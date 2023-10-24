@@ -204,13 +204,19 @@ namespace Game._Script.AOT
 
             //需要下载的文件总数和总大小
             int totalDownloadCount = downloader.TotalDownloadCount;
-            long totalDownloadBytes = downloader.TotalDownloadBytes;
-            Debug.Log("需下载"+FormatBytes(totalDownloadBytes)+"文件数量"+totalDownloadCount);
+            var totalDownload = FormatBytes(downloader.TotalDownloadBytes);
+            Debug.Log($"需下载:{totalDownload} 文件数量:{totalDownloadCount}");
 
             //注册回调方法
-            downloader.OnDownloadErrorCallback = (filename, error) => Debug.LogError(filename + " 下载失败 " + error);
-            downloader.OnDownloadProgressCallback = (count, downloadCount, bytes, downloadBytes) => Debug.Log(
-                "下载速度: " +FormatBytes((bytes*Application.targetFrameRate))+ " 已下载: "+ FormatBytes(downloadBytes));
+            downloader.OnDownloadErrorCallback = (filename, error) =>
+            {
+                Debug.LogError(filename + " 下载失败 " + error);
+            };
+            downloader.OnDownloadProgressCallback = (count, downloadCount, bytes, downloadBytes) =>
+            {
+                var downloaded = FormatBytes(downloadBytes);
+                Debug.Log($"下载进度:{downloaded}/{totalDownload}");
+            };
 
             //开启下载
             downloader.BeginDownload();
