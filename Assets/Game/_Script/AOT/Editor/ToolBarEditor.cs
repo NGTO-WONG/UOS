@@ -54,10 +54,11 @@ public class ToolBarEditor
         }
     }
 
+    
     static ToolBarEditor()
     {
         //git工具
-        if (EditorPrefs.GetBool("Git_Conflict", false))
+        if (EditorPrefs.GetBool("Git_Conflict",false))
         {
             ToolbarExtender.LeftToolbarGUI.Add(ClearConflictButton);
         }
@@ -68,7 +69,6 @@ public class ToolBarEditor
             ToolbarExtender.LeftToolbarGUI.Add(GitCommitAndPush);
             ToolbarExtender.LeftToolbarGUI.Add(DropDown);
         }
-
         //场景切换
         ToolbarExtender.RightToolbarGUI.Add(OnRightToolbarGUI);
 
@@ -81,8 +81,8 @@ public class ToolBarEditor
         buttonContent.text = "git冲突中 别点我";
         if (GUILayout.Button(buttonContent))
         {
-            EditorPrefs.SetBool("Git_Conflict", false);
-            AssetDatabase.Refresh();
+            EditorPrefs.SetBool("Git_Conflict",false);
+            EditorUtility.RequestScriptReload();
         }
     }
 
@@ -96,26 +96,24 @@ public class ToolBarEditor
             T().Forget();
         }
 
-
         async UniTask T()
         {
-            var (files, message) = await GitHelper.OpenCommitWindow(); //玩家选择的文件 和提交log
-
-            if (EditorUtility.DisplayDialog($"推送确认", $"是否要提交到{_displayedOptions[_selectedIndex]}分支？\n log信息：{message}",
-                    "确认", "取消"))
+            var (files, message) = await GitHelper.OpenCommitWindow();//玩家选择的文件 和提交log
+            
+            if ( EditorUtility.DisplayDialog($"推送确认", $"是否要提交到{_displayedOptions[_selectedIndex]}分支？\n log信息：{message}","确认","取消"))
             {
                 if (files != null && files.Count != 0 && message != "")
                 {
                     GitBlockWindow.OpenWindow();
-                    var success = await GitHelper.CommitAndPush(files, message);
+                    var success= await GitHelper.CommitAndPush(files, message);
                     if (success)
                     {
+                    
                     }
                     else
                     {
                         Debug.LogError("更新失败");
                     }
-
                     GitBlockWindow.CloseWindow();
                 }
             }
@@ -550,7 +548,7 @@ public static class GitHelper
         await RunGitCommand("clean -df");
         await RunGitCommand("fetch");
         await RunGitCommand($"checkout {targetBranch}");
-        AssetDatabase.Refresh();
+        EditorUtility.RequestScriptReload();
     }
 
     
@@ -600,7 +598,7 @@ public static class GitHelper
         else
         {
             EditorUtility.DisplayDialog("更新成功1", "更新成功", "ok");
-            AssetDatabase.Refresh();
+            EditorUtility.RequestScriptReload();
         }
     }
 
@@ -634,13 +632,12 @@ public static class GitHelper
         return (branches.ToArray(), currentBranch);
     }
 
+   
     static async UniTask<(string output, string error)> RunGitCommand(string command)
     {
-        Debug.Log("git "+ command);
-        // 执行 git 命令
+        Debug.Log("git " + command);
         using (Process process = new Process())
         {
-            // 创建一个新的 ProcessStartInfo
             var processStartInfo = new ProcessStartInfo
             {
                 FileName = "git",
@@ -648,33 +645,33 @@ public static class GitHelper
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
-                CreateNoWindow = true,
+                CreateNoWindow = true
             };
 
             process.StartInfo = processStartInfo;
-            process.Start();
-            // 读取标准输出
-            string output;
-            using (StreamReader reader = process.StandardOutput)
+
+            // 开始进程
+            if (!process.Start())
             {
-                output = await reader.ReadToEndAsync();
+                throw new InvalidOperationException("Could not start git process.");
             }
 
-            //读取错误信息
-            string error;
-            using (StreamReader reader = process.StandardError)
-            {
-                error = await reader.ReadToEndAsync();
-            }
+            // 异步地读取StandardOutput和StandardError
+            var readOutputTask = process.StandardOutput.ReadToEndAsync().AsUniTask();
+            var readErrorTask = process.StandardError.ReadToEndAsync().AsUniTask();
+            var (output, error) = await UniTask.WhenAll(readOutputTask, readErrorTask);
+            process.WaitForExit();
 
             if (!string.IsNullOrEmpty(output))
             {
                 Debug.Log(output);
             }
+
             if (!string.IsNullOrEmpty(error))
             {
                 Debug.Log(error);
             }
+
             return (output, error);
         }
     }
