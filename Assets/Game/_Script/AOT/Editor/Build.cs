@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using HybridCLR.Editor;
 using HybridCLR.Editor.Commands;
@@ -102,6 +103,9 @@ public class Builder : MonoBehaviour
     public static void UpdateBundleToCDN_UOS()
     {
         BucketController.LoadBuckets();
+        EntryController.LoadEntries(0);
+        var pb = EntryController.pb;
+        pb.selectedBucketUuid = pb.bucketList[0].id;
         EntryController.SyncEntries(BundlePath);
     }
 
