@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+    [SerializeField] private PolygonCollider2D polygonCollider2D;
     [SerializeField] private SkeletonAnimation skeletonAnimation; 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,6 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(skeletonAnimation.AnimationName);
+        Debug.Log(polygonCollider2D.isTrigger+ " "+skeletonAnimation.AnimationName);
     }
 }

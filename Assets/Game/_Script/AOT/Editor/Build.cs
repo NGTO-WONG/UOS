@@ -113,7 +113,7 @@ public class Builder : MonoBehaviour
     /// build资源
     /// </summary>
     /// <returns></returns>
-    [MenuItem("HybridCLR/Update/1.YooAssetBuild_IncrementalBuild And UpdateToCdn", priority = 200)]
+    [MenuItem("HybridCLR/Update/1.CompileHotUpdateDll And YooAssetBuild_IncrementalBuild And UpdateToCdn", priority = 200)]
     public static void YooAssetBuild_IncrementalBuild()
     {
         //生成热更新dll
