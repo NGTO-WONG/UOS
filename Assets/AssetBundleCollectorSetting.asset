@@ -85,11 +85,11 @@ MonoBehaviour:
     - GroupName: DependRes
       GroupDesc: 
       AssetTags: 
-      ActiveRuleName: EnableGroup
+      ActiveRuleName: DisableGroup
       Collectors:
       - CollectPath: Assets/Game/DependRes
         CollectorGUID: cb4017d0239a09c4d8aaa251330b66ae
-        CollectorType: 1
+        CollectorType: 2
         AddressRuleName: AddressByFolderAndFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll

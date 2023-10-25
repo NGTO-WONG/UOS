@@ -47,7 +47,7 @@ PlayerSettings:
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_StereoRenderingPath: 0
-  m_ActiveColorSpace: 0
+  m_ActiveColorSpace: 1
   m_SpriteBatchVertexThreshold: 300
   m_MTRendering: 1
   mipStripping: 0
@@ -159,7 +159,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.DefaultCompany.pack
     Standalone: com.DefaultCompany.pack
-    iPhone: smyisia
+    iPhone: smyisiaaa
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -233,7 +233,7 @@ PlayerSettings:
   metalAPIValidation: 1
   iOSRenderExtraFrameOnPause: 0
   iosCopyPluginsCodeInsteadOfSymlink: 0
-  appleDeveloperTeamID: huangqiang
+  appleDeveloperTeamID: qiang huang
   iOSManualSigningProvisioningProfileID: 
   tvOSManualSigningProvisioningProfileID: 
   VisionOSManualSigningProvisioningProfileID: 
