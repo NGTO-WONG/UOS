@@ -32,7 +32,7 @@ public class ToolBarEditor
                 clipping = TextClipping.Overflow,
                 contentOffset = default,
                 fixedWidth = 40,
-                fixedHeight = 25,
+                fixedHeight = 20,
                 imagePosition = ImagePosition.ImageAbove,
                 fontStyle = FontStyle.Bold,
                 richText = true,
@@ -71,7 +71,9 @@ public class ToolBarEditor
         }
 
         //场景切换
-        ToolbarExtender.RightToolbarGUI.Add(OnRightToolbarGUI);
+        ToolbarExtender.RightToolbarGUI.Add(StartGame);
+        
+        ToolbarExtender.RightToolbarGUI.Add(OpenScene);
 
         //RefreshBranchInfo();
     }
@@ -249,7 +251,7 @@ public class ToolBarEditor
         }
     }
 
-    static void OnRightToolbarGUI()
+    static void StartGame()
     {
         GUILayout.FlexibleSpace();
 
@@ -258,6 +260,24 @@ public class ToolBarEditor
             SceneHelper.StartScene("Root");
         }
     }
+
+
+    private static string[] sceneNames = null;
+    private static GUILayoutOption width = GUILayout.Width(200);
+    private static GUILayoutOption height = GUILayout.Height(40);
+    private static int currentSceneIndex=0;
+    private static void OpenScene()
+    {
+        sceneNames ??= SceneHelper.GetSceneNames(Application.dataPath + "/Game/Scene").ToArray();
+        var oldIndex=currentSceneIndex;
+        currentSceneIndex = EditorGUILayout.Popup(oldIndex, sceneNames, width, height);
+        if (currentSceneIndex!=oldIndex)
+        {
+            SceneHelper.ChangeScene(sceneNames[currentSceneIndex]);
+        }
+        
+    }
+    
 }
 
 
@@ -633,6 +653,18 @@ static class SceneHelper
         _sceneToOpen = sceneName;
         _isRun = false;
         EditorApplication.update += OnUpdate;
+    }
+    
+    public static List<string> GetSceneNames(string path)
+    {
+        List<string> sceneNames = new List<string>();
+        string[] files = Directory.GetFiles(path, "*.unity", SearchOption.AllDirectories);
+        foreach (string file in files)
+        {
+            string name = Path.GetFileNameWithoutExtension(file);
+            sceneNames.Add(name);
+        }
+        return sceneNames;
     }
 
     public static void StartScene(string sceneName)
