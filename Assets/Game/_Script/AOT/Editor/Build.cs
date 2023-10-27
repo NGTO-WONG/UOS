@@ -14,6 +14,12 @@ public class Builder : MonoBehaviour
     private static readonly string HotfixAssembliesDstDir = Application.dataPath + "/Game/HotUpdateDll";
     private static string BundlePath =>System.IO.Directory.GetParent( Application.dataPath) + "/Bundles";
 
+    [MenuItem("HybridCLR/Build/BuildAllLinkFile", priority = 200)]
+    public static void BuildAllLinkFile()
+    {
+        var xmlPath = Application.dataPath+"/HybridCLRData/Generated/link.xml";
+        BuildLinkFile.GenerateLinkfile(xmlPath);
+    }
     [MenuItem("HybridCLR/Build/BuildIOS", priority = 200)]
     public static void BuildIOS()               
     {
@@ -57,6 +63,8 @@ public class Builder : MonoBehaviour
     public static void BuildAndCopyAndRenameDll()
     {
         PrebuildCommand.GenerateAll();
+        //生成所有linkFile
+        BuildAllLinkFile();
         //热更新dll
         CompileDllCommand.CompileDllActiveBuildTarget();
         var target = EditorUserBuildSettings.activeBuildTarget;
