@@ -45,8 +45,8 @@ namespace Game._Script.AOT.Editor
             string cdn = Environment.GetEnvironmentVariable("CDN");
             string version = Environment.GetEnvironmentVariable("Version");
 
-            
-            
+
+            Debug.Log(buildTargetStr+" "+cdn+" "+ version );
             BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildTargetStr);
             BuildConfigAccessor.Instance.HostServerIP = cdn;
             BuildConfigAccessor.Instance.BuildVersion = version;
