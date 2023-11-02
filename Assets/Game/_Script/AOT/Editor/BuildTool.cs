@@ -153,17 +153,16 @@ namespace Game._Script.AOT.Editor
         {
             if (BuildConfigAccessor.Instance.HostServerIP.Contains("buckets"))
             {
-                Debug.LogWarning("未填写cdn地址 ");
-            }
-            else
-            {
+                
                 Debug.Log("上传到cdn");
                 BucketController.LoadBuckets();
                 EntryController.LoadEntries(0);
                 var pb = EntryController.pb;
                 pb.selectedBucketUuid = pb.bucketList[0].id;
                 EntryController.SyncEntries(BuildConfigAccessor.Instance.BundlePath);
-                
+            }
+            else
+            {                Debug.LogWarning("未填写cdn地址 ");
             }
             
         }
