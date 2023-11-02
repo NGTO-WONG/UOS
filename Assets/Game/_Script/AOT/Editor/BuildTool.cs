@@ -38,6 +38,13 @@ namespace Game._Script.AOT.Editor
         //     Build(BuildTarget.StandaloneWindows64);
         // }
 
+        public static void SwitchBuildTarget()
+        {
+            string buildTargetStr = Environment.GetEnvironmentVariable("BuildTarget");
+            BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildTargetStr);
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone,buildTarget);
+        }
+
         public static void Build()
         {
             string buildTargetStr = Environment.GetEnvironmentVariable("BuildTarget");
@@ -48,7 +55,6 @@ namespace Game._Script.AOT.Editor
 
             Debug.Log("打包log："+buildTargetStr+" "+cdn+" "+ version );
             BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildTargetStr);
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone,buildTarget);
             BuildConfigAccessor.Instance.HostServerIP = cdn;
             BuildConfigAccessor.Instance.BuildVersion = version;
             //华佗生成+改名+拷贝dll
