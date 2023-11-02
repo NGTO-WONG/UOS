@@ -38,37 +38,15 @@ namespace Game._Script.AOT.Editor
         //         BuildTarget.StandaloneWindows64);
         //     Build(BuildTarget.StandaloneWindows64);
         // }
-        
-        public static void ExecuteBuild()
+
+        public static void Build()
         {
-            string[] args = System.Environment.GetCommandLineArgs();
-    
-            string buildTargetStr = "";
-            string cdn = "";
-            string version = "";
+            string buildTargetStr = Environment.GetEnvironmentVariable("BUILD_TARGET");
+            string cdn = Environment.GetEnvironmentVariable("CDN");
+            string version = Environment.GetEnvironmentVariable("VERSION");
 
-            for (int i = 0; i < args.Length; i++)
-            {
-                if (args[i] == "-buildTarget")
-                {
-                    buildTargetStr = args[++i];
-                }
-                else if (args[i] == "-cdn")
-                {
-                    cdn = args[++i];
-                }
-                else if (args[i] == "-version")
-                {
-                    version = args[++i];
-                }
-            }
-
-            Build(buildTargetStr, cdn, version);
-        }
-
-
-        public static void Build(string buildTargetStr,string cdn,string version)
-        {
+            
+            
             BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildTargetStr);
             BuildConfigAccessor.Instance.HostServerIP = cdn;
             BuildConfigAccessor.Instance.BuildVersion = version;
