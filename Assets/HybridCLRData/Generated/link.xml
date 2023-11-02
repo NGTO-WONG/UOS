@@ -72,6 +72,7 @@
   <assembly fullname="Assembly-CSharp">
     <type fullname="AOTGenericReferences" preserve="all" />
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
+    <type fullname="Script_AOT.Root" preserve="all" />
     <type fullname="Game.Script.AOT.YooAsset.BuildinFileManifest" preserve="all" />
     <type fullname="Game.Script.AOT.YooAsset.GameDecryptionServices" preserve="all" />
     <type fullname="Game.Script.AOT.YooAsset.BundleStream" preserve="all" />
@@ -79,8 +80,8 @@
     <type fullname="Game.Script.AOT.YooAsset.GameQueryServices" preserve="all" />
     <type fullname="Game.Script.AOT.YooAsset.StreamingAssetsHelper" preserve="all" />
     <type fullname="Game.Script.AOT.YooAsset.PreprocessBuild" preserve="all" />
-    <type fullname="Script_AOT.GlobalConfig" preserve="all" />
-    <type fullname="Script_AOT.Root" preserve="all" />
+    <type fullname="Game._Script.AOT.BuildConfigAccessor" preserve="all" />
+    <type fullname="Game._Script.AOT.BuildConfig" preserve="all" />
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1+MonoScriptData" preserve="all" />
     <type fullname="Script_AOT.Root+&lt;&gt;c" preserve="all" />
     <type fullname="Script_AOT.Root+&lt;&gt;c__DisplayClass7_0" preserve="all" />
