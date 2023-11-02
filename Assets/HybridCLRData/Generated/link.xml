@@ -60,7 +60,6 @@
   <assembly fullname="UnityEngine.UI" preserve="all" />
   <assembly fullname="UnityEngine.UIModule" preserve="all" />
   <assembly fullname="UnityEngine.UnityConnectModule" preserve="all" />
-  <assembly fullname="UnityEngine.UnityCurlModule" preserve="all" />
   <assembly fullname="UnityEngine.UnityWebRequestAssetBundleModule" preserve="all" />
   <assembly fullname="UnityEngine.UnityWebRequestAudioModule" preserve="all" />
   <assembly fullname="UnityEngine.UnityWebRequestModule" preserve="all" />
@@ -868,6 +867,7 @@
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
     <type fullname="Unity.Services.Core.Device.InstallationId" preserve="all" />
     <type fullname="Unity.Services.Core.Device.IUserIdentifierProvider" preserve="all" />
+    <type fullname="Unity.Services.Core.Device.NSUserDefaults" preserve="all" />
     <type fullname="Unity.Services.Core.Device.UnityAdsIdentifier" preserve="all" />
     <type fullname="Unity.Services.Core.Device.UnityAnalyticsIdentifier" preserve="all" />
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1+MonoScriptData" preserve="all" />
@@ -950,6 +950,7 @@
     <type fullname="UnityEngine.Advertisements.AndroidShowListener" preserve="all" />
     <type fullname="UnityEngine.Advertisements.Placeholder" preserve="all" />
     <type fullname="UnityEngine.Advertisements.INativePlatform" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.IosShowListener" preserve="all" />
     <type fullname="UnityEngine.Advertisements.ShowOptions" preserve="all" />
     <type fullname="UnityEngine.Advertisements.Utilities.ApplicationQuit" preserve="all" />
     <type fullname="UnityEngine.Advertisements.Utilities.AssemblyInfoUtilities" preserve="all" />
@@ -963,6 +964,11 @@
     <type fullname="UnityEngine.Advertisements.Platform.Platform" preserve="all" />
     <type fullname="UnityEngine.Advertisements.Platform.Unsupported.UnsupportedBanner" preserve="all" />
     <type fullname="UnityEngine.Advertisements.Platform.Unsupported.UnsupportedPlatform" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosBanner" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosInitializationListener" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosLoadListener" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosNativeObject" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosPlatform" preserve="all" />
     <type fullname="UnityEngine.Advertisements.Platform.Android.BannerBundle" preserve="all" />
     <type fullname="UnityEngine.Advertisements.Events.FinishEventArgs" preserve="all" />
     <type fullname="UnityEngine.Advertisements.Events.StartEventArgs" preserve="all" />
@@ -983,8 +989,22 @@
     <type fullname="UnityEngine.Advertisements.UnityAdsShowListenerMainDispatch+&lt;&gt;c__DisplayClass4_0" preserve="all" />
     <type fullname="UnityEngine.Advertisements.UnityAdsShowListenerMainDispatch+&lt;&gt;c__DisplayClass5_0" preserve="all" />
     <type fullname="UnityEngine.Advertisements.UnityAdsShowListenerMainDispatch+&lt;&gt;c__DisplayClass6_0" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.IosShowListener+ShowFailureCallback" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.IosShowListener+ShowStartCallback" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.IosShowListener+ShowClickCallback" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.IosShowListener+ShowCompleteCallback" preserve="all" />
     <type fullname="UnityEngine.Advertisements.Utilities.Json+Parser" preserve="all" />
     <type fullname="UnityEngine.Advertisements.Utilities.Json+Serializer" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosBanner+UnityAdsBannerShowDelegate" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosBanner+UnityAdsBannerHideDelegate" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosBanner+UnityAdsBannerClickDelegate" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosBanner+UnityAdsBannerUnloadDelegate" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosBanner+UnityAdsBannerLoadDelegate" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosBanner+UnityAdsBannerErrorDelegate" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosInitializationListener+InitSuccessCallback" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosInitializationListener+InitFailureCallback" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosLoadListener+LoadSuccessCallback" preserve="all" />
+    <type fullname="UnityEngine.Advertisements.Platform.iOS.IosLoadListener+LoadFailureCallback" preserve="all" />
     <type fullname="UnityEngine.Advertisements.Utilities.Json+Parser+TOKEN" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.AIModule">
@@ -1054,7 +1074,6 @@
     <type fullname="UnityEngine.AudioReverbFilter" preserve="all" />
     <type fullname="UnityEngine.Microphone" preserve="all" />
     <type fullname="UnityEngine.AudioRenderer" preserve="all" />
-    <type fullname="UnityEngine.MovieTexture" preserve="all" />
     <type fullname="UnityEngine.WebCamFlags" preserve="all" />
     <type fullname="UnityEngine.WebCamKind" preserve="all" />
     <type fullname="UnityEngine.WebCamDevice" preserve="all" />
