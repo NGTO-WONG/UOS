@@ -71,16 +71,8 @@ namespace Game._Script.AOT.Editor
             // 设置保存路径为项目根目录的Builds子目录下  ios无法打ipa包 没开发者账号
             string buildDirectory = Path.Combine(projectRoot, $"Builds/{buildTarget}/{DateTime.Now:u}");
             //string buildName = "Game";
-            string buildPath = "";
-            switch (buildTarget)
-            {
-                case BuildTarget.Android:
-                    buildPath = Path.Combine(buildDirectory, buildName);
-                    break;
-                default:
-                    buildPath = Path.Combine(buildDirectory, buildName);
-                    break;
-            }
+            string buildPath = Path.Combine(buildDirectory, buildName);
+
 
             // 确保输出目录存在
             if (!Directory.Exists(buildDirectory))
