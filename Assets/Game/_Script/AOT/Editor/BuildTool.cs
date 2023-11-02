@@ -86,6 +86,7 @@ namespace Game._Script.AOT.Editor
                 options = BuildOptions.None
             };
             EditorUserBuildSettings.buildAppBundle = true;
+            EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
 
             // 执行打包操作
             BuildPipeline.BuildPlayer(buildPlayerOptions);
