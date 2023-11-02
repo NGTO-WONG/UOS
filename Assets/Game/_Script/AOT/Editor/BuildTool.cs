@@ -38,6 +38,34 @@ namespace Game._Script.AOT.Editor
         //         BuildTarget.StandaloneWindows64);
         //     Build(BuildTarget.StandaloneWindows64);
         // }
+        
+        public static void ExecuteBuild()
+        {
+            string[] args = System.Environment.GetCommandLineArgs();
+    
+            string buildTargetStr = "";
+            string cdn = "";
+            string version = "";
+
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (args[i] == "-buildTarget")
+                {
+                    buildTargetStr = args[++i];
+                }
+                else if (args[i] == "-cdn")
+                {
+                    cdn = args[++i];
+                }
+                else if (args[i] == "-version")
+                {
+                    version = args[++i];
+                }
+            }
+
+            Build(buildTargetStr, cdn, version);
+        }
+
 
         public static void Build(string buildTargetStr,string cdn,string version)
         {
