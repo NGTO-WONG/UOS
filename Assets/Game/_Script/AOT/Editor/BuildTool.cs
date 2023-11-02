@@ -39,10 +39,11 @@ namespace Game._Script.AOT.Editor
         //     Build(BuildTarget.StandaloneWindows64);
         // }
 
-        public static void Build(string buildTargetStr,string Cdn)
+        public static void Build(string buildTargetStr,string cdn,string version)
         {
             BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildTargetStr);
-            BuildConfigAccessor.Instance.HostServerIP = Cdn;
+            BuildConfigAccessor.Instance.HostServerIP = cdn;
+            BuildConfigAccessor.Instance.BuildVersion = version;
             //华佗生成+改名+拷贝dll
             Debug.Log("2 华佗生成dll + 2 改名+拷贝dll");
             BuildAndCopyAndRenameDll();
