@@ -50,6 +50,7 @@ namespace Game._Script.AOT.Editor
             Debug.Log("3 yooAsset打包");
             var outputPackageDirectory = YooAssetBuild_ForceRebuild();
             //上传到cdn 
+            
             Debug.Log("上传到cdn");
             UpdateBundleToCDN_UOS();
 
@@ -150,11 +151,21 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/4.UpdateBundleToCDN_UOS", priority = 104)]
         public static void UpdateBundleToCDN_UOS()
         {
-            BucketController.LoadBuckets();
-            EntryController.LoadEntries(0);
-            var pb = EntryController.pb;
-            pb.selectedBucketUuid = pb.bucketList[0].id;
-            EntryController.SyncEntries(BuildConfigAccessor.Instance.BundlePath);
+            if (BuildConfigAccessor.Instance.HostServerIP.Contains("buckets"))
+            {
+                Debug.LogWarning("未填写cdn地址 ");
+            }
+            else
+            {
+                Debug.Log("上传到cdn");
+                BucketController.LoadBuckets();
+                EntryController.LoadEntries(0);
+                var pb = EntryController.pb;
+                pb.selectedBucketUuid = pb.bucketList[0].id;
+                EntryController.SyncEntries(BuildConfigAccessor.Instance.BundlePath);
+                
+            }
+            
         }
 
         /// <summary>
