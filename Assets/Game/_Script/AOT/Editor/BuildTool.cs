@@ -6,37 +6,38 @@ using System.Reflection;
 using System.Text;
 using HybridCLR.Editor;
 using HybridCLR.Editor.Commands;
+using Script_AOT;
 using UnityEditor;
 using UnityEngine;
 using UosCdn;
 using YooAsset.Editor;
 
-namespace Script_AOT.Editor
+namespace Game._Script.AOT.Editor
 {
     public static class BuildTool
     {
 
-        // [MenuItem("HybridCLR/Build/BuildIOS", priority = 310)]
-        // public static void BuildIOS()
-        // {
-        //     EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
-        //     Build(BuildTarget.iOS);
-        // }
-        //
-        // [MenuItem("HybridCLR/Build/BuildAndroid", priority = 311)]
-        // public static void BuildAndroid()
-        // {
-        //     EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
-        //     Build(BuildTarget.Android);
-        // }
-        //
-        // [MenuItem("HybridCLR/Build/BuildPC", priority = 312)]
-        // public static void BuildPC()
-        // {
-        //     EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone,
-        //         BuildTarget.StandaloneWindows64);
-        //     Build(BuildTarget.StandaloneWindows64);
-        // }
+        [MenuItem("HybridCLR/Build/BuildIOS", priority = 310)]
+        public static void BuildIOS()
+        {
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
+            Build(BuildTarget.iOS);
+        }
+        
+        [MenuItem("HybridCLR/Build/BuildAndroid", priority = 311)]
+        public static void BuildAndroid()
+        {
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+            Build(BuildTarget.Android);
+        }
+        
+        [MenuItem("HybridCLR/Build/BuildPC", priority = 312)]
+        public static void BuildPC()
+        {
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone,
+                BuildTarget.StandaloneWindows64);
+            Build(BuildTarget.StandaloneWindows64);
+        }
 
         private static void Build(BuildTarget buildTarget)
         {
@@ -54,8 +55,8 @@ namespace Script_AOT.Editor
             string projectRoot = Directory.GetParent(Application.dataPath).FullName;
 
             // 设置保存路径为项目根目录的Builds子目录下
-            string buildDirectory = Path.Combine(projectRoot, "Builds/Windows");
-            string buildPath = Path.Combine(buildDirectory, "MyGame.exe");
+            string buildDirectory = Path.Combine(projectRoot, "Builds/");
+            string buildPath = Path.Combine(buildDirectory, buildTarget.ToString());
 
             // 确保输出目录存在
             if (!Directory.Exists(buildDirectory))

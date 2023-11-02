@@ -20,7 +20,7 @@ namespace Script_AOT
         /// <summary>
         /// 游戏的第一个场景
         /// </summary>
-        public static readonly string GamePlayScene = "Menu";
+        public static readonly string GamePlayScene = "Switcher";
 
         /// <summary>
         /// cdn服务器地址 
