@@ -41,6 +41,8 @@ namespace Game._Script.AOT.Editor
 
         private static void Build(BuildTarget buildTarget)
         {
+            GitHelper.GitPullSync();
+            
             //2 华佗生成+改名+拷贝dll
             Debug.Log("2 华佗生成dll + 2 改名+拷贝dll");
             BuildAndCopyAndRenameDll();
