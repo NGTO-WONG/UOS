@@ -77,7 +77,11 @@ namespace Game._Script.AOT.Editor
             }
 
             // 确保输出目录存在
-            if (!Directory.Exists(buildDirectory))
+            if (Directory.Exists(buildDirectory))
+            {
+                Directory.Delete(buildDirectory);
+                Directory.CreateDirectory(buildDirectory);
+            }else
             {
                 Directory.CreateDirectory(buildDirectory);
             }
