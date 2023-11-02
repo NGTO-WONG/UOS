@@ -559,7 +559,11 @@ public static class GitHelper
 
     public static void GitPullSync()
     {
-        GitPull().Wait();
+        Test().Wait();
+        async Task Test()
+        {
+            await RunGitCommand("pull");
+        }
     }
     
     /// <summary>
