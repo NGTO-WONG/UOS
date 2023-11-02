@@ -557,6 +557,11 @@ public static class GitHelper
         return modifiedFiles.OrderBy(str => str).ToList();
     }
 
+    public static void GitPullSync()
+    {
+        GitPull().Wait();
+    }
+    
     /// <summary>
     /// git更新 
     /// </summary>
