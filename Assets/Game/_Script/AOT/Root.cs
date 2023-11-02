@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Game._Script.AOT;
 using Game.Script.AOT.YooAsset;
 using UnityEngine;
 using YooAsset;
@@ -9,7 +8,7 @@ using HybridCLR;
 using System.Reflection;
 #endif
 
-namespace Script_AOT
+namespace Game._Script.AOT
 {
     public class Root : MonoBehaviour
     {
