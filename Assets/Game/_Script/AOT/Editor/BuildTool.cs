@@ -47,6 +47,7 @@ namespace Game._Script.AOT.Editor
 
             Debug.Log(buildTargetStr+" "+cdn+" "+ version );
             BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildTargetStr);
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone,buildTarget);
             BuildConfigAccessor.Instance.HostServerIP = cdn;
             BuildConfigAccessor.Instance.BuildVersion = version;
             //华佗生成+改名+拷贝dll
