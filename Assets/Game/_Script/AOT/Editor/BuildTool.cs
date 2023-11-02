@@ -61,8 +61,8 @@ namespace Game._Script.AOT.Editor
             Debug.Log("打包log："+"2 华佗生成dll + 2 改名+拷贝dll");
             BuildAndCopyAndRenameDll();
             //yooAsset打包
-            Debug.Log("打包log："+"3 yooAsset打包");
-            YooAssetBuild_ForceRebuild();
+            Debug.Log("打包log："+"3 yooAsset打包"+ buildTarget);
+            YooAssetBuild_ForceRebuild(buildTarget);
             //上传到cdn 
 
             // 获取Assets文件夹的父目录，即项目的根目录
@@ -144,7 +144,7 @@ namespace Game._Script.AOT.Editor
         /// </summary>
         /// <returns></returns>
         [MenuItem("HybridCLR/Build/YooAsset打全量包", priority = 302)]
-        public static void YooAssetBuild_ForceRebuild()
+        public static void YooAssetBuild_ForceRebuild(BuildTarget buildTarget)
         {
             // if (!Directory.Exists(BuildConfigAccessor.Instance.BundlePath))
             // {
@@ -152,7 +152,7 @@ namespace Game._Script.AOT.Editor
             // }
 
             //Directory.Delete(BuildConfigAccessor.Instance.BundlePath, true);
-            YooAssetBuild(EBuildMode.ForceRebuild, BuildConfigAccessor.Instance.BuildVersion);
+            YooAssetBuild(EBuildMode.ForceRebuild, BuildConfigAccessor.Instance.BuildVersion,buildTarget);
             
             Debug.Log("打包log："+"上传到cdn");
             UpdateBundleToCDN_UOS();
@@ -205,7 +205,7 @@ namespace Game._Script.AOT.Editor
 
             //yooAsset打包
             var hotUpdateVersion = BuildConfigAccessor.Instance.HotUpdateVersion;
-            var outputPackageDirectory = YooAssetBuild(EBuildMode.IncrementalBuild, hotUpdateVersion);
+            var outputPackageDirectory = YooAssetBuild(EBuildMode.IncrementalBuild, hotUpdateVersion,target);
             if (outputPackageDirectory != "")
             {
                 var files = Directory.GetFiles(outputPackageDirectory);
@@ -222,7 +222,7 @@ namespace Game._Script.AOT.Editor
             UpdateBundleToCDN_UOS();
         }
 
-        private static string YooAssetBuild(EBuildMode eBuildMode, string packageVersion)
+        private static string YooAssetBuild(EBuildMode eBuildMode, string packageVersion,BuildTarget buildTarget)
         {
             // 构建参数
             BuildParameters buildParameters = new BuildParameters
@@ -230,7 +230,7 @@ namespace Game._Script.AOT.Editor
                 SBPParameters = null,
                 StreamingAssetsRoot = Application.streamingAssetsPath,
                 BuildOutputRoot = BuildConfigAccessor.Instance.BundlePath,
-                BuildTarget = EditorUserBuildSettings.activeBuildTarget,
+                BuildTarget = buildTarget,
                 BuildPipeline = EBuildPipeline.BuiltinBuildPipeline,
                 BuildMode = eBuildMode,
                 PackageName = "DefaultPackage",
