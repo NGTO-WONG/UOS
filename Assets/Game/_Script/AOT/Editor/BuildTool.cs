@@ -56,11 +56,8 @@ namespace Game._Script.AOT.Editor
             BuildAndCopyAndRenameDll();
             //yooAsset打包
             Debug.Log("打包log："+"3 yooAsset打包");
-            var outputPackageDirectory = YooAssetBuild_ForceRebuild();
+            YooAssetBuild_ForceRebuild();
             //上传到cdn 
-            
-            Debug.Log("打包log："+"上传到cdn");
-            UpdateBundleToCDN_UOS();
 
             // 获取Assets文件夹的父目录，即项目的根目录
             string projectRoot = Directory.GetParent(Application.dataPath).FullName;
@@ -141,15 +138,18 @@ namespace Game._Script.AOT.Editor
         /// </summary>
         /// <returns></returns>
         [MenuItem("HybridCLR/Build/YooAsset打全量包", priority = 302)]
-        public static string YooAssetBuild_ForceRebuild()
+        public static void YooAssetBuild_ForceRebuild()
         {
-            if (!Directory.Exists(BuildConfigAccessor.Instance.BundlePath))
-            {
-                Directory.CreateDirectory(BuildConfigAccessor.Instance.BundlePath);
-            }
+            // if (!Directory.Exists(BuildConfigAccessor.Instance.BundlePath))
+            // {
+            //     Directory.CreateDirectory(BuildConfigAccessor.Instance.BundlePath);
+            // }
 
             Directory.Delete(BuildConfigAccessor.Instance.BundlePath, true);
-            return YooAssetBuild(EBuildMode.ForceRebuild, BuildConfigAccessor.Instance.BuildVersion);
+            YooAssetBuild(EBuildMode.ForceRebuild, BuildConfigAccessor.Instance.BuildVersion);
+            
+            Debug.Log("打包log："+"上传到cdn");
+            UpdateBundleToCDN_UOS();
         }
 
         /// <summary>
