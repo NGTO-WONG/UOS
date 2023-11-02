@@ -88,7 +88,7 @@ namespace Game._Script.AOT.Editor
         {
             PrebuildCommand.GenerateAll();
             //生成linkFile
-            var xmlPath = Application.dataPath + "/HybridCLRGenerate/link.xml";
+            var xmlPath = Application.dataPath + "/HybridCLRData/Generated/link.xml";
             BuildLinkFile.GenerateLinkfile(xmlPath);
             //热更新dll
             CompileDllCommand.CompileDllActiveBuildTarget();
