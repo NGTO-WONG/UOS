@@ -41,9 +41,9 @@ namespace Game._Script.AOT.Editor
 
         public static void Build()
         {
-            string buildTargetStr = Environment.GetEnvironmentVariable("BUILD_TARGET");
+            string buildTargetStr = Environment.GetEnvironmentVariable("BuildTarget");
             string cdn = Environment.GetEnvironmentVariable("CDN");
-            string version = Environment.GetEnvironmentVariable("VERSION");
+            string version = Environment.GetEnvironmentVariable("Version");
 
             
             
