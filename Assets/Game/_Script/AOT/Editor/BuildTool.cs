@@ -85,6 +85,7 @@ namespace Game._Script.AOT.Editor
                 target = buildTarget,
                 options = BuildOptions.None
             };
+            EditorUserBuildSettings.buildAppBundle = true;
 
             // 执行打包操作
             BuildPipeline.BuildPlayer(buildPlayerOptions);
