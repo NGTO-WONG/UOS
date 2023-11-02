@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Game._Script.AOT;
 using Game.Script.AOT.YooAsset;
 using UnityEngine;
 using YooAsset;
@@ -29,7 +30,7 @@ namespace Script_AOT
             //6 读取HotUpdate热更新文件 
             await LoadHotUpdateDll();
             //7 更新结束 开始游戏
-            await StartGame(GlobalConfig.GamePlayScene);
+            await StartGame(BuildConfigAccessor.Instance.GamePlayScene);
         }
 
         /// <summary>
@@ -126,22 +127,22 @@ namespace Script_AOT
             {
 #if UNITY_EDITOR
                 if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-                    return $"{GlobalConfig.HostServerIP}Android/DefaultPackage/{GlobalConfig.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
                 else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-                    return $"{GlobalConfig.HostServerIP}iOS/DefaultPackage/{GlobalConfig.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
                 else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-                    return $"{GlobalConfig.HostServerIP}WebGL/DefaultPackage/{GlobalConfig.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
                 else
-                    return $"{GlobalConfig.HostServerIP}StandaloneWindows64/DefaultPackage/{GlobalConfig.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
 #else
                 if (Application.platform == RuntimePlatform.Android)
-                    return $"{GlobalConfig.HostServerIP}Android/DefaultPackage/{GlobalConfig.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
                 else if (Application.platform == RuntimePlatform.IPhonePlayer)
-                    return $"{GlobalConfig.HostServerIP}iOS/DefaultPackage/{GlobalConfig.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
                 else if (Application.platform == RuntimePlatform.WebGLPlayer)
-                    return $"{GlobalConfig.HostServerIP}WebGL/DefaultPackage/{GlobalConfig.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
                 else
-                    return $"{GlobalConfig.HostServerIP}StandaloneWindows64/DefaultPackage/{GlobalConfig.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
 #endif
                 
             }
