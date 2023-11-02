@@ -145,7 +145,7 @@ namespace Game._Script.AOT.Editor
             //     Directory.CreateDirectory(BuildConfigAccessor.Instance.BundlePath);
             // }
 
-            Directory.Delete(BuildConfigAccessor.Instance.BundlePath, true);
+            //Directory.Delete(BuildConfigAccessor.Instance.BundlePath, true);
             YooAssetBuild(EBuildMode.ForceRebuild, BuildConfigAccessor.Instance.BuildVersion);
             
             Debug.Log("打包log："+"上传到cdn");
