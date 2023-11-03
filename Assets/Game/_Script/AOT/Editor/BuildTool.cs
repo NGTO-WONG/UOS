@@ -90,7 +90,7 @@ namespace Game._Script.AOT.Editor
                 targetGroup = buildTarget== BuildTarget.iOS? BuildTargetGroup.iOS : BuildTargetGroup.Android,
                 target = buildTarget,
                 subtarget = 0,
-                options = BuildOptions.None 
+                options = BuildOptions.CleanBuildCache 
             };
             switch (buildTarget)
             {
