@@ -37,11 +37,13 @@ namespace Game._Script.AOT.Editor
         //     Build(BuildTarget.StandaloneWindows64);
         // }
 
-        public static void SwitchBuildTarget()
+        public static void SwitchBuildTargetiOS()
         {
-            string buildTargetStr = Environment.GetEnvironmentVariable("BuildTarget");
-            BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildTargetStr);
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, buildTarget);
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.iOS);
+        }
+        public static void SwitchBuildTargetAndroid()
+        {
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.Android);
         }
 
         public static void Build(BuildTarget buildTarget)
