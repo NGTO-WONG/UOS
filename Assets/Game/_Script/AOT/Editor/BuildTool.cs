@@ -15,20 +15,19 @@ namespace Game._Script.AOT.Editor
 {
     public static class BuildTool
     {
+        [MenuItem("HybridCLR/Build/BuildIOS", priority = 310)]
+        public static void BuildiOS()
+        {
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
+            Build(BuildTarget.iOS);
+        }
 
-        // [MenuItem("HybridCLR/Build/BuildIOS", priority = 310)]
-        // public static void BuildIOS()
-        // {
-        //     EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
-        //     Build(BuildTarget.iOS);
-        // }
-        //
-        // [MenuItem("HybridCLR/Build/BuildAndroid", priority = 311)]
-        // public static void BuildAndroid()
-        // {
-        //     EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
-        //     Build(BuildTarget.Android);
-        // }
+        [MenuItem("HybridCLR/Build/BuildAndroid", priority = 311)]
+        public static void BuildAndroid()
+        {
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+            Build(BuildTarget.Android);
+        }
         //
         // [MenuItem("HybridCLR/Build/BuildPC", priority = 312)]
         // public static void BuildPC()
@@ -42,25 +41,22 @@ namespace Game._Script.AOT.Editor
         {
             string buildTargetStr = Environment.GetEnvironmentVariable("BuildTarget");
             BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildTargetStr);
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone,buildTarget);
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, buildTarget);
         }
 
-        public static void Build()
+        public static void Build(BuildTarget buildTarget)
         {
-            string buildTargetStr = Environment.GetEnvironmentVariable("BuildTarget");
             string cdn = Environment.GetEnvironmentVariable("CDN");
             string version = Environment.GetEnvironmentVariable("Version");
             string buildName = Environment.GetEnvironmentVariable("BuildName");
 
-            Debug.Log("打包log："+buildTargetStr+" "+cdn+" "+ version );
-            BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildTargetStr);
             BuildConfigAccessor.Instance.HostServerIP = cdn;
             BuildConfigAccessor.Instance.BuildVersion = version;
             //华佗生成+改名+拷贝dll
-            Debug.Log("打包log："+"2 华佗生成dll + 2 改名+拷贝dll");
-            BuildAndCopyAndRenameDll();
+            Debug.Log("打包log：" + "2 华佗生成dll + 2 改名+拷贝dll");
+            BuildAndCopyAndRenameDll(buildTarget);
             //yooAsset打包
-            Debug.Log("打包log："+"3 yooAsset打包"+ buildTarget);
+            Debug.Log("打包log：" + "3 yooAsset打包" + buildTarget);
             YooAssetBuild_ForceRebuild(buildTarget);
             //上传到cdn 
 
@@ -84,46 +80,46 @@ namespace Game._Script.AOT.Editor
                 .Select(scene => scene.path)
                 .ToArray();
 
-            BuildPlayerOptions buildPlayerOptions;
+            BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions()
+            {
+                scenes = scenes,
+                locationPathName = buildPath,
+                target = buildTarget,
+                options = BuildOptions.None
+            };
             switch (buildTarget)
             {
                 case BuildTarget.iOS:
-                    buildPlayerOptions = new BuildPlayerOptions
-                    {
-                        scenes = scenes,
-                        locationPathName = buildPath,
-                        target = buildTarget,
-                        options = BuildOptions.None
-                    };
                     break;
                 case BuildTarget.Android:
-                    buildPlayerOptions = new BuildPlayerOptions
-                    {
-                        scenes = scenes,
-                        locationPathName = buildPath,
-                        target = buildTarget,
-                        options = BuildOptions.None
-                    };
                     EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
                     break;
             }
 
-            Debug.Log("打包log：123"+buildTarget);
+            Debug.Log("打包log：123" + buildTarget);
             // 执行打包操作
             BuildPipeline.BuildPlayer(buildPlayerOptions);
 
-            Debug.Log("打包log："+"Build finished!");
+            Debug.Log("打包log：" + "Build finished!");
         }
 
-        [MenuItem("HybridCLR/Build/1.GenerateAll+BuildActiveDll+CopyDll", priority = 301)]
-        public static void BuildAndCopyAndRenameDll()
+        public static void BuildAndCopyAndRenameDll(BuildTarget buildTarget)
         {
             PrebuildCommand.GenerateAll();
             //生成linkFile
             var xmlPath = Application.dataPath + "/HybridCLRData/Generated/link.xml";
             BuildLinkFile.GenerateLinkfile(xmlPath);
             //热更新dll
-            CompileDllCommand.CompileDllActiveBuildTarget();
+            switch (buildTarget)
+            {
+                case BuildTarget.Android:
+                    CompileDllCommand.CompileDllAndroid();
+                    break;
+                case BuildTarget.iOS:
+                    CompileDllCommand.CompileDllIOS();
+                    break;
+            }
+
             var target = EditorUserBuildSettings.activeBuildTarget;
             string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
             foreach (var dll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
@@ -131,7 +127,8 @@ namespace Game._Script.AOT.Editor
                 string sourcePath = $"{hotfixDllSrcDir}/{dll}";
                 string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{dll}.bytes";
                 File.Copy(sourcePath, dstPath, true);
-                Debug.Log("打包log："+$"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
+                Debug.Log("打包log：" +
+                          $"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
             }
 
             //补充AOT范型dll
@@ -141,9 +138,9 @@ namespace Game._Script.AOT.Editor
                 string sourcePath = $"{aotDllSrcDir}/{dll}";
                 string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{dll}.bytes";
                 File.Copy(sourcePath, dstPath, true);
-                Debug.Log("打包log："+$"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
+                Debug.Log("打包log：" +
+                          $"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
             }
-            
         }
 
         /// <summary>
@@ -159,9 +156,9 @@ namespace Game._Script.AOT.Editor
             // }
 
             //Directory.Delete(BuildConfigAccessor.Instance.BundlePath, true);
-            YooAssetBuild(EBuildMode.ForceRebuild, BuildConfigAccessor.Instance.BuildVersion,buildTarget);
-            
-            Debug.Log("打包log："+"上传到cdn");
+            YooAssetBuild(EBuildMode.ForceRebuild, BuildConfigAccessor.Instance.BuildVersion, buildTarget);
+
+            Debug.Log("打包log：" + "上传到cdn");
             UpdateBundleToCDN_UOS();
         }
 
@@ -174,8 +171,7 @@ namespace Game._Script.AOT.Editor
         {
             if (BuildConfigAccessor.Instance.HostServerIP.Contains("buckets"))
             {
-                
-                Debug.Log("打包log："+"上传到cdn");
+                Debug.Log("打包log：" + "上传到cdn");
                 BucketController.LoadBuckets();
                 EntryController.LoadEntries(0);
                 var pb = EntryController.pb;
@@ -183,9 +179,9 @@ namespace Game._Script.AOT.Editor
                 EntryController.SyncEntries(BuildConfigAccessor.Instance.BundlePath);
             }
             else
-            {                Debug.LogWarning("未填写cdn地址 ");
+            {
+                Debug.LogWarning("未填写cdn地址 ");
             }
-            
         }
 
         /// <summary>
@@ -207,29 +203,31 @@ namespace Game._Script.AOT.Editor
                 string sourcePath = $"{hotfixDllSrcDir}/{hotUpdateDll}";
                 string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{hotUpdateDll}.bytes";
                 File.Copy(sourcePath, dstPath, true);
-                Debug.Log("打包log："+$"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
+                Debug.Log("打包log：" +
+                          $"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
             }
 
             //yooAsset打包
             var hotUpdateVersion = BuildConfigAccessor.Instance.HotUpdateVersion;
-            var outputPackageDirectory = YooAssetBuild(EBuildMode.IncrementalBuild, hotUpdateVersion,target);
+            var outputPackageDirectory = YooAssetBuild(EBuildMode.IncrementalBuild, hotUpdateVersion, target);
             if (outputPackageDirectory != "")
             {
                 var files = Directory.GetFiles(outputPackageDirectory);
-                var targetDirectory = Directory.GetParent(outputPackageDirectory) + "/" + BuildConfigAccessor.Instance.BuildVersion;
+                var targetDirectory = Directory.GetParent(outputPackageDirectory) + "/" +
+                                      BuildConfigAccessor.Instance.BuildVersion;
                 foreach (var file in files)
                 {
                     var fileName = Path.GetFileName(file);
                     File.Copy(file, targetDirectory + "/" + fileName, true);
                 }
 
-                Debug.Log("打包log："+files + " to " + targetDirectory);
+                Debug.Log("打包log：" + files + " to " + targetDirectory);
             }
 
             UpdateBundleToCDN_UOS();
         }
 
-        private static string YooAssetBuild(EBuildMode eBuildMode, string packageVersion,BuildTarget buildTarget)
+        private static string YooAssetBuild(EBuildMode eBuildMode, string packageVersion, BuildTarget buildTarget)
         {
             // 构建参数
             BuildParameters buildParameters = new BuildParameters
@@ -259,7 +257,7 @@ namespace Game._Script.AOT.Editor
             var buildResult = builder.Run(buildParameters);
             if (buildResult.Success)
             {
-                Debug.Log("打包log："+$"构建成功 : {buildResult.OutputPackageDirectory}");
+                Debug.Log("打包log：" + $"构建成功 : {buildResult.OutputPackageDirectory}");
                 return buildResult.OutputPackageDirectory;
             }
             else
@@ -429,7 +427,7 @@ namespace Game._Script.AOT.Editor
                     continue;
                 }
 
-                Debug.Log("打包log："+ass + "___" + ass.Location);
+                Debug.Log("打包log：" + ass + "___" + ass.Location);
                 var assPath = Path.GetFullPath(ass.Location).Replace('\\', '/');
                 if (assPath.Contains(localPath) && assPath.ToLower().Contains("/editor/"))
                 {
