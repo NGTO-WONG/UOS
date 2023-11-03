@@ -61,11 +61,11 @@ namespace Game._Script.AOT
         /// <summary>
         /// yooAsset打出来的资源包的位置
         /// </summary>
-        public string BundlePath = "/Users/huangqiang/RiderProjects/Bundles";
+        public string BundleFolder = "/Users/huangqiang/Desktop/Bundles";
         
         /// <summary>
         /// yooAsset打出来的资源包的位置
         /// </summary>
-        public string BuildFolder = "/Users/huangqiang/RiderProjects/Builds";
+        public string BuildFolder = "/Users/huangqiang/Desktop/Builds";
     }
 }

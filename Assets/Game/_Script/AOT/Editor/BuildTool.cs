@@ -47,8 +47,9 @@ namespace Game._Script.AOT.Editor
         {
             BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
             BuildConfigAccessor.Instance.BuildVersion = Environment.GetEnvironmentVariable("Version");
-            string buildName = Environment.GetEnvironmentVariable("BuildName");
             BuildConfigAccessor.Instance.BuildFolder = Environment.GetEnvironmentVariable("BuildFolder");
+            BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
+            string buildName = Environment.GetEnvironmentVariable("BuildName");
             if (buildTarget== BuildTarget.Android)
             {
                 buildName += ".apk";
@@ -195,7 +196,7 @@ namespace Game._Script.AOT.Editor
                 EntryController.LoadEntries(0);
                 var pb = EntryController.pb;
                 pb.selectedBucketUuid = pb.bucketList[0].id;
-                EntryController.SyncEntries(BuildConfigAccessor.Instance.BundlePath);
+                EntryController.SyncEntries(BuildConfigAccessor.Instance.BundleFolder);
             }
             else
             {
@@ -274,7 +275,7 @@ namespace Game._Script.AOT.Editor
             {
                 SBPParameters = null,
                 StreamingAssetsRoot = Application.streamingAssetsPath,
-                BuildOutputRoot = BuildConfigAccessor.Instance.BundlePath,
+                BuildOutputRoot = BuildConfigAccessor.Instance.BundleFolder,
                 BuildTarget = buildTarget,
                 BuildPipeline = EBuildPipeline.BuiltinBuildPipeline,
                 BuildMode = eBuildMode,
