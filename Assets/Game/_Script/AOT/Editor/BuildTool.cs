@@ -197,19 +197,38 @@ namespace Game._Script.AOT.Editor
             }
         }
 
-        /// <summary>
-        /// build资源
-        /// </summary>
-        /// <returns></returns>
-        [MenuItem("HybridCLR/Build/1.编译当前平台的热更新程序集dll+yooAsset打增量包",
-            priority = 403)]
-        public static void YooAssetBuild_IncrementalBuild()
+        public static void UpdateiOS()
+        {
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.iOS);
+            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
+        }
+        
+        public static void UpdateAndroid()
+        {
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.iOS);
+            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
+        }
+
+        public static void UpdateBoth()
+        {
+            UpdateiOS();
+            UpdateAndroid();
+        }
+        
+        public static void YooAssetBuild_IncrementalBuild(BuildTarget target)
         {
             //生成热更新dll
-            CompileDllCommand.CompileDllActiveBuildTarget();
+            switch (target)
+            {
+                case BuildTarget.iOS:
+                    CompileDllCommand.CompileDllIOS();
+                    break;
+                case BuildTarget.Android:
+                    CompileDllCommand.CompileDllAndroid();
+                    break;
+            }
 
             //拷贝dll
-            var target = EditorUserBuildSettings.activeBuildTarget;
             string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
             foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
             {
