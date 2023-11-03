@@ -126,7 +126,7 @@ namespace Game._Script.AOT.Editor
         {
             GenerateAll(buildTarget);
             //生成linkFile
-            var xmlPath = Application.dataPath + "/HybridCLRData/Generated/link.xml";
+            var xmlPath = Application.dataPath + "/HybridCLRGenerate/link.xml";
             BuildLinkFile.GenerateLinkfile(xmlPath);
             //热更新dll
             switch (buildTarget)
