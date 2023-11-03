@@ -18,14 +18,12 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/BuildIOS", priority = 310)]
         public static void BuildiOS()
         {
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
             Build(BuildTarget.iOS);
         }
 
         [MenuItem("HybridCLR/Build/BuildAndroid", priority = 311)]
         public static void BuildAndroid()
         {
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
             Build(BuildTarget.Android);
         }
         //
@@ -40,10 +38,12 @@ namespace Game._Script.AOT.Editor
         public static void SwitchBuildTargetiOS()
         {
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.iOS);
+            
         }
         public static void SwitchBuildTargetAndroid()
         {
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.Android);
+            
         }
 
         public static void Build(BuildTarget buildTarget)
