@@ -199,12 +199,14 @@ namespace Game._Script.AOT.Editor
 
         public static void UpdateiOS()
         {
+            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.iOS);
             YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
         }
         
         public static void UpdateAndroid()
         {
+            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.iOS);
             YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
         }
