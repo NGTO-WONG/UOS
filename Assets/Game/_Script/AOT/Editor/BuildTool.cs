@@ -125,10 +125,10 @@ namespace Game._Script.AOT.Editor
 
         public static void BuildAndCopyAndRenameDll(BuildTarget buildTarget)
         {
-            GenerateAll(buildTarget);
             //生成linkFile
             var xmlPath = Application.dataPath + "/HybridCLRGenerate/link.xml";
             BuildLinkFile.GenerateLinkfile(xmlPath);
+            GenerateAll(buildTarget);
             //热更新dll
             switch (buildTarget)
             {
