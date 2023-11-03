@@ -207,8 +207,8 @@ namespace Game._Script.AOT.Editor
         public static void UpdateAndroid()
         {
             BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.iOS);
-            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.Android);
+            YooAssetBuild_IncrementalBuild(BuildTarget.Android);
         }
 
         public static void UpdateBoth()
