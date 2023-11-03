@@ -45,16 +45,14 @@ namespace Game._Script.AOT.Editor
 
         public static void Build(BuildTarget buildTarget)
         {
-            string cdn = Environment.GetEnvironmentVariable("CDN");
-            string version = Environment.GetEnvironmentVariable("Version");
+            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
+            BuildConfigAccessor.Instance.BuildVersion = Environment.GetEnvironmentVariable("Version");
             string buildName = Environment.GetEnvironmentVariable("BuildName");
-            string buildFolder = Environment.GetEnvironmentVariable("BuildFolder");
+            BuildConfigAccessor.Instance.BuildFolder = Environment.GetEnvironmentVariable("BuildFolder");
             if (buildTarget== BuildTarget.Android)
             {
                 buildName += ".apk";
             }
-            BuildConfigAccessor.Instance.HostServerIP = cdn;
-            BuildConfigAccessor.Instance.BuildVersion = version;
             //华佗生成+改名+拷贝dll
             Debug.Log("打包log：" + "2 华佗生成dll + 2 改名+拷贝dll");
             BuildAndCopyAndRenameDll(buildTarget);
@@ -66,7 +64,7 @@ namespace Game._Script.AOT.Editor
             // 获取Assets文件夹的父目录，即项目的根目录
 
             // 设置保存路径为项目根目录的Builds子目录下  ios无法打ipa包 没开发者账号
-            string buildDirectory = Path.Combine(buildFolder, $"{buildTarget}/{DateTime.Now:V_yyyyMMdd_HH_mm_ss}");
+            string buildDirectory = Path.Combine(BuildConfigAccessor.Instance.BuildFolder, $"{buildTarget}/{DateTime.Now:V_yyyyMMdd_HH_mm_ss}");
             string buildPath = Path.Combine(buildDirectory, buildName);
 
 
