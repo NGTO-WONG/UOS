@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.code-philosophy.hybridclr": {
-      "version": "https://gitee.com/focus-creative-games/hybridclr_unity.git#v4.0.10",
+      "version": "https://gitee.com/focus-creative-games/hybridclr_unity.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "216d09f7b65fadc5d8fcd0bba82e5ac50ca58f06"
+      "hash": "febff1c658fa9d76726f3aa25f26ec6d35c1e2e6"
     },
     "com.cysharp.unitask": {
       "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
