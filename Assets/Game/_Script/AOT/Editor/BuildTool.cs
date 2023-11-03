@@ -39,7 +39,6 @@ namespace Game._Script.AOT.Editor
         public static void SwitchBuildTargetiOS()
         {
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.iOS);
-            
         }
         public static void SwitchBuildTargetAndroid()
         {
@@ -83,12 +82,15 @@ namespace Game._Script.AOT.Editor
                 .Select(scene => scene.path)
                 .ToArray();
 
-            BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions()
+            BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
             {
                 scenes = scenes,
                 locationPathName = buildPath,
+                assetBundleManifestPath = null,
+                targetGroup = buildTarget== BuildTarget.iOS? BuildTargetGroup.iOS : BuildTargetGroup.Android,
                 target = buildTarget,
-                options = BuildOptions.CleanBuildCache
+                subtarget = 0,
+                options = BuildOptions.CleanBuildCache 
             };
             switch (buildTarget)
             {
