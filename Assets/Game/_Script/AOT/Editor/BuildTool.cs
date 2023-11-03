@@ -123,12 +123,19 @@ namespace Game._Script.AOT.Editor
             AOTReferenceGeneratorCommand.GenerateAOTGenericReference(target);
         }
 
+
+        [MenuItem("HybridCLR/Build/Test", priority = 310)]
+        public static void Test()
+        {
+            BuildAndCopyAndRenameDll(BuildTarget.iOS);
+        }
+
         public static void BuildAndCopyAndRenameDll(BuildTarget buildTarget)
         {
+            GenerateAll(buildTarget);
             //生成linkFile
             var xmlPath = Application.dataPath + "/HybridCLRGenerate/link.xml";
             BuildLinkFile.GenerateLinkfile(xmlPath);
-            GenerateAll(buildTarget);
             //热更新dll
             switch (buildTarget)
             {
