@@ -206,6 +206,7 @@ namespace Game._Script.AOT.Editor
 
         public static void UpdateiOS()
         {
+            BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
             BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
             YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
@@ -213,6 +214,7 @@ namespace Game._Script.AOT.Editor
         
         public static void UpdateAndroid()
         {
+            BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
             BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
             YooAssetBuild_IncrementalBuild(BuildTarget.Android);
