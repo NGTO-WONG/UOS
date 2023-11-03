@@ -52,7 +52,6 @@ namespace Game._Script.AOT.Editor
             string version = Environment.GetEnvironmentVariable("Version");
             string buildName = Environment.GetEnvironmentVariable("BuildName");
 
-
             Debug.Log("打包log："+buildTargetStr+" "+cdn+" "+ version );
             BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildTargetStr);
             BuildConfigAccessor.Instance.HostServerIP = cdn;
@@ -85,14 +84,29 @@ namespace Game._Script.AOT.Editor
                 .Select(scene => scene.path)
                 .ToArray();
 
-            BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
+            BuildPlayerOptions buildPlayerOptions;
+            switch (buildTarget)
             {
-                scenes = scenes,
-                locationPathName = buildPath,
-                target = buildTarget,
-                options = BuildOptions.None
-            };
-            EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
+                case BuildTarget.iOS:
+                    buildPlayerOptions = new BuildPlayerOptions
+                    {
+                        scenes = scenes,
+                        locationPathName = buildPath,
+                        target = buildTarget,
+                        options = BuildOptions.None
+                    };
+                    break;
+                case BuildTarget.Android:
+                    buildPlayerOptions = new BuildPlayerOptions
+                    {
+                        scenes = scenes,
+                        locationPathName = buildPath,
+                        target = buildTarget,
+                        options = BuildOptions.None
+                    };
+                    EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
+                    break;
+            }
 
             // 执行打包操作
             BuildPipeline.BuildPlayer(buildPlayerOptions);
