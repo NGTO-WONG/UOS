@@ -18,32 +18,21 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/BuildIOS", priority = 310)]
         public static void BuildiOS()
         {
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.iOS);
             Build(BuildTarget.iOS);
-            
         }
 
         [MenuItem("HybridCLR/Build/BuildAndroid", priority = 311)]
         public static void BuildAndroid()
         {
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.Android);
             Build(BuildTarget.Android);
         }
-        //
-        // [MenuItem("HybridCLR/Build/BuildPC", priority = 312)]
-        // public static void BuildPC()
-        // {
-        //     EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone,
-        //         BuildTarget.StandaloneWindows64);
-        //     Build(BuildTarget.StandaloneWindows64);
-        // }
 
-        public static void SwitchBuildTargetiOS()
+        public static void BuildBoth()
         {
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.iOS);
-        }
-        public static void SwitchBuildTargetAndroid()
-        {
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.Android);
-            
+            BuildiOS();
+            BuildAndroid();
         }
 
         public static void Build(BuildTarget buildTarget)
@@ -51,7 +40,10 @@ namespace Game._Script.AOT.Editor
             string cdn = Environment.GetEnvironmentVariable("CDN");
             string version = Environment.GetEnvironmentVariable("Version");
             string buildName = Environment.GetEnvironmentVariable("BuildName");
-
+            if (buildTarget== BuildTarget.Android)
+            {
+                buildName += ".apk";
+            }
             BuildConfigAccessor.Instance.HostServerIP = cdn;
             BuildConfigAccessor.Instance.BuildVersion = version;
             //华佗生成+改名+拷贝dll
@@ -66,8 +58,7 @@ namespace Game._Script.AOT.Editor
             string projectRoot = Directory.GetParent(Application.dataPath).FullName;
 
             // 设置保存路径为项目根目录的Builds子目录下  ios无法打ipa包 没开发者账号
-            string buildDirectory = Path.Combine(projectRoot, $"Builds/{buildTarget}/{DateTime.Now:yyyyMMdd_HH_mm_ss}");
-            //string buildName = "Game";
+            string buildDirectory = Path.Combine(projectRoot, $"Builds/{buildTarget}/{DateTime.Now:V_yyyyMMdd_HH_mm_ss}");
             string buildPath = Path.Combine(buildDirectory, buildName);
 
 
