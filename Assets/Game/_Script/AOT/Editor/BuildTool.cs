@@ -47,54 +47,6 @@ namespace Game._Script.AOT.Editor
             
         }
 
-        public static void EmptyBuildAndroid()
-        {
-            
-        }
-
-        public static void EmptyBuildiOS()
-        {
-            string cdn = Environment.GetEnvironmentVariable("CDN");
-            string version = Environment.GetEnvironmentVariable("Version");
-            string buildName = Environment.GetEnvironmentVariable("BuildName");
-
-            BuildConfigAccessor.Instance.HostServerIP = cdn;
-            BuildConfigAccessor.Instance.BuildVersion = version;
-
-            // 获取Assets文件夹的父目录，即项目的根目录
-            string projectRoot = Directory.GetParent(Application.dataPath).FullName;
-
-            // 设置保存路径为项目根目录的Builds子目录下  ios无法打ipa包 没开发者账号
-            string buildDirectory = Path.Combine(projectRoot, $"Builds/{BuildTarget.iOS}/{DateTime.Now:u}");
-            string buildPath = Path.Combine(buildDirectory, buildName);
-
-
-            // 确保输出目录存在
-            if (!Directory.Exists(buildDirectory))
-            {
-                Directory.CreateDirectory(buildDirectory);
-            }
-
-            string[] scenes = EditorBuildSettings.scenes
-                .Where(scene => scene.enabled)
-                .Select(scene => scene.path)
-                .ToArray();
-
-            BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions()
-            {
-                scenes = scenes,
-                locationPathName = buildPath,
-                target = BuildTarget.iOS,
-                options = BuildOptions.CleanBuildCache
-            };
-
-            Debug.Log("打包log：123" + BuildTarget.iOS);
-            // 执行打包操作
-            BuildPipeline.BuildPlayer(buildPlayerOptions);
-
-            Debug.Log("打包log：" + "Build finished!");
-        }
-
         public static void Build(BuildTarget buildTarget)
         {
             string cdn = Environment.GetEnvironmentVariable("CDN");
