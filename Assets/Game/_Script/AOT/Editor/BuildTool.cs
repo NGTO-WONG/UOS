@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using HybridCLR.Editor;
 using HybridCLR.Editor.Commands;
+using HybridCLR.Editor.Installer;
 using UnityEditor;
 using UnityEngine;
 using UosCdn;
@@ -18,8 +19,10 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/BuildIOS", priority = 310)]
         public static void BuildiOS()
         {
+
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.iOS, ScriptingImplementation.IL2CPP);
+            new InstallerController().InstallDefaultHybridCLR();
             AssetDatabase.SaveAssets();
             Build(BuildTarget.iOS);
         }
@@ -29,6 +32,7 @@ namespace Game._Script.AOT.Editor
         {
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
+            new InstallerController().InstallDefaultHybridCLR();
             AssetDatabase.SaveAssets();
             Build(BuildTarget.Android);
         }
