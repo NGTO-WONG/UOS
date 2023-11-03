@@ -108,6 +108,7 @@ namespace Game._Script.AOT.Editor
                     break;
             }
 
+            Debug.Log("打包log：123"+buildTarget);
             // 执行打包操作
             BuildPipeline.BuildPlayer(buildPlayerOptions);
 
