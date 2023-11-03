@@ -85,7 +85,7 @@ namespace Game._Script.AOT.Editor
                 scenes = scenes,
                 locationPathName = buildPath,
                 target = buildTarget,
-                options = BuildOptions.None
+                options = BuildOptions.CleanBuildCache
             };
             switch (buildTarget)
             {
