@@ -114,7 +114,15 @@ namespace Game._Script.AOT.Editor
 
         public static void BuildAndCopyAndRenameDll(BuildTarget buildTarget)
         {
-            PrebuildCommand.GenerateAll();
+            try
+            {
+                PrebuildCommand.GenerateAll();
+            }
+            catch (Exception e)
+            {
+                Debug.Log("log PrebuildCommand:"+e);
+                PrebuildCommand.GenerateAll();
+            }
             //生成linkFile
             var xmlPath = Application.dataPath + "/HybridCLRGenerate/link.xml";
             BuildLinkFile.GenerateLinkfile(xmlPath);
