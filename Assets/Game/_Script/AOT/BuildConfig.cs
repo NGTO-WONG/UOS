@@ -61,6 +61,11 @@ namespace Game._Script.AOT
         /// <summary>
         /// yooAsset打出来的资源包的位置
         /// </summary>
-        public string BundlePath => Directory.GetParent(Application.dataPath) + "/Bundles";
+        public string BundlePath = "/Users/huangqiang/RiderProjects/Bundles";
+        
+        /// <summary>
+        /// yooAsset打出来的资源包的位置
+        /// </summary>
+        public string buildFolder = "/Users/huangqiang/RiderProjects/Builds";
     }
 }
