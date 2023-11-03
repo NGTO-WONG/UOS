@@ -105,24 +105,6 @@ namespace Game._Script.AOT.Editor
 
             Debug.Log("打包log：" + "Build finished!");
         }
-        
-        public static void GenerateAll(BuildTarget target)
-        {
-            CompileDllCommand.CompileDll(target);
-            Il2CppDefGeneratorCommand.GenerateIl2CppDef();
-
-            // 这几个生成依赖HotUpdateDlls
-            LinkGeneratorCommand.GenerateLinkXml(target);
-
-            // 生成裁剪后的aot dll
-            StripAOTDllCommand.GenerateStripedAOTDlls(target);
-
-            // 桥接函数生成依赖于AOT dll，必须保证已经build过，生成AOT dll
-            MethodBridgeGeneratorCommand.GenerateMethodBridge(target);
-            ReversePInvokeWrapperGeneratorCommand.GenerateReversePInvokeWrapper(target);
-            AOTReferenceGeneratorCommand.GenerateAOTGenericReference(target);
-        }
-
 
         [MenuItem("HybridCLR/Build/Test", priority = 310)]
         public static void Test()
@@ -132,7 +114,7 @@ namespace Game._Script.AOT.Editor
 
         public static void BuildAndCopyAndRenameDll(BuildTarget buildTarget)
         {
-            GenerateAll(buildTarget);
+            PrebuildCommand.GenerateAll();
             //生成linkFile
             var xmlPath = Application.dataPath + "/HybridCLRGenerate/link.xml";
             BuildLinkFile.GenerateLinkfile(xmlPath);
