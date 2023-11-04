@@ -141,7 +141,7 @@ namespace Game._Script.AOT.Editor
             string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
             foreach (var dll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
             {
-                string sourcePath = $"{hotfixDllSrcDir}/{dll}";
+                string sourcePath = Directory.GetParent(Application.dataPath) + $"/{hotfixDllSrcDir}/{dll}";
                 string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{dll}.bytes";
                 File.Copy(sourcePath, dstPath, true);
                 Debug.Log("打包log：" +
