@@ -16,7 +16,7 @@ namespace Game._Script.HotUpdate
             {
                 var tempButton = Instantiate(originButton , originButton.transform.parent);
                 tempButton.gameObject.SetActive(true);
-                await UniTask.Delay(50);
+                await UniTask.Delay(500);
                 tempButton.GetComponentInChildren<TextMeshProUGUI>().text = item.Address;
                 var t = item.Address;
                 tempButton.onClick.AddListener(async () =>
