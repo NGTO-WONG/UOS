@@ -11,7 +11,7 @@ namespace Game._Script.HotUpdate
     public class SwticherScene : MonoBehaviour
     {
         [SerializeField] private Button originButton;
-        void Start()
+        async void Start()
         {
             Debug.Log("Abc");
             var package = YooAssets.GetPackage("DefaultPackage");
@@ -20,6 +20,8 @@ namespace Game._Script.HotUpdate
                 var tempButton = Instantiate(originButton , originButton.transform.parent);
                 tempButton.gameObject.SetActive(true);
                 tempButton.GetComponentInChildren<TextMeshProUGUI>().text = item.Address;
+                tempButton.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
+                await UniTask.Delay(300);
                 var t = item.Address;
                 tempButton.onClick.AddListener(async () =>
                 {
