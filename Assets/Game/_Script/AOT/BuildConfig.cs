@@ -40,15 +40,7 @@ namespace Game._Script.AOT
         /// <summary>
         /// 热更新版本号
         /// </summary>
-        public string HotUpdateVersion => GetHotUpdateVersion();
-
-        string GetHotUpdateVersion()
-        {
-            var temp = BuildVersion.Split('.');
-            var version = temp[0];
-            var hotUpdateVersion = Convert.ToInt32(temp[1]) +1;
-            return version +"."+ hotUpdateVersion+DateTime.Now.ToString("_yyyyMMdd_HHmm");
-        }
+        public string HotUpdateVersion => BuildVersion+DateTime.Now.ToString("_yyyyMMdd_HHmm");
         
         /// <summary>
         /// 游戏的第一个场景
