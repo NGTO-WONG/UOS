@@ -208,21 +208,6 @@ namespace Game._Script.AOT.Editor
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
             YooAssetBuild_IncrementalBuild(BuildTarget.Android);
         }
-
-        [MenuItem("T/TT")]
-        public static void TT()
-        {
-            
-            string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(BuildTarget.iOS);
-
-            foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
-            {
-                string sourcePath = Directory.GetParent(Application.dataPath)+"/"+$"{hotfixDllSrcDir}/{hotUpdateDll}";
-                string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{hotUpdateDll}.bytes";
-                Debug.Log("打包log：" +
-                          $"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
-            }
-        }
         
         public static void YooAssetBuild_IncrementalBuild(BuildTarget target)
         {
