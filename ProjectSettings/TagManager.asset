@@ -4,16 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Key
-  - WorldSpaceButton
-  - Floor
-  - CoinsGatherPoint
-  - Arrow Sign
-  - Traffic Light
-  - Building 3
-  - Campfire
-  - Timber Axe
-  - Windmill
+  - Stair
+  - WallRun
+  - Climb
+  - Fly
+  - Enemy
+  - LimitEdge
+  - Metal
+  - Stone
+  - Wood
+  - Sand
+  - Animal
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -21,14 +23,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - Movable
-  - Obstacle
-  - WorldSpaceButton
-  - CoinsSystem
-  - Coin
-  - EnvironmentProp
+  - Player
+  - Ground
   - 
   - 
   - 
@@ -36,21 +32,24 @@ TagManager:
   - 
   - 
   - 
+  - Character
+  - Climb
+  - Ladder
+  - Vault
+  - Wall Run
+  - Wall Climb
+  - 
+  - 
+  - Enemy
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Item
   - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: WorldSpace
-    uniqueID: 4179796161
     locked: 0
