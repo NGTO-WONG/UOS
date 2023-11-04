@@ -56,7 +56,7 @@ namespace Game._Script.AOT
         /// <summary>
         /// 热更新程序集的位置
         /// </summary>
-        public string HotfixAssembliesDstDir = Application.dataPath + "/Game/HotUpdateDll"; 
+        public string HotfixAssembliesDstDir => Application.dataPath + "/Game/HotUpdateDll"; 
         
         /// <summary>
         /// yooAsset打出来的资源包的位置
