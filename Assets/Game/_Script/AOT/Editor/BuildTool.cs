@@ -109,20 +109,12 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/Test", priority = 310)]
         public static void Test()
         {
-            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
+            BuildAndCopyAndRenameDll(BuildTarget.iOS);
         }
 
         public static void BuildAndCopyAndRenameDll(BuildTarget buildTarget)
         {
-            try
-            {
-                PrebuildCommand.GenerateAll();
-            }
-            catch (Exception e)
-            {
-                Debug.Log("log PrebuildCommand:"+e);
-                PrebuildCommand.GenerateAll();
-            }
+            PrebuildCommand.GenerateAll();
             //生成linkFile
             var xmlPath = Application.dataPath + "/HybridCLRGenerate/link.xml";
             BuildLinkFile.GenerateLinkfile(xmlPath);
@@ -141,7 +133,7 @@ namespace Game._Script.AOT.Editor
             string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
             foreach (var dll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
             {
-                string sourcePath = Directory.GetParent(Application.dataPath) + $"/{hotfixDllSrcDir}/{dll}";
+                string sourcePath = $"{hotfixDllSrcDir}/{dll}";
                 string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{dll}.bytes";
                 File.Copy(sourcePath, dstPath, true);
                 Debug.Log("打包log：" +
@@ -217,10 +209,19 @@ namespace Game._Script.AOT.Editor
             YooAssetBuild_IncrementalBuild(BuildTarget.Android);
         }
 
-        public static void UpdateBoth()
+        [MenuItem("T/TT")]
+        public static void TT()
         {
-            UpdateiOS();
-            UpdateAndroid();
+            
+            string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(BuildTarget.iOS);
+
+            foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
+            {
+                string sourcePath = Directory.GetParent(Application.dataPath)+"/"+$"{hotfixDllSrcDir}/{hotUpdateDll}";
+                string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{hotUpdateDll}.bytes";
+                Debug.Log("打包log：" +
+                          $"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
+            }
         }
         
         public static void YooAssetBuild_IncrementalBuild(BuildTarget target)
@@ -238,11 +239,10 @@ namespace Game._Script.AOT.Editor
 
             //拷贝dll
             string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
-            Debug.Log("打包log123：" + hotfixDllSrcDir);
 
             foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
             {
-                string sourcePath = $"{hotfixDllSrcDir}/{hotUpdateDll}";
+                string sourcePath = Directory.GetParent(Application.dataPath)+"/"+$"{hotfixDllSrcDir}/{hotUpdateDll}";
                 string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{hotUpdateDll}.bytes";
                 File.Copy(sourcePath, dstPath, true);
                 Debug.Log("打包log：" +
