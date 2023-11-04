@@ -11,6 +11,7 @@ namespace Game._Script.HotUpdate
         [SerializeField] private Button originButton;
         void Start()
         {
+            Debug.Log("Abc");
             var package = YooAssets.GetPackage("DefaultPackage");
             foreach (var item in package.GetAssetInfos("Scene"))
             {
