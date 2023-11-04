@@ -238,6 +238,8 @@ namespace Game._Script.AOT.Editor
 
             //拷贝dll
             string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
+            Debug.Log("打包log123：" + hotfixDllSrcDir);
+
             foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
             {
                 string sourcePath = $"{hotfixDllSrcDir}/{hotUpdateDll}";
