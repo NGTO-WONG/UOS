@@ -109,7 +109,7 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/Test", priority = 310)]
         public static void Test()
         {
-            BuildAndCopyAndRenameDll(BuildTarget.iOS);
+            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
         }
 
         public static void BuildAndCopyAndRenameDll(BuildTarget buildTarget)
