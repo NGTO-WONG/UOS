@@ -52,6 +52,14 @@ MonoBehaviour:
         FilterRuleName: CollectScene
         AssetTags: 
         UserData: 
+      - CollectPath: Assets/Game/_Script/HotUpdate/Suntail Village/Demo
+        CollectorGUID: f0f5c0bf397128d47b7e215f87ee90c4
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectScene
+        AssetTags: 
+        UserData: 
     - GroupName: Prefab
       GroupDesc: 
       AssetTags: 
