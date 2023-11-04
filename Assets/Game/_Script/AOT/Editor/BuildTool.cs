@@ -178,6 +178,7 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/4.UpdateBundleToCDN_UOS", priority = 104)]
         public static void UpdateBundleToCDN_UOS()
         {
+            return;//改为jenkins shell脚本
             if (BuildConfigAccessor.Instance.HostServerIP.Contains("buckets"))
             {
                 Debug.Log("打包log：" + "上传到cdn");
