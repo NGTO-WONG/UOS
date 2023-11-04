@@ -19,6 +19,7 @@ namespace Game._Script.HotUpdate
                 tempButton.gameObject.SetActive(true);
                 tempButton.GetComponentInChildren<TextMeshProUGUI>().text = item.Address;
                 tempButton.GetComponentInChildren<TextMeshProUGUI>().color=Color.red;
+                Debug.Log("测试");
                 var t = item.Address;
                 tempButton.onClick.AddListener(async () =>
                 {
