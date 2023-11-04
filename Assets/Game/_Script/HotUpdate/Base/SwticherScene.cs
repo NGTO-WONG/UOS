@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -33,6 +34,11 @@ namespace Game._Script.HotUpdate
             SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName);
             await handle.Task;
             Debug.Log($"Scene name is {sceneName}");
+        }
+
+        private void Update()
+        {
+            UnityEngine.Debug.Log("ASSSSS");
         }
     }
 }
