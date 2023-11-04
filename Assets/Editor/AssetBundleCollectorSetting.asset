@@ -43,15 +43,6 @@ MonoBehaviour:
         FilterRuleName: CollectScene
         AssetTags: 
         UserData: 
-      - CollectPath: Assets/Game/_Script/HotUpdate/Amazing Assets/Curved World/Example
-          Scenes
-        CollectorGUID: df5b0fd9ee20ef44386fa5c6991d10e1
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: CollectScene
-        AssetTags: 
-        UserData: 
       - CollectPath: Assets/Game/_Script/HotUpdate/Suntail Village/Demo
         CollectorGUID: f0f5c0bf397128d47b7e215f87ee90c4
         CollectorType: 0
