@@ -1,5 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ namespace Game._Script.HotUpdate
     public class SwticherScene : MonoBehaviour
     {
         [SerializeField] private Button originButton;
-        async void Start()
+        void Start()
         {
             Debug.Log("Abc");
             var package = YooAssets.GetPackage("DefaultPackage");
@@ -19,7 +20,6 @@ namespace Game._Script.HotUpdate
                 var tempButton = Instantiate(originButton , originButton.transform.parent);
                 tempButton.gameObject.SetActive(true);
                 tempButton.GetComponentInChildren<TextMeshProUGUI>().text = item.Address;
-                await UniTask.Delay(100);
                 var t = item.Address;
                 tempButton.onClick.AddListener(async () =>
                 {
