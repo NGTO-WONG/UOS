@@ -1,8 +1,8 @@
 using System;
-using System.Threading.Tasks;
 using Game.Script.AOT.YooAsset;
 using UnityEngine;
 using YooAsset;
+using Cysharp.Threading.Tasks;
 using HybridCLR;
 using System.Reflection;
 
@@ -33,7 +33,7 @@ namespace Game._Script.AOT
         /// <summary>
         /// 5 补充aot元数据
         /// </summary>
-        private async Task LoadMetadataForAOTAssembly()
+        private async UniTask LoadMetadataForAOTAssembly()
         {
 #if !UNITY_EDITOR
             HomologousImageMode mode = HomologousImageMode.SuperSet;
@@ -48,7 +48,7 @@ namespace Game._Script.AOT
                 Debug.Log($"LoadMetadataForAOTAssembly:{aotDll}. mode:{mode} ret:{err}");
             }
 #else
-            await Task.Delay(1);
+            await UniTask.Delay(1);
             Debug.Log("编辑器模式无需加载AOT元数据");
 #endif
         }
@@ -56,7 +56,7 @@ namespace Game._Script.AOT
         /// <summary>
         /// 6 读取HotUpdate热更新文件 
         /// </summary>
-        private async Task LoadHotUpdateDll()
+        private async UniTask LoadHotUpdateDll()
         {
 #if !UNITY_EDITOR
             string location = "HotUpdate.dll";
@@ -67,12 +67,12 @@ namespace Game._Script.AOT
             Assembly.Load(hotUpdateData);
 #else
             // Editor环境下，HotUpdate.dll.bytes已经被自动加载，不需要加载，重复加载反而会出问题。
-            await Task.Delay(1);
+            await UniTask.Delay(1);
             Debug.Log("编辑器模式无需加载热更Dll ");
 #endif
         }
 
-        private async Task InitializeYooAsset()
+        private async UniTask InitializeYooAsset()
         {
             // 初始化资源系统
             YooAssets.Initialize();
@@ -145,7 +145,7 @@ namespace Game._Script.AOT
             }
         }
 
-        private async Task<string> UpdatePackageVersion()
+        private async UniTask<string> UpdatePackageVersion()
         {
             var package = YooAssets.GetPackage("DefaultPackage");
             var operation = package.UpdatePackageVersionAsync(false);
@@ -165,7 +165,7 @@ namespace Game._Script.AOT
             }
         }
 
-        private async Task UpdatePackageManifest(string packageVersion)
+        private async UniTask UpdatePackageManifest(string packageVersion)
         {
             // 更新成功后自动保存版本号，作为下次初始化的版本。
             // 也可以通过operation.SavePackageVersion()方法保存。
@@ -183,7 +183,7 @@ namespace Game._Script.AOT
             }
         }
 
-        private async Task Download()
+        private async UniTask Download()
         {
             const int downloadingMaxNum = 10;
             const int failedTryAgain = 3;
@@ -237,7 +237,7 @@ namespace Game._Script.AOT
             }
         }
 
-        static async Task StartGame(string sceneName)
+        static async UniTask StartGame(string sceneName)
         {
             SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName);
             await handle.Task;
