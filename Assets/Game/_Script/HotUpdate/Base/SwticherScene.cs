@@ -9,14 +9,14 @@ namespace Game._Script.HotUpdate
     public class SwticherScene : MonoBehaviour
     {
         [SerializeField] private Button originButton;
-        void Start()
+        async void Start()
         {
-            // 注意：location只需要填写资源包里的任意资源地址。
             var package = YooAssets.GetPackage("DefaultPackage");
             foreach (var item in package.GetAssetInfos("Scene"))
             {
                 var tempButton = Instantiate(originButton , originButton.transform.parent);
                 tempButton.gameObject.SetActive(true);
+                await UniTask.DelayFrame(20);
                 tempButton.GetComponentInChildren<TextMeshProUGUI>().text = item.Address;
                 var t = item.Address;
                 tempButton.onClick.AddListener(async () =>
