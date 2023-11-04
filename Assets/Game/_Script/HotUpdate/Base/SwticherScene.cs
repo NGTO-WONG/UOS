@@ -38,7 +38,7 @@ namespace Game._Script.HotUpdate
 
         private void Update()
         {
-            UnityEngine.Debug.Log("ASSSSS");
+            //UnityEngine.Debug.Log("ASSSSS");
         }
     }
 }
