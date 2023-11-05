@@ -152,19 +152,8 @@ namespace Game._Script.AOT.Editor
             }
         }
 
-        /// <summary>
-        /// build资源
-        /// </summary>
-        /// <returns></returns>
-        [MenuItem("HybridCLR/Build/YooAsset打全量包", priority = 302)]
         public static void YooAssetBuild_ForceRebuild(BuildTarget buildTarget)
         {
-            // if (!Directory.Exists(BuildConfigAccessor.Instance.BundlePath))
-            // {
-            //     Directory.CreateDirectory(BuildConfigAccessor.Instance.BundlePath);
-            // }
-
-            //Directory.Delete(BuildConfigAccessor.Instance.BundlePath, true);
             YooAssetBuild(EBuildMode.ForceRebuild, BuildConfigAccessor.Instance.BuildVersion, buildTarget);
 
             Debug.Log("打包log：" + "上传到cdn");
@@ -178,7 +167,7 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/4.UpdateBundleToCDN_UOS", priority = 104)]
         public static void UpdateBundleToCDN_UOS()
         {
-            return;//改为jenkins shell脚本
+            #if flase //改为jenkins shell脚本
             if (BuildConfigAccessor.Instance.HostServerIP.Contains("buckets"))
             {
                 Debug.Log("打包log：" + "上传到cdn");
@@ -192,6 +181,7 @@ namespace Game._Script.AOT.Editor
             {
                 Debug.LogWarning("未填写cdn地址 ");
             }
+            #endif
         }
 
         public static void UpdateiOS()

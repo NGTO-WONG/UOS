@@ -20,7 +20,7 @@ namespace Game._Script.HotUpdate.MiniGame
                 
             var bullet = BulletPool.Instance.Get();
             bullet.transform.position = transform.position;
-            bullet.transform.DOMove(enemy.transform.position,1f);
+            var _=bullet.transform.DOMove(enemy.transform.position,1f);
             await UniTask.WhenAny(HitCheck(bullet),LifeTimeCheck());
             
             bullet.Release();
