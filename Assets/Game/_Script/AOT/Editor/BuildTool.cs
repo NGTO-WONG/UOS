@@ -240,7 +240,12 @@ namespace Game._Script.AOT.Editor
                 foreach (var file in files)
                 {
                     var fileName = Path.GetFileName(file);
-                    File.Copy(file, targetDirectory + "/" + fileName, true);
+                    var dstPath = targetDirectory + "/" + fileName;
+                    if (File.Exists(dstPath))
+                    {
+                        File.Delete(dstPath);
+                    }
+                    File.Move(file, dstPath);
                 }
 
                 Debug.Log("打包log：" + files + " to " + targetDirectory);
