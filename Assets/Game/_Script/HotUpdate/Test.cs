@@ -12,4 +12,8 @@ public class Test : MonoBehaviour
         Debug.Log(Application.targetFrameRate);
     }
 
+    private void Update()
+    {
+        UnityEngine.Debug.Log("ABC");
+    }
 }
