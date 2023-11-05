@@ -12,9 +12,8 @@ namespace Game._Script.HotUpdate
     public class SwticherScene : MonoBehaviour
     {
         [SerializeField] private Button originButton;
-        async void Start()
+        void Start()
         {
-            Application.targetFrameRate = 60;
             var package = YooAssets.GetPackage("DefaultPackage");
             foreach (var item in package.GetAssetInfos("Scene"))
             {
