@@ -88,7 +88,7 @@ namespace Game._Script.AOT.Editor
                 targetGroup = buildTarget== BuildTarget.iOS? BuildTargetGroup.iOS : BuildTargetGroup.Android,
                 target = buildTarget,
                 subtarget = 0,
-                options = BuildOptions.CleanBuildCache | BuildOptions.Development | BuildOptions.CompressWithLz4 | BuildOptions.EnableDeepProfilingSupport | BuildOptions.ConnectWithProfiler
+                options = BuildOptions.CleanBuildCache | BuildOptions.Development | BuildOptions.CompressWithLz4 | BuildOptions.ConnectWithProfiler
             };
             switch (buildTarget)
             {
