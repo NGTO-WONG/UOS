@@ -184,13 +184,18 @@ namespace Game._Script.AOT.Editor
             #endif
         }
 
-        [MenuItem("HybridCLR/MY/UpdateiOS")]
+        [MenuItem("HybridCLR/MY/UpdateiOSLocal")]
+        public static void UpdateiOSLocal()
+        {
+            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
+        }
+        
         public static void UpdateiOS()
         {
             BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
             BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
-            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
+            UpdateiOSLocal();
         }
         
         public static void UpdateAndroid()
