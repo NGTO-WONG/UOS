@@ -184,6 +184,7 @@ namespace Game._Script.AOT.Editor
             #endif
         }
 
+        [MenuItem("HybridCLR/MY/UpdateiOS")]
         public static void UpdateiOS()
         {
             BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
