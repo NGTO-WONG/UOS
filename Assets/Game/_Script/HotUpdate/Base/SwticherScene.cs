@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
@@ -30,7 +31,7 @@ namespace Game._Script.HotUpdate
             }
         }
 
-        static async UniTask SwitchScene(string sceneName)
+        static async Task SwitchScene(string sceneName)
         {
             SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName);
             await handle.Task;
