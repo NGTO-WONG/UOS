@@ -220,7 +220,11 @@ namespace Game._Script.AOT.Editor
             {
                 string sourcePath = Directory.GetParent(Application.dataPath)+"/"+$"{hotfixDllSrcDir}/{hotUpdateDll}";
                 string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{hotUpdateDll}.bytes";
-                File.Copy(sourcePath, dstPath, true);
+                if (File.Exists(dstPath))
+                {
+                    File.Delete(dstPath);
+                }
+                File.Move(sourcePath, dstPath);
                 Debug.Log("打包log：" +
                           $"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
             }
