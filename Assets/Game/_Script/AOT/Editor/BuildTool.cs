@@ -152,15 +152,12 @@ namespace Game._Script.AOT.Editor
             }
         }
 
-        [MenuItem("HybridCLR/MY/LocalForceiOS")]
-        public static void LocalForceiOS()
-        {
-            YooAssetBuild_ForceRebuild(BuildTarget.iOS);
-        }
-        
         public static void YooAssetBuild_ForceRebuild(BuildTarget buildTarget)
         {
             YooAssetBuild(EBuildMode.ForceRebuild, BuildConfigAccessor.Instance.BuildVersion, buildTarget);
+
+            Debug.Log("打包log：" + "上传到cdn");
+            UpdateBundleToCDN_UOS();
         }
 
         /// <summary>
@@ -187,18 +184,12 @@ namespace Game._Script.AOT.Editor
             #endif
         }
 
-        [MenuItem("HybridCLR/MY/UpdateiOSLocal")]
-        public static void UpdateiOSLocal()
-        {
-            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
-        }
-        
         public static void UpdateiOS()
         {
             BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
             BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
-            UpdateiOSLocal();
+            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
         }
         
         public static void UpdateAndroid()
@@ -229,8 +220,7 @@ namespace Game._Script.AOT.Editor
             {
                 string sourcePath = Directory.GetParent(Application.dataPath)+"/"+$"{hotfixDllSrcDir}/{hotUpdateDll}";
                 string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{hotUpdateDll}.bytes";
-                
-                File.Copy(sourcePath, dstPath,true);
+                File.Copy(sourcePath, dstPath, true);
                 Debug.Log("打包log：" +
                           $"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
             }
@@ -246,8 +236,7 @@ namespace Game._Script.AOT.Editor
                 foreach (var file in files)
                 {
                     var fileName = Path.GetFileName(file);
-                    var dstPath = targetDirectory + "/" + fileName;
-                    File.Copy(file, dstPath,true);
+                    File.Copy(file, targetDirectory + "/" + fileName, true);
                 }
 
                 Debug.Log("打包log：" + files + " to " + targetDirectory);
