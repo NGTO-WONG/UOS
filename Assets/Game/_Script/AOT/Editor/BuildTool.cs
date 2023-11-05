@@ -152,12 +152,15 @@ namespace Game._Script.AOT.Editor
             }
         }
 
+        [MenuItem("HybridCLR/MY/LocalForceiOS")]
+        public static void LocalForceiOS()
+        {
+            YooAssetBuild_ForceRebuild(BuildTarget.iOS);
+        }
+        
         public static void YooAssetBuild_ForceRebuild(BuildTarget buildTarget)
         {
             YooAssetBuild(EBuildMode.ForceRebuild, BuildConfigAccessor.Instance.BuildVersion, buildTarget);
-
-            Debug.Log("打包log：" + "上传到cdn");
-            UpdateBundleToCDN_UOS();
         }
 
         /// <summary>
@@ -226,11 +229,8 @@ namespace Game._Script.AOT.Editor
             {
                 string sourcePath = Directory.GetParent(Application.dataPath)+"/"+$"{hotfixDllSrcDir}/{hotUpdateDll}";
                 string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{hotUpdateDll}.bytes";
-                if (File.Exists(dstPath))
-                {
-                    File.Delete(dstPath);
-                }
-                File.Move(sourcePath, dstPath);
+                
+                File.Copy(sourcePath, dstPath,true);
                 Debug.Log("打包log：" +
                           $"[CopyHotUpdateAssembliesToStreamingAssets] copy hotfix dll {sourcePath} -> {dstPath}");
             }
@@ -247,11 +247,7 @@ namespace Game._Script.AOT.Editor
                 {
                     var fileName = Path.GetFileName(file);
                     var dstPath = targetDirectory + "/" + fileName;
-                    if (File.Exists(dstPath))
-                    {
-                        File.Delete(dstPath);
-                    }
-                    File.Move(file, dstPath);
+                    File.Copy(file, dstPath,true);
                 }
 
                 Debug.Log("打包log：" + files + " to " + targetDirectory);
