@@ -43,7 +43,7 @@ MonoBehaviour:
         FilterRuleName: CollectScene
         AssetTags: 
         UserData: 
-      - CollectPath: Assets/Game/_Script/HotUpdate/Suntail Village/Demo
+      - CollectPath: Assets/Game/_Script/HotUpdate/Suntail_Village/Demo
         CollectorGUID: f0f5c0bf397128d47b7e215f87ee90c4
         CollectorType: 0
         AddressRuleName: AddressByFileName
