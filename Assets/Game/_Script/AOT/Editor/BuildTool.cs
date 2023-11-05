@@ -184,6 +184,12 @@ namespace Game._Script.AOT.Editor
             #endif
         }
 
+        [MenuItem("HybridCLR/MY/TEST")]
+        public static void NAME()
+        {
+            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
+        }
+
         public static void UpdateiOS()
         {
             BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
