@@ -14,20 +14,22 @@ namespace Game._Script.HotUpdate
         [SerializeField] private Button originButton;
         async void Start()
         {
-            Debug.Log("Abc");
+            Application.targetFrameRate = 60;
             var package = YooAssets.GetPackage("DefaultPackage");
             foreach (var item in package.GetAssetInfos("Scene"))
             {
                 var tempButton = Instantiate(originButton , originButton.transform.parent);
                 tempButton.gameObject.SetActive(true);
                 tempButton.GetComponentInChildren<TextMeshProUGUI>().text = item.Address;
-                tempButton.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
-                await UniTask.Delay(300);
                 var t = item.Address;
-                tempButton.onClick.AddListener(async () =>
+                tempButton.onClick.AddListener(Call);
+                continue;
+
+
+                async void Call()
                 {
                     await SwitchScene(t);
-                });
+                }
             }
         }
 
@@ -36,11 +38,6 @@ namespace Game._Script.HotUpdate
             SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName);
             await handle.Task;
             Debug.Log($"Scene name is {sceneName}");
-        }
-
-        private void Update()
-        {
-            //UnityEngine.Debug.Log("ASSSSS");
         }
     }
 }
