@@ -19,6 +19,7 @@ namespace Suntail
 
         private void Update()
         {
+            playerCamera =GameObject.FindWithTag("Player");
             //Calculate the distance between a given object and the light source
             float cameraDistance = Vector3.Distance(playerCamera.transform.position, gameObject.transform.position);
 

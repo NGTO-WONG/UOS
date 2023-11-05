@@ -23,6 +23,7 @@ public class CustomRenderFeature : ScriptableRendererFeature
             if (cameraTransform == null || playerTransform == null)
                 return;
 
+            Debug.Log("A");
             // 计算相机到玩家的方向和距离
             Vector3 direction = playerTransform.position - cameraTransform.position;
             float distance = direction.magnitude;
