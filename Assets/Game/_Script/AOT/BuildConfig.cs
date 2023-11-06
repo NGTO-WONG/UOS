@@ -56,16 +56,20 @@ namespace Game._Script.AOT
         /// <summary>
         /// 热更新程序集的位置
         /// </summary>
-        public string HotfixAssembliesDstDir => Application.dataPath + "/Game/HotUpdateDll"; 
+        public string HotfixAssembliesDstDir => Application.dataPath + "/Game/HotUpdateDll";
+
+        public string BuildName;
+
+        /// <summary>
+        /// yooAsset打出来的资源包的位置
+        /// = "/Users/huangqiang/Desktop/Bundles"
+        /// </summary>
+        public string BundleFolder ;
         
         /// <summary>
         /// yooAsset打出来的资源包的位置
+        ///  "/Users/huangqiang/Desktop/Builds"
         /// </summary>
-        public string BundleFolder = "/Users/huangqiang/Desktop/Bundles";
-        
-        /// <summary>
-        /// yooAsset打出来的资源包的位置
-        /// </summary>
-        public string BuildFolder = "/Users/huangqiang/Desktop/Builds";
+        public string BuildFolder ;
     }
 }

@@ -16,13 +16,24 @@ namespace Game._Script.AOT.Editor
 {
     public static class BuildTool
     {
-        [MenuItem("HybridCLR/Build/BuildIOS", priority = 310)]
-        public static void BuildiOS()
+        public static void GetAndSaveEnvironmentVariable_Build()
         {
+            // 修改ScriptableObject的属性
+            
+            BuildConfigAccessor.Instance.BuildName = Environment.GetEnvironmentVariable("BuildName");
             BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
             BuildConfigAccessor.Instance.BuildVersion = Environment.GetEnvironmentVariable("Version");
             BuildConfigAccessor.Instance.BuildFolder = Environment.GetEnvironmentVariable("BuildFolder");
             BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
+            // 保存更改
+            EditorUtility.SetDirty(BuildConfigAccessor.Instance); // 标记为脏以保存
+            AssetDatabase.SaveAssets(); 
+        }
+        
+        [MenuItem("HybridCLR/Build/BuildIOS", priority = 310)]
+        public static void BuildiOS()
+        {
+            GetAndSaveEnvironmentVariable_Build();
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.iOS, ScriptingImplementation.IL2CPP);
             new InstallerController().InstallDefaultHybridCLR();
@@ -33,10 +44,7 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/BuildAndroid", priority = 311)]
         public static void BuildAndroid()
         {
-            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
-            BuildConfigAccessor.Instance.BuildVersion = Environment.GetEnvironmentVariable("Version");
-            BuildConfigAccessor.Instance.BuildFolder = Environment.GetEnvironmentVariable("BuildFolder");
-            BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
+            GetAndSaveEnvironmentVariable_Build();
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
             new InstallerController().InstallDefaultHybridCLR();
@@ -52,7 +60,7 @@ namespace Game._Script.AOT.Editor
 
         public static void Build(BuildTarget buildTarget)
         {
-            string buildName = Environment.GetEnvironmentVariable("BuildName");
+            var buildName = BuildConfigAccessor.Instance.BuildName;
             if (buildTarget== BuildTarget.Android)
             {
                 buildName += ".apk";
@@ -192,19 +200,28 @@ namespace Game._Script.AOT.Editor
         {
             YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
         }
+        
+        
+        public static void GetAndSaveEnvironmentVariable_Update()
+        {
+            // 修改ScriptableObject的属性
+            BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
+            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
+            // 保存更改
+            EditorUtility.SetDirty(BuildConfigAccessor.Instance); // 标记为脏以保存
+            AssetDatabase.SaveAssets(); 
+        }
 
         public static void UpdateiOS()
         {
-            BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
-            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
+            GetAndSaveEnvironmentVariable_Update();
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
             YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
         }
         
         public static void UpdateAndroid()
         {
-            BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
-            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
+            GetAndSaveEnvironmentVariable_Update();
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
             YooAssetBuild_IncrementalBuild(BuildTarget.Android);
         }
