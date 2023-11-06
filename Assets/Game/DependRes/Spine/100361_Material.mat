@@ -62,7 +62,7 @@ Material:
     m_Floats:
     - PixelSnap: 1
     - _BlendAmount: 0
-    - _Brightness: 0.61
+    - _Brightness: 0.7
     - _BumpScale: 1
     - _Cull: 0
     - _CustomRenderQueue: 0
