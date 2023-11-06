@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game/Scene/Root.unity
-    guid: 5dd3c99ca89dc4c2886d2ee6d9cf6697
+    path: Assets/Game/_Script/HotUpdate/Suntail_Village/Demo/Suntail_Village.unity
+    guid: f92dfda6574c0dd4bb785010bc97a9a0
   m_configObjects: {}
