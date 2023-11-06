@@ -16,18 +16,38 @@ namespace Game._Script.AOT
         {
             //1 初始化
             await InitializeYooAsset();
-            //2 获取资源版本
-            var packageVersion = await UpdatePackageVersion();
-            //3 更新资源清单
-            await UpdatePackageManifest(packageVersion);
-            //4 资源包下载 
-            await Download();
-            //5 补充AOT泛型
-            await LoadMetadataForAOTAssembly();
-            //6 读取HotUpdate热更新文件 
-            await LoadHotUpdateDll();
-            //7 更新结束 开始游戏
-            await StartGame(BuildConfigAccessor.Instance.GamePlayScene);
+            try
+            {
+                //2 获取资源版本
+                var packageVersion = await UpdatePackageVersion();
+                //3 更新资源清单
+                await UpdatePackageManifest(packageVersion);
+                //4 资源包下载 
+                await Download();
+                //5 补充AOT泛型
+                await LoadMetadataForAOTAssembly();
+                //6 读取HotUpdate热更新文件 
+                await LoadHotUpdateDll();
+                //7 更新结束 开始游戏
+                await StartGame(BuildConfigAccessor.Instance.GamePlayScene);
+            }
+            catch
+            {
+                //ios第一次可能会因为没有网络权限而失败 这里catch再跑一遍
+                //2 获取资源版本
+                var packageVersion = await UpdatePackageVersion();
+                //3 更新资源清单
+                await UpdatePackageManifest(packageVersion);
+                //4 资源包下载 
+                await Download();
+                //5 补充AOT泛型
+                await LoadMetadataForAOTAssembly();
+                //6 读取HotUpdate热更新文件 
+                await LoadHotUpdateDll();
+                //7 更新结束 开始游戏
+                await StartGame(BuildConfigAccessor.Instance.GamePlayScene);
+                
+            }
         }
 
         /// <summary>
