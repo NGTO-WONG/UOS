@@ -67,8 +67,8 @@ MonoBehaviour:
       - CollectPath: Assets/Game/_Script/HotUpdate/Suntail_Village
         CollectorGUID: 4bf005cf732d64ee2b1497d19a5a5076
         CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackSeparately
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
         FilterRuleName: CollectPrefab
         AssetTags: 
         UserData: 
