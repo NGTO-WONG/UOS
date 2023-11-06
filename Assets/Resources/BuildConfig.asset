@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuildVersion: V1.0
   GamePlayScene: Switcher
-  HostServerIP: https://a.unity.cn/client_api/v1/buckets/8c5cd9d5-dde9-4d66-a07f-68fc52feddb2/entry_by_path/content/?path=
+  HostServerIP: http://192.168.8.210:8000/
   BundleFolder: /Users/huangqiang/Desktop/Bundles
   BuildFolder: /Users/huangqiang/Desktop/Builds
