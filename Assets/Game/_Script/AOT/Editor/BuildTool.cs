@@ -19,7 +19,7 @@ namespace Game._Script.AOT.Editor
         public static void GetAndSaveEnvironmentVariable_Build()
         {
             // 修改ScriptableObject的属性
-            
+
             BuildConfigAccessor.Instance.BuildName = Environment.GetEnvironmentVariable("BuildName");
             BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
             BuildConfigAccessor.Instance.BuildVersion = Environment.GetEnvironmentVariable("Version");
@@ -27,29 +27,56 @@ namespace Game._Script.AOT.Editor
             BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
             // 保存更改
             EditorUtility.SetDirty(BuildConfigAccessor.Instance); // 标记为脏以保存
-            AssetDatabase.SaveAssets(); 
+            AssetDatabase.SaveAssets();
         }
-        
+
         [MenuItem("HybridCLR/Build/BuildIOS", priority = 310)]
         public static void BuildiOS()
         {
-            GetAndSaveEnvironmentVariable_Build();
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
-            PlayerSettings.SetScriptingBackend(BuildTargetGroup.iOS, ScriptingImplementation.IL2CPP);
-            new InstallerController().InstallDefaultHybridCLR();
-            AssetDatabase.SaveAssets();
-            Build(BuildTarget.iOS);
+            try
+            {
+                GetAndSaveEnvironmentVariable_Build();
+                EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
+                PlayerSettings.SetScriptingBackend(BuildTargetGroup.iOS, ScriptingImplementation.IL2CPP);
+                new InstallerController().InstallDefaultHybridCLR();
+                AssetDatabase.SaveAssets();
+                Build(BuildTarget.iOS);
+
+                // 如果PerformBuild方法中没有抛出异常，则构建成功
+                Debug.Log("Build succeeded.");
+            }
+            catch (System.Exception ex)
+            {
+                // 抛出异常，Unity编辑器会记录错误，但不会直接影响Jenkins
+                Debug.LogError("log报错" + ex.ToString());
+
+                // 为了使Jenkins能够响应此错误，需要抛出一个异常
+                throw;
+            }
         }
 
         [MenuItem("HybridCLR/Build/BuildAndroid", priority = 311)]
         public static void BuildAndroid()
         {
-            GetAndSaveEnvironmentVariable_Build();
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
-            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
-            new InstallerController().InstallDefaultHybridCLR();
-            AssetDatabase.SaveAssets();
-            Build(BuildTarget.Android);
+            try
+            {
+                GetAndSaveEnvironmentVariable_Build();
+                EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+                PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
+                new InstallerController().InstallDefaultHybridCLR();
+                AssetDatabase.SaveAssets();
+                Build(BuildTarget.Android);
+                // 如果PerformBuild方法中没有抛出异常，则构建成功
+                Debug.Log("Build succeeded.");
+            }
+            catch (System.Exception ex)
+            {
+                // 抛出异常，Unity编辑器会记录错误，但不会直接影响Jenkins
+                Debug.LogError("log报错" + ex.ToString());
+
+                // 为了使Jenkins能够响应此错误，需要抛出一个异常
+                throw;
+            }
         }
 
         public static void BuildBoth()
@@ -61,10 +88,11 @@ namespace Game._Script.AOT.Editor
         public static void Build(BuildTarget buildTarget)
         {
             var buildName = BuildConfigAccessor.Instance.BuildName;
-            if (buildTarget== BuildTarget.Android)
+            if (buildTarget == BuildTarget.Android)
             {
                 buildName += ".apk";
             }
+
             //华佗生成+改名+拷贝dll
             Debug.Log("打包log：" + "2 华佗生成dll + 2 改名+拷贝dll");
             BuildAndCopyAndRenameDll(buildTarget);
@@ -76,7 +104,8 @@ namespace Game._Script.AOT.Editor
             // 获取Assets文件夹的父目录，即项目的根目录
 
             // 设置保存路径为项目根目录的Builds子目录下  ios无法打ipa包 没开发者账号
-            string buildDirectory = Path.Combine(BuildConfigAccessor.Instance.BuildFolder, $"{buildTarget}/{DateTime.Now:V_yyyyMMdd_HH_mm_ss}");
+            string buildDirectory = Path.Combine(BuildConfigAccessor.Instance.BuildFolder,
+                $"{buildTarget}/{DateTime.Now:V_yyyyMMdd_HH_mm_ss}");
             string buildPath = Path.Combine(buildDirectory, buildName);
 
 
@@ -96,10 +125,11 @@ namespace Game._Script.AOT.Editor
                 scenes = scenes,
                 locationPathName = buildPath,
                 assetBundleManifestPath = null,
-                targetGroup = buildTarget== BuildTarget.iOS? BuildTargetGroup.iOS : BuildTargetGroup.Android,
+                targetGroup = buildTarget == BuildTarget.iOS ? BuildTargetGroup.iOS : BuildTargetGroup.Android,
                 target = buildTarget,
                 subtarget = 0,
-                options = BuildOptions.CleanBuildCache | BuildOptions.Development | BuildOptions.CompressWithLz4 | BuildOptions.ConnectWithProfiler
+                options = BuildOptions.CleanBuildCache | BuildOptions.Development | BuildOptions.CompressWithLz4 |
+                          BuildOptions.ConnectWithProfiler
             };
             switch (buildTarget)
             {
@@ -178,7 +208,7 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/4.UpdateBundleToCDN_UOS", priority = 104)]
         public static void UpdateBundleToCDN_UOS()
         {
-            #if flase //改为jenkins shell脚本
+#if flase //改为jenkins shell脚本
             if (BuildConfigAccessor.Instance.HostServerIP.Contains("buckets"))
             {
                 Debug.Log("打包log：" + "上传到cdn");
@@ -192,7 +222,7 @@ namespace Game._Script.AOT.Editor
             {
                 Debug.LogWarning("未填写cdn地址 ");
             }
-            #endif
+#endif
         }
 
         [MenuItem("HybridCLR/MY/TEST")]
@@ -200,8 +230,8 @@ namespace Game._Script.AOT.Editor
         {
             YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
         }
-        
-        
+
+
         public static void GetAndSaveEnvironmentVariable_Update()
         {
             // 修改ScriptableObject的属性
@@ -209,23 +239,46 @@ namespace Game._Script.AOT.Editor
             BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
             // 保存更改
             EditorUtility.SetDirty(BuildConfigAccessor.Instance); // 标记为脏以保存
-            AssetDatabase.SaveAssets(); 
+            AssetDatabase.SaveAssets();
         }
 
         public static void UpdateiOS()
         {
-            GetAndSaveEnvironmentVariable_Update();
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
-            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
+            try
+            {
+                GetAndSaveEnvironmentVariable_Update();
+                EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
+                YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
+                Debug.Log("Build succeeded.");
+            }
+            catch (System.Exception ex)
+            {
+                // 抛出异常，Unity编辑器会记录错误，但不会直接影响Jenkins
+                Debug.LogError("log报错" + ex.ToString());
+
+                // 为了使Jenkins能够响应此错误，需要抛出一个异常
+                throw;
+            }
         }
-        
+
         public static void UpdateAndroid()
         {
-            GetAndSaveEnvironmentVariable_Update();
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
-            YooAssetBuild_IncrementalBuild(BuildTarget.Android);
+            try
+            {
+                GetAndSaveEnvironmentVariable_Update();
+                EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+                YooAssetBuild_IncrementalBuild(BuildTarget.Android);
+            }
+            catch (System.Exception ex)
+            {
+                // 抛出异常，Unity编辑器会记录错误，但不会直接影响Jenkins
+                Debug.LogError("log报错" + ex.ToString());
+
+                // 为了使Jenkins能够响应此错误，需要抛出一个异常
+                throw;
+            }
         }
-        
+
         public static void YooAssetBuild_IncrementalBuild(BuildTarget target)
         {
             //生成热更新dll
@@ -244,7 +297,8 @@ namespace Game._Script.AOT.Editor
 
             foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
             {
-                string sourcePath = Directory.GetParent(Application.dataPath)+"/"+$"{hotfixDllSrcDir}/{hotUpdateDll}";
+                string sourcePath = Directory.GetParent(Application.dataPath) + "/" +
+                                    $"{hotfixDllSrcDir}/{hotUpdateDll}";
                 string dstPath = $"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}/{hotUpdateDll}.bytes";
                 File.Copy(sourcePath, dstPath, true);
                 Debug.Log("打包log：" +
