@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ff0cdaecb54d90b471e67692e52fa9, type: 3}
   m_Name: BuildConfig
   m_EditorClassIdentifier: 
-  BuildVersion: C1.0
+  BuildVersion: V1.0
   GamePlayScene: Switcher
   HostServerIP: http://192.168.8.210:8000/
   BuildName: Game

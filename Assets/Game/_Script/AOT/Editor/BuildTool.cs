@@ -147,10 +147,9 @@ namespace Game._Script.AOT.Editor
             Debug.Log("打包log：" + "Build finished!");
         }
 
-        [MenuItem("HybridCLR/Build/Test", priority = 310)]
-        public static void Test()
+        public static void TTT()
         {
-            BuildAndCopyAndRenameDll(BuildTarget.iOS);
+            YooAssetBuild_ForceRebuild(BuildTarget.iOS);
         }
 
         public static void BuildAndCopyAndRenameDll(BuildTarget buildTarget)
@@ -223,12 +222,6 @@ namespace Game._Script.AOT.Editor
                 Debug.LogWarning("未填写cdn地址 ");
             }
 #endif
-        }
-
-        [MenuItem("HybridCLR/MY/TEST")]
-        public static void NAME()
-        {
-            YooAssetBuild_IncrementalBuild(BuildTarget.iOS);
         }
 
 
