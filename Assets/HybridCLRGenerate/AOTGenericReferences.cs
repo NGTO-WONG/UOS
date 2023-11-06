@@ -141,7 +141,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Cysharp.Threading.Tasks.UniTaskCompletionSourceCore<Cysharp.Threading.Tasks.AsyncUnit>
 	// Cysharp.Threading.Tasks.UniTaskCompletionSourceCore<byte>
 	// Cysharp.Threading.Tasks.UniTaskCompletionSourceCore<int>
-	// Cysharp.Threading.Tasks.UniTaskExtensions.AttachExternalCancellationSource.<RunTask>d__5<int>
 	// Cysharp.Threading.Tasks.UniTaskExtensions.AttachExternalCancellationSource<int>
 	// System.Action<Cysharp.Threading.Tasks.UniTask>
 	// System.Action<object,object>
