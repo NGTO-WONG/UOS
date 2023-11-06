@@ -400,7 +400,8 @@ half4 ForwardPassFragmentSprite(VertexOutputLWRP input
 	uint renderingLayers = GetMeshRenderingLayerBackwardsCompatible();
 	outRenderingLayers = float4(EncodeMeshRenderingLayer(renderingLayers), 0, 0, 0);
 #endif
-	return pixel.a;
+
+	return pixel;
 }
 
 #endif
