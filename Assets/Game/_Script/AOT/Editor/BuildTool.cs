@@ -149,7 +149,6 @@ namespace Game._Script.AOT.Editor
 
         public static void TTT()
         {
-            YooAssetBuild_ForceRebuild(BuildTarget.iOS);
         }
 
         public static void BuildAndCopyAndRenameDll(BuildTarget buildTarget)
