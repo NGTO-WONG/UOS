@@ -35,7 +35,7 @@ namespace Game._Script.AOT
         /// <summary>
         /// 游戏大版本号 每次出全量包手动修改 基本都可以热更 没啥必要打全量包
         /// </summary>
-        public  string BuildVersion = "V1.0";
+        public string BuildVersion;
         
         /// <summary>
         /// 热更新版本号

@@ -19,7 +19,10 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/BuildIOS", priority = 310)]
         public static void BuildiOS()
         {
-
+            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
+            BuildConfigAccessor.Instance.BuildVersion = Environment.GetEnvironmentVariable("Version");
+            BuildConfigAccessor.Instance.BuildFolder = Environment.GetEnvironmentVariable("BuildFolder");
+            BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.iOS, ScriptingImplementation.IL2CPP);
             new InstallerController().InstallDefaultHybridCLR();
@@ -30,6 +33,10 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/Build/BuildAndroid", priority = 311)]
         public static void BuildAndroid()
         {
+            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
+            BuildConfigAccessor.Instance.BuildVersion = Environment.GetEnvironmentVariable("Version");
+            BuildConfigAccessor.Instance.BuildFolder = Environment.GetEnvironmentVariable("BuildFolder");
+            BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
             new InstallerController().InstallDefaultHybridCLR();
@@ -45,10 +52,6 @@ namespace Game._Script.AOT.Editor
 
         public static void Build(BuildTarget buildTarget)
         {
-            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
-            BuildConfigAccessor.Instance.BuildVersion = Environment.GetEnvironmentVariable("Version");
-            BuildConfigAccessor.Instance.BuildFolder = Environment.GetEnvironmentVariable("BuildFolder");
-            BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
             string buildName = Environment.GetEnvironmentVariable("BuildName");
             if (buildTarget== BuildTarget.Android)
             {
