@@ -110,6 +110,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4000012328382240}
     m_Modifications:
+    - target: {fileID: 158667079989703613, guid: 6e9e2e16df50a45ddb1234a604199373, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d31dc3f6f07d49149fff59f2877fd4b, type: 2}
     - target: {fileID: 1860306332279319977, guid: 6e9e2e16df50a45ddb1234a604199373, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -154,6 +158,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5477043266939627417, guid: 6e9e2e16df50a45ddb1234a604199373, type: 3}
+      propertyPath: skeletonDataAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3be2623a7e7e544249b8f5664c170394, type: 2}
     - target: {fileID: 8701852723785601984, guid: 6e9e2e16df50a45ddb1234a604199373, type: 3}
       propertyPath: m_Name
       value: Spine GameObject (100361)
