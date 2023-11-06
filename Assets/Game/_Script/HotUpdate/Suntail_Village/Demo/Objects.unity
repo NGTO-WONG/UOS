@@ -2706,8 +2706,60 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3810384679795191529, guid: 616213421fa24e04cb70909b50bbb1f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 381754629}
   m_SourcePrefab: {fileID: 100100000, guid: 616213421fa24e04cb70909b50bbb1f5, type: 3}
+--- !u!1 &381754628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3810384679795191529, guid: 616213421fa24e04cb70909b50bbb1f5, type: 3}
+  m_PrefabInstance: {fileID: 381754627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &381754629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381754628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!4 &382026075 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 969038836348427613, guid: 7893eddb3d4b735488a2243dc4d6b2a9, type: 3}
@@ -4664,6 +4716,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 527444180}
     m_Modifications:
+    - target: {fileID: 1209057710742818594, guid: 72f8b2a7dcddc7243905f74e952138ad, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.43769118
+      objectReference: {fileID: 0}
     - target: {fileID: 6178335449864234036, guid: 72f8b2a7dcddc7243905f74e952138ad, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -5436,6 +5492,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 864564302}
     m_Modifications:
+    - target: {fileID: 775165762248569310, guid: 54d8f17b9032f8b498eaf755480cd9de, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.44082472
+      objectReference: {fileID: 0}
     - target: {fileID: 4823091084791693664, guid: 54d8f17b9032f8b498eaf755480cd9de, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7658,6 +7718,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Support_2
       objectReference: {fileID: 0}
+    - target: {fileID: 6384483644234639997, guid: f24696545e8601d46b386ac0082e4530, type: 3}
+      propertyPath: m_AnimateCrossFading
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6384483644234639997, guid: f24696545e8601d46b386ac0082e4530, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.4891653
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9201,6 +9269,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 527444180}
     m_Modifications:
+    - target: {fileID: 2876844456497184284, guid: 44446ebd2f21ad34d8e96eb2454f4293, type: 3}
+      propertyPath: m_FadeMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876844456497184284, guid: 44446ebd2f21ad34d8e96eb2454f4293, type: 3}
+      propertyPath: m_AnimateCrossFading
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876844456497184284, guid: 44446ebd2f21ad34d8e96eb2454f4293, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.77681154
+      objectReference: {fileID: 0}
     - target: {fileID: 6110672056483817233, guid: 44446ebd2f21ad34d8e96eb2454f4293, type: 3}
       propertyPath: m_Name
       value: Wooden_Canopy_1
@@ -14951,6 +15031,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1223262462}
     m_Modifications:
+    - target: {fileID: 41730212179219605, guid: 2c95de3d047c638488af5b142f15b608, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.672291
+      objectReference: {fileID: 0}
     - target: {fileID: 513120177410693823, guid: 2c95de3d047c638488af5b142f15b608, type: 3}
       propertyPath: m_RootOrder
       value: 9

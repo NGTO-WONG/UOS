@@ -12,7 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _STRAIGHT_ALPHA_INPUT
+  - _RECEIVE_SHADOWS
   m_InvalidKeywords:
   - _ALPHAPREMULTIPLY_VERTEX_ONLY
   - _FULLRANGE_HARD_RAMP
@@ -75,7 +75,7 @@ Material:
     - _OutlineReferenceTexWidth: 1024
     - _OutlineSmoothness: 1
     - _OutlineWidth: 3
-    - _ReceiveShadows: 0
+    - _ReceiveShadows: 1
     - _RenderQueue: 0
     - _RimPower: 2
     - _Saturation: 1
@@ -83,7 +83,7 @@ Material:
     - _SrcBlend: 1
     - _StencilComp: 8
     - _StencilRef: 1
-    - _StraightAlphaInput: 1
+    - _StraightAlphaInput: 0
     - _ThresholdEnd: 0.25
     - _TintBlack: 0
     - _Use8Neighbourhood: 1
