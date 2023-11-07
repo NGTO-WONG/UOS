@@ -86,7 +86,7 @@ namespace Game._Script.AOT.Editor
 
         private static void CollectSvc()
         {
-            string savePath = ShaderVariantCollectorSettingData.Setting.SavePath;
+            string savePath = "Assets/Game/ShaderVar/MyShaderVariants.shadervariants";
 
             ShaderVariantCollector.Run(savePath,"DefaultPackage",Int32.MaxValue, CompletedCallback);
             return;
