@@ -95,11 +95,6 @@ ShaderVariantCollection:
       variants:
       - keywords: 
         passType: 0
-  - first: {fileID: 4800000, guid: 93446b5c5339d4f00b85c159e1159b7c, type: 3}
-    second:
-      variants:
-      - keywords: 
-        passType: 0
   - first: {fileID: 4800000, guid: a89bee29cffa951418fc1e2da94d1959, type: 3}
     second:
       variants:
@@ -111,10 +106,6 @@ ShaderVariantCollection:
       - keywords: 
         passType: 8
       - keywords: 
-        passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS
-        passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS _SHADOWS_SOFT
         passType: 13
   - first: {fileID: 4800000, guid: 0406db5a14f94604a8c57ccfbc9f3b46, type: 3}
     second:
@@ -134,9 +125,7 @@ ShaderVariantCollection:
         passType: 8
       - keywords: 
         passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS _SHADOWS_SOFT _TERRAIN_INSTANCED_PERPIXEL_NORMAL
-        passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS _TERRAIN_INSTANCED_PERPIXEL_NORMAL
+      - keywords: _TERRAIN_INSTANCED_PERPIXEL_NORMAL
         passType: 13
   - first: {fileID: 4800000, guid: b50955928b87e714ab31f7fe9003b849, type: 3}
     second:
@@ -147,13 +136,9 @@ ShaderVariantCollection:
         passType: 8
       - keywords: 
         passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS _SHADOWS_SOFT _SMOOTHNESSSOURCE_ALBEDO_ALPHA
+      - keywords: _SMOOTHNESSSOURCE_ALBEDO_ALPHA
         passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS _SHADOWS_SOFT _SMOOTHNESSSOURCE_METALLIC_ALPHA
-        passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS _SMOOTHNESSSOURCE_ALBEDO_ALPHA
-        passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS _SMOOTHNESSSOURCE_METALLIC_ALPHA
+      - keywords: _SMOOTHNESSSOURCE_METALLIC_ALPHA
         passType: 13
   - first: {fileID: 4800000, guid: 53efa1d97f5d9f74285d4330cda14e36, type: 3}
     second:
@@ -169,41 +154,21 @@ ShaderVariantCollection:
         passType: 8
       - keywords: _ENABLEWIND_ON
         passType: 8
-      - keywords: _ANCHORTHEFOLIAGEBASE_ON _COLOR2ENABLE_ON _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS
-          _SECONDCOLOROVERLAYTYPE_UV_BASED
+      - keywords: _ANCHORTHEFOLIAGEBASE_ON _COLOR2ENABLE_ON _ENABLEWIND_ON _SECONDCOLOROVERLAYTYPE_UV_BASED
         passType: 13
-      - keywords: _ANCHORTHEFOLIAGEBASE_ON _COLOR2ENABLE_ON _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS
-          _SECONDCOLOROVERLAYTYPE_UV_BASED _SHADOWS_SOFT
-        passType: 13
-      - keywords: _ANCHORTHEFOLIAGEBASE_ON _COLOR2ENABLE_ON _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS
-          _SECONDCOLOROVERLAYTYPE_WORLD_POSITION
-        passType: 13
-      - keywords: _ANCHORTHEFOLIAGEBASE_ON _COLOR2ENABLE_ON _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS
-          _SECONDCOLOROVERLAYTYPE_WORLD_POSITION _SHADOWS_SOFT
+      - keywords: _ANCHORTHEFOLIAGEBASE_ON _COLOR2ENABLE_ON _ENABLEWIND_ON _SECONDCOLOROVERLAYTYPE_WORLD_POSITION
         passType: 13
       - keywords: _ANCHORTHEFOLIAGEBASE_ON _ENABLEWIND_ON
         passType: 13
-      - keywords: _ANCHORTHEFOLIAGEBASE_ON _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS _SECONDCOLOROVERLAYTYPE_WORLD_POSITION
+      - keywords: _ANCHORTHEFOLIAGEBASE_ON _ENABLEWIND_ON _SECONDCOLOROVERLAYTYPE_WORLD_POSITION
         passType: 13
-      - keywords: _ANCHORTHEFOLIAGEBASE_ON _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS _SECONDCOLOROVERLAYTYPE_WORLD_POSITION
-          _SHADOWS_SOFT
+      - keywords: _COLOR2ENABLE_ON _ENABLEWIND_ON _SECONDCOLOROVERLAYTYPE_UV_BASED
         passType: 13
-      - keywords: _COLOR2ENABLE_ON _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS _SECONDCOLOROVERLAYTYPE_UV_BASED
-        passType: 13
-      - keywords: _COLOR2ENABLE_ON _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS _SECONDCOLOROVERLAYTYPE_UV_BASED
-          _SHADOWS_SOFT
-        passType: 13
-      - keywords: _COLOR2ENABLE_ON _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS _SECONDCOLOROVERLAYTYPE_WORLD_POSITION
-        passType: 13
-      - keywords: _COLOR2ENABLE_ON _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS _SECONDCOLOROVERLAYTYPE_WORLD_POSITION
-          _SHADOWS_SOFT
+      - keywords: _COLOR2ENABLE_ON _ENABLEWIND_ON _SECONDCOLOROVERLAYTYPE_WORLD_POSITION
         passType: 13
       - keywords: _ENABLEWIND_ON
         passType: 13
-      - keywords: _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS _SECONDCOLOROVERLAYTYPE_WORLD_POSITION
-        passType: 13
-      - keywords: _ENABLEWIND_ON _MAIN_LIGHT_SHADOWS _SECONDCOLOROVERLAYTYPE_WORLD_POSITION
-          _SHADOWS_SOFT
+      - keywords: _ENABLEWIND_ON _SECONDCOLOROVERLAYTYPE_WORLD_POSITION
         passType: 13
   - first: {fileID: 4800000, guid: 8bdcdc7ee298e594a9c20c61d25c33b6, type: 3}
     second:
@@ -226,23 +191,15 @@ ShaderVariantCollection:
         passType: 8
       - keywords: 
         passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS
-        passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS _SHADOWS_SOFT
-        passType: 13
   - first: {fileID: 4800000, guid: 35e513c05d70d5b4e923d7bd37975b36, type: 3}
     second:
       variants:
-      - keywords: _MAIN_LIGHT_SHADOWS
-        passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS _SHADOWS_SOFT
+      - keywords: 
         passType: 13
   - first: {fileID: -6465566751694194690, guid: 0bb4596125b68476b9ce0035f4d8b8cf, type: 3}
     second:
       variants:
-      - keywords: _DECAL_NORMAL_BLEND_LOW _MAIN_LIGHT_SHADOWS
-        passType: 13
-      - keywords: _DECAL_NORMAL_BLEND_LOW _MAIN_LIGHT_SHADOWS _SHADOWS_SOFT
+      - keywords: _DECAL_NORMAL_BLEND_LOW
         passType: 13
   - first: {fileID: 4800000, guid: 9f253724b2d29a3438eeea48277c25cb, type: 3}
     second:
@@ -250,14 +207,7 @@ ShaderVariantCollection:
       - keywords: 
         passType: 8
       - keywords: PIXELSNAP_ON _ALPHAPREMULTIPLY_VERTEX_ONLY _COLOR_ADJUST _FIXED_NORMALS_WORLDSPACE
-          _FULLRANGE_HARD_RAMP _MAIN_LIGHT_SHADOWS
+          _FULLRANGE_HARD_RAMP
         passType: 13
-      - keywords: PIXELSNAP_ON _ALPHAPREMULTIPLY_VERTEX_ONLY _COLOR_ADJUST _FIXED_NORMALS_WORLDSPACE
-          _FULLRANGE_HARD_RAMP _MAIN_LIGHT_SHADOWS _SHADOWS_SOFT
-        passType: 13
-      - keywords: _ALPHAPREMULTIPLY_VERTEX_ONLY _COLOR_ADJUST _FIXED_NORMALS_WORLDSPACE
-          _FULLRANGE_HARD_RAMP _MAIN_LIGHT_SHADOWS
-        passType: 13
-      - keywords: _ALPHAPREMULTIPLY_VERTEX_ONLY _COLOR_ADJUST _FIXED_NORMALS_WORLDSPACE
-          _FULLRANGE_HARD_RAMP _MAIN_LIGHT_SHADOWS _SHADOWS_SOFT
+      - keywords: _ALPHAPREMULTIPLY_VERTEX_ONLY _COLOR_ADJUST _FULLRANGE_HARD_RAMP
         passType: 13
