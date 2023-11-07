@@ -88,7 +88,7 @@ namespace Game._Script.AOT.Editor
         {
             string savePath = ShaderVariantCollectorSettingData.Setting.SavePath;
 
-            ShaderVariantCollector.Run(savePath,"DefaultPackage",Environment.ProcessorCount*2-1, CompletedCallback);
+            ShaderVariantCollector.Run(savePath,"DefaultPackage",Int32.MaxValue, CompletedCallback);
             return;
 
             void CompletedCallback()
