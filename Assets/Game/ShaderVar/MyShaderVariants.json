@@ -1,6 +1,6 @@
 {
-    "ShaderTotalCount": 31,
-    "VariantTotalCount": 50,
+    "ShaderTotalCount": 28,
+    "VariantTotalCount": 49,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -46,18 +46,6 @@
                     "PassType": 0,
                     "Keywords": [
                         "_SUNDISK_SIMPLE"
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Resources/unity_builtin_extra",
-            "ShaderName": "Hidden/Nature/Terrain/Utilities",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        ""
                     ]
                 }
             ]
@@ -195,13 +183,13 @@
             ]
         },
         {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CoreBlit.shader",
-            "ShaderName": "Hidden/Universal/CoreBlit",
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/BlitHDROverlay.shader",
+            "ShaderName": "Hidden/Universal/BlitHDROverlay",
             "ShaderVariantElements": [
                 {
                     "PassType": 0,
                     "Keywords": [
-                        ""
+                        "HDR_COLORSPACE_CONVERSION_AND_ENCODING"
                     ]
                 }
             ]
@@ -231,6 +219,12 @@
                 {
                     "PassType": 0,
                     "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 0,
+                    "Keywords": [
                         "_ALPHATEST_ON",
                         "_EMISSION"
                     ]
@@ -250,6 +244,13 @@
                         "_EMISSION",
                         "_SURFACE_TYPE_TRANSPARENT"
                     ]
+                },
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_FADING_ON",
+                        "_SOFTPARTICLES_ON"
+                    ]
                 }
             ]
         },
@@ -267,124 +268,6 @@
                     "PassType": 13,
                     "Keywords": [
                         "_TERRAIN_INSTANCED_PERPIXEL_NORMAL"
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Additive.shader",
-            "ShaderName": "Spine/Blend Modes/Skeleton PMA Additive",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        ""
-                    ]
-                },
-                {
-                    "PassType": 8,
-                    "Keywords": [
-                        ""
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Multiply.shader",
-            "ShaderName": "Spine/Blend Modes/Skeleton PMA Multiply",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        ""
-                    ]
-                },
-                {
-                    "PassType": 8,
-                    "Keywords": [
-                        ""
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Screen.shader",
-            "ShaderName": "Spine/Blend Modes/Skeleton PMA Screen",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        ""
-                    ]
-                },
-                {
-                    "PassType": 8,
-                    "Keywords": [
-                        ""
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLit.shader",
-            "ShaderName": "Universal Render Pipeline/Simple Lit",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 8,
-                    "Keywords": [
-                        ""
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        ""
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/ScreenSpaceAmbientOcclusion.shader",
-            "ShaderName": "Hidden/Universal Render Pipeline/ScreenSpaceAmbientOcclusion",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        ""
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/FallbackShader.shader",
-            "ShaderName": "Hidden/Core/FallbackError",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        ""
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.esotericsoftware.spine.urp-shaders/Shaders/Spine-Sprite-URP.shader",
-            "ShaderName": "Universal Render Pipeline/Spine/Sprite",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 8,
-                    "Keywords": [
-                        ""
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "PIXELSNAP_ON",
-                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
-                        "_COLOR_ADJUST",
-                        "_FIXED_NORMALS_WORLDSPACE",
-                        "_FULLRANGE_HARD_RAMP"
                     ]
                 }
             ]
@@ -415,6 +298,24 @@
                     "PassType": 13,
                     "Keywords": [
                         "_SMOOTHNESSSOURCE_METALLIC_ALPHA"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Additive.shader",
+            "ShaderName": "Spine/Blend Modes/Skeleton PMA Additive",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
                     ]
                 }
             ]
@@ -488,6 +389,60 @@
             ]
         },
         {
+            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Multiply.shader",
+            "ShaderName": "Spine/Blend Modes/Skeleton PMA Multiply",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Screen.shader",
+            "ShaderName": "Spine/Blend Modes/Skeleton PMA Screen",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLit.shader",
+            "ShaderName": "Universal Render Pipeline/Simple Lit",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
             "AssetPath": "Assets/Game/_Script/HotUpdate/Suntail_Village/Shaders/Suntail_Water.shader",
             "ShaderName": "Raygeas/Suntail Water",
             "ShaderVariantElements": [
@@ -507,6 +462,28 @@
                     "PassType": 13,
                     "Keywords": [
                         "_DECAL_NORMAL_BLEND_LOW"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.esotericsoftware.spine.urp-shaders/Shaders/Spine-Sprite-URP.shader",
+            "ShaderName": "Universal Render Pipeline/Spine/Sprite",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "PIXELSNAP_ON",
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
+                        "_FULLRANGE_HARD_RAMP"
                     ]
                 }
             ]
