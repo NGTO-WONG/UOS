@@ -118,15 +118,14 @@ namespace Game._Script.AOT.Editor
             CompileDllCommand.CompileDll(buildTarget,BuildConfigAccessor.Instance.IsDevelopmentBuild.Equals("1"));
             Il2CppDefGeneratorCommand.GenerateIl2CppDef();
             // 这几个生成依赖HotUpdateDlls
-            LinkGeneratorCommand.GenerateLinkXml(buildTarget);
+            var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
+            BuildLinkFile.GenerateLinkfile(xmlPath);
             // 生成裁剪后的aot dll
             StripAOTDllCommand.GenerateStripedAOTDlls(buildTarget);
             // 桥接函数生成依赖于AOT dll，必须保证已经build过，生成AOT dll
             MethodBridgeGeneratorCommand.GenerateMethodBridge(buildTarget);
             ReversePInvokeWrapperGeneratorCommand.GenerateReversePInvokeWrapper(buildTarget);
             AOTReferenceGeneratorCommand.GenerateAOTGenericReference(buildTarget);
-            var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
-            BuildLinkFile.GenerateLinkfile(xmlPath);
 
         }
         
