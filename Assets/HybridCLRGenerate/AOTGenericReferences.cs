@@ -17,8 +17,16 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// }} 
 
 	// {{ AOT generic types
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<object>
-	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<object>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<CubePlayer.<Move>d__3>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Game._Script.HotUpdate.Base.EventManager.<TriggerEvent>d__4<object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Game._Script.HotUpdate.Base.EventManager.<TriggerEventGuardScreen>d__3<object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<Game._Script.HotUpdate.MiniGame.AttackArea.<LifeTimeCheck>d__2>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<CubePlayer.<Move>d__3>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Game._Script.HotUpdate.Base.EventManager.<TriggerEvent>d__4<object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Game._Script.HotUpdate.Base.EventManager.<TriggerEventGuardScreen>d__3<object>>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<Game._Script.HotUpdate.MiniGame.AttackArea.<LifeTimeCheck>d__2>
 	// Cysharp.Threading.Tasks.ITaskPoolNode<object>
 	// Cysharp.Threading.Tasks.ITriggerHandler<object>
 	// Cysharp.Threading.Tasks.IUniTaskAsyncEnumerator<object>
@@ -296,22 +304,32 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 
 	public void RefMethods()
 	{
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,object>(Cysharp.Threading.Tasks.UniTask.Awaiter&,object&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<byte>,object>(Cysharp.Threading.Tasks.UniTask.Awaiter<byte>&,object&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<int>,object>(Cysharp.Threading.Tasks.UniTask.Awaiter<int>&,object&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<object>(object&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,CubePlayer.<Move>d__3>(Cysharp.Threading.Tasks.UniTask.Awaiter&,CubePlayer.<Move>d__3&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Game._Script.HotUpdate.Base.EventManager.<TriggerEvent>d__4<object>>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Game._Script.HotUpdate.Base.EventManager.<TriggerEvent>d__4<object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Game._Script.HotUpdate.MiniGame.AttackArea.<LifeTimeCheck>d__2>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Game._Script.HotUpdate.MiniGame.AttackArea.<LifeTimeCheck>d__2&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<byte>,Game._Script.HotUpdate.Base.EventManager.<TriggerEventGuardScreen>d__3<object>>(Cysharp.Threading.Tasks.UniTask.Awaiter<byte>&,Game._Script.HotUpdate.Base.EventManager.<TriggerEventGuardScreen>d__3<object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<byte>,Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1>(Cysharp.Threading.Tasks.UniTask.Awaiter<byte>&,Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<int>,Game._Script.HotUpdate.Base.EventManager.<TriggerEvent>d__4<object>>(Cysharp.Threading.Tasks.UniTask.Awaiter<int>&,Game._Script.HotUpdate.Base.EventManager.<TriggerEvent>d__4<object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<CubePlayer.<Move>d__3>(CubePlayer.<Move>d__3&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Game._Script.HotUpdate.Base.EventManager.<TriggerEvent>d__4<object>>(Game._Script.HotUpdate.Base.EventManager.<TriggerEvent>d__4<object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Game._Script.HotUpdate.Base.EventManager.<TriggerEventGuardScreen>d__3<object>>(Game._Script.HotUpdate.Base.EventManager.<TriggerEventGuardScreen>d__3<object>&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1>(Game._Script.HotUpdate.MiniGame.AttackArea.<HitCheck>d__1&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Game._Script.HotUpdate.MiniGame.AttackArea.<LifeTimeCheck>d__2>(Game._Script.HotUpdate.MiniGame.AttackArea.<LifeTimeCheck>d__2&)
 		// Cysharp.Threading.Tasks.UniTask<int> Cysharp.Threading.Tasks.UniTask.FromCanceled<int>(System.Threading.CancellationToken)
 		// Cysharp.Threading.Tasks.UniTask<int> Cysharp.Threading.Tasks.UniTaskExtensions.AttachExternalCancellation<int>(Cysharp.Threading.Tasks.UniTask<int>,System.Threading.CancellationToken)
 		// object DG.Tweening.TweenSettingsExtensions.SetEase<object>(object,DG.Tweening.Ease)
 		// object System.Activator.CreateInstance<object>()
 		// object System.Linq.Enumerable.FirstOrDefault<object>(System.Collections.Generic.IEnumerable<object>)
-		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,object>(System.Runtime.CompilerServices.TaskAwaiter&,object&)
-		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<System.Threading.Tasks.VoidTaskResult>.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,object>(System.Runtime.CompilerServices.TaskAwaiter&,object&)
-		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start<object>(object&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,object>(Cysharp.Threading.Tasks.UniTask.Awaiter&,object&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<int>,object>(Cysharp.Threading.Tasks.UniTask.Awaiter<int>&,object&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,object>(System.Runtime.CompilerServices.TaskAwaiter&,object&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<object>(object&)
+		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,Game._Script.HotUpdate.SwticherScene.<SwitchScene>d__2>(System.Runtime.CompilerServices.TaskAwaiter&,Game._Script.HotUpdate.SwticherScene.<SwitchScene>d__2&)
+		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<System.Threading.Tasks.VoidTaskResult>.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,Game._Script.HotUpdate.SwticherScene.<SwitchScene>d__2>(System.Runtime.CompilerServices.TaskAwaiter&,Game._Script.HotUpdate.SwticherScene.<SwitchScene>d__2&)
+		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start<Game._Script.HotUpdate.SwticherScene.<SwitchScene>d__2>(Game._Script.HotUpdate.SwticherScene.<SwitchScene>d__2&)
+		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,SwipHandler.<OnEndDrag>d__5>(Cysharp.Threading.Tasks.UniTask.Awaiter&,SwipHandler.<OnEndDrag>d__5&)
+		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<int>,Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0>(Cysharp.Threading.Tasks.UniTask.Awaiter<int>&,Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0&)
+		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,Game._Script.HotUpdate.SwticherScene.<>c__DisplayClass1_0.<<Start>g__Call|0>d>(System.Runtime.CompilerServices.TaskAwaiter&,Game._Script.HotUpdate.SwticherScene.<>c__DisplayClass1_0.<<Start>g__Call|0>d&)
+		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0>(Game._Script.HotUpdate.MiniGame.AttackArea.<OnTriggerEnter>d__0&)
+		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Game._Script.HotUpdate.SwticherScene.<>c__DisplayClass1_0.<<Start>g__Call|0>d>(Game._Script.HotUpdate.SwticherScene.<>c__DisplayClass1_0.<<Start>g__Call|0>d&)
+		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SwipHandler.<OnEndDrag>d__5>(SwipHandler.<OnEndDrag>d__5&)
 		// object& System.Runtime.CompilerServices.Unsafe.As<object,object>(object&)
 		// System.Void* System.Runtime.CompilerServices.Unsafe.AsPointer<object>(object&)
 		// object System.Threading.Interlocked.CompareExchange<object>(object&,object,object)
