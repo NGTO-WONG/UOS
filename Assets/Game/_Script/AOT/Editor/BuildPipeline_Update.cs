@@ -71,7 +71,7 @@ namespace Game._Script.AOT.Editor
                 foreach (var file in files)
                 {
                     var fileName = Path.GetFileName(file);
-                    var dst = Path.Combine(targetDirectory, fileName);
+                    var dst = Path.Combine(targetDirectory,"DefaultPackage", fileName);
                     Debug.Log("AW: "+file +"->" +dst);
                     File.Copy(file, dst, true);
                 }
