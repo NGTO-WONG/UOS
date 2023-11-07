@@ -67,12 +67,14 @@ namespace Game._Script.AOT.Editor
             {
                 var files = Directory.GetFiles(outputPackageDirectory);
                 string targetDirectory = Path.Combine(BuildConfigAccessor.Instance.BundleFolder, $"{target}",
-                    $"V{BuildConfigAccessor.Instance.BuildVersion}.0");
+                    $"V{BuildConfigAccessor.Instance.BuildVersion}.{BuildConfigAccessor.Instance.HotUpdateVersion}");
 
                 foreach (var file in files)
                 {
                     var fileName = Path.GetFileName(file);
-                    File.Copy(file, Path.Combine(targetDirectory, fileName), true);
+                    var dst = Path.Combine(targetDirectory, fileName);
+                    File.Copy(file, dst, true);
+                    Debug.Log("AW: "+file +"->" +dst);
                 }
 
                 Debug.Log("打包log：" + files + " to " + targetDirectory);
