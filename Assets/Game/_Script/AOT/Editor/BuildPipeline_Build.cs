@@ -46,6 +46,13 @@ namespace Game._Script.AOT.Editor
             Build(EditorUserBuildSettings.activeBuildTarget);
         }
 
+        [MenuItem("HybridCLR/MyFunc/test", priority = 101)]
+        public static void test()
+        {
+            var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
+            BuildLinkFile.GenerateLinkfile(xmlPath);
+        }
+
         static void Build(BuildTarget buildTarget)
         {
             Compile(buildTarget);           

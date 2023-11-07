@@ -146,9 +146,15 @@ namespace Game._Script.AOT.Editor
                 if (ass != null)
                 {
                     var name = ass.GetName().Name;
+                    
                     if (IsIngoreClass(name))
                     {
+                        Debug.Log(name+"  ::B");
                         continue;
+                    }
+                    else
+                    {
+                        Debug.Log(name+"  ::A");
                     }
 
                     if (!hashAss.Contains(name))
