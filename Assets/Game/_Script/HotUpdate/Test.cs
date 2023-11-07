@@ -6,12 +6,13 @@ using YooAsset;
 public class Test : MonoBehaviour
 {
     [SerializeField] private Button button;
+    [SerializeField] private Transform pos;
     void Start()
     {
+        
         button.onClick.AddListener(() =>
         {
-            var package = YooAssets.GetPackage("DefaultPackage");
-            package.UnloadUnusedAssets();
+            
         });
         Application.targetFrameRate = 300;
         QualitySettings.vSyncCount = 0;
