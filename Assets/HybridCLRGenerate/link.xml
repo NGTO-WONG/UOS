@@ -4,6 +4,7 @@
   <assembly fullname="Cinemachine" preserve="all" />
   <assembly fullname="DOTween" preserve="all" />
   <assembly fullname="Mono.Security" preserve="all" />
+  <assembly fullname="Newtonsoft.Json" preserve="all" />
   <assembly fullname="PPv2URPConverters" preserve="all" />
   <assembly fullname="spine-csharp" preserve="all" />
   <assembly fullname="spine-unity" preserve="all" />
