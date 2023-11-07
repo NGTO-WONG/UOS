@@ -25,13 +25,17 @@ namespace Game._Script.AOT.Editor
                 {
                     Debug.Log($"ShaderCount : {collection.shaderCount}");
                     Debug.Log($"VariantCount : {collection.variantCount}");
+                    ShaderVariantCollector.Run(savePath, packageName, variantCount, () =>
+                    {
+                        PrepareAndBuild(eBuildMode, buildTarget);
+                    });
+
                 }
                 else
                 {
                     Debug.Log("构建失败");
                 }
 
-                PrepareAndBuild(eBuildMode, buildTarget);
             };
                 
             ShaderVariantCollector.Run(savePath, packageName, variantCount,completedCallback);
