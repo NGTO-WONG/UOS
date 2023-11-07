@@ -49,8 +49,7 @@ namespace Game._Script.AOT.Editor
         [MenuItem("HybridCLR/MyFunc/test", priority = 101)]
         public static void test()
         {
-            var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
-            BuildLinkFile.GenerateLinkfile(xmlPath);
+            Compile(BuildTarget.iOS);    
         }
 
         static void Build(BuildTarget buildTarget)
@@ -115,11 +114,13 @@ namespace Game._Script.AOT.Editor
         /// <param name="buildTarget"></param>
         public static void Compile(BuildTarget buildTarget)
         {
+            
             CompileDllCommand.CompileDll(buildTarget,BuildConfigAccessor.Instance.IsDevelopmentBuild.Equals("1"));
             Il2CppDefGeneratorCommand.GenerateIl2CppDef();
             // 这几个生成依赖HotUpdateDlls
             var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
             BuildLinkFile.GenerateLinkfile(xmlPath);
+            AssetDatabase.Refresh();
             // 生成裁剪后的aot dll
             StripAOTDllCommand.GenerateStripedAOTDlls(buildTarget);
             // 桥接函数生成依赖于AOT dll，必须保证已经build过，生成AOT dll

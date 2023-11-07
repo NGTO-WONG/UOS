@@ -14,7 +14,6 @@ namespace GameMain.Scripts.HybridCLR
 				sb.AppendLine(typeof(T).ToString());
 			}
 
-			Reserved<CubeEnemy>(); // HotUpdate.dll
 			Reserved<Microsoft.Win32.SafeHandles.SafeFileHandle>(); // mscorlib.dll
 			Reserved<AOT.MonoPInvokeCallbackAttribute>(); // UnityEngine.CoreModule.dll
 			Reserved<DG.Tweening.Color2>(); // DOTween.dll
@@ -32,7 +31,7 @@ namespace GameMain.Scripts.HybridCLR
 			Reserved<Microsoft.Win32.SafeHandles.SafePipeHandle>(); // System.Core.dll
 			Reserved<UnityEngine.U2D.IK.CCDSolver2D>(); // Unity.2D.IK.Runtime.dll
 			Reserved<UnityEngine.Event>(); // UnityEngine.IMGUIModule.dll
-			Reserved<UnityEngine.LightAnchor>(); // Unity.RenderPipelines.Core.Runtime.dll
+			Reserved<UnityEngine.Experimental.Rendering.XRLayout>(); // Unity.RenderPipelines.Core.Runtime.dll
 			Reserved<UnityEngine.XR.InputDevices>(); // UnityEngine.XRModule.dll
 			Reserved<Unity.XR.OpenVR.OpenVRHMD>(); // Unity.InputSystem.dll
 			Reserved<UnityEngine.IntegratedSubsystem>(); // UnityEngine.SubsystemsModule.dll

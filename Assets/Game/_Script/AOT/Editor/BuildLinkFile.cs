@@ -13,13 +13,6 @@ namespace Game._Script.AOT.Editor
 {
     public static class BuildLinkFile
     {
-        [MenuItem("A/A")]
-        public static void Test()
-        {
-            var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
-            GenerateLinkfile(xmlPath);
-        }
-        
         private static string _il2cppManagedPath = string.Empty;
 
         private static string il2cppManagedPath
@@ -87,7 +80,7 @@ namespace Game._Script.AOT.Editor
             "editor", "netstandard", "Bee.", "dnlib", ".framework", "Test", "plastic", "Gradle", "log4net", "Analytics", "System.Drawing",
             "NVIDIA", "VisualScripting", "UIElements", "IMGUIModule", ".Cecil", "GIModule", "GridModule", "HotReloadModule", "StreamingModule",
             "TLSModule", "XRModule", "WindModule", "VRModule", "VirtualTexturingModule", "compiler", "BuildProgram", "NiceIO", "ClothModule",
-            "VFXModule", "ExCSS", "GeneratedCode", "mscorlib", "System", "SyncToolsDef", "ReportGeneratorMerged","InputManagerEntry"
+            "VFXModule", "ExCSS", "GeneratedCode", "mscorlib", "System", "SyncToolsDef", "ReportGeneratorMerged"
         };
         private static bool IsIngoreClass(string classFullName)
         {
@@ -105,7 +98,7 @@ namespace Game._Script.AOT.Editor
 
         private static List<string> IgnoreType = new()
         {
-            "jetbrain", "editor", "PrivateImplementationDetails", "experimental", "microsoft.", "compiler","InputManagerEntry"
+            "jetbrain", "editor", "PrivateImplementationDetails", "experimental", "microsoft.", "compiler"
         };
         private static bool IsIgnoreType(string typeFullName)
         {
@@ -146,15 +139,9 @@ namespace Game._Script.AOT.Editor
                 if (ass != null)
                 {
                     var name = ass.GetName().Name;
-                    
                     if (IsIngoreClass(name))
                     {
-                        Debug.Log(name+"  ::B");
                         continue;
-                    }
-                    else
-                    {
-                        Debug.Log(name+"  ::A");
                     }
 
                     if (!hashAss.Contains(name))
@@ -177,53 +164,40 @@ namespace Game._Script.AOT.Editor
                     continue;
                 }
 
-                if (string.IsNullOrEmpty(ass.Location))
+                if (ass.Location=="")
+                {
+                    Debug.Log(ass.FullName+" ASD");
+                    continue;
+                }
+
+                var assPath = Path.GetFullPath(ass.Location).Replace('\\', '/');
+                if (assPath.Contains(localPath) && assPath.ToLower().Contains("/editor/"))
                 {
                     continue;
                 }
 
-                //try
+                var name = ass.GetName().Name;
+                if (hashAss.Contains(name))
                 {
-                    //Debug.Log(ass.Location);
-                    var assPath = Path.GetFullPath(ass.Location).Replace('\\', '/');
-                    if (assPath.Contains(localPath) && assPath.ToLower().Contains("/editor/"))
-                    {
-                        continue;
-                    }
-
-                    var name = ass.GetName().Name;
-                    if (hashAss.Contains(name))
-                    {
-                        continue;
-                    }
-
-                    var ignore = false;
-                    foreach (var n in names)
-                    {
-                        if (name.Contains(n))
-                        {
-                            ignore = true;
-                            break;
-                        }
-                    }
-                    if (ignore)
-                    {
-                        Debug.Log("A:"+name);
-                        continue;
-                    }
-                    else
-                    {
-                        Debug.Log("B:"+name);
-                    }
-
-                    hashAss.Add(name);
-                    AllAssemblies[name] = ass;
+                    continue;
                 }
-                //catch (Exception ex)
-                // {
-                //     UnityEngine.Debug.Log(ex.Message);
-                //     UnityEngine.Debug.Log(ex.StackTrace);
-                // }
+
+                var ignore = false;
+                foreach (var n in names)
+                {
+                    if (name.Contains(n))
+                    {
+                        ignore = true;
+                        break;
+                    }
+                }
+                if (ignore)
+                {
+                    continue;
+                }
+
+                hashAss.Add(name);
+                AllAssemblies[name] = ass;
             }
 
             var fullPreserve = new List<string>();
@@ -308,7 +282,6 @@ namespace Game._Script.AOT.Editor
             writer.WriteEndDocument();
             writer.Close();
 
-            
             checkass(Path.Combine(Application.dataPath, "Plugins", "HybridCLR", "Generated", "ReservedAssembly.cs"));
         }
 
@@ -433,7 +406,7 @@ namespace GameMain.Scripts.HybridCLR
             var assCsharp = watchAssemblies.First(a => a.GetName().Name == "HotUpdate");
             if (assCsharp != null)
             {
-                successAssemblies.Add("hotUpdate.dll", assCsharp);
+                successAssemblies.Add("HotUpdate.dll", assCsharp);
             }
 
             var distAssembly = new Dictionary<string, Assembly>();            
@@ -538,6 +511,10 @@ namespace GameMain.Scripts.HybridCLR
                     {
                         continue;
                     }
+                    if (name.Contains("LightAnchor"))
+                    {
+                        continue;
+                    }
 
                     var atts = new List<CustomAttributeData>(type.CustomAttributes.Where(a => a.AttributeType.Name.Contains("Obsolete")));
                     if (atts.Count > 0)
@@ -563,6 +540,7 @@ namespace GameMain.Scripts.HybridCLR
                                 }
                                 else
                                 {
+
                                     info.Add(type.FullName, ass.Location);
                                 }
                                 classOk = true;
@@ -579,10 +557,13 @@ namespace GameMain.Scripts.HybridCLR
             foreach (var k in keys)
             {
                 var x = info[k];
+                if (Path.GetFileName(x)=="HotUpdate.dll")
+                {
+                    continue;   
+                }
                 sb.AppendLine($"\t\t\tReserved<{k}>(); // {Path.GetFileName(x)}");
             }
 
-            Debug.Log(fileName);
             File.WriteAllText(fileName, codeTemplate.Replace("//Replace This", sb.ToString()));
         }
     }

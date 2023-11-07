@@ -339,6 +339,7 @@
   <assembly fullname="Unity.RenderPipelines.Core.Runtime">
     <type fullname="&lt;&gt;f__AnonymousType0`2" preserve="all" />
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
+    <type fullname="UnityEngine.InputManagerEntry" preserve="all" />
     <type fullname="UnityEngine.InputRegistering" preserve="all" />
     <type fullname="UnityEngine.LightAnchor" preserve="all" />
     <type fullname="UnityEngine.Rendering.CameraSwitcher" preserve="all" />
@@ -615,6 +616,9 @@
     <type fullname="UnityEngine.Rendering.UI.DebugUIHandlerWidget" preserve="all" />
     <type fullname="UnityEngine.Rendering.UI.UIFoldout" preserve="all" />
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1+MonoScriptData" preserve="all" />
+    <type fullname="UnityEngine.InputManagerEntry+Kind" preserve="all" />
+    <type fullname="UnityEngine.InputManagerEntry+Axis" preserve="all" />
+    <type fullname="UnityEngine.InputManagerEntry+Joy" preserve="all" />
     <type fullname="UnityEngine.InputRegistering+&lt;&gt;c" preserve="all" />
     <type fullname="UnityEngine.InputRegistering+&lt;&gt;c__DisplayClass4_0" preserve="all" />
     <type fullname="UnityEngine.InputRegistering+&lt;&gt;c__DisplayClass4_1" preserve="all" />
