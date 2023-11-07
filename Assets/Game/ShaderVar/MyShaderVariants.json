@@ -1,6 +1,6 @@
 {
     "ShaderTotalCount": 31,
-    "VariantTotalCount": 62,
+    "VariantTotalCount": 74,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -258,6 +258,13 @@
                     "Keywords": [
                         "_MAIN_LIGHT_SHADOWS"
                     ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SHADOWS_SOFT"
+                    ]
                 }
             ]
         },
@@ -310,6 +317,14 @@
                     "PassType": 13,
                     "Keywords": [
                         ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SHADOWS_SOFT",
+                        "_TERRAIN_INSTANCED_PERPIXEL_NORMAL"
                     ]
                 },
                 {
@@ -427,7 +442,29 @@
                         "_COLOR2ENABLE_ON",
                         "_ENABLEWIND_ON",
                         "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED",
+                        "_SHADOWS_SOFT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
                         "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
@@ -444,6 +481,16 @@
                         "_ENABLEWIND_ON",
                         "_MAIN_LIGHT_SHADOWS",
                         "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
@@ -461,7 +508,27 @@
                         "_COLOR2ENABLE_ON",
                         "_ENABLEWIND_ON",
                         "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED",
+                        "_SHADOWS_SOFT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
                         "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
@@ -476,6 +543,15 @@
                         "_ENABLEWIND_ON",
                         "_MAIN_LIGHT_SHADOWS",
                         "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -537,6 +613,13 @@
                     "Keywords": [
                         "_MAIN_LIGHT_SHADOWS"
                     ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SHADOWS_SOFT"
+                    ]
                 }
             ]
         },
@@ -548,6 +631,13 @@
                     "PassType": 13,
                     "Keywords": [
                         "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -597,11 +687,34 @@
                 {
                     "PassType": 13,
                     "Keywords": [
+                        "PIXELSNAP_ON",
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SHADOWS_SOFT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
                         "_ALPHAPREMULTIPLY_VERTEX_ONLY",
                         "_COLOR_ADJUST",
                         "_FIXED_NORMALS_WORLDSPACE",
                         "_FULLRANGE_HARD_RAMP",
                         "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
