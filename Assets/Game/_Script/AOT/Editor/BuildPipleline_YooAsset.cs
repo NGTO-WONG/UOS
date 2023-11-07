@@ -41,6 +41,7 @@ namespace Game._Script.AOT.Editor
                 bool saveSuccess = EditorSceneManager.SaveScene(SceneManager.GetActiveScene()
                     , scenePath);
 
+                AssetDatabase.Refresh();
                 PrepareAndBuild(eBuildMode, buildTarget);
             };
                 
