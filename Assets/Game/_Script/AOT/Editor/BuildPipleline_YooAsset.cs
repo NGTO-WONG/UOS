@@ -40,24 +40,8 @@ namespace Game._Script.AOT.Editor
 
         private static void PrepareAndBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
         {
-            UpdateBuildVersion(eBuildMode);
             CopyDlls(buildTarget);
             BuildAssetBundles(buildTarget, eBuildMode);
-        }
-
-        private static void UpdateBuildVersion(EBuildMode eBuildMode)
-        {
-            if (eBuildMode == EBuildMode.ForceRebuild)
-            {
-                BuildConfigAccessor.Instance.HotUpdateVersion = 0;
-            }
-            else
-            {
-                BuildConfigAccessor.Instance.HotUpdateVersion += 1;
-            }
-
-            EditorUtility.SetDirty(BuildConfigAccessor.Instance);
-            AssetDatabase.SaveAssets();
         }
 
         private static void CopyDlls(BuildTarget buildTarget)
