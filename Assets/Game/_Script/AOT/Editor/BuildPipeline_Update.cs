@@ -30,8 +30,8 @@ namespace Game._Script.AOT.Editor
         public static void UpdateiOS()
         {
             GetAndSaveEnvironmentVariable_Update();
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
-            IncrementalBuild(BuildTarget.Android);
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
+            IncrementalBuild(BuildTarget.iOS);
         }
 
 
