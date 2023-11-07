@@ -126,7 +126,7 @@ namespace Game._Script.AOT.Editor
             ReversePInvokeWrapperGeneratorCommand.GenerateReversePInvokeWrapper(buildTarget);
             AOTReferenceGeneratorCommand.GenerateAOTGenericReference(buildTarget);
             var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
-            BuildLinkFileOld.GenerateLinkfile(xmlPath);
+            BuildLinkFile.GenerateLinkfile(xmlPath);
 
         }
         
