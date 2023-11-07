@@ -12,7 +12,7 @@ namespace Game._Script.AOT.Editor
         public static void YooAssetBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
         {
             CollectShaderVariants("Assets/Game/ShaderVar/MyShaderVariants.shadervariants", "DefaultPackage",
-                Environment.ProcessorCount * 2 - 1, buildTarget, eBuildMode);
+                99999999, buildTarget, eBuildMode);
         }
 
         private static void CollectShaderVariants(string savePath, string packageName, int variantCount,
@@ -34,9 +34,6 @@ namespace Game._Script.AOT.Editor
             {
                 throw new Exception("Failed to Collect shader Variants.");
             }
-
-            EditorTools.CloseUnityGameWindow();
-            EditorApplication.Exit(0);
 
             PrepareAndBuild(eBuildMode, buildTarget);
         }
