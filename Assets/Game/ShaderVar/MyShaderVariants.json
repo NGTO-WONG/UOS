@@ -1,6 +1,6 @@
 {
     "ShaderTotalCount": 28,
-    "VariantTotalCount": 49,
+    "VariantTotalCount": 47,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -219,12 +219,6 @@
                 {
                     "PassType": 0,
                     "Keywords": [
-                        ""
-                    ]
-                },
-                {
-                    "PassType": 0,
-                    "Keywords": [
                         "_ALPHATEST_ON",
                         "_EMISSION"
                     ]
@@ -243,13 +237,6 @@
                     "Keywords": [
                         "_EMISSION",
                         "_SURFACE_TYPE_TRANSPARENT"
-                    ]
-                },
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        "_FADING_ON",
-                        "_SOFTPARTICLES_ON"
                     ]
                 }
             ]
