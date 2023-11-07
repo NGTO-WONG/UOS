@@ -32,7 +32,7 @@ namespace GameMain.Scripts.HybridCLR
 			Reserved<Microsoft.Win32.SafeHandles.SafePipeHandle>(); // System.Core.dll
 			Reserved<UnityEngine.U2D.IK.CCDSolver2D>(); // Unity.2D.IK.Runtime.dll
 			Reserved<UnityEngine.Event>(); // UnityEngine.IMGUIModule.dll
-			Reserved<UnityEngine.InputManagerEntry>(); // Unity.RenderPipelines.Core.Runtime.dll
+			Reserved<UnityEngine.LightAnchor>(); // Unity.RenderPipelines.Core.Runtime.dll
 			Reserved<UnityEngine.XR.InputDevices>(); // UnityEngine.XRModule.dll
 			Reserved<Unity.XR.OpenVR.OpenVRHMD>(); // Unity.InputSystem.dll
 			Reserved<UnityEngine.IntegratedSubsystem>(); // UnityEngine.SubsystemsModule.dll

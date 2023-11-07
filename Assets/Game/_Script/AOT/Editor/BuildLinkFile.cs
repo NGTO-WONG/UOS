@@ -532,6 +532,11 @@ namespace GameMain.Scripts.HybridCLR
                     {
                         continue;
                     }
+                    
+                    if (name.Contains("InputManagerEntry"))
+                    {
+                        continue;
+                    }
 
                     var atts = new List<CustomAttributeData>(type.CustomAttributes.Where(a => a.AttributeType.Name.Contains("Obsolete")));
                     if (atts.Count > 0)
@@ -572,10 +577,6 @@ namespace GameMain.Scripts.HybridCLR
             var keys = new HashSet<string>(info.Keys);
             foreach (var k in keys)
             {
-                if (IgnoreClass.Contains(k))
-                {
-                    continue;
-                }
                 var x = info[k];
                 sb.AppendLine($"\t\t\tReserved<{k}>(); // {Path.GetFileName(x)}");
             }
