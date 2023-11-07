@@ -142,24 +142,26 @@ namespace Game._Script.AOT
 
             string GetHostServerURL()
             {
+                var versionStr = "V" + BuildConfigAccessor.Instance.BuildVersion + "." +
+                                 BuildConfigAccessor.Instance.HotUpdateVersion;
 #if UNITY_EDITOR
                 if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{versionStr}";
                 else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{versionStr}";
                 else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{versionStr}";
                 else
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{versionStr}";
 #else
                 if (Application.platform == RuntimePlatform.Android)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{versionStr}";
                 else if (Application.platform == RuntimePlatform.IPhonePlayer)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{versionStr}";
                 else if (Application.platform == RuntimePlatform.WebGLPlayer)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{versionStr}";
                 else
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{versionStr}";
 #endif
                 
             }
