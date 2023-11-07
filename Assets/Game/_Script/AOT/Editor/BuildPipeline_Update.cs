@@ -73,8 +73,8 @@ namespace Game._Script.AOT.Editor
                 {
                     var fileName = Path.GetFileName(file);
                     var dst = Path.Combine(targetDirectory, fileName);
-                    File.Copy(file, dst, true);
                     Debug.Log("AW: "+file +"->" +dst);
+                    File.Copy(file, dst, true);
                 }
 
                 Debug.Log("打包log：" + files + " to " + targetDirectory);
