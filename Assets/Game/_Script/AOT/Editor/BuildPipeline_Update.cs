@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Cysharp.Threading.Tasks;
 using HybridCLR.Editor;
 using HybridCLR.Editor.Commands;
 using UnityEditor;
@@ -20,22 +21,22 @@ namespace Game._Script.AOT.Editor
             AssetDatabase.SaveAssets();
         }
 
-        public static void UpdateAndroid()
+        public static async UniTask UpdateAndroid()
         {
             GetAndSaveEnvironmentVariable_Update();
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
-            IncrementalBuild(BuildTarget.Android);
+            await IncrementalBuild(BuildTarget.Android);
         }
 
-        public static void UpdateiOS()
+        public static async UniTask UpdateiOS()
         {
             GetAndSaveEnvironmentVariable_Update();
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
-            IncrementalBuild(BuildTarget.iOS);
+            await IncrementalBuild(BuildTarget.iOS);
         }
 
 
-        public static void IncrementalBuild(BuildTarget target)
+        public static async UniTask IncrementalBuild(BuildTarget target)
         {
             //生成热更新dll
             switch (target)
@@ -62,7 +63,7 @@ namespace Game._Script.AOT.Editor
             }
 
             //yooAsset打包
-            var outputPackageDirectory = BuildPipleline_YooAsset.YooAssetBuild(EBuildMode.IncrementalBuild, target);
+            var outputPackageDirectory =await  BuildPipleline_YooAsset.YooAssetBuild(EBuildMode.IncrementalBuild, target);
             if (outputPackageDirectory != "")
             {
                 var files = Directory.GetFiles(outputPackageDirectory);

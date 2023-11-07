@@ -1,6 +1,6 @@
 {
-    "ShaderTotalCount": 28,
-    "VariantTotalCount": 47,
+    "ShaderTotalCount": 31,
+    "VariantTotalCount": 50,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -46,6 +46,18 @@
                     "PassType": 0,
                     "Keywords": [
                         "_SUNDISK_SIMPLE"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Nature/Terrain/Utilities",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        ""
                     ]
                 }
             ]
@@ -183,13 +195,13 @@
             ]
         },
         {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/BlitHDROverlay.shader",
-            "ShaderName": "Hidden/Universal/BlitHDROverlay",
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CoreBlit.shader",
+            "ShaderName": "Hidden/Universal/CoreBlit",
             "ShaderVariantElements": [
                 {
                     "PassType": 0,
                     "Keywords": [
-                        "HDR_COLORSPACE_CONVERSION_AND_ENCODING"
+                        ""
                     ]
                 }
             ]
@@ -207,8 +219,7 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SHADOWS_SOFT"
+                        ""
                     ]
                 }
             ]
@@ -255,43 +266,7 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SHADOWS_SOFT",
                         "_TERRAIN_INSTANCED_PERPIXEL_NORMAL"
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Assets/Game/_Script/HotUpdate/Suntail_Village/Shaders/Suntail_Surface.shader",
-            "ShaderName": "Raygeas/Suntail Surface",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 8,
-                    "Keywords": [
-                        ""
-                    ]
-                },
-                {
-                    "PassType": 8,
-                    "Keywords": [
-                        "INSTANCING_ON"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SHADOWS_SOFT",
-                        "_SMOOTHNESSSOURCE_ALBEDO_ALPHA"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SHADOWS_SOFT",
-                        "_SMOOTHNESSSOURCE_METALLIC_ALPHA"
                     ]
                 }
             ]
@@ -310,86 +285,6 @@
                     "PassType": 8,
                     "Keywords": [
                         ""
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Assets/Game/_Script/HotUpdate/Suntail_Village/Shaders/Suntail_Foliage.shader",
-            "ShaderName": "Raygeas/Suntail Foliage",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 8,
-                    "Keywords": [
-                        "_ANCHORTHEFOLIAGEBASE_ON",
-                        "_ENABLEWIND_ON"
-                    ]
-                },
-                {
-                    "PassType": 8,
-                    "Keywords": [
-                        "_ENABLEWIND_ON"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_ANCHORTHEFOLIAGEBASE_ON",
-                        "_COLOR2ENABLE_ON",
-                        "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SECONDCOLOROVERLAYTYPE_UV_BASED",
-                        "_SHADOWS_SOFT"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_ANCHORTHEFOLIAGEBASE_ON",
-                        "_COLOR2ENABLE_ON",
-                        "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
-                        "_SHADOWS_SOFT"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_ANCHORTHEFOLIAGEBASE_ON",
-                        "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
-                        "_SHADOWS_SOFT"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_COLOR2ENABLE_ON",
-                        "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SECONDCOLOROVERLAYTYPE_UV_BASED",
-                        "_SHADOWS_SOFT"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_COLOR2ENABLE_ON",
-                        "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
-                        "_SHADOWS_SOFT"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
-                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -443,35 +338,31 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SHADOWS_SOFT"
+                        ""
                     ]
                 }
             ]
         },
         {
-            "AssetPath": "Assets/Game/_Script/HotUpdate/Suntail_Village/Shaders/Suntail_Water.shader",
-            "ShaderName": "Raygeas/Suntail Water",
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/ScreenSpaceAmbientOcclusion.shader",
+            "ShaderName": "Hidden/Universal Render Pipeline/ScreenSpaceAmbientOcclusion",
             "ShaderVariantElements": [
                 {
-                    "PassType": 13,
+                    "PassType": 0,
                     "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SHADOWS_SOFT"
+                        ""
                     ]
                 }
             ]
         },
         {
-            "AssetPath": "Assets/Game/Matreial/BlobShadow_Graph.shadergraph",
-            "ShaderName": "Shader Graphs/BlobShadow_Graph",
+            "AssetPath": "Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/FallbackShader.shader",
+            "ShaderName": "Hidden/Core/FallbackError",
             "ShaderVariantElements": [
                 {
-                    "PassType": 13,
+                    "PassType": 0,
                     "Keywords": [
-                        "_DECAL_NORMAL_BLEND_LOW",
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SHADOWS_SOFT"
+                        ""
                     ]
                 }
             ]
@@ -491,10 +382,131 @@
                     "Keywords": [
                         "PIXELSNAP_ON",
                         "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
                         "_FIXED_NORMALS_WORLDSPACE",
-                        "_FULLRANGE_HARD_RAMP",
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SHADOWS_SOFT"
+                        "_FULLRANGE_HARD_RAMP"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Suntail_Village/Shaders/Suntail_Surface.shader",
+            "ShaderName": "Raygeas/Suntail Surface",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        "INSTANCING_ON"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_SMOOTHNESSSOURCE_ALBEDO_ALPHA"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_SMOOTHNESSSOURCE_METALLIC_ALPHA"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Suntail_Village/Shaders/Suntail_Foliage.shader",
+            "ShaderName": "Raygeas/Suntail Foliage",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_ENABLEWIND_ON"
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        "_ENABLEWIND_ON"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_ENABLEWIND_ON",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ENABLEWIND_ON",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Suntail_Village/Shaders/Suntail_Water.shader",
+            "ShaderName": "Raygeas/Suntail Water",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Game/Matreial/BlobShadow_Graph.shadergraph",
+            "ShaderName": "Shader Graphs/BlobShadow_Graph",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_DECAL_NORMAL_BLEND_LOW"
                     ]
                 }
             ]

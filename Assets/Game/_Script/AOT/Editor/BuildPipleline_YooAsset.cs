@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Cysharp.Threading.Tasks;
 using HybridCLR.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace Game._Script.AOT.Editor
 {
     public static class BuildPipleline_YooAsset
     {
-        public static string YooAssetBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
+        public static async UniTask<string> YooAssetBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
         {
             if (eBuildMode == EBuildMode.ForceRebuild)
             {
@@ -43,7 +44,7 @@ namespace Game._Script.AOT.Editor
             }
 
             //收集shader变体
-            CollectSvc();
+            await CollectSvc();
             
             
             // 构建参数
@@ -84,12 +85,13 @@ namespace Game._Script.AOT.Editor
             }
         }
 
-        private static void CollectSvc()
+        private static async UniTask CollectSvc()
         {
             string savePath = "Assets/Game/ShaderVar/MyShaderVariants.shadervariants";
-
+            bool building = true;
             Debug.Log("开始收集变体");
-            ShaderVariantCollector.Run(savePath,"DefaultPackage",Int32.MaxValue, CompletedCallback);
+            ShaderVariantCollector.Run(savePath,"DefaultPackage",1, CompletedCallback);
+            await UniTask.WaitWhile(() => building);
             Debug.Log("结束收集变体");
 
             return;
@@ -104,11 +106,13 @@ namespace Game._Script.AOT.Editor
                 }
                 else
                 {
+                    building = false;
                     throw new Exception("Failed to Collect shader Variants.");
                 }
 
                 EditorTools.CloseUnityGameWindow();
                 EditorApplication.Exit(0);
+                 building = false;
             }
         }
 
