@@ -1,6 +1,6 @@
 {
     "ShaderTotalCount": 31,
-    "VariantTotalCount": 59,
+    "VariantTotalCount": 76,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -256,7 +256,16 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "_ADDITIONAL_LIGHTS_VERTEX"
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -316,6 +325,16 @@
                     "PassType": 13,
                     "Keywords": [
                         "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_TERRAIN_INSTANCED_PERPIXEL_NORMAL"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT",
                         "_TERRAIN_INSTANCED_PERPIXEL_NORMAL"
                     ]
                 }
@@ -347,6 +366,7 @@
                     "PassType": 13,
                     "Keywords": [
                         "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS",
                         "_SMOOTHNESSSOURCE_ALBEDO_ALPHA"
                     ]
                 },
@@ -354,6 +374,25 @@
                     "PassType": 13,
                     "Keywords": [
                         "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SMOOTHNESSSOURCE_METALLIC_ALPHA"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT",
+                        "_SMOOTHNESSSOURCE_ALBEDO_ALPHA"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT",
                         "_SMOOTHNESSSOURCE_METALLIC_ALPHA"
                     ]
                 }
@@ -384,6 +423,21 @@
                 {
                     "PassType": 8,
                     "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_ENABLEWIND_ON"
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ENABLEWIND_ON"
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
                         "_ANCHORTHEFOLIAGEBASE_ON",
                         "_ENABLEWIND_ON"
                     ]
@@ -401,6 +455,7 @@
                         "_ANCHORTHEFOLIAGEBASE_ON",
                         "_COLOR2ENABLE_ON",
                         "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
                         "_SECONDCOLOROVERLAYTYPE_UV_BASED"
                     ]
                 },
@@ -411,7 +466,32 @@
                         "_ANCHORTHEFOLIAGEBASE_ON",
                         "_COLOR2ENABLE_ON",
                         "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
                         "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED",
+                        "_SHADOWS_SOFT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
@@ -428,7 +508,19 @@
                         "_ADDITIONAL_LIGHTS_VERTEX",
                         "_ANCHORTHEFOLIAGEBASE_ON",
                         "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
                         "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
@@ -437,6 +529,7 @@
                         "_ADDITIONAL_LIGHTS_VERTEX",
                         "_COLOR2ENABLE_ON",
                         "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
                         "_SECONDCOLOROVERLAYTYPE_UV_BASED"
                     ]
                 },
@@ -446,7 +539,30 @@
                         "_ADDITIONAL_LIGHTS_VERTEX",
                         "_COLOR2ENABLE_ON",
                         "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
                         "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED",
+                        "_SHADOWS_SOFT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
@@ -461,7 +577,18 @@
                     "Keywords": [
                         "_ADDITIONAL_LIGHTS_VERTEX",
                         "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
                         "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -521,7 +648,16 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "_ADDITIONAL_LIGHTS_VERTEX"
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -533,7 +669,16 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "_ADDITIONAL_LIGHTS_VERTEX"
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -546,7 +691,17 @@
                     "PassType": 13,
                     "Keywords": [
                         "_ADDITIONAL_LIGHTS_VERTEX",
-                        "_DECAL_NORMAL_BLEND_LOW"
+                        "_DECAL_NORMAL_BLEND_LOW",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_DECAL_NORMAL_BLEND_LOW",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -569,7 +724,21 @@
                         "_ALPHAPREMULTIPLY_VERTEX_ONLY",
                         "_COLOR_ADJUST",
                         "_FIXED_NORMALS_WORLDSPACE",
-                        "_FULLRANGE_HARD_RAMP"
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "PIXELSNAP_ON",
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
@@ -579,7 +748,20 @@
                         "_ALPHAPREMULTIPLY_VERTEX_ONLY",
                         "_COLOR_ADJUST",
                         "_FIXED_NORMALS_WORLDSPACE",
-                        "_FULLRANGE_HARD_RAMP"
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
