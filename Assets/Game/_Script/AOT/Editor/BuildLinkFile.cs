@@ -184,7 +184,7 @@ namespace Game._Script.AOT.Editor
 
                 //try
                 {
-                    Debug.Log(ass.Location);
+                    //Debug.Log(ass.Location);
                     var assPath = Path.GetFullPath(ass.Location).Replace('\\', '/');
                     if (assPath.Contains(localPath) && assPath.ToLower().Contains("/editor/"))
                     {
@@ -208,7 +208,12 @@ namespace Game._Script.AOT.Editor
                     }
                     if (ignore)
                     {
+                        Debug.Log("A:"+name);
                         continue;
+                    }
+                    else
+                    {
+                        Debug.Log("B:"+name);
                     }
 
                     hashAss.Add(name);
@@ -567,6 +572,10 @@ namespace GameMain.Scripts.HybridCLR
             var keys = new HashSet<string>(info.Keys);
             foreach (var k in keys)
             {
+                if (IgnoreClass.Contains(k))
+                {
+                    continue;
+                }
                 var x = info[k];
                 sb.AppendLine($"\t\t\tReserved<{k}>(); // {Path.GetFileName(x)}");
             }
