@@ -87,7 +87,7 @@ namespace Game._Script.AOT.Editor
             "editor", "netstandard", "Bee.", "dnlib", ".framework", "Test", "plastic", "Gradle", "log4net", "Analytics", "System.Drawing",
             "NVIDIA", "VisualScripting", "UIElements", "IMGUIModule", ".Cecil", "GIModule", "GridModule", "HotReloadModule", "StreamingModule",
             "TLSModule", "XRModule", "WindModule", "VRModule", "VirtualTexturingModule", "compiler", "BuildProgram", "NiceIO", "ClothModule",
-            "VFXModule", "ExCSS", "GeneratedCode", "mscorlib", "System", "SyncToolsDef", "ReportGeneratorMerged"
+            "VFXModule", "ExCSS", "GeneratedCode", "mscorlib", "System", "SyncToolsDef", "ReportGeneratorMerged","InputManagerEntry"
         };
         private static bool IsIngoreClass(string classFullName)
         {
