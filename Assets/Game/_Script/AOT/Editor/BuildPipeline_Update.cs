@@ -66,12 +66,12 @@ namespace Game._Script.AOT.Editor
             if (outputPackageDirectory != "")
             {
                 var files = Directory.GetFiles(outputPackageDirectory);
-                string targetDirectory = Path.Combine(BuildConfigAccessor.Instance.BundleFolder, $"{target}",
+                string targetDirectory = Path.Combine(BuildConfigAccessor.Instance.BundleFolder,"DefaultPackage", $"{target}",
                     $"V{BuildConfigAccessor.Instance.BuildVersion}.{0}");
                 foreach (var file in files)
                 {
                     var fileName = Path.GetFileName(file);
-                    var dst = Path.Combine(targetDirectory,"DefaultPackage", fileName);
+                    var dst = Path.Combine(targetDirectory, fileName);
                     Debug.Log("AW: "+file +"->" +dst);
                     File.Copy(file, dst, true);
                 }
