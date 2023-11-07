@@ -2,7 +2,9 @@ using System;
 using System.IO;
 using HybridCLR.Editor;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using YooAsset.Editor;
 
 namespace Game._Script.AOT.Editor
@@ -25,17 +27,21 @@ namespace Game._Script.AOT.Editor
                 {
                     Debug.Log($"ShaderCount : {collection.shaderCount}");
                     Debug.Log($"VariantCount : {collection.variantCount}");
-                    ShaderVariantCollector.Run(savePath, packageName, variantCount, () =>
-                    {
-                        PrepareAndBuild(eBuildMode, buildTarget);
-                    });
-
                 }
                 else
                 {
                     Debug.Log("构建失败");
                 }
 
+// 你想保存场景的路径
+                string scenePath = "Assets/Game/Scene/shaders.unity";
+
+
+// 保存场景
+                bool saveSuccess = EditorSceneManager.SaveScene(SceneManager.GetActiveScene()
+                    , scenePath);
+
+                PrepareAndBuild(eBuildMode, buildTarget);
             };
                 
             ShaderVariantCollector.Run(savePath, packageName, variantCount,completedCallback);
