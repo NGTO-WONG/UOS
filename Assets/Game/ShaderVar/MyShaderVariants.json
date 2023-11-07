@@ -1,6 +1,6 @@
 {
-    "ShaderTotalCount": 32,
-    "VariantTotalCount": 73,
+    "ShaderTotalCount": 31,
+    "VariantTotalCount": 74,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -695,17 +695,26 @@
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_SHADOWS_SOFT"
                     ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.esotericsoftware.spine.urp-shaders/Shaders/Spine-SkeletonLit-URP.shader",
-            "ShaderName": "Universal Render Pipeline/Spine/Skeleton Lit",
-            "ShaderVariantElements": [
+                },
                 {
-                    "PassType": 8,
+                    "PassType": 13,
                     "Keywords": [
-                        ""
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
