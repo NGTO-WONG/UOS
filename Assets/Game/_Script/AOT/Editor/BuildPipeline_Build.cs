@@ -19,6 +19,7 @@ namespace Game._Script.AOT.Editor
             BuildConfigAccessor.Instance.BuildVersion = Convert.ToInt32(Environment.GetEnvironmentVariable("Version"));
             BuildConfigAccessor.Instance.BuildFolder = Environment.GetEnvironmentVariable("BuildFolder");
             BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
+            BuildConfigAccessor.Instance.HotUpdateVersion = 0;
             BuildConfigAccessor.Instance.IsDevelopmentBuild = Environment.GetEnvironmentVariable("IsDevelopmentBuild");
             EditorUtility.SetDirty(BuildConfigAccessor.Instance);
             AssetDatabase.SaveAssets();
@@ -55,7 +56,6 @@ namespace Game._Script.AOT.Editor
         static void Build(BuildTarget buildTarget)
         {
             Compile(buildTarget);           
-            BuildPipleline_YooAsset.YooAssetBuild(EBuildMode.ForceRebuild, buildTarget);
             
             string buildName = BuildConfigAccessor.Instance.BuildName;
             BuildTargetGroup targetGroup = BuildTargetGroup.Android;
@@ -106,6 +106,8 @@ namespace Game._Script.AOT.Editor
             };
             
             BuildPipeline.BuildPlayer(buildPlayerOptions);
+            
+            BuildPipleline_YooAsset.YooAssetBuild(EBuildMode.ForceRebuild, buildTarget);
         }
 
         /// <summary>
