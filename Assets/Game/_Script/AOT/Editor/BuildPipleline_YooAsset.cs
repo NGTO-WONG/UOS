@@ -11,9 +11,7 @@ namespace Game._Script.AOT.Editor
     {
         public static void YooAssetBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
         {
-            PrepareAndBuild(eBuildMode, buildTarget);
 
-            return;
             CollectShaderVariants("Assets/Game/ShaderVar/MyShaderVariants.shadervariants", "DefaultPackage",
                 99999999, buildTarget, eBuildMode);
         }
@@ -38,6 +36,7 @@ namespace Game._Script.AOT.Editor
                 throw new Exception("Failed to Collect shader Variants.");
             }
 
+            PrepareAndBuild(eBuildMode, buildTarget);
         }
 
         private static void PrepareAndBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
