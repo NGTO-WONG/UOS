@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game._Script.AOT
 {
@@ -20,28 +21,26 @@ namespace Game._Script.AOT
                         Debug.LogError("SingletonData asset not found!");
                     }
                 }
+
                 return _instance;
             }
         }
-        
     }
 
-    
-    
+
     [CreateAssetMenu(fileName = "BuildConfig", menuName = "Custom/BuildConfig")]
-    public class BuildConfig: ScriptableObject
+    public class BuildConfig : ScriptableObject
     {
-        
         /// <summary>
-        /// 游戏大版本号 每次出全量包手动修改 基本都可以热更 没啥必要打全量包
+        /// 游戏大版本号 每次出全量包手动修改
         /// </summary>
-        public string BuildVersion;
-        
+        public int BuildVersion = 1;
+
         /// <summary>
-        /// 热更新版本号
+        /// 热更新版本号 每次打热更自增
         /// </summary>
-        public string HotUpdateVersion => BuildVersion+DateTime.Now.ToString("_yyyyMMdd_HHmm");
-        
+        public int HotUpdateVersion = 0;
+
         /// <summary>
         /// 游戏的第一个场景
         /// </summary>
@@ -52,7 +51,7 @@ namespace Game._Script.AOT
         /// </summary>
         public string HostServerIP =
             "https://a.unity.cn/client_api/v1/buckets/8c5cd9d5-dde9-4d66-a07f-68fc52feddb2/entry_by_path/content/?path=";
-        
+
         /// <summary>
         /// 热更新程序集的位置
         /// </summary>
@@ -64,12 +63,14 @@ namespace Game._Script.AOT
         /// yooAsset打出来的资源包的位置
         /// = "/Users/huangqiang/Desktop/Bundles"
         /// </summary>
-        public string BundleFolder ;
-        
+        public string BundleFolder;
+
         /// <summary>
         /// yooAsset打出来的资源包的位置
         ///  "/Users/huangqiang/Desktop/Builds"
         /// </summary>
-        public string BuildFolder ;
+        public string BuildFolder;
+
+        public string IsDevelopmentBuild; //"1"true "0"false
     }
 }
