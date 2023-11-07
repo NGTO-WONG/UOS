@@ -39,8 +39,8 @@ public class PlayerMoveController : MonoBehaviour {
 	void Update()
 	{
 		// move
-		_rigidbody.MovePosition(transform.position + (transform.forward * leftController.GetTouchPosition.y * Time.deltaTime * speedMovements) +
-			(transform.right * leftController.GetTouchPosition.x * Time.deltaTime * speedMovements) );
+		_rigidbody.MovePosition(transform.position + (Vector3.forward * (leftController.GetTouchPosition.y * Time.deltaTime * speedMovements)) +
+			(Vector3.right * (leftController.GetTouchPosition.x * Time.deltaTime * speedMovements)) );
 
 		if(continuousRightController)
 		{
