@@ -207,7 +207,8 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        ""
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -254,6 +255,8 @@
                 {
                     "PassType": 13,
                     "Keywords": [
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT",
                         "_TERRAIN_INSTANCED_PERPIXEL_NORMAL"
                     ]
                 }
@@ -278,12 +281,16 @@
                 {
                     "PassType": 13,
                     "Keywords": [
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT",
                         "_SMOOTHNESSSOURCE_ALBEDO_ALPHA"
                     ]
                 },
                 {
                     "PassType": 13,
                     "Keywords": [
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT",
                         "_SMOOTHNESSSOURCE_METALLIC_ALPHA"
                     ]
                 }
@@ -330,7 +337,9 @@
                         "_ANCHORTHEFOLIAGEBASE_ON",
                         "_COLOR2ENABLE_ON",
                         "_ENABLEWIND_ON",
-                        "_SECONDCOLOROVERLAYTYPE_UV_BASED"
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
@@ -339,7 +348,9 @@
                         "_ANCHORTHEFOLIAGEBASE_ON",
                         "_COLOR2ENABLE_ON",
                         "_ENABLEWIND_ON",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
@@ -347,7 +358,9 @@
                     "Keywords": [
                         "_ANCHORTHEFOLIAGEBASE_ON",
                         "_ENABLEWIND_ON",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
@@ -355,7 +368,9 @@
                     "Keywords": [
                         "_COLOR2ENABLE_ON",
                         "_ENABLEWIND_ON",
-                        "_SECONDCOLOROVERLAYTYPE_UV_BASED"
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
@@ -363,14 +378,18 @@
                     "Keywords": [
                         "_COLOR2ENABLE_ON",
                         "_ENABLEWIND_ON",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 },
                 {
                     "PassType": 13,
                     "Keywords": [
                         "_ENABLEWIND_ON",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -424,7 +443,8 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        ""
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -436,7 +456,8 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        ""
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -448,7 +469,9 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "_DECAL_NORMAL_BLEND_LOW"
+                        "_DECAL_NORMAL_BLEND_LOW",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -470,7 +493,9 @@
                         "_ALPHAPREMULTIPLY_VERTEX_ONLY",
                         "_COLOR_ADJUST",
                         "_FIXED_NORMALS_WORLDSPACE",
-                        "_FULLRANGE_HARD_RAMP"
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
