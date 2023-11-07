@@ -18,25 +18,26 @@ namespace Game._Script.AOT.Editor
         private static void CollectShaderVariants(string savePath, string packageName, int variantCount,
             BuildTarget buildTarget, EBuildMode eBuildMode)
         {
-            ShaderVariantCollector.Run(savePath, packageName, variantCount,
-                () => ShaderVariantsCollected(savePath, buildTarget, eBuildMode));
+            System.Action completedCallback = () =>
+            {
+                var collection = AssetDatabase.LoadAssetAtPath<ShaderVariantCollection>(savePath);
+                if (collection != null)
+                {
+                    Debug.Log($"ShaderCount : {collection.shaderCount}");
+                    Debug.Log($"VariantCount : {collection.variantCount}");
+                }
+                else
+                {
+                    Debug.Log("构建失败");
+                }
+
+                PrepareAndBuild(eBuildMode, buildTarget);
+            };
+                
+            ShaderVariantCollector.Run(savePath, packageName, variantCount,completedCallback);
+            
         }
 
-        private static void ShaderVariantsCollected(string savePath, BuildTarget buildTarget, EBuildMode eBuildMode)
-        {
-            var collection = AssetDatabase.LoadAssetAtPath<ShaderVariantCollection>(savePath);
-            if (collection != null)
-            {
-                Debug.Log($"ShaderCount : {collection.shaderCount}");
-                Debug.Log($"VariantCount : {collection.variantCount}");
-            }
-            else
-            {
-                Debug.Log("构建失败");
-            }
-
-            PrepareAndBuild(eBuildMode, buildTarget);
-        }
 
         private static void PrepareAndBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
         {
