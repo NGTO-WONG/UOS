@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using Cysharp.Threading.Tasks;
 using HybridCLR.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -10,47 +9,103 @@ namespace Game._Script.AOT.Editor
 {
     public static class BuildPipleline_YooAsset
     {
-        public static async UniTask<string> YooAssetBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
+        public static void YooAssetBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
         {
-            if (eBuildMode == EBuildMode.ForceRebuild)
+            CollectShaderVariants("Assets/Game/ShaderVar/MyShaderVariants.shadervariants", "DefaultPackage",
+                Environment.ProcessorCount * 2 - 1, buildTarget, eBuildMode);
+        }
+
+        private static void CollectShaderVariants(string savePath, string packageName, int variantCount,
+            BuildTarget buildTarget, EBuildMode eBuildMode)
+        {
+            ShaderVariantCollector.Run(savePath, packageName, variantCount,
+                () => ShaderVariantsCollected(savePath, buildTarget, eBuildMode));
+        }
+
+        private static void ShaderVariantsCollected(string savePath, BuildTarget buildTarget, EBuildMode eBuildMode)
+        {
+            var collection = AssetDatabase.LoadAssetAtPath<ShaderVariantCollection>(savePath);
+            if (collection != null)
             {
-                BuildConfigAccessor.Instance.HotUpdateVersion = 0;//打包热更版本号清0
+                Debug.Log($"ShaderCount : {collection.shaderCount}");
+                Debug.Log($"VariantCount : {collection.variantCount}");
             }
             else
             {
-                BuildConfigAccessor.Instance.HotUpdateVersion +=1 ;//热更版本号自增
+                throw new Exception("Failed to Collect shader Variants.");
             }
+
+            EditorTools.CloseUnityGameWindow();
+            EditorApplication.Exit(0);
+
+            PrepareAndBuild(eBuildMode, buildTarget);
+        }
+
+        private static void PrepareAndBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
+        {
+            UpdateBuildVersion(eBuildMode);
+            CopyDlls(buildTarget);
+            BuildAssetBundles(buildTarget, eBuildMode);
+        }
+
+        private static void UpdateBuildVersion(EBuildMode eBuildMode)
+        {
+            if (eBuildMode == EBuildMode.ForceRebuild)
+            {
+                BuildConfigAccessor.Instance.HotUpdateVersion = 0;
+            }
+            else
+            {
+                BuildConfigAccessor.Instance.HotUpdateVersion += 1;
+            }
+
             EditorUtility.SetDirty(BuildConfigAccessor.Instance);
             AssetDatabase.SaveAssets();
-            
-            string packageVersion = "V" + BuildConfigAccessor.Instance.BuildVersion + "." +
-                                    BuildConfigAccessor.Instance.HotUpdateVersion;
-            
-            //拷贝dll
+        }
+
+        private static void CopyDlls(BuildTarget buildTarget)
+        {
             string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(buildTarget);
             foreach (var dll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
             {
-                string sourcePath = Path.Combine($"{hotfixDllSrcDir}", $"{dll}");
-                string dstPath = Path.Combine($"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}", $"{dll}.bytes");
+                string sourcePath = Path.Combine(hotfixDllSrcDir, dll);
+                string dstPath = Path.Combine(BuildConfigAccessor.Instance.HotfixAssembliesDstDir, $"{dll}.bytes");
                 File.Copy(sourcePath, dstPath, true);
             }
             
             string aotDllSrcDir = SettingsUtil.GetAssembliesPostIl2CppStripDir(buildTarget);
             foreach (var dll in AOTGenericReferences.PatchedAOTAssemblyList)
             {
-                string sourcePath = Path.Combine($"{aotDllSrcDir}", $"{dll}");
-                string dstPath = Path.Combine($"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}", $"{dll}.bytes");
+                string sourcePath = Path.Combine(aotDllSrcDir, dll);
+                string dstPath = Path.Combine(BuildConfigAccessor.Instance.HotfixAssembliesDstDir, $"{dll}.bytes");
                 File.Copy(sourcePath, dstPath, true);
             }
+        }
 
-            //收集shader变体
-            await CollectSvc();
-            
-            
-            // 构建参数
-            BuildParameters buildParameters = new BuildParameters
+        private static void BuildAssetBundles(BuildTarget buildTarget, EBuildMode eBuildMode)
+        {
+            string packageVersion =
+                $"V{BuildConfigAccessor.Instance.BuildVersion}.{BuildConfigAccessor.Instance.HotUpdateVersion}";
+            BuildParameters buildParameters = GetBuildParameters(buildTarget, eBuildMode, packageVersion);
+
+            AssetBundleBuilder builder = new AssetBundleBuilder();
+            var buildResult = builder.Run(buildParameters);
+
+            if (buildResult.Success)
             {
-                SBPParameters = null,
+                LogBuildSuccess(buildResult);
+            }
+            else
+            {
+                Debug.LogError($"Build failed: {buildResult.ErrorInfo}");
+            }
+        }
+
+        private static BuildParameters GetBuildParameters(BuildTarget buildTarget, EBuildMode eBuildMode,
+            string packageVersion)
+        {
+            return new BuildParameters
+            {
                 StreamingAssetsRoot = Application.streamingAssetsPath,
                 BuildOutputRoot = BuildConfigAccessor.Instance.BundleFolder,
                 BuildTarget = buildTarget,
@@ -61,60 +116,28 @@ namespace Game._Script.AOT.Editor
                 EnableLog = true,
                 VerifyBuildingResult = true,
                 SharedPackRule = new ZeroRedundancySharedPackRule(),
-                EncryptionServices = null,
                 OutputNameStyle = EOutputNameStyle.BundleName_HashName,
-                CopyBuildinFileOption = ECopyBuildinFileOption.None,
-                CopyBuildinFileTags = null,
-                CompressOption = ECompressOption.LZ4,
-                DisableWriteTypeTree = false,
-                IgnoreTypeTreeChanges = false
+                CompressOption = ECompressOption.LZ4
+                // Other parameters as needed...
             };
-
-            // 执行构建
-            AssetBundleBuilder builder = new AssetBundleBuilder();
-            var buildResult = builder.Run(buildParameters);
-            if (buildResult.Success)
-            {
-                Debug.Log("打包log：" + $"构建成功 : {buildResult.OutputPackageDirectory}");
-                return buildResult.OutputPackageDirectory;
-            }
-            else
-            {
-                Debug.LogError($"构建失败 : {buildResult.ErrorInfo}");
-                return "";
-            }
         }
 
-        private static async UniTask CollectSvc()
+        private static void LogBuildSuccess(BuildResult buildResult)
         {
-            string savePath = "Assets/Game/ShaderVar/MyShaderVariants.shadervariants";
-            bool building = true;
-            Debug.Log("开始收集变体");
-            ShaderVariantCollector.Run(savePath,"DefaultPackage",1, CompletedCallback);
-            await UniTask.WaitWhile(() => building);
-            Debug.Log("结束收集变体");
-
-            return;
-
-            void CompletedCallback()
+            Debug.Log($"Build successful: {buildResult.OutputPackageDirectory}");
+            var files = Directory.GetFiles(buildResult.OutputPackageDirectory);
+            var targetDirectory = Path.Combine(Directory.GetParent(buildResult.OutputPackageDirectory).FullName,
+                $"V{BuildConfigAccessor.Instance.BuildVersion}.0");
+            foreach (var file in files)
             {
-                ShaderVariantCollection collection = AssetDatabase.LoadAssetAtPath<ShaderVariantCollection>(savePath);
-                if (collection != null)
-                {
-                    Debug.Log($"ShaderCount : {collection.shaderCount}");
-                    Debug.Log($"VariantCount : {collection.variantCount}");
-                }
-                else
-                {
-                    building = false;
-                    throw new Exception("Failed to Collect shader Variants.");
-                }
-
-                EditorTools.CloseUnityGameWindow();
-                EditorApplication.Exit(0);
-                 building = false;
+                var fileName = Path.GetFileName(file);
+                var dst = Path.Combine(targetDirectory, fileName);
+                Debug.Log($"Copying file: {file} -> {dst}");
+                if (file== dst ) continue;
+                File.Copy(file, dst, true);
             }
-        }
 
+            Debug.Log($"Copied {files.Length} files to {targetDirectory}");
+        }
     }
 }

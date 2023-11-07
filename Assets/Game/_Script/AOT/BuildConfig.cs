@@ -66,11 +66,14 @@ namespace Game._Script.AOT
         public string BundleFolder;
 
         /// <summary>
-        /// yooAsset打出来的资源包的位置
+        /// 打出来的包
         ///  "/Users/huangqiang/Desktop/Builds"
         /// </summary>
         public string BuildFolder;
 
-        public string IsDevelopmentBuild; //"1"true "0"false
+        /// <summary>
+        /// 是否是development包 "1"true "0"false
+        /// </summary>
+        public string IsDevelopmentBuild;
     }
 }

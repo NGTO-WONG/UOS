@@ -21,18 +21,18 @@ namespace Game._Script.AOT.Editor
             AssetDatabase.SaveAssets();
         }
 
-        public static async UniTask UpdateAndroid()
+        public static void UpdateAndroid()
         {
             GetAndSaveEnvironmentVariable_Update();
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
-            await IncrementalBuild(BuildTarget.Android);
+             IncrementalBuild(BuildTarget.Android);
         }
 
-        public static async UniTask UpdateiOS()
+        public static void UpdateiOS()
         {
             GetAndSaveEnvironmentVariable_Update();
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
-            await IncrementalBuild(BuildTarget.iOS);
+             IncrementalBuild(BuildTarget.iOS);
         }
 
 
@@ -63,22 +63,8 @@ namespace Game._Script.AOT.Editor
             }
 
             //yooAsset打包
-            var outputPackageDirectory =await  BuildPipleline_YooAsset.YooAssetBuild(EBuildMode.IncrementalBuild, target);
-            if (outputPackageDirectory != "")
-            {
-                var files = Directory.GetFiles(outputPackageDirectory);
-                var targetDirectory = Path.Combine(Directory.GetParent(outputPackageDirectory).FullName,
-                    $"V{BuildConfigAccessor.Instance.BuildVersion}.0");
-                foreach (var file in files)
-                {
-                    var fileName = Path.GetFileName(file);
-                    var dst = Path.Combine(targetDirectory, fileName);
-                    Debug.Log("AW: "+file +"->" +dst);
-                    File.Copy(file, dst, true);
-                }
-
-                Debug.Log("打包log：" + files + " to " + targetDirectory);
-            }
+            BuildPipleline_YooAsset.YooAssetBuild(EBuildMode.IncrementalBuild, target);
+            
         }
     }
 }
