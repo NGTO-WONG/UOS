@@ -88,7 +88,10 @@ namespace Game._Script.AOT.Editor
         {
             string savePath = "Assets/Game/ShaderVar/MyShaderVariants.shadervariants";
 
+            Debug.Log("开始收集变体");
             ShaderVariantCollector.Run(savePath,"DefaultPackage",Int32.MaxValue, CompletedCallback);
+            Debug.Log("结束收集变体");
+
             return;
 
             void CompletedCallback()
