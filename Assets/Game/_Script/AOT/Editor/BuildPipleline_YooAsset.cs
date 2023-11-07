@@ -93,7 +93,21 @@ namespace Game._Script.AOT.Editor
 
             if (buildResult.Success)
             {
-                LogBuildSuccess(buildResult);
+                Debug.Log($"Build successful: {buildResult.OutputPackageDirectory}");
+                if (eBuildMode == EBuildMode.IncrementalBuild)
+                {
+                    var files = Directory.GetFiles(buildResult.OutputPackageDirectory);
+                    var targetDirectory = Path.Combine(Directory.GetParent(buildResult.OutputPackageDirectory).FullName,
+                        $"V{BuildConfigAccessor.Instance.BuildVersion}.0");
+                    foreach (var file in files)
+                    {
+                        var fileName = Path.GetFileName(file);
+                        var dst = Path.Combine(targetDirectory, fileName);
+                        Debug.Log($"Copying file: {file} -> {dst}");
+                        File.Copy(file, dst, true);
+                    }
+                    Debug.Log($"Copied {files.Length} files to {targetDirectory}");
+                }
             }
             else
             {
@@ -120,24 +134,6 @@ namespace Game._Script.AOT.Editor
                 CompressOption = ECompressOption.LZ4
                 // Other parameters as needed...
             };
-        }
-
-        private static void LogBuildSuccess(BuildResult buildResult)
-        {
-            Debug.Log($"Build successful: {buildResult.OutputPackageDirectory}");
-            var files = Directory.GetFiles(buildResult.OutputPackageDirectory);
-            var targetDirectory = Path.Combine(Directory.GetParent(buildResult.OutputPackageDirectory).FullName,
-                $"V{BuildConfigAccessor.Instance.BuildVersion}.0");
-            foreach (var file in files)
-            {
-                var fileName = Path.GetFileName(file);
-                var dst = Path.Combine(targetDirectory, fileName);
-                Debug.Log($"Copying file: {file} -> {dst}");
-                if (file== dst ) continue;
-                File.Copy(file, dst, true);
-            }
-
-            Debug.Log($"Copied {files.Length} files to {targetDirectory}");
         }
     }
 }
