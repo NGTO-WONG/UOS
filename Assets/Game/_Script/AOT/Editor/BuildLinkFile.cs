@@ -105,7 +105,7 @@ namespace Game._Script.AOT.Editor
 
         private static List<string> IgnoreType = new()
         {
-            "jetbrain", "editor", "PrivateImplementationDetails", "experimental", "microsoft.", "compiler"
+            "jetbrain", "editor", "PrivateImplementationDetails", "experimental", "microsoft.", "compiler","InputManagerEntry"
         };
         private static bool IsIgnoreType(string typeFullName)
         {
