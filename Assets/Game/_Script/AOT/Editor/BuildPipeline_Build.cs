@@ -73,7 +73,7 @@ namespace Game._Script.AOT.Editor
 
 
             string buildDirectory = Path.Combine(BuildConfigAccessor.Instance.BuildFolder, $"{buildTarget}",
-                $"{BuildConfigAccessor.Instance.BuildVersion}");
+                $"V{BuildConfigAccessor.Instance.BuildVersion}.{BuildConfigAccessor.Instance.HotUpdateVersion}");
             if (!Directory.Exists(buildDirectory))
             {
                 Directory.CreateDirectory(buildDirectory);

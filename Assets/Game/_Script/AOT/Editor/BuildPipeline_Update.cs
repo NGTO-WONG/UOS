@@ -10,9 +10,6 @@ namespace Game._Script.AOT.Editor
 {
     public static class BuildPipeline_Update
     {
-        
-        
-
         static void GetAndSaveEnvironmentVariable_Update()
         {
             // 修改ScriptableObject的属性
@@ -22,23 +19,22 @@ namespace Game._Script.AOT.Editor
             EditorUtility.SetDirty(BuildConfigAccessor.Instance); // 标记为脏以保存
             AssetDatabase.SaveAssets();
         }
-        
+
         public static void UpdateAndroid()
         {
             GetAndSaveEnvironmentVariable_Update();
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
             IncrementalBuild(BuildTarget.Android);
         }
-        
+
         public static void UpdateiOS()
         {
             GetAndSaveEnvironmentVariable_Update();
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
             IncrementalBuild(BuildTarget.Android);
         }
-        
-        
-        
+
+
         public static void IncrementalBuild(BuildTarget target)
         {
             //生成热更新dll
@@ -61,7 +57,7 @@ namespace Game._Script.AOT.Editor
                     $"{hotUpdateDll}");
                 string dstPath = Path.Combine($"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}",
                     $"{hotUpdateDll}.bytes");
-                
+
                 File.Copy(sourcePath, dstPath, true);
             }
 
@@ -70,19 +66,17 @@ namespace Game._Script.AOT.Editor
             if (outputPackageDirectory != "")
             {
                 var files = Directory.GetFiles(outputPackageDirectory);
-                var targetDirectory = Directory.GetParent(outputPackageDirectory) + "/" +
-                                      BuildConfigAccessor.Instance.BuildVersion;
+                string targetDirectory = Path.Combine(BuildConfigAccessor.Instance.BuildFolder, $"{target}",
+                    $"V{BuildConfigAccessor.Instance.BuildVersion}.0");
+
                 foreach (var file in files)
                 {
                     var fileName = Path.GetFileName(file);
-                    File.Copy(file, targetDirectory + "/" + fileName, true);
+                    File.Copy(file, Path.Combine(targetDirectory, fileName), true);
                 }
 
                 Debug.Log("打包log：" + files + " to " + targetDirectory);
             }
-
         }
-
-
     }
 }
