@@ -66,8 +66,8 @@ namespace Game._Script.AOT.Editor
             if (outputPackageDirectory != "")
             {
                 var files = Directory.GetFiles(outputPackageDirectory);
-                string targetDirectory = Path.Combine(BuildConfigAccessor.Instance.BundleFolder, $"{target}","DefaultPackage",
-                    $"V{BuildConfigAccessor.Instance.BuildVersion}.{0}");
+                var targetDirectory = Path.Combine(Directory.GetParent(outputPackageDirectory).FullName,
+                    $"V{BuildConfigAccessor.Instance.BuildVersion}.0");
                 foreach (var file in files)
                 {
                     var fileName = Path.GetFileName(file);
