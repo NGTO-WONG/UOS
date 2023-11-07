@@ -89,6 +89,9 @@ namespace Game._Script.AOT.Editor
                         File.Copy(file, dst, true);
                     }
                     Debug.Log($"Copied {files.Length} files to {targetDirectory}");
+                    
+                    EditorTools.CloseUnityGameWindow();
+                    EditorApplication.Exit(0);
                 }
             }
             else

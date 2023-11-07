@@ -477,8 +477,8 @@
             ]
         },
         {
-            "AssetPath": "Packages/com.esotericsoftware.spine.urp-shaders/Shaders/Spine-Sprite-URP.shader",
-            "ShaderName": "Universal Render Pipeline/Spine/Sprite",
+            "AssetPath": "Packages/com.esotericsoftware.spine.urp-shaders/Shaders/Spine-SkeletonLit-URP.shader",
+            "ShaderName": "Universal Render Pipeline/Spine/Skeleton Lit",
             "ShaderVariantElements": [
                 {
                     "PassType": 8,
@@ -489,13 +489,11 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "PIXELSNAP_ON",
-                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
-                        "_COLOR_ADJUST",
-                        "_FIXED_NORMALS_WORLDSPACE",
-                        "_FULLRANGE_HARD_RAMP",
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SHADOWS_SOFT"
+                        "_RECEIVE_SHADOWS",
+                        "_SHADOWS_SOFT",
+                        "_STRAIGHT_ALPHA_INPUT",
+                        "_TINT_BLACK_ON"
                     ]
                 }
             ]
