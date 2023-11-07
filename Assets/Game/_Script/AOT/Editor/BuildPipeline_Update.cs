@@ -67,8 +67,7 @@ namespace Game._Script.AOT.Editor
             {
                 var files = Directory.GetFiles(outputPackageDirectory);
                 string targetDirectory = Path.Combine(BuildConfigAccessor.Instance.BundleFolder, $"{target}",
-                    $"V{BuildConfigAccessor.Instance.BuildVersion}.{BuildConfigAccessor.Instance.HotUpdateVersion}");
-
+                    $"V{BuildConfigAccessor.Instance.BuildVersion}.{0}");
                 foreach (var file in files)
                 {
                     var fileName = Path.GetFileName(file);
