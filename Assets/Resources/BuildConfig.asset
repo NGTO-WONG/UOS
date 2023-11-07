@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BuildConfig
   m_EditorClassIdentifier: 
   BuildVersion: 3
-  HotUpdateVersion: 17
+  HotUpdateVersion: 19
   GamePlayScene: Switcher
   HostServerIP: http://192.168.8.210:8000/
   BuildName: Game
