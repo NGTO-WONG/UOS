@@ -15,7 +15,7 @@ namespace Game._Script.AOT.Editor
         static void SaveEnvironmentVariable_Build()
         {
             BuildConfigAccessor.Instance.BuildName = Environment.GetEnvironmentVariable("BuildName");
-            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
+            BuildConfigAccessor.Instance.LocalTestIP = Environment.GetEnvironmentVariable("LocalTestIP");
             BuildConfigAccessor.Instance.BuildVersion = Convert.ToInt32(Environment.GetEnvironmentVariable("Version"));
             BuildConfigAccessor.Instance.BuildFolder = Environment.GetEnvironmentVariable("BuildFolder");
             BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");

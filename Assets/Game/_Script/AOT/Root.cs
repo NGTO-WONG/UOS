@@ -119,10 +119,10 @@ namespace Game._Script.AOT
                 case EPlayMode.HostPlayMode:
                     var initParameters = new HostPlayModeParameters
                     {
-                        QueryServices = new GameQueryServices(), //太空战机DEMO的脚本类，详细见StreamingAssetsHelper
+                        QueryServices = new GameQueryServices(), 
                         DecryptionServices = new GameDecryptionServices(),
-                        DefaultHostServer = GetHostServerURL(),
-                        FallbackHostServer = GetHostServerURL()
+                        DefaultHostServer = BuildConfigAccessor.Instance.LocalTestIP,//先找本地测试服务器
+                        FallbackHostServer = GetHostServerURL() //找不到在找cdn服务器
                     };
                     var initOperation = package.InitializeAsync(initParameters);
                     await initOperation.Task;

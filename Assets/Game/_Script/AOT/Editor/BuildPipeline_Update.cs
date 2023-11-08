@@ -15,7 +15,7 @@ namespace Game._Script.AOT.Editor
         {
             // 修改ScriptableObject的属性
             BuildConfigAccessor.Instance.BundleFolder = Environment.GetEnvironmentVariable("BundleFolder");
-            BuildConfigAccessor.Instance.HostServerIP = Environment.GetEnvironmentVariable("CDN");
+            BuildConfigAccessor.Instance.LocalTestIP = Environment.GetEnvironmentVariable("LocalTestIP");
             BuildConfigAccessor.Instance.HotUpdateVersion += 1;
             // 保存更改
             EditorUtility.SetDirty(BuildConfigAccessor.Instance); // 标记为脏以保存
