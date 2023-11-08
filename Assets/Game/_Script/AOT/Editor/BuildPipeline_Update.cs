@@ -37,7 +37,7 @@ namespace Game._Script.AOT.Editor
         }
 
 
-        public static async UniTask IncrementalBuild(BuildTarget target)
+        public static void IncrementalBuild(BuildTarget target)
         {
             //生成热更新dll
             switch (target)
@@ -50,18 +50,18 @@ namespace Game._Script.AOT.Editor
                     break;
             }
 
-            //拷贝dll
-            string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
-
-            foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
-            {
-                string sourcePath = Path.Combine($"{Directory.GetParent(Application.dataPath)}", $"{hotfixDllSrcDir}",
-                    $"{hotUpdateDll}");
-                string dstPath = Path.Combine($"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}",
-                    $"{hotUpdateDll}.bytes");
-
-                File.Copy(sourcePath, dstPath, true);
-            }
+            // //拷贝dll
+            // string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
+            //
+            // foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
+            // {
+            //     string sourcePath = Path.Combine($"{Directory.GetParent(Application.dataPath)}", $"{hotfixDllSrcDir}",
+            //         $"{hotUpdateDll}");
+            //     string dstPath = Path.Combine($"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}",
+            //         $"{hotUpdateDll}.bytes");
+            //
+            //     File.Copy(sourcePath, dstPath, true);
+            // }
 
             //yooAsset打包
             BuildPipleline_YooAsset.YooAssetBuild(EBuildMode.IncrementalBuild, target);

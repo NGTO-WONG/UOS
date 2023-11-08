@@ -13,16 +13,10 @@ namespace Game._Script.AOT.Editor
     {
         public static void YooAssetBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
         {
-            CollectShaderVariants("Assets/Game/ShaderVar/MyShaderVariants.shadervariants", "DefaultPackage",
-                99999999, buildTarget, eBuildMode);
-        }
-
-        private static void CollectShaderVariants(string savePath, string packageName, int variantCount,
-            BuildTarget buildTarget, EBuildMode eBuildMode)
-        {
+            
             System.Action completedCallback = () =>
             {
-                var collection = AssetDatabase.LoadAssetAtPath<ShaderVariantCollection>(savePath);
+                var collection = AssetDatabase.LoadAssetAtPath<ShaderVariantCollection>("Assets/Game/ShaderVar/MyShaderVariants.shadervariants");
                 if (collection != null)
                 {
                     Debug.Log($"ShaderCount : {collection.shaderCount}");
@@ -32,20 +26,16 @@ namespace Game._Script.AOT.Editor
                 {
                     Debug.Log("构建失败");
                 }
-
-// 你想保存场景的路径
                 string scenePath = "Assets/Game/Scene/shaders.unity";
-
-
-// 保存场景
                 bool saveSuccess = EditorSceneManager.SaveScene(SceneManager.GetActiveScene()
                     , scenePath);
-
                 AssetDatabase.Refresh();
                 PrepareAndBuild(eBuildMode, buildTarget);
             };
                 
-            ShaderVariantCollector.Run(savePath, packageName, variantCount,completedCallback);
+            ShaderVariantCollector.Run("Assets/Game/ShaderVar/MyShaderVariants.shadervariants", "DefaultPackage", Int32.MaxValue, completedCallback);
+            
+            
             
         }
 
@@ -77,44 +67,8 @@ namespace Game._Script.AOT.Editor
 
         private static void BuildAssetBundles(BuildTarget buildTarget, EBuildMode eBuildMode)
         {
-            string packageVersion =
-                $"V{BuildConfigAccessor.Instance.BuildVersion}.{BuildConfigAccessor.Instance.HotUpdateVersion}";
-            BuildParameters buildParameters = GetBuildParameters(buildTarget, eBuildMode, packageVersion);
-
-            AssetBundleBuilder builder = new AssetBundleBuilder();
-            var buildResult = builder.Run(buildParameters);
-
-            if (buildResult.Success)
-            {
-                Debug.Log($"Build successful: {buildResult.OutputPackageDirectory}");
-                if (eBuildMode == EBuildMode.IncrementalBuild)
-                {
-                    var files = Directory.GetFiles(buildResult.OutputPackageDirectory);
-                    var targetDirectory = Path.Combine(Directory.GetParent(buildResult.OutputPackageDirectory).FullName,
-                        $"V{BuildConfigAccessor.Instance.BuildVersion}.0");
-                    foreach (var file in files)
-                    {
-                        var fileName = Path.GetFileName(file);
-                        var dst = Path.Combine(targetDirectory, fileName);
-                        Debug.Log($"Copying file: {file} -> {dst}");
-                        File.Copy(file, dst, true);
-                    }
-                    Debug.Log($"Copied {files.Length} files to {targetDirectory}");
-                    
-                    EditorTools.CloseUnityGameWindow();
-                    EditorApplication.Exit(0);
-                }
-            }
-            else
-            {
-                Debug.LogError($"Build failed: {buildResult.ErrorInfo}");
-            }
-        }
-
-        private static BuildParameters GetBuildParameters(BuildTarget buildTarget, EBuildMode eBuildMode,
-            string packageVersion)
-        {
-            return new BuildParameters
+            string packageVersion = $"V{BuildConfigAccessor.Instance.BuildVersion}.{BuildConfigAccessor.Instance.HotUpdateVersion}";
+            BuildParameters buildParameters = new BuildParameters
             {
                 StreamingAssetsRoot = Application.streamingAssetsPath,
                 BuildOutputRoot = BuildConfigAccessor.Instance.BundleFolder,
@@ -128,8 +82,35 @@ namespace Game._Script.AOT.Editor
                 SharedPackRule = new ZeroRedundancySharedPackRule(),
                 OutputNameStyle = EOutputNameStyle.BundleName_HashName,
                 CompressOption = ECompressOption.LZ4
-                // Other parameters as needed...
             };
+
+            AssetBundleBuilder builder = new AssetBundleBuilder();
+            var buildResult = builder.Run(buildParameters);
+
+            if (!buildResult.Success)
+            {                
+                Debug.LogError($"打包失败: {buildResult.ErrorInfo}");
+                return;
+
+            }
+            
+            if (eBuildMode == EBuildMode.IncrementalBuild)//热更的话多一步拷贝的操作 
+            {
+                var files = Directory.GetFiles(buildResult.OutputPackageDirectory);
+                var targetDirectory = Path.Combine(Directory.GetParent(buildResult.OutputPackageDirectory).FullName,
+                    $"V{BuildConfigAccessor.Instance.BuildVersion}.0");
+                foreach (var file in files)
+                {
+                    var fileName = Path.GetFileName(file);
+                    var dst = Path.Combine(targetDirectory, fileName);
+                    Debug.Log($"Copying file: {file} -> {dst}");
+                    File.Copy(file, dst, true);
+                }
+                Debug.Log($"Copied {files.Length} files to {targetDirectory}");
+                    
+                EditorTools.CloseUnityGameWindow();
+                EditorApplication.Exit(0);
+            }
         }
     }
 }
