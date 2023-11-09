@@ -1,5 +1,5 @@
-// using Cysharp.Threading.Tasks.Linq;
-// using Cysharp.Threading.Tasks.Triggers;
+using Cysharp.Threading.Tasks.Linq;
+using Cysharp.Threading.Tasks.Triggers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,24 +17,24 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
             Application.targetFrameRate = 60;
             QualitySettings.vSyncCount = 0;
 
-            // capsuleCollider.transform.GetAsyncTriggerEnterTrigger().ForEachAsync((collision) =>
-            // {
-            //     if (collision.gameObject.TryGetComponent<BaseInteractObj>(out var interactObj))
-            //     {
-            //         interactButton.gameObject.SetActive(true);
-            //         _interactObj = interactObj;
-            //         interactButton.GetComponentInChildren<TextMeshProUGUI>().text = collision.gameObject.name;
-            //     }
-            // });
-            //
-            // capsuleCollider.transform.GetAsyncTriggerExitTrigger().ForEachAsync((collision) =>
-            // {
-            //     if (collision.gameObject.TryGetComponent<BaseInteractObj>(out var interactObj))
-            //     {
-            //         interactButton.gameObject.SetActive(false);
-            //         _interactObj = null;
-            //     }
-            // });
+            capsuleCollider.transform.GetAsyncTriggerEnterTrigger().ForEachAsync((collision) =>
+            {
+                if (collision.gameObject.TryGetComponent<BaseInteractObj>(out var interactObj))
+                {
+                    interactButton.gameObject.SetActive(true);
+                    _interactObj = interactObj;
+                    interactButton.GetComponentInChildren<TextMeshProUGUI>().text = collision.gameObject.name;
+                }
+            });
+            
+            capsuleCollider.transform.GetAsyncTriggerExitTrigger().ForEachAsync((collision) =>
+            {
+                if (collision.gameObject.TryGetComponent<BaseInteractObj>(out var interactObj))
+                {
+                    interactButton.gameObject.SetActive(false);
+                    _interactObj = null;
+                }
+            });
             
             interactButton.onClick.AddListener(()=>_interactObj.Interact(this));
         }
