@@ -53,10 +53,9 @@ namespace Game._Script.AOT
             "https://a.unity.cn/client_api/v1/buckets/8c5cd9d5-dde9-4d66-a07f-68fc52feddb2/entry_by_path/content/?path=";
 
         /// <summary>
-        /// cdn服务器地址 
+        /// 本地测试ip地址 
         /// </summary>
-        public string LocalTestIP =
-            "https://a.unity.cn/client_api/v1/buckets/8c5cd9d5-dde9-4d66-a07f-68fc52feddb2/entry_by_path/content/?path=";
+        public string LocalTestIP = "http://192.168.100.210:8000/";
 
         /// <summary>
         /// 热更新程序集的位置
