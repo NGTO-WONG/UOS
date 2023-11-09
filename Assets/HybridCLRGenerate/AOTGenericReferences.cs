@@ -7,6 +7,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	{
 		"DOTween.dll",
 		"System.Core.dll",
+		"UniTask.Linq.dll",
 		"UniTask.dll",
 		"UnityEngine.CoreModule.dll",
 		"mscorlib.dll",
@@ -302,7 +303,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,object>(Cysharp.Threading.Tasks.UniTask.Awaiter&,object&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<byte>,object>(Cysharp.Threading.Tasks.UniTask.Awaiter<byte>&,object&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<int>,object>(Cysharp.Threading.Tasks.UniTask.Awaiter<int>&,object&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<Cysharp.Threading.Tasks.Linq.ForEach.<ForEachAsync>d__0<object>>(Cysharp.Threading.Tasks.Linq.ForEach.<ForEachAsync>d__0<object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<object>(object&)
+		// System.Void Cysharp.Threading.Tasks.Internal.Error.ThrowArgumentNullException<object>(object,string)
+		// Cysharp.Threading.Tasks.UniTask Cysharp.Threading.Tasks.Linq.ForEach.ForEachAsync<object>(Cysharp.Threading.Tasks.IUniTaskAsyncEnumerable<object>,System.Action<object>,System.Threading.CancellationToken)
+		// Cysharp.Threading.Tasks.UniTask Cysharp.Threading.Tasks.Linq.UniTaskAsyncEnumerable.ForEachAsync<object>(Cysharp.Threading.Tasks.IUniTaskAsyncEnumerable<object>,System.Action<object>,System.Threading.CancellationToken)
 		// Cysharp.Threading.Tasks.UniTask<int> Cysharp.Threading.Tasks.UniTask.FromCanceled<int>(System.Threading.CancellationToken)
 		// Cysharp.Threading.Tasks.UniTask<int> Cysharp.Threading.Tasks.UniTaskExtensions.AttachExternalCancellation<int>(Cysharp.Threading.Tasks.UniTask<int>,System.Threading.CancellationToken)
 		// object DG.Tweening.TweenSettingsExtensions.SetEase<object>(object,DG.Tweening.Ease)
