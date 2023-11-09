@@ -117,6 +117,8 @@ namespace Game._Script.AOT.Editor
         public static void Compile(BuildTarget buildTarget)
         {
             
+            PrebuildCommand.GenerateAll();
+            return;
             CompileDllCommand.CompileDll(buildTarget,BuildConfigAccessor.Instance.IsDevelopmentBuild.Equals("1"));
             Il2CppDefGeneratorCommand.GenerateIl2CppDef();
             // 这几个生成依赖HotUpdateDlls
