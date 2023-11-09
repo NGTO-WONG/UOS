@@ -1,6 +1,6 @@
 {
-    "ShaderTotalCount": 29,
-    "VariantTotalCount": 55,
+    "ShaderTotalCount": 30,
+    "VariantTotalCount": 51,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -147,8 +147,8 @@
             ]
         },
         {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/Sampling.shader",
-            "ShaderName": "Hidden/Universal Render Pipeline/Sampling",
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CopyDepth.shader",
+            "ShaderName": "Hidden/Universal Render Pipeline/CopyDepth",
             "ShaderVariantElements": [
                 {
                     "PassType": 0,
@@ -195,14 +195,7 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        ""
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
                         "_MAIN_LIGHT_SHADOWS",
-                        "_SCREEN_SPACE_OCCLUSION",
                         "_SHADOWS_SOFT"
                     ]
                 }
@@ -216,8 +209,7 @@
                     "PassType": 0,
                     "Keywords": [
                         "_ALPHATEST_ON",
-                        "_EMISSION",
-                        "_SCREEN_SPACE_OCCLUSION"
+                        "_EMISSION"
                     ]
                 },
                 {
@@ -225,7 +217,6 @@
                     "Keywords": [
                         "_EMISSION",
                         "_FADING_ON",
-                        "_SCREEN_SPACE_OCCLUSION",
                         "_SOFTPARTICLES_ON",
                         "_SURFACE_TYPE_TRANSPARENT"
                     ]
@@ -234,14 +225,7 @@
                     "PassType": 0,
                     "Keywords": [
                         "_EMISSION",
-                        "_SCREEN_SPACE_OCCLUSION",
                         "_SURFACE_TYPE_TRANSPARENT"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_ALPHATEST_ON"
                     ]
                 }
             ]
@@ -259,14 +243,7 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        ""
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
                         "_MAIN_LIGHT_SHADOWS",
-                        "_SCREEN_SPACE_OCCLUSION",
                         "_SHADOWS_SOFT",
                         "_TERRAIN_INSTANCED_PERPIXEL_NORMAL"
                     ]
@@ -488,14 +465,7 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        ""
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
                         "_MAIN_LIGHT_SHADOWS",
-                        "_SCREEN_SPACE_OCCLUSION",
                         "_SHADOWS_SOFT"
                     ]
                 }
@@ -535,7 +505,6 @@
                 {
                     "PassType": 0,
                     "Keywords": [
-                        "_SCREEN_SPACE_OCCLUSION",
                         "_SURFACE_TYPE_TRANSPARENT"
                     ]
                 }
@@ -550,22 +519,31 @@
                     "Keywords": [
                         ""
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Plugins/Amazing Assets/Terrain To Mesh/Shaders/Splatmap/Splatmap.shader",
+            "ShaderName": "Amazing Assets/Terrain To Mesh/Splatmap",
+            "ShaderVariantElements": [
                 {
-                    "PassType": 0,
+                    "PassType": 8,
                     "Keywords": [
-                        "_BLUE_NOISE",
-                        "_ORTHOGRAPHIC",
-                        "_SAMPLE_COUNT_MEDIUM",
-                        "_SOURCE_DEPTH_NORMALS"
+                        "_T2M_LAYER_0_NORMAL",
+                        "_T2M_LAYER_1_NORMAL",
+                        "_T2M_LAYER_2_NORMAL",
+                        "_T2M_LAYER_COUNT_3"
                     ]
                 },
                 {
-                    "PassType": 0,
+                    "PassType": 13,
                     "Keywords": [
-                        "_BLUE_NOISE",
-                        "_SAMPLE_COUNT_MEDIUM",
-                        "_SOURCE_DEPTH_NORMALS"
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SHADOWS_SOFT",
+                        "_T2M_LAYER_0_NORMAL",
+                        "_T2M_LAYER_1_NORMAL",
+                        "_T2M_LAYER_2_NORMAL",
+                        "_T2M_LAYER_COUNT_3"
                     ]
                 }
             ]
