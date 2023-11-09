@@ -117,13 +117,10 @@ namespace Game._Script.AOT.Editor
         public static void Compile(BuildTarget buildTarget)
         {
             
-            PrebuildCommand.GenerateAll();
-            return;
             CompileDllCommand.CompileDll(buildTarget,BuildConfigAccessor.Instance.IsDevelopmentBuild.Equals("1"));
             Il2CppDefGeneratorCommand.GenerateIl2CppDef();
-            // 这几个生成依赖HotUpdateDlls
             var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
-            BuildLinkFile.GenerateLinkfile(xmlPath);
+            BuildLinkFile.GenerateLinkfile(xmlPath);//生成link文件 然后根据link文件创建一个调用所有组建的脚本到ReservedAssembly.cs
             AssetDatabase.Refresh();
             // 生成裁剪后的aot dll
             StripAOTDllCommand.GenerateStripedAOTDlls(buildTarget);
