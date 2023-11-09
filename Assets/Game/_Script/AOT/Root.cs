@@ -80,22 +80,41 @@ namespace Game._Script.AOT
         /// </summary>
         private async UniTask LoadHotUpdateDll()
         {
-            var package = YooAssets.GetPackage("DefaultPackage");
-            foreach (var item in package.GetAssetInfos("HotUpdateDll"))
+            if (true)
             {
-                string location = item.Address;
-                if (AOTGenericReferences.PatchedAOTAssemblyList.Contains(location))
-                {
-                    continue;
-                }
+#if !UNITY_EDITOR
+                string location = "HotUpdate.dll";
+                var package = YooAssets.GetPackage("DefaultPackage");
                 RawFileOperationHandle handle = package.LoadRawFileAsync(location);
                 await handle.Task;
                 byte[] hotUpdateData = handle.GetRawFileData();
-#if !UNITY_EDITOR
                 Assembly.Load(hotUpdateData);
 #else
-                Debug.Log("编辑器模式无需加载热更Dll " + hotUpdateData);
+                // Editor环境下，HotUpdate.dll.bytes已经被自动加载，不需要加载，重复加载反而会出问题。
+                await UniTask.Delay(1);
+                Debug.Log("编辑器模式无需加载热更Dll ");
 #endif
+            }
+            else
+            {
+                var package = YooAssets.GetPackage("DefaultPackage");
+                foreach (var item in package.GetAssetInfos("HotUpdateDll"))
+                {
+                    string location = item.Address;
+                    if (AOTGenericReferences.PatchedAOTAssemblyList.Contains(location))
+                    {
+                        continue;
+                    }
+
+                    RawFileOperationHandle handle = package.LoadRawFileAsync(location);
+                    await handle.Task;
+                    byte[] hotUpdateData = handle.GetRawFileData();
+#if !UNITY_EDITOR
+                    Assembly.Load(hotUpdateData);
+#else
+                    Debug.Log("编辑器模式无需加载热更Dll " + hotUpdateData);
+#endif
+                }
             }
         }
 
@@ -128,8 +147,8 @@ namespace Game._Script.AOT
                     {
                         QueryServices = new GameQueryServices(),
                         DecryptionServices = new GameDecryptionServices(),
-                        DefaultHostServer = BuildConfigAccessor.Instance.LocalTestIP, //先找本地测试服务器
-                        FallbackHostServer = GetHostServerURL() //找不到在找cdn服务器
+                        DefaultHostServer = GetHostServerURL(BuildConfigAccessor.Instance.LocalTestIP), //先找本地测试服务器
+                        FallbackHostServer = GetHostServerURL(BuildConfigAccessor.Instance.HostServerIP) //找不到在找cdn服务器
                     };
                     var initOperation = package.InitializeAsync(initParameters);
                     await initOperation.Task;
@@ -147,30 +166,20 @@ namespace Game._Script.AOT
                     throw new ArgumentOutOfRangeException();
             }
 
-            string GetHostServerURL()
+            string GetHostServerURL(string ip)
             {
-                var versionStr = "V" + BuildConfigAccessor.Instance.BuildVersion + "." +
+                var versionStr = "V" +
+                                 BuildConfigAccessor.Instance.BuildVersion + "." +
                                  BuildConfigAccessor.Instance.HotUpdateVersion;
-#if UNITY_EDITOR
-                if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{versionStr}";
-                else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{versionStr}";
-                else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{versionStr}";
-                else
-                    return
-                        $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{versionStr}";
-#else
-                if (Application.platform == RuntimePlatform.Android)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{versionStr}";
-                else if (Application.platform == RuntimePlatform.IPhonePlayer)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{versionStr}";
-                else if (Application.platform == RuntimePlatform.WebGLPlayer)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{versionStr}";
-                else
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{versionStr}";
-#endif
+                switch (Application.platform)
+                {
+                    case RuntimePlatform.Android:
+                        return $"{ip}Android/DefaultPackage/{versionStr}";
+                    case RuntimePlatform.IPhonePlayer:
+                        return $"{ip}iOS/DefaultPackage/{versionStr}";
+                    default:
+                        return "未知平台";
+                }
             }
         }
 
