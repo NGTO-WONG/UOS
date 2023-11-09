@@ -26,9 +26,7 @@ namespace Game._Script.AOT.Editor
                     Debug.Log("构建失败");
                 }
                 string scenePath = "Assets/Game/Scene/shaders.unity";
-                bool saveSuccess = EditorSceneManager.SaveScene(SceneManager.GetActiveScene()
-                    , scenePath);
-                
+                EditorSceneManager.SaveScene(SceneManager.GetActiveScene(), scenePath);
                 AssetDatabase.Refresh();
                 ShaderVariantCollector.Run("Assets/Game/ShaderVar/MyShaderVariants.shadervariants", "DefaultPackage", Int32.MaxValue,
                     ()=>
