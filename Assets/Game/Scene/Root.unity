@@ -1005,7 +1005,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayMode: 2
-  slider: {fileID: 19872181}
   text: {fileID: 273377853}
 --- !u!1 &1477195263
 GameObject:
