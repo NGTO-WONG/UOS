@@ -1,0 +1,788 @@
+{
+    "ShaderTotalCount": 32,
+    "VariantTotalCount": 78,
+    "ShaderVariantInfos": [
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/BlitCopy",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/BlitCopyHDRTonemap",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Skybox/Cubemap",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Skybox/Procedural",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_SUNDISK_SIMPLE"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITextureClip",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITextureClipText",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITexture",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITextureBlit",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUIRoundedRect",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUIRoundedRectWithColorPerBorder",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-UIRAtlasBlitCopy",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/UIElements/EditorUIE",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CopyDepth.shader",
+            "ShaderName": "Hidden/Universal Render Pipeline/CopyDepth",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_OUTPUT_DEPTH"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/Sampling.shader",
+            "ShaderName": "Hidden/Universal Render Pipeline/Sampling",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/LutBuilderHdr.shader",
+            "ShaderName": "Hidden/Universal Render Pipeline/LutBuilderHdr",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/UberPost.shader",
+            "ShaderName": "Hidden/Universal Render Pipeline/UberPost",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_HDR_GRADING",
+                        "_USE_FAST_SRGB_LINEAR_CONVERSION"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader",
+            "ShaderName": "Hidden/Universal Render Pipeline/FallbackError",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CoreBlit.shader",
+            "ShaderName": "Hidden/Universal/CoreBlit",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/BlitHDROverlay.shader",
+            "ShaderName": "Hidden/Universal/BlitHDROverlay",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "HDR_COLORSPACE_CONVERSION_AND_ENCODING"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader",
+            "ShaderName": "Universal Render Pipeline/Lit",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesUnlit.shader",
+            "ShaderName": "Universal Render Pipeline/Particles/Unlit",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_ALPHATEST_ON",
+                        "_EMISSION"
+                    ]
+                },
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_EMISSION",
+                        "_FADING_ON",
+                        "_SOFTPARTICLES_ON",
+                        "_SURFACE_TYPE_TRANSPARENT"
+                    ]
+                },
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_EMISSION",
+                        "_SURFACE_TYPE_TRANSPARENT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ALPHATEST_ON"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLit.shader",
+            "ShaderName": "Universal Render Pipeline/Terrain/Lit",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_TERRAIN_INSTANCED_PERPIXEL_NORMAL"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT",
+                        "_TERRAIN_INSTANCED_PERPIXEL_NORMAL"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Suntail_Village/Shaders/Suntail_Surface.shader",
+            "ShaderName": "Raygeas/Suntail Surface",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        "INSTANCING_ON"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SMOOTHNESSSOURCE_ALBEDO_ALPHA"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SMOOTHNESSSOURCE_METALLIC_ALPHA"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT",
+                        "_SMOOTHNESSSOURCE_ALBEDO_ALPHA"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT",
+                        "_SMOOTHNESSSOURCE_METALLIC_ALPHA"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Additive.shader",
+            "ShaderName": "Spine/Blend Modes/Skeleton PMA Additive",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Suntail_Village/Shaders/Suntail_Foliage.shader",
+            "ShaderName": "Raygeas/Suntail Foliage",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_ENABLEWIND_ON"
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ENABLEWIND_ON"
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_ENABLEWIND_ON"
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        "_ENABLEWIND_ON"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED",
+                        "_SHADOWS_SOFT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_ENABLEWIND_ON"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ANCHORTHEFOLIAGEBASE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_UV_BASED",
+                        "_SHADOWS_SOFT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_COLOR2ENABLE_ON",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ENABLEWIND_ON"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ENABLEWIND_ON",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
+                        "_SHADOWS_SOFT"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Multiply.shader",
+            "ShaderName": "Spine/Blend Modes/Skeleton PMA Multiply",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Screen.shader",
+            "ShaderName": "Spine/Blend Modes/Skeleton PMA Screen",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLit.shader",
+            "ShaderName": "Universal Render Pipeline/Simple Lit",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Game/_Script/HotUpdate/Suntail_Village/Shaders/Suntail_Water.shader",
+            "ShaderName": "Raygeas/Suntail Water",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Game/Matreial/BlobShadow_Graph.shadergraph",
+            "ShaderName": "Shader Graphs/BlobShadow_Graph",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_DECAL_NORMAL_BLEND_LOW",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_DECAL_NORMAL_BLEND_LOW",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.esotericsoftware.spine.urp-shaders/Shaders/Spine-Sprite-URP.shader",
+            "ShaderName": "Universal Render Pipeline/Spine/Sprite",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "PIXELSNAP_ON",
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "PIXELSNAP_ON",
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS"
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
+                        "_FULLRANGE_HARD_RAMP",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SHADOWS_SOFT"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Unlit.shader",
+            "ShaderName": "Universal Render Pipeline/Unlit",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_SURFACE_TYPE_TRANSPARENT"
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,8 +1,8 @@
 using System;
-using System.Threading.Tasks;
 using Game.Script.AOT.YooAsset;
 using UnityEngine;
 using YooAsset;
+using Cysharp.Threading.Tasks;
 using HybridCLR;
 using System.Reflection;
 
@@ -16,24 +16,44 @@ namespace Game._Script.AOT
         {
             //1 初始化
             await InitializeYooAsset();
-            //2 获取资源版本
-            var packageVersion = await UpdatePackageVersion();
-            //3 更新资源清单
-            await UpdatePackageManifest(packageVersion);
-            //4 资源包下载 
-            await Download();
-            //5 补充AOT泛型
-            await LoadMetadataForAOTAssembly();
-            //6 读取HotUpdate热更新文件 
-            await LoadHotUpdateDll();
-            //7 更新结束 开始游戏
-            await StartGame(BuildConfigAccessor.Instance.GamePlayScene);
+            try
+            {
+                //2 获取资源版本
+                var packageVersion = await UpdatePackageVersion();
+                //3 更新资源清单
+                await UpdatePackageManifest(packageVersion);
+                //4 资源包下载 
+                await Download();
+                //5 补充AOT泛型
+                await LoadMetadataForAOTAssembly();
+                //6 读取HotUpdate热更新文件 
+                await LoadHotUpdateDll();
+                //7 更新结束 开始游戏
+                await StartGame(BuildConfigAccessor.Instance.GamePlayScene);
+            }
+            catch
+            {
+                //ios第一次可能会因为没有网络权限而失败 这里catch再跑一遍
+                //2 获取资源版本
+                var packageVersion = await UpdatePackageVersion();
+                //3 更新资源清单
+                await UpdatePackageManifest(packageVersion);
+                //4 资源包下载 
+                await Download();
+                //5 补充AOT泛型
+                await LoadMetadataForAOTAssembly();
+                //6 读取HotUpdate热更新文件 
+                await LoadHotUpdateDll();
+                //7 更新结束 开始游戏
+                await StartGame(BuildConfigAccessor.Instance.GamePlayScene);
+                
+            }
         }
 
         /// <summary>
         /// 5 补充aot元数据
         /// </summary>
-        private async Task LoadMetadataForAOTAssembly()
+        private async UniTask LoadMetadataForAOTAssembly()
         {
 #if !UNITY_EDITOR
             HomologousImageMode mode = HomologousImageMode.SuperSet;
@@ -48,7 +68,7 @@ namespace Game._Script.AOT
                 Debug.Log($"LoadMetadataForAOTAssembly:{aotDll}. mode:{mode} ret:{err}");
             }
 #else
-            await Task.Delay(1);
+            await UniTask.Delay(1);
             Debug.Log("编辑器模式无需加载AOT元数据");
 #endif
         }
@@ -56,7 +76,7 @@ namespace Game._Script.AOT
         /// <summary>
         /// 6 读取HotUpdate热更新文件 
         /// </summary>
-        private async Task LoadHotUpdateDll()
+        private async UniTask LoadHotUpdateDll()
         {
 #if !UNITY_EDITOR
             string location = "HotUpdate.dll";
@@ -67,12 +87,12 @@ namespace Game._Script.AOT
             Assembly.Load(hotUpdateData);
 #else
             // Editor环境下，HotUpdate.dll.bytes已经被自动加载，不需要加载，重复加载反而会出问题。
-            await Task.Delay(1);
+            await UniTask.Delay(1);
             Debug.Log("编辑器模式无需加载热更Dll ");
 #endif
         }
 
-        private async Task InitializeYooAsset()
+        private async UniTask InitializeYooAsset()
         {
             // 初始化资源系统
             YooAssets.Initialize();
@@ -99,10 +119,10 @@ namespace Game._Script.AOT
                 case EPlayMode.HostPlayMode:
                     var initParameters = new HostPlayModeParameters
                     {
-                        QueryServices = new GameQueryServices(), //太空战机DEMO的脚本类，详细见StreamingAssetsHelper
+                        QueryServices = new GameQueryServices(), 
                         DecryptionServices = new GameDecryptionServices(),
-                        DefaultHostServer = GetHostServerURL(),
-                        FallbackHostServer = GetHostServerURL()
+                        DefaultHostServer = BuildConfigAccessor.Instance.LocalTestIP,//先找本地测试服务器
+                        FallbackHostServer = GetHostServerURL() //找不到在找cdn服务器
                     };
                     var initOperation = package.InitializeAsync(initParameters);
                     await initOperation.Task;
@@ -122,30 +142,32 @@ namespace Game._Script.AOT
 
             string GetHostServerURL()
             {
+                var versionStr = "V" + BuildConfigAccessor.Instance.BuildVersion + "." +
+                                 BuildConfigAccessor.Instance.HotUpdateVersion;
 #if UNITY_EDITOR
                 if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{versionStr}";
                 else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{versionStr}";
                 else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{versionStr}";
                 else
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{versionStr}";
 #else
                 if (Application.platform == RuntimePlatform.Android)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{versionStr}";
                 else if (Application.platform == RuntimePlatform.IPhonePlayer)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}iOS/DefaultPackage/{versionStr}";
                 else if (Application.platform == RuntimePlatform.WebGLPlayer)
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{versionStr}";
                 else
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{BuildConfigAccessor.Instance.BuildVersion}";
+                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{versionStr}";
 #endif
                 
             }
         }
 
-        private async Task<string> UpdatePackageVersion()
+        private async UniTask<string> UpdatePackageVersion()
         {
             var package = YooAssets.GetPackage("DefaultPackage");
             var operation = package.UpdatePackageVersionAsync(false);
@@ -165,7 +187,7 @@ namespace Game._Script.AOT
             }
         }
 
-        private async Task UpdatePackageManifest(string packageVersion)
+        private async UniTask UpdatePackageManifest(string packageVersion)
         {
             // 更新成功后自动保存版本号，作为下次初始化的版本。
             // 也可以通过operation.SavePackageVersion()方法保存。
@@ -183,7 +205,7 @@ namespace Game._Script.AOT
             }
         }
 
-        private async Task Download()
+        private async UniTask Download()
         {
             const int downloadingMaxNum = 10;
             const int failedTryAgain = 3;
@@ -237,7 +259,7 @@ namespace Game._Script.AOT
             }
         }
 
-        static async Task StartGame(string sceneName)
+        static async UniTask StartGame(string sceneName)
         {
             SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName);
             await handle.Task;

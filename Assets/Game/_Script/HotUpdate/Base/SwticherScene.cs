@@ -1,4 +1,7 @@
+using System;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,23 +14,25 @@ namespace Game._Script.HotUpdate
         [SerializeField] private Button originButton;
         void Start()
         {
-            Debug.Log("Abc");
             var package = YooAssets.GetPackage("DefaultPackage");
             foreach (var item in package.GetAssetInfos("Scene"))
             {
                 var tempButton = Instantiate(originButton , originButton.transform.parent);
                 tempButton.gameObject.SetActive(true);
                 tempButton.GetComponentInChildren<TextMeshProUGUI>().text = item.Address;
-                tempButton.GetComponentInChildren<TextMeshProUGUI>().color=Color.red;
                 var t = item.Address;
-                tempButton.onClick.AddListener(async () =>
+                tempButton.onClick.AddListener(Call);
+                continue;
+
+
+                async void Call()
                 {
                     await SwitchScene(t);
-                });
+                }
             }
         }
 
-        static async UniTask SwitchScene(string sceneName)
+        static async Task SwitchScene(string sceneName)
         {
             SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName);
             await handle.Task;

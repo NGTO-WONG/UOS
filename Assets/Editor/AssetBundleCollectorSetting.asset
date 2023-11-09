@@ -43,9 +43,8 @@ MonoBehaviour:
         FilterRuleName: CollectScene
         AssetTags: 
         UserData: 
-      - CollectPath: Assets/Game/_Script/HotUpdate/Amazing Assets/Curved World/Example
-          Scenes
-        CollectorGUID: df5b0fd9ee20ef44386fa5c6991d10e1
+      - CollectPath: Assets/Game/_Script/HotUpdate/Suntail_Village/Demo
+        CollectorGUID: f0f5c0bf397128d47b7e215f87ee90c4
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
@@ -61,6 +60,22 @@ MonoBehaviour:
         CollectorGUID: 61499e40f72034a9b9390aa687cbcb4e
         CollectorType: 0
         AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectPrefab
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/Game/_Script/HotUpdate/Suntail_Village
+        CollectorGUID: 4bf005cf732d64ee2b1497d19a5a5076
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectPrefab
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/Game/_Script/HotUpdate/SimpleTouchController/Prefabs
+        CollectorGUID: 04f2dca2005d59f4283252efe5dad39d
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectPrefab
         AssetTags: 
@@ -85,7 +100,7 @@ MonoBehaviour:
       Collectors:
       - CollectPath: Assets/Game/Content
         CollectorGUID: 2a5c7a1ed19c317489dce39df6d1ae6d
-        CollectorType: 1
+        CollectorType: 2
         AddressRuleName: AddressByFolderAndFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll
@@ -94,12 +109,38 @@ MonoBehaviour:
     - GroupName: DependRes
       GroupDesc: 
       AssetTags: 
-      ActiveRuleName: DisableGroup
+      ActiveRuleName: EnableGroup
       Collectors:
       - CollectPath: Assets/Game/DependRes
         CollectorGUID: cb4017d0239a09c4d8aaa251330b66ae
-        CollectorType: 2
+        CollectorType: 0
         AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectSprite
+        AssetTags: 
+        UserData: 
+    - GroupName: Test
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Game/ShaderVar
+        CollectorGUID: ca4e3c1b1cc054b3f9cd638def1bb3ec
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectShaderVariants
+        AssetTags: 
+        UserData: 
+    - GroupName: Static
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Game/Content
+        CollectorGUID: 2a5c7a1ed19c317489dce39df6d1ae6d
+        CollectorType: 1
+        AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll
         AssetTags: 
