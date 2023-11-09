@@ -596,6 +596,9 @@
                     "Keywords": [
                         "PIXELSNAP_ON",
                         "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
                         "_MAIN_LIGHT_SHADOWS"
                     ]
                 },
@@ -604,6 +607,9 @@
                     "Keywords": [
                         "PIXELSNAP_ON",
                         "_ADDITIONAL_LIGHTS_VERTEX",
+                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
+                        "_COLOR_ADJUST",
+                        "_FIXED_NORMALS_WORLDSPACE",
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_SHADOWS_SOFT"
                     ]
