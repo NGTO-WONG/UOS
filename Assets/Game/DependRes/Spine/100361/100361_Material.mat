@@ -13,6 +13,9 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - PIXELSNAP_ON
+  - _ALPHAPREMULTIPLY_VERTEX_ONLY
+  - _COLOR_ADJUST
+  - _FIXED_NORMALS_WORLDSPACE
   m_InvalidKeywords:
   - _RECEIVE_SHADOWS
   - _STRAIGHT_ALPHA_INPUT
@@ -58,7 +61,7 @@ Material:
     m_Floats:
     - PixelSnap: 1
     - _BlendAmount: 0
-    - _Brightness: 1
+    - _Brightness: 0.65
     - _BumpScale: 1
     - _Cull: 0
     - _CustomRenderQueue: 0
