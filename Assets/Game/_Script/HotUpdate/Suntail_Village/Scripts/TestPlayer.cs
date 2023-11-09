@@ -8,7 +8,6 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
 {
     public class TestPlayer : MonoBehaviour
     {
-        // [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Button interactButton;
         [SerializeField] private CapsuleCollider capsuleCollider;
         private BaseInteractObj _interactObj;
@@ -37,35 +36,10 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
                 }
             });
             
-            interactButton.onClick.AddListener(()=>_interactObj.Interact());
+            interactButton.onClick.AddListener(()=>_interactObj.Interact(this));
         }
         
 
-        void Update()
-        {
-        
-        
-            // if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
-            // {
-            //     Ray ray;
-            //
-            //     if (Input.touchCount > 0)
-            //     {
-            //         Touch touch = Input.GetTouch(0);
-            //         ray = Camera.main.ScreenPointToRay(touch.position);
-            //     }
-            //     else
-            //     {
-            //         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //     }
-            //
-            //     if (Physics.Raycast(ray, out var hit))
-            //     {
-            //         agent.SetDestination(hit.point);
-            //     }
-            // }
-        }
-    
 
     }
 }

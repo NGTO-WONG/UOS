@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Spine.Unity;
 
 [RequireComponent(typeof(Rigidbody))]
 
@@ -15,11 +16,15 @@ public class PlayerMoveController : MonoBehaviour {
 
 	// PRIVATE
 	private Rigidbody _rigidbody;
+	private SkeletonAnimation _skeletonAnimation;
 	[SerializeField] bool continuousRightController = true;
+	private const string MOVE = "000000_noWeapon_run";
+	private const string IDLE = "000000_noWeapon_idle";
 
 	void Awake()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
+		_skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
 		rightController.TouchEvent += RightController_TouchEvent;
 	}
 
@@ -41,7 +46,30 @@ public class PlayerMoveController : MonoBehaviour {
 		// move
 		_rigidbody.MovePosition(transform.position + (Vector3.forward * (leftController.GetTouchPosition.y * Time.deltaTime * speedMovements)) +
 			(Vector3.right * (leftController.GetTouchPosition.x * Time.deltaTime * speedMovements)) );
+		Debug.Log(leftController.GetTouchPosition);
+		var aniName = leftController.GetTouchPosition.normalized.sqrMagnitude > 0.1f ? MOVE : IDLE;
+		if (_skeletonAnimation.AnimationName != aniName)
+		{
+			_skeletonAnimation.state.SetAnimation(0, aniName, true);
+		}
 
+		if (leftController.GetTouchPosition.x > 0f)
+		{
+			// 只有当目标旋转和当前旋转不一致时才执行动画
+			if (currentYRotation != targetYRotation)
+			{
+				// 这里我们旋转整个角色，你可以根据需要旋转特定的骨骼
+				skeletonAnimation.transform.DORotate(new Vector3(0f, targetYRotation, 0f), duration)
+					.SetEase(Ease.OutQuad)
+					.OnUpdate(() => currentYRotation = skeletonAnimation.transform.eulerAngles.y);
+			}
+		}
+		else if (leftController.GetTouchPosition.x < 0f)
+		{
+			// 向左移动，设置缩放为负值以翻转角色
+			_skeletonAnimation.transform.localScale = new Vector3(-1f, 1f, 1f);
+		}
+		
 		if(continuousRightController)
 		{
 			UpdateAim(rightController.GetTouchPosition);
