@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 3970235447543874162}
   - component: {fileID: 8897211853754698561}
   - component: {fileID: 6735039620137346263}
-  - component: {fileID: 4405894747017721984}
   m_Layer: 0
   m_Name: Village_Terrain
   m_TagString: Untagged
@@ -171,25 +170,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4405894747017721984
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6085304348878244574}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 857c5c17a47c3468194e2cab2d9b40c9, type: 2}
