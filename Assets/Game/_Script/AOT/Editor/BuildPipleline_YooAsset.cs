@@ -72,6 +72,7 @@ namespace Game._Script.AOT.Editor
         private static void BuildAssetBundles(BuildTarget buildTarget, EBuildMode eBuildMode)
         {
             string packageVersion = $"V{BuildConfigAccessor.Instance.BuildVersion}.{BuildConfigAccessor.Instance.HotUpdateVersion}";
+            AssetBundleCollectorSettingData.FixFile();
             BuildParameters buildParameters = new BuildParameters
             {
                 StreamingAssetsRoot = Application.streamingAssetsPath,
