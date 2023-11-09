@@ -5,12 +5,17 @@ using YooAsset;
 using Cysharp.Threading.Tasks;
 using HybridCLR;
 using System.Reflection;
+using TMPro;
+using UnityEngine.UI;
 
 namespace Game._Script.AOT
 {
     public class Root : MonoBehaviour
     {
         public EPlayMode PlayMode = EPlayMode.HostPlayMode;
+        [SerializeField] private Slider slider;
+        [SerializeField]
+        private TextMeshProUGUI text;
         
         private async void Start()
         {
@@ -233,6 +238,9 @@ namespace Game._Script.AOT
             {
                 var downloaded = FormatBytes(downloadBytes);
                 Debug.Log($"下载进度:{downloaded}/{totalDownload}");
+                text.text = $"下载进度:{downloaded}/{totalDownload}";
+                slider.value = (float)downloader.TotalDownloadBytes / (float)downloadBytes;
+                
             };
 
             //开启下载
