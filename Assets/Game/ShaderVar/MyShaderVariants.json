@@ -1,6 +1,6 @@
 {
-    "ShaderTotalCount": 34,
-    "VariantTotalCount": 79,
+    "ShaderTotalCount": 35,
+    "VariantTotalCount": 80,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -204,6 +204,18 @@
         {
             "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader",
             "ShaderName": "Hidden/Universal Render Pipeline/FallbackError",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CoreBlit.shader",
+            "ShaderName": "Hidden/Universal/CoreBlit",
             "ShaderVariantElements": [
                 {
                     "PassType": 0,
