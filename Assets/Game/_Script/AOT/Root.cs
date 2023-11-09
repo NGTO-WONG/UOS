@@ -171,6 +171,17 @@ namespace Game._Script.AOT
                 var versionStr = "V" +
                                  BuildConfigAccessor.Instance.BuildVersion + "." +
                                  BuildConfigAccessor.Instance.HotUpdateVersion;
+#if UNITY_EDITOR
+                switch (UnityEditor.EditorUserBuildSettings.activeBuildTarget)
+                {
+                    case UnityEditor.BuildTarget.Android:
+                        return $"{ip}Android/DefaultPackage/{versionStr}";
+                    case UnityEditor.BuildTarget.iOS:
+                        return $"{ip}iOS/DefaultPackage/{versionStr}";
+                    default:
+                        return "未知平台";
+                }
+#else
                 switch (Application.platform)
                 {
                     case RuntimePlatform.Android:
@@ -180,6 +191,7 @@ namespace Game._Script.AOT
                     default:
                         return "未知平台";
                 }
+#endif
             }
         }
 
