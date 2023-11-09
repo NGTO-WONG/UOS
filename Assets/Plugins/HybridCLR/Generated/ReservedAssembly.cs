@@ -22,10 +22,12 @@ namespace GameMain.Scripts.HybridCLR
 			Reserved<UnityEngine.UI.AnimationTriggers>(); // UnityEngine.UI.dll
 			Reserved<TMPro.FastAction>(); // Unity.TextMeshPro.dll
 			Reserved<FullScreenPassRendererFeature>(); // Unity.RenderPipelines.Universal.Runtime.dll
+			Reserved<Spine.BoneMatrix>(); // spine-unity.dll
 			Reserved<Microsoft.VisualBasic.VBCodeProvider>(); // System.dll
 			Reserved<UnityEngine.AudioSettings>(); // UnityEngine.AudioModule.dll
 			Reserved<YooAsset.DownloadRequestDelegate>(); // YooAsset.dll
 			Reserved<CinemachineCameraOffset>(); // Cinemachine.dll
+			Reserved<SharpJson.JsonDecoder>(); // spine-csharp.dll
 			Reserved<Microsoft.Win32.SafeHandles.SafePipeHandle>(); // System.Core.dll
 			Reserved<UnityEngine.U2D.IK.CCDSolver2D>(); // Unity.2D.IK.Runtime.dll
 			Reserved<UnityEngine.SharedBetweenAnimatorsAttribute>(); // UnityEngine.AnimationModule.dll
