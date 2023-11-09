@@ -43,7 +43,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.093
 --- !u!114 &-7469454102251747553
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -118,7 +118,7 @@ MonoBehaviour:
     m_Value: 2
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 23.49
   gaussianEnd:
     m_OverrideState: 1
     m_Value: 10
@@ -130,13 +130,13 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 7.03
+    m_Value: 6.6
   aperture:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 32
   focalLength:
     m_OverrideState: 1
-    m_Value: 39
+    m_Value: 244
   bladeCount:
     m_OverrideState: 1
     m_Value: 3
@@ -164,19 +164,19 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.96
+    m_Value: 1.1
   intensity:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 12.63
   scatter:
     m_OverrideState: 1
-    m_Value: 0.418
+    m_Value: 0.768
   clamp:
     m_OverrideState: 0
     m_Value: 0
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 0.64591235, b: 0, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.809163, b: 0, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -209,7 +209,6 @@ MonoBehaviour:
   - {fileID: 6685855758123560063}
   - {fileID: 1362013733241479368}
   - {fileID: -9191574574101171382}
-  - {fileID: 2048761128990765520}
   - {fileID: -6251027755103015883}
   - {fileID: -1811749281537128589}
   - {fileID: -9143800476481316811}
@@ -234,28 +233,6 @@ MonoBehaviour:
   tint:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &2048761128990765520
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
-  m_Name: LiftGammaGain
-  m_EditorClassIdentifier: 
-  active: 1
-  lift:
-    m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
-  gamma:
-    m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9699869, z: 0.97405374, w: -0.0984252}
-  gain:
-    m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &6685855758123560063
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -283,7 +260,7 @@ MonoBehaviour:
     m_Value: 0
   detectPaperWhite:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   paperWhite:
     m_OverrideState: 1
     m_Value: 300

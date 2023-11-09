@@ -71,7 +71,7 @@ Material:
     - _EmissionPower: 2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
-    - _Hue: 0
+    - _Hue: -0.088
     - _LightAffectsAdditive: 0
     - _Metallic: 0
     - _OutlineMipLevel: 0
