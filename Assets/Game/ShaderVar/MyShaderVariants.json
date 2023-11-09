@@ -1,6 +1,6 @@
 {
-    "ShaderTotalCount": 31,
-    "VariantTotalCount": 76,
+    "ShaderTotalCount": 32,
+    "VariantTotalCount": 78,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -762,6 +762,24 @@
                         "_FULLRANGE_HARD_RAMP",
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_SHADOWS_SOFT"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Unlit.shader",
+            "ShaderName": "Universal Render Pipeline/Unlit",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_SURFACE_TYPE_TRANSPARENT"
                     ]
                 }
             ]
