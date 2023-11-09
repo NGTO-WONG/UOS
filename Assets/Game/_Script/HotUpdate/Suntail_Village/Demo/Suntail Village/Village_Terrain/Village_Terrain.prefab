@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6559294972511418203}
-  - component: {fileID: -7544652335320777392}
+  - component: {fileID: 1681977022170536328}
   m_Layer: 0
   m_Name: Village_Terrain
   m_TagString: Untagged
@@ -65,7 +65,7 @@ Transform:
   - {fileID: 4133709306642114508}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7544652335320777392
+--- !u!114 &1681977022170536328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 3970235447543874162}
   - component: {fileID: 8897211853754698561}
   - component: {fileID: 6735039620137346263}
+  - component: {fileID: 2180980209302260133}
   m_Layer: 0
   m_Name: Village_Terrain
   m_TagString: Untagged
@@ -170,3 +171,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2180980209302260133
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6085304348878244574}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 857c5c17a47c3468194e2cab2d9b40c9, type: 2}

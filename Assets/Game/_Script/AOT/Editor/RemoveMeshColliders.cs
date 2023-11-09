@@ -11,23 +11,21 @@ public class RemoveMeshColliders : MonoBehaviour
         GameObject[] prefabs = GameObject.FindObjectsOfType<GameObject>();
         foreach (GameObject prefab in prefabs)
         {
+            if (prefab.gameObject.name=="Village_Terrain")
+            {
+                continue;
+            }
             MeshCollider meshCollider = prefab.GetComponent<MeshCollider>();
             if (meshCollider != null)
             {
                     
+                
                 // 检查Prefab是否包含MeshCollider组件
-                if (prefab.TryGetComponent<Rigidbody>(out var  ae))
+                if (prefab.TryGetComponent<Rigidbody>(out var rigidbody))
                 {
-                    prefab.isStatic = false;
-                    PrefabUtility.RecordPrefabInstancePropertyModifications(prefab);
-                    continue;
-                }
-                else
-                {
-                        
+                    rigidbody.useGravity = false;
                 }
                     
-                prefab.isStatic = true;
                 // 移除MeshCollider组件
                 DestroyImmediate(meshCollider, true);
 
