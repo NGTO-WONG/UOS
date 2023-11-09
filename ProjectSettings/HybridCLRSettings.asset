@@ -21,8 +21,7 @@ MonoBehaviour:
   hotUpdateAssemblies: []
   preserveHotUpdateAssemblies: []
   hotUpdateDllCompileOutputRootDir: HybridCLRData/HotUpdateDlls
-  externalHotUpdateAssembliyDirs:
-  - Assets/Game/_Script/HotUpdate
+  externalHotUpdateAssembliyDirs: []
   strippedAOTDllOutputRootDir: HybridCLRData/AssembliesPostIl2CppStrip
   patchAOTAssemblies: []
   outputLinkFile: HybridCLRGenerate/link.xml
