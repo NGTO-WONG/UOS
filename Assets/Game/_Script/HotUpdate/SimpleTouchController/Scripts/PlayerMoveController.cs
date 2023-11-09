@@ -55,14 +55,16 @@ public class PlayerMoveController : MonoBehaviour {
 
 		if (leftController.GetTouchPosition.x > 0f)
 		{
-			// 只有当目标旋转和当前旋转不一致时才执行动画
-			if (currentYRotation != targetYRotation)
-			{
-				// 这里我们旋转整个角色，你可以根据需要旋转特定的骨骼
-				skeletonAnimation.transform.DORotate(new Vector3(0f, targetYRotation, 0f), duration)
-					.SetEase(Ease.OutQuad)
-					.OnUpdate(() => currentYRotation = skeletonAnimation.transform.eulerAngles.y);
-			}
+			_skeletonAnimation.transform.localScale = new Vector3(1f, 1f, 1f);
+
+			// // 只有当目标旋转和当前旋转不一致时才执行动画
+			// if (currentYRotation != targetYRotation)
+			// {
+			// 	// 这里我们旋转整个角色，你可以根据需要旋转特定的骨骼
+			// 	skeletonAnimation.transform.DORotate(new Vector3(0f, targetYRotation, 0f), duration)
+			// 		.SetEase(Ease.OutQuad)
+			// 		.OnUpdate(() => currentYRotation = skeletonAnimation.transform.eulerAngles.y);
+			// }
 		}
 		else if (leftController.GetTouchPosition.x < 0f)
 		{
