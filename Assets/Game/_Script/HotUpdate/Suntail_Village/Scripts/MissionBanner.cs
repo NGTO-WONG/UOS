@@ -25,7 +25,7 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
                 Interact(_player);
             });
             
-            confirmButton.onClick.AddListener(async () =>
+            confirmButton.onClick.AddListener(() =>
             {
                 var anim = _player.GetComponentInChildren<SkeletonAnimation>();
                 var tr= anim.AnimationState.AddAnimation(1, "04_joy_short", false, 0);
