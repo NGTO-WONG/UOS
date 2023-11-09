@@ -121,7 +121,7 @@ namespace Game._Script.AOT.Editor
             Il2CppDefGeneratorCommand.GenerateIl2CppDef();
             var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
             BuildLinkFile.GenerateLinkfile(xmlPath);//生成link文件 然后根据link文件创建一个调用所有组建的脚本到ReservedAssembly.cs
-            AssetDatabase.Refresh();
+            
             // 生成裁剪后的aot dll
             StripAOTDllCommand.GenerateStripedAOTDlls(buildTarget);
             // 桥接函数生成依赖于AOT dll，必须保证已经build过，生成AOT dll
