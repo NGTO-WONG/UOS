@@ -46,7 +46,6 @@ public class PlayerMoveController : MonoBehaviour {
 		// move
 		_rigidbody.MovePosition(transform.position + (Vector3.forward * (leftController.GetTouchPosition.y * Time.deltaTime * speedMovements)) +
 			(Vector3.right * (leftController.GetTouchPosition.x * Time.deltaTime * speedMovements)) );
-		Debug.Log(leftController.GetTouchPosition);
 		var aniName = leftController.GetTouchPosition.normalized.sqrMagnitude > 0.1f ? MOVE : IDLE;
 		if (_skeletonAnimation.AnimationName != aniName)
 		{
