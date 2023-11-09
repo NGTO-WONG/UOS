@@ -276,3 +276,10 @@ ShaderVariantCollection:
           _FIXED_NORMALS_WORLDSPACE _FULLRANGE_HARD_RAMP _MAIN_LIGHT_SHADOWS_CASCADE
           _SHADOWS_SOFT
         passType: 13
+  - first: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: _SURFACE_TYPE_TRANSPARENT
+        passType: 0

@@ -24,18 +24,19 @@ namespace GameMain.Scripts.HybridCLR
 			Reserved<FullScreenPassRendererFeature>(); // Unity.RenderPipelines.Universal.Runtime.dll
 			Reserved<Microsoft.VisualBasic.VBCodeProvider>(); // System.dll
 			Reserved<UnityEngine.AudioSettings>(); // UnityEngine.AudioModule.dll
-			Reserved<UnityEngine.SharedBetweenAnimatorsAttribute>(); // UnityEngine.AnimationModule.dll
-			Reserved<UnityEngine.Terrain>(); // UnityEngine.TerrainModule.dll
 			Reserved<YooAsset.DownloadRequestDelegate>(); // YooAsset.dll
-			Reserved<UnityEngine.LocationService>(); // UnityEngine.InputLegacyModule.dll
+			Reserved<CinemachineCameraOffset>(); // Cinemachine.dll
 			Reserved<Microsoft.Win32.SafeHandles.SafePipeHandle>(); // System.Core.dll
 			Reserved<UnityEngine.U2D.IK.CCDSolver2D>(); // Unity.2D.IK.Runtime.dll
+			Reserved<UnityEngine.SharedBetweenAnimatorsAttribute>(); // UnityEngine.AnimationModule.dll
 			Reserved<UnityEngine.Event>(); // UnityEngine.IMGUIModule.dll
 			Reserved<UnityEngine.Experimental.Rendering.XRLayout>(); // Unity.RenderPipelines.Core.Runtime.dll
 			Reserved<UnityEngine.XR.InputDevices>(); // UnityEngine.XRModule.dll
 			Reserved<Unity.XR.OpenVR.OpenVRHMD>(); // Unity.InputSystem.dll
+			Reserved<UnityEngine.Terrain>(); // UnityEngine.TerrainModule.dll
 			Reserved<UnityEngine.IntegratedSubsystem>(); // UnityEngine.SubsystemsModule.dll
 			Reserved<UnityEngineInternal.XR.WSA.RemoteSpeechAccess>(); // UnityEngine.VRModule.dll
+			Reserved<UnityEngine.LocationService>(); // UnityEngine.InputLegacyModule.dll
 			Reserved<UnityEngine.TextGenerator>(); // UnityEngine.TextRenderingModule.dll
 			Reserved<Unity.AI.Navigation.NavMeshLink>(); // Unity.AI.Navigation.dll
 			Reserved<UnityEngine.Experimental.AI.NavMeshQuery>(); // UnityEngine.AIModule.dll
@@ -56,7 +57,6 @@ namespace GameMain.Scripts.HybridCLR
 			Reserved<UnityEngine.Timeline.ActivationTrack>(); // Unity.Timeline.dll
 			Reserved<UnityEngine.Playables.PlayableDirector>(); // UnityEngine.DirectorModule.dll
 			Reserved<UnityEngine.ParticleSystem>(); // UnityEngine.ParticleSystemModule.dll
-			Reserved<CinemachineCameraOffset>(); // Cinemachine.dll
 
             Debug.Log(sb.ToString());
 		}
