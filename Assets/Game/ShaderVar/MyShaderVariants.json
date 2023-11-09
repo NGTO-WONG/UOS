@@ -1,6 +1,6 @@
 {
     "ShaderTotalCount": 31,
-    "VariantTotalCount": 60,
+    "VariantTotalCount": 59,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -593,16 +593,6 @@
                     "Keywords": [
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_SHADOWS_SOFT",
-                        "_T2M_LAYER_0_NORMAL",
-                        "_T2M_LAYER_1_NORMAL",
-                        "_T2M_LAYER_2_NORMAL",
-                        "_T2M_LAYER_COUNT_3"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_T2M_LAYER_0_NORMAL",
                         "_T2M_LAYER_1_NORMAL",
                         "_T2M_LAYER_2_NORMAL",
