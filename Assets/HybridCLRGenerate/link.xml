@@ -8,6 +8,7 @@
   <assembly fullname="PPv2URPConverters" preserve="all" />
   <assembly fullname="spine-csharp" preserve="all" />
   <assembly fullname="spine-unity" preserve="all" />
+  <assembly fullname="spine-unity-examples" preserve="all" />
   <assembly fullname="UniTask" preserve="all" />
   <assembly fullname="UniTask.Addressables" preserve="all" />
   <assembly fullname="UniTask.Linq" preserve="all" />
