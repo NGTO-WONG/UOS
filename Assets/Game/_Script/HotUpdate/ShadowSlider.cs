@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -9,8 +8,7 @@ public class ShadowSlider : MonoBehaviour
 {
     [SerializeField] private UniversalRenderPipelineAsset asset;
     [SerializeField] private Slider count;
-    
-    [SerializeField] private InputField shadowDistanceInput;
+    [SerializeField] private TMP_InputField shadowDistanceInput;
 
 
     private void Start()
