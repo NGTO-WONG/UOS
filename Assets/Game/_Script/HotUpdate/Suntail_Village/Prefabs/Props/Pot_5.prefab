@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8956621123362301689}
   - component: {fileID: -386419275350554824}
   - component: {fileID: 41730212179219605}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Pot_5
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -267,12 +267,12 @@ GameObject:
   - component: {fileID: 194483926516519196}
   - component: {fileID: 2623415756936313366}
   - component: {fileID: 5225028397297903919}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Pot_5_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &194483926516519196
 Transform:
