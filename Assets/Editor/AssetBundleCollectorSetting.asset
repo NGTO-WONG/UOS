@@ -82,7 +82,7 @@ MonoBehaviour:
         UserData: 
     - GroupName: HotUpdateDll
       GroupDesc: 
-      AssetTags: HotUpdateDll
+      AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
       - CollectPath: Assets/Game/HotUpdateDll
