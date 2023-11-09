@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Game.Script.AOT.YooAsset;
 using UnityEngine;
 using YooAsset;
@@ -13,9 +14,8 @@ namespace Game._Script.AOT
     public class Root : MonoBehaviour
     {
         public EPlayMode PlayMode = EPlayMode.HostPlayMode;
-        [SerializeField]
-        private TextMeshProUGUI text;
-        
+        [SerializeField] private TextMeshProUGUI text;
+
         private async void Start()
         {
             //1 初始化
@@ -50,7 +50,6 @@ namespace Game._Script.AOT
                 await LoadHotUpdateDll();
                 //7 更新结束 开始游戏
                 await StartGame(BuildConfigAccessor.Instance.GamePlayScene);
-                
             }
         }
 
@@ -59,7 +58,6 @@ namespace Game._Script.AOT
         /// </summary>
         private async UniTask LoadMetadataForAOTAssembly()
         {
-#if !UNITY_EDITOR
             HomologousImageMode mode = HomologousImageMode.SuperSet;
             var package = YooAssets.GetPackage("DefaultPackage");
             foreach (var aotDll in AOTGenericReferences.PatchedAOTAssemblyList)
@@ -68,13 +66,13 @@ namespace Game._Script.AOT
                 await handle.Task;
                 var assemblyData = handle.GetRawFileData();
                 // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
+#if !UNITY_EDITOR
                 LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(assemblyData, mode);
                 Debug.Log($"LoadMetadataForAOTAssembly:{aotDll}. mode:{mode} ret:{err}");
-            }
-#else
-            await UniTask.Delay(1);
-            Debug.Log("编辑器模式无需加载AOT元数据");
 #endif
+                await UniTask.Delay(1);
+                Debug.Log($"LoadMetadataForAOTAssembly:{aotDll}. mode:{mode}");
+            }
         }
 
         /// <summary>
@@ -82,18 +80,24 @@ namespace Game._Script.AOT
         /// </summary>
         private async UniTask LoadHotUpdateDll()
         {
-#if !UNITY_EDITOR
-            string location = "HotUpdate.dll";
             var package = YooAssets.GetPackage("DefaultPackage");
-            RawFileOperationHandle handle = package.LoadRawFileAsync(location);
-            await handle.Task;
-            byte[] hotUpdateData= handle.GetRawFileData();
-            Assembly.Load(hotUpdateData);
+            foreach (var item in package.GetAssetInfos("HotUpdateDll"))
+            {
+                
+                string location = item.Address;
+                if (AOTGenericReferences.PatchedAOTAssemblyList.Contains(location))
+                {
+                    continue;
+                }
+                RawFileOperationHandle handle = package.LoadRawFileAsync(location);
+                await handle.Task;
+                byte[] hotUpdateData = handle.GetRawFileData();
+#if !UNITY_EDITOR
+                Assembly.Load(hotUpdateData);
 #else
-            // Editor环境下，HotUpdate.dll.bytes已经被自动加载，不需要加载，重复加载反而会出问题。
-            await UniTask.Delay(1);
-            Debug.Log("编辑器模式无需加载热更Dll ");
+                Debug.Log("编辑器模式无需加载热更Dll " + hotUpdateData);
 #endif
+            }
         }
 
         private async UniTask InitializeYooAsset()
@@ -123,9 +127,9 @@ namespace Game._Script.AOT
                 case EPlayMode.HostPlayMode:
                     var initParameters = new HostPlayModeParameters
                     {
-                        QueryServices = new GameQueryServices(), 
+                        QueryServices = new GameQueryServices(),
                         DecryptionServices = new GameDecryptionServices(),
-                        DefaultHostServer = BuildConfigAccessor.Instance.LocalTestIP,//先找本地测试服务器
+                        DefaultHostServer = BuildConfigAccessor.Instance.LocalTestIP, //先找本地测试服务器
                         FallbackHostServer = GetHostServerURL() //找不到在找cdn服务器
                     };
                     var initOperation = package.InitializeAsync(initParameters);
@@ -156,7 +160,8 @@ namespace Game._Script.AOT
                 else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
                     return $"{BuildConfigAccessor.Instance.HostServerIP}WebGL/DefaultPackage/{versionStr}";
                 else
-                    return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{versionStr}";
+                    return
+                        $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{versionStr}";
 #else
                 if (Application.platform == RuntimePlatform.Android)
                     return $"{BuildConfigAccessor.Instance.HostServerIP}Android/DefaultPackage/{versionStr}";
@@ -167,7 +172,6 @@ namespace Game._Script.AOT
                 else
                     return $"{BuildConfigAccessor.Instance.HostServerIP}StandaloneWindows64/DefaultPackage/{versionStr}";
 #endif
-                
             }
         }
 
@@ -229,16 +233,12 @@ namespace Game._Script.AOT
             Debug.Log($"需下载:{totalDownload} 文件数量:{totalDownloadCount}");
 
             //注册回调方法
-            downloader.OnDownloadErrorCallback = (filename, error) =>
-            {
-                Debug.LogError(filename + " 下载失败 " + error);
-            };
+            downloader.OnDownloadErrorCallback = (filename, error) => { Debug.LogError(filename + " 下载失败 " + error); };
             downloader.OnDownloadProgressCallback = (count, downloadCount, bytes, downloadBytes) =>
             {
                 var downloaded = FormatBytes(downloadBytes);
                 Debug.Log($"下载进度:{downloaded}/{totalDownload}");
                 text.text = $"下载进度:{downloaded}/{totalDownload}";
-                
             };
 
             //开启下载
