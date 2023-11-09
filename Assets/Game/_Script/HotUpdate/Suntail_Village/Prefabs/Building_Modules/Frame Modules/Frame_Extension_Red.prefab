@@ -98,14 +98,13 @@ GameObject:
   - component: {fileID: 6096206217938960139}
   - component: {fileID: 3008710208991544637}
   - component: {fileID: 8862411808917666244}
-  - component: {fileID: 1288213726324773928}
   - component: {fileID: 1288213726324773910}
   m_Layer: 9
   m_Name: Frame_Extension_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 22
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6096206217938960139
 Transform:
@@ -178,28 +177,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1288213726324773928
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7116050909331819800}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5731492768899154647, guid: 5c2ffae51a7d2be4b8be5b3bae39192f, type: 3}
 --- !u!205 &1288213726324773910
 LODGroup:
   m_ObjectHideFlags: 0

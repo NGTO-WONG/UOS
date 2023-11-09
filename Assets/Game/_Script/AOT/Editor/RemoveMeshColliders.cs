@@ -15,14 +15,23 @@ public class RemoveMeshColliders : MonoBehaviour
             // 检查Prefab Asset 是否以 ".prefab" 结尾，以排除场景中的实例
             if (PrefabUtility.IsPartOfPrefabAsset(prefab))
             {
-                // 检查Prefab是否包含MeshCollider组件
-                if (prefab.TryGetComponent<Rigidbody>(out var  ae))
-                {
-                    continue;
-                }
                 MeshCollider meshCollider = prefab.GetComponent<MeshCollider>();
                 if (meshCollider != null)
                 {
+                    
+                    // 检查Prefab是否包含MeshCollider组件
+                    if (prefab.TryGetComponent<Rigidbody>(out var  ae))
+                    {
+                        prefab.isStatic = false;
+                        PrefabUtility.RecordPrefabInstancePropertyModifications(prefab);
+                        continue;
+                    }
+                    else
+                    {
+                        
+                    }
+                    
+                    prefab.isStatic = true;
                     // 移除MeshCollider组件
                     DestroyImmediate(meshCollider, true);
 
