@@ -19,13 +19,17 @@ namespace Game._Script.AOT
         [SerializeField] private TMP_Dropdown dropdownText;
         [SerializeField] private Button enterButton;
 
-        private string _ip = "";
+        private string _ip = "http://192.168.100.1:8000/";
         private bool enter = false;
         private async void Start()
         {
             dropdownText.onValueChanged.AddListener((idx)=>
             {
                 _ip = dropdownText.options[idx].text;
+                foreach (var VARIABLE in dropdownText.options)
+                {
+                    Debug.Log(_ip+" "+VARIABLE.text);
+                }
             });
             enterButton.onClick.AddListener(()=>enter=true);
             await UniTask.WaitWhile(()=>enter==false);
