@@ -1121,7 +1121,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 857785110}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1281760861}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1222,8 +1222,6 @@ MonoBehaviour:
     - m_Text: http://192.168.100.210:8000/
       m_Image: {fileID: 0}
     - m_Text: https://a.unity.cn/client_api/v1/buckets/8c5cd9d5-dde9-4d66-a07f-68fc52feddb2/entry_by_path/content/?path=
-      m_Image: {fileID: 0}
-    - m_Text: Option C
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1505,7 +1503,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 890479128}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1281760862
@@ -2407,4 +2406,3 @@ SceneRoots:
   - {fileID: 1477195264}
   - {fileID: 618127054}
   - {fileID: 2012154734}
-  - {fileID: 890479128}
