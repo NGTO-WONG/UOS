@@ -50,7 +50,7 @@ namespace Game._Script.AOT
         /// cdn服务器地址 
         /// </summary>
         public string HostServerIP =
-            "https://a.unity.cn/client_api/v1/buckets/8c5cd9d5-dde9-4d66-a07f-68fc52feddb2/entry_by_path/content/?path=";
+            "";
 
         /// <summary>
         /// 本地测试ip地址 

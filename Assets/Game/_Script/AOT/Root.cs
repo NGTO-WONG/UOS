@@ -6,6 +6,7 @@ using YooAsset;
 using Cysharp.Threading.Tasks;
 using HybridCLR;
 using System.Reflection;
+using Game._Script.HotUpdate.Base;
 using TMPro;
 using UnityEngine.UI;
 
@@ -15,9 +16,19 @@ namespace Game._Script.AOT
     {
         public EPlayMode PlayMode = EPlayMode.HostPlayMode;
         [SerializeField] private TextMeshProUGUI text;
+        [SerializeField] private TMP_Dropdown dropdownText;
+        [SerializeField] private Button enterButton;
 
+        private string _ip = "";
+        private bool enter = false;
         private async void Start()
         {
+            dropdownText.onValueChanged.AddListener((idx)=>
+            {
+                _ip = dropdownText.options[idx].text;
+            });
+            enterButton.onClick.AddListener(()=>enter=true);
+            await UniTask.WaitWhile(()=>enter==false);
             //1 初始化
             await InitializeYooAsset();
             try
@@ -63,7 +74,7 @@ namespace Game._Script.AOT
             foreach (var aotDll in AOTGenericReferences.PatchedAOTAssemblyList)
             {
                 RawFileOperationHandle handle = package.LoadRawFileAsync(aotDll);
-                await handle.Task;
+                await handle.ToUniTask(this);
                 // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
 #if !UNITY_EDITOR
                 var assemblyData = handle.GetRawFileData();
@@ -86,7 +97,7 @@ namespace Game._Script.AOT
                 string location = "HotUpdate.dll";
                 var package = YooAssets.GetPackage("DefaultPackage");
                 RawFileOperationHandle handle = package.LoadRawFileAsync(location);
-                await handle.Task;
+                await handle.ToUniTask(this);
                 byte[] hotUpdateData = handle.GetRawFileData();
                 Assembly.Load(hotUpdateData);
 #else
@@ -107,7 +118,7 @@ namespace Game._Script.AOT
                     }
 
                     RawFileOperationHandle handle = package.LoadRawFileAsync(location);
-                    await handle.Task;
+                    await handle.ToUniTask(this);
                     byte[] hotUpdateData = handle.GetRawFileData();
 #if !UNITY_EDITOR
                     Assembly.Load(hotUpdateData);
@@ -136,22 +147,22 @@ namespace Game._Script.AOT
                     {
                         SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild("DefaultPackage")
                     };
-                    await package.InitializeAsync(initParametersEditor).Task;
+                    await package.InitializeAsync(initParametersEditor).ToUniTask(this);
                     break;
                 case EPlayMode.OfflinePlayMode:
                     var initParametersOffline = new OfflinePlayModeParameters();
-                    await package.InitializeAsync(initParametersOffline).Task;
+                    await package.InitializeAsync(initParametersOffline).ToUniTask(this);
                     break;
                 case EPlayMode.HostPlayMode:
                     var initParameters = new HostPlayModeParameters
                     {
                         QueryServices = new GameQueryServices(),
                         DecryptionServices = new GameDecryptionServices(),
-                        DefaultHostServer = GetHostServerURL(BuildConfigAccessor.Instance.LocalTestIP), //先找本地测试服务器
-                        FallbackHostServer = GetHostServerURL(BuildConfigAccessor.Instance.HostServerIP) //找不到在找cdn服务器
+                        DefaultHostServer = GetHostServerURL(_ip), 
+                        FallbackHostServer = GetHostServerURL(_ip)
                     };
                     var initOperation = package.InitializeAsync(initParameters);
-                    await initOperation.Task;
+                    await initOperation.ToUniTask(this);
                     if (initOperation.Status == EOperationStatus.Succeed)
                     {
                         Debug.Log("资源包初始化成功！");
@@ -199,7 +210,7 @@ namespace Game._Script.AOT
         {
             var package = YooAssets.GetPackage("DefaultPackage");
             var operation = package.UpdatePackageVersionAsync(false);
-            await operation.Task;
+            await operation.ToUniTask(this);
             if (operation.Status == EOperationStatus.Succeed)
             {
                 //更新成功
@@ -221,7 +232,7 @@ namespace Game._Script.AOT
             // 也可以通过operation.SavePackageVersion()方法保存。
             var package = YooAssets.GetPackage("DefaultPackage");
             var operation = package.UpdatePackageManifestAsync(packageVersion);
-            await operation.Task;
+            await operation.ToUniTask(this);
             if (operation.Status == EOperationStatus.Succeed)
             {
                 //更新成功
@@ -254,16 +265,21 @@ namespace Game._Script.AOT
 
             //注册回调方法
             downloader.OnDownloadErrorCallback = (filename, error) => { Debug.LogError(filename + " 下载失败 " + error); };
+            DateTime dateTime=DateTime.Now;
             downloader.OnDownloadProgressCallback = (count, downloadCount, bytes, downloadBytes) =>
             {
                 var downloaded = FormatBytes(downloadBytes);
-                Debug.Log($"下载进度:{downloaded}/{totalDownload}");
-                text.text = $"下载进度:{downloaded}/{totalDownload}";
+                if (DateTime.Now.Subtract(dateTime).TotalSeconds>1)
+                {
+                    dateTime=DateTime.Now;
+                    Debug.Log($"下载进度:{downloaded}/{totalDownload}");
+                    text.text = $"下载进度:{downloaded}/{totalDownload}";   
+                }
             };
 
             //开启下载
             downloader.BeginDownload();
-            await downloader.Task;
+            await downloader.ToUniTask(this);
 
             //检测下载结果
             Debug.Log(downloader.Status == EOperationStatus.Succeed ? "下载成功" : "下载失败");
@@ -285,10 +301,10 @@ namespace Game._Script.AOT
             }
         }
 
-        static async UniTask StartGame(string sceneName)
+        async UniTask StartGame(string sceneName)
         {
             SceneOperationHandle handle = YooAssets.LoadSceneAsync(sceneName);
-            await handle.Task;
+            await handle.ToUniTask(this);
             Debug.Log($"Scene name is {sceneName}");
         }
     }
