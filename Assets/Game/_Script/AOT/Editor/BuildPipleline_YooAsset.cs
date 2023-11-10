@@ -13,7 +13,10 @@ namespace Game._Script.AOT.Editor
     {
         public static void YooAssetBuild(EBuildMode eBuildMode, BuildTarget buildTarget)
         {
-            System.Action completedCallback = () =>
+            ShaderVariantCollector.Run("Assets/Game/ShaderVar/MyShaderVariants.shadervariants", "DefaultPackage", Int32.MaxValue, CompletedCallback);
+            return;
+
+            void CompletedCallback()
             {
                 var collection = AssetDatabase.LoadAssetAtPath<ShaderVariantCollection>("Assets/Game/ShaderVar/MyShaderVariants.shadervariants");
                 if (collection != null)
@@ -25,18 +28,13 @@ namespace Game._Script.AOT.Editor
                 {
                     Debug.Log("构建失败");
                 }
+
                 string scenePath = "Assets/Game/Scene/shaders.unity";
                 EditorSceneManager.SaveScene(SceneManager.GetActiveScene(), scenePath);
                 AssetDatabase.Refresh();
-                
-                PrepareAndBuild(eBuildMode, buildTarget);
 
-            };
-                
-            ShaderVariantCollector.Run("Assets/Game/ShaderVar/MyShaderVariants.shadervariants", "DefaultPackage", Int32.MaxValue, completedCallback);
-            
-            
-            
+                PrepareAndBuild(eBuildMode, buildTarget);
+            }
         }
 
 
