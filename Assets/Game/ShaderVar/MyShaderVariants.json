@@ -1,6 +1,6 @@
 {
-    "ShaderTotalCount": 35,
-    "VariantTotalCount": 79,
+    "ShaderTotalCount": 32,
+    "VariantTotalCount": 60,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -147,43 +147,6 @@
             ]
         },
         {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CopyDepth.shader",
-            "ShaderName": "Hidden/Universal Render Pipeline/CopyDepth",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        "_OUTPUT_DEPTH"
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/LutBuilderHdr.shader",
-            "ShaderName": "Hidden/Universal Render Pipeline/LutBuilderHdr",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        ""
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/UberPost.shader",
-            "ShaderName": "Hidden/Universal Render Pipeline/UberPost",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        "_HDR_GRADING",
-                        "_USE_FAST_SRGB_LINEAR_CONVERSION"
-                    ]
-                }
-            ]
-        },
-        {
             "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader",
             "ShaderName": "Hidden/Universal Render Pipeline/FallbackError",
             "ShaderVariantElements": [
@@ -196,13 +159,13 @@
             ]
         },
         {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CoreBlit.shader",
-            "ShaderName": "Hidden/Universal/CoreBlit",
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/BlitHDROverlay.shader",
+            "ShaderName": "Hidden/Universal/BlitHDROverlay",
             "ShaderVariantElements": [
                 {
                     "PassType": 0,
                     "Keywords": [
-                        ""
+                        "HDR_COLORSPACE_CONVERSION_AND_ENCODING"
                     ]
                 }
             ]
@@ -221,12 +184,6 @@
                     "PassType": 13,
                     "Keywords": [
                         ""
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS"
                     ]
                 },
                 {
@@ -292,13 +249,6 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS",
-                        "_TERRAIN_INSTANCED_PERPIXEL_NORMAL"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_SHADOWS_SOFT",
                         "_TERRAIN_INSTANCED_PERPIXEL_NORMAL"
@@ -320,20 +270,6 @@
                     "PassType": 8,
                     "Keywords": [
                         "INSTANCING_ON"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS",
-                        "_SMOOTHNESSSOURCE_ALBEDO_ALPHA"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS",
-                        "_SMOOTHNESSSOURCE_METALLIC_ALPHA"
                     ]
                 },
                 {
@@ -419,26 +355,6 @@
                         "_ANCHORTHEFOLIAGEBASE_ON",
                         "_COLOR2ENABLE_ON",
                         "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS",
-                        "_SECONDCOLOROVERLAYTYPE_UV_BASED"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_ANCHORTHEFOLIAGEBASE_ON",
-                        "_COLOR2ENABLE_ON",
-                        "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_ANCHORTHEFOLIAGEBASE_ON",
-                        "_COLOR2ENABLE_ON",
-                        "_ENABLEWIND_ON",
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_SECONDCOLOROVERLAYTYPE_UV_BASED",
                         "_SHADOWS_SOFT"
@@ -460,36 +376,9 @@
                     "Keywords": [
                         "_ANCHORTHEFOLIAGEBASE_ON",
                         "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_ANCHORTHEFOLIAGEBASE_ON",
-                        "_ENABLEWIND_ON",
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
                         "_SHADOWS_SOFT"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_COLOR2ENABLE_ON",
-                        "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS",
-                        "_SECONDCOLOROVERLAYTYPE_UV_BASED"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_COLOR2ENABLE_ON",
-                        "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
                     ]
                 },
                 {
@@ -510,14 +399,6 @@
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION",
                         "_SHADOWS_SOFT"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_ENABLEWIND_ON",
-                        "_MAIN_LIGHT_SHADOWS",
-                        "_SECONDCOLOROVERLAYTYPE_WORLD_POSITION"
                     ]
                 },
                 {
@@ -548,28 +429,8 @@
                         "_ALPHAPREMULTIPLY_VERTEX_ONLY",
                         "_COLOR_ADJUST",
                         "_FIXED_NORMALS_WORLDSPACE",
-                        "_MAIN_LIGHT_SHADOWS"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "PIXELSNAP_ON",
-                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
-                        "_COLOR_ADJUST",
-                        "_FIXED_NORMALS_WORLDSPACE",
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_SHADOWS_SOFT"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_ALPHAPREMULTIPLY_VERTEX_ONLY",
-                        "_COLOR_ADJUST",
-                        "_FIXED_NORMALS_WORLDSPACE",
-                        "_FULLRANGE_HARD_RAMP",
-                        "_MAIN_LIGHT_SHADOWS"
                     ]
                 },
                 {
@@ -652,12 +513,6 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_SHADOWS_SOFT"
                     ]
@@ -671,12 +526,6 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
                         "_MAIN_LIGHT_SHADOWS_CASCADE",
                         "_SHADOWS_SOFT"
                     ]
@@ -687,13 +536,6 @@
             "AssetPath": "Assets/Game/Matreial/BlobShadow_Graph.shadergraph",
             "ShaderName": "Shader Graphs/BlobShadow_Graph",
             "ShaderVariantElements": [
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_DECAL_NORMAL_BLEND_LOW",
-                        "_MAIN_LIGHT_SHADOWS"
-                    ]
-                },
                 {
                     "PassType": 13,
                     "Keywords": [
@@ -752,16 +594,6 @@
                 {
                     "PassType": 8,
                     "Keywords": [
-                        "_T2M_LAYER_0_NORMAL",
-                        "_T2M_LAYER_1_NORMAL",
-                        "_T2M_LAYER_2_NORMAL",
-                        "_T2M_LAYER_COUNT_3"
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS",
                         "_T2M_LAYER_0_NORMAL",
                         "_T2M_LAYER_1_NORMAL",
                         "_T2M_LAYER_2_NORMAL",

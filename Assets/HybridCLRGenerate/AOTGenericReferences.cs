@@ -139,8 +139,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Cysharp.Threading.Tasks.UniTaskExtensions.AttachExternalCancellationSource.<RunTask>d__5<int>
 	// Cysharp.Threading.Tasks.UniTaskExtensions.AttachExternalCancellationSource<int>
 	// System.Action<Cysharp.Threading.Tasks.UniTask>
+	// System.Action<int,object>
+	// System.Action<int>
 	// System.Action<object,object>
 	// System.Action<object>
+	// System.Action<ushort>
 	// System.Collections.Generic.ArraySortHelper<Cysharp.Threading.Tasks.UniTask>
 	// System.Collections.Generic.ArraySortHelper<object>
 	// System.Collections.Generic.Comparer<Cysharp.Threading.Tasks.UniTask>
@@ -260,6 +263,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Comparison<object>
 	// System.Func<System.Threading.Tasks.VoidTaskResult>
 	// System.Func<UnityEngine.Vector3,System.Threading.CancellationToken,Cysharp.Threading.Tasks.UniTask>
+	// System.Func<byte>
 	// System.Func<int>
 	// System.Func<object,System.Threading.CancellationToken,Cysharp.Threading.Tasks.UniTask>
 	// System.Func<object,System.Threading.Tasks.VoidTaskResult>
@@ -327,6 +331,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object System.Threading.Interlocked.CompareExchange<object>(object&,object,object)
 		// object UnityEngine.Component.GetComponent<object>()
 		// object UnityEngine.Component.GetComponentInChildren<object>()
+		// object UnityEngine.GameObject.AddComponent<object>()
 		// bool UnityEngine.GameObject.TryGetComponent<object>(object&)
 		// object UnityEngine.Object.FindObjectOfType<object>()
 		// object UnityEngine.Object.Instantiate<object>(object)

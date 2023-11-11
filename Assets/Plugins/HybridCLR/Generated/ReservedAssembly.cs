@@ -25,10 +25,10 @@ namespace GameMain.Scripts.HybridCLR
 			Reserved<FullScreenPassRendererFeature>(); // Unity.RenderPipelines.Universal.Runtime.dll
 			Reserved<Spine.BoneMatrix>(); // spine-unity.dll
 			Reserved<UnityEngine.AudioSettings>(); // UnityEngine.AudioModule.dll
-			Reserved<UnityEngine.Event>(); // UnityEngine.IMGUIModule.dll
 			Reserved<YooAsset.DownloadRequestDelegate>(); // YooAsset.dll
 			Reserved<CinemachineCameraOffset>(); // Cinemachine.dll
 			Reserved<SharpJson.JsonDecoder>(); // spine-csharp.dll
+			Reserved<UnityEngine.Event>(); // UnityEngine.IMGUIModule.dll
 			Reserved<UnityEngine.TextGenerator>(); // UnityEngine.TextRenderingModule.dll
 			Reserved<UnityEngine.LocationService>(); // UnityEngine.InputLegacyModule.dll
 			Reserved<Microsoft.Win32.SafeHandles.SafePipeHandle>(); // System.Core.dll
