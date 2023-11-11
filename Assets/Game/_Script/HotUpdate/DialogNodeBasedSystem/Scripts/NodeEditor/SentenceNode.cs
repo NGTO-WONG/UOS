@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -101,17 +102,17 @@ namespace Game._Script.AOT.DialogNodeBasedSystem.Scripts.NodeEditor
             if (GUILayout.Button("Play"))
             {
                 
-               var _= Play();
+                var _= Play();
 
-               async Task Play()
-               {
-                   GameObject previewer = new GameObject("AudioPreviewer");
-                   var previewSource = previewer.AddComponent<AudioSource>();
-                   previewSource.clip = sentence.audioClip;
-                   previewSource.Play();
-                   await Task.Delay((int)sentence.audioClip.length * 1000+1000);
-                   DestroyImmediate(previewer);
-               }
+                async Task Play()
+                {
+                    GameObject previewer = new GameObject("AudioPreviewer");
+                    var previewSource = previewer.AddComponent<AudioSource>();
+                    previewSource.clip = sentence.audioClip;
+                    previewSource.Play();
+                    await Task.Delay((int)sentence.audioClip.length * 1000+1000);
+                    DestroyImmediate(previewer);
+                }
                 
             }
             EditorGUILayout.EndHorizontal();
@@ -213,3 +214,4 @@ namespace Game._Script.AOT.DialogNodeBasedSystem.Scripts.NodeEditor
 #endif
     }
 }
+#endif

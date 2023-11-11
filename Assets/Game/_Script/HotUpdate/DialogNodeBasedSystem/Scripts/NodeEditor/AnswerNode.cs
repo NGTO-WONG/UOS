@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using cherrydev;
 using UnityEditor;
@@ -123,3 +124,4 @@ namespace Game._Script.AOT.DialogNodeBasedSystem.Scripts.NodeEditor
 #endif
     }
 }
+#endif
