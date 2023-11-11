@@ -1,8 +1,7 @@
-using cherrydev;
-using Game._Script.AOT.DialogNodeBasedSystem.Scripts.NodeEditor;
+using Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor;
 using UnityEngine;
 
-namespace Game._Script.AOT.DialogNodeBasedSystem.Scripts.Dialog
+namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Dialog
 {
     public class DialogDisplayer : MonoBehaviour
     {

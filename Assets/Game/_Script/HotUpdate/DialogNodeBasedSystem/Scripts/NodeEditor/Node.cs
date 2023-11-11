@@ -1,10 +1,12 @@
-#if UNITY_EDITOR
 
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+
 using UnityEngine;
 
-namespace cherrydev
+namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
 {
     public class Node : ScriptableObject
     {
@@ -177,4 +179,3 @@ namespace cherrydev
 #endif
     }
 }
-#endif

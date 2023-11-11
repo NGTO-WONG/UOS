@@ -1,12 +1,12 @@
 #if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
-using Game._Script.AOT.DialogNodeBasedSystem.Scripts.NodeEditor;
+using Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Others;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-namespace cherrydev
+namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
 {
     public class NodeEditor : EditorWindow
     {

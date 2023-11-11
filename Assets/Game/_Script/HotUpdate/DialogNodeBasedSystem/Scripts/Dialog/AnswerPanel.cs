@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Game._Script.AOT.DialogNodeBasedSystem.Scripts.Dialog
+namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Dialog
 {
     public class AnswerPanel : MonoBehaviour
     {

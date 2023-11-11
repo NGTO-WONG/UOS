@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace cherrydev
+namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Others
 {
     [System.Serializable]
     public struct Sentence

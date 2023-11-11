@@ -1,10 +1,12 @@
-#if UNITY_EDITOR
 using System.Collections.Generic;
-using cherrydev;
-using UnityEditor;
+using Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Others;
 using UnityEngine;
 
-namespace Game._Script.AOT.DialogNodeBasedSystem.Scripts.NodeEditor
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
 {
     [CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Answer Node", fileName = "New Answer Node")]
     public class AnswerNode : Node
@@ -124,4 +126,3 @@ namespace Game._Script.AOT.DialogNodeBasedSystem.Scripts.NodeEditor
 #endif
     }
 }
-#endif

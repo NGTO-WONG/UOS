@@ -1,4 +1,4 @@
-namespace cherrydev
+namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Others
 {
     public static class EditorIcons
     {

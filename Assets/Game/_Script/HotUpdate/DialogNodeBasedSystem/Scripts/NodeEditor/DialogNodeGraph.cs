@@ -1,9 +1,7 @@
-#if UNITY_EDITOR
-
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace cherrydev
+namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
 {
     [CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Node Graph", fileName = "New Node Graph")]
     public class DialogNodeGraph : ScriptableObject
@@ -63,4 +61,3 @@ namespace cherrydev
 #endif
     }
 }
-#endif

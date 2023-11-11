@@ -1,13 +1,13 @@
-#if UNITY_EDITOR
-using System;
 using System.IO;
 using System.Threading.Tasks;
-using cherrydev;
+using Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Others;
+#if UNITY_EDITOR
 using UnityEditor;
-using UnityEngine;
-using UnityEditor;
+#endif
 
-namespace Game._Script.AOT.DialogNodeBasedSystem.Scripts.NodeEditor
+using UnityEngine;
+
+namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
 {
     [CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Sentence Node", fileName = "New Sentence Node")]
     public class SentenceNode : Node
@@ -214,4 +214,3 @@ namespace Game._Script.AOT.DialogNodeBasedSystem.Scripts.NodeEditor
 #endif
     }
 }
-#endif

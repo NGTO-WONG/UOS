@@ -1,14 +1,17 @@
+using Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Dialog;
+using Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor;
 using UnityEngine;
-using cherrydev;
-using Game._Script.AOT.DialogNodeBasedSystem.Scripts.Dialog;
 
-public class TestDialogStarter : MonoBehaviour
+namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts
 {
-    [SerializeField] private DialogBehaviour dialogBehaviour;
-    [SerializeField] private DialogNodeGraph dialogGraph;
-
-    private void Start()
+    public class TestDialogStarter : MonoBehaviour
     {
-        dialogBehaviour.StartDialog(dialogGraph);
+        [SerializeField] private DialogBehaviour dialogBehaviour;
+        [SerializeField] private DialogNodeGraph dialogGraph;
+
+        private void Start()
+        {
+            dialogBehaviour.StartDialog(dialogGraph);
+        }
     }
 }
