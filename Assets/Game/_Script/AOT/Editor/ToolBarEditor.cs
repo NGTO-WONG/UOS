@@ -287,12 +287,19 @@ public class ToolBarEditor
     private static int currentSceneIndex=0;
     private static void OpenScene()
     {
-        sceneNames ??= SceneHelper.GetSceneNames(Application.dataPath + "/Game/Scene").ToArray();
-        var oldIndex=currentSceneIndex;
-        currentSceneIndex = EditorGUILayout.Popup(oldIndex, sceneNames, width, height);
-        if (currentSceneIndex!=oldIndex)
+        try
         {
-            SceneHelper.ChangeScene(sceneNames[currentSceneIndex]);
+            sceneNames = SceneHelper.GetSceneNames(Application.dataPath + "/Game/Scene").ToArray();
+            var oldIndex = currentSceneIndex;
+            currentSceneIndex = EditorGUILayout.Popup(oldIndex, sceneNames, width, height);
+            if (currentSceneIndex != oldIndex)
+            {
+                SceneHelper.ChangeScene(sceneNames[currentSceneIndex]);
+            }
+        }
+        catch
+        {
+            Debug.LogWarning(" 场景切换组件初始化失败");
         }
         
     }
