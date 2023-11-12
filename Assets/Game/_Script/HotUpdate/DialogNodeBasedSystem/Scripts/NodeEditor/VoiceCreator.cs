@@ -20,10 +20,9 @@ public static class VoiceCreator
         var modelPath = @"C:\Users\a4549\Desktop\voice\H_excluded.pth";
         var configJson = @"C:\Users\a4549\Desktop\voice\config.json";
         string fileName = $@"_{DateTime.Now:hh_mm_ss}.wav";
-        string relativePath = Path.Combine("Game", "DependRes", "Voice", fileName);
-        string outPutPath = Path.Combine(Application.dataPath, relativePath);
+        string outPutPath = Path.Combine(Application.dataPath, "Game", "DependRes", "Voice", fileName);
         VoiceCreat(modelPath, configJson, text, outPutPath);
-        return relativePath;
+        return fileName;
     }
 
 

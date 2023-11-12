@@ -353,17 +353,17 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 37.99997
-    y: 132.19995
+    y: 131.19995
     width: 220
     height: 180
   isDragging: 0
-  isSelected: 0
+  isSelected: 1
   sentence:
     characterName: cherrydev
     text: "\u3053\u3093\u306B\u3061\u306F"
     characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     audioClip: {fileID: 0}
-    audioClipPath: Assets/Game/DependRes/Voice/_03_30_13.wav
+    audioClipPath: Asset\Game\DependRes\Voice\_03_24_57.wav
   parentNode: {fileID: 0}
   childNode: {fileID: 6625198195364614332}
 --- !u!114 &4252937235876148062

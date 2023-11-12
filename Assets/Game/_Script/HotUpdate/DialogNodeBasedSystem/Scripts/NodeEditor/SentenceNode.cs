@@ -123,21 +123,22 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
             EditorGUILayout.LabelField($"创建声音 ", GUILayout.Width(lableFieldSpace));
             if (GUILayout.Button("AI生成"))
             {
-                var t = VoiceCreator.VoiceCreat(sentence.text);
-                sentence.audioClipPath = Path.Combine("Asset", VoiceCreator.VoiceCreat(sentence.text));
+                sentence.audioClipName = VoiceCreator.VoiceCreat(sentence.text);
+                var path = Path.Combine(Application.dataPath, "Game", "DependRes", "Voice", sentence.audioClipName);
                 while (true)
                 {
-                    if (File.Exists(Path.Combine(Application.dataPath,t)))
+                    if (File.Exists(path))
                     {
                         break;
                     }
                 }
                 AssetDatabase.Refresh();
-                sentence.audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(sentence.audioClipPath);
+                sentence.audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(Path.Combine("Assets", "Game", "DependRes", "Voice", sentence.audioClipName));
             }
             if (GUILayout.Button("FindMissing"))
             {
-                sentence.audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(sentence.audioClipPath.Replace('\\','/'));
+                var path = Path.Combine("Assets", "Game", "DependRes", "Voice", sentence.audioClipName);
+                sentence.audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(path);
             }
             EditorGUILayout.EndHorizontal();
             

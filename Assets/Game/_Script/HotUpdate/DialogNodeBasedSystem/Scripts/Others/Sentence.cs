@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Others
 {
@@ -9,7 +10,7 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Others
         public string text;
         public Sprite characterSprite;
         public AudioClip audioClip;
-        public string audioClipPath;
+        public string audioClipName;
 
         public Sentence(string characterName, string text)
         {
@@ -17,7 +18,7 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Others
             this.characterName = characterName;
             this.text = text;
             audioClip = null;
-            audioClipPath = "";
+            audioClipName = "";
         }
     }
 }
