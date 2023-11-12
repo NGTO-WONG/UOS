@@ -13,6 +13,11 @@ ShaderVariantCollection:
       variants:
       - keywords: 
         passType: 0
+  - first: {fileID: 111, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
   - first: {fileID: 103, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
@@ -68,10 +73,10 @@ ShaderVariantCollection:
       variants:
       - keywords: 
         passType: 0
-  - first: {fileID: 4800000, guid: 93446b5c5339d4f00b85c159e1159b7c, type: 3}
+  - first: {fileID: 4800000, guid: a89bee29cffa951418fc1e2da94d1959, type: 3}
     second:
       variants:
-      - keywords: 
+      - keywords: HDR_COLORSPACE_CONVERSION_AND_ENCODING
         passType: 0
   - first: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
     second:
