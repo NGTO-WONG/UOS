@@ -18,7 +18,7 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Others
             this.characterName = characterName;
             this.text = text;
             audioClip = null;
-            audioClipName = "";
+            audioClipName = null;
         }
     }
 }
