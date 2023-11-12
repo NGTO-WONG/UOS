@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ff0cdaecb54d90b471e67692e52fa9, type: 3}
   m_Name: BuildConfig
   m_EditorClassIdentifier: 
-  BuildVersion: 3
+  BuildVersion: 2
   HotUpdateVersion: 0
   GamePlayScene: Switcher
   HostServerIP: https://a.unity.cn/client_api/v1/buckets/8c5cd9d5-dde9-4d66-a07f-68fc52feddb2/entry_by_path/content/?path=
