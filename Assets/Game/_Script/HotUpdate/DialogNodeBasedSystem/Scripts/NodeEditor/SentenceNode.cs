@@ -124,7 +124,7 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
             if (GUILayout.Button("AI生成"))
             {
                 var t = VoiceCreator.VoiceCreat(sentence.text);
-                sentence.audioClipPath= "Assets/"+VoiceCreator.VoiceCreat(sentence.text).Replace('\\', '/');
+                sentence.audioClipPath = Path.Combine("Asset", VoiceCreator.VoiceCreat(sentence.text));
                 while (true)
                 {
                     if (File.Exists(Path.Combine(Application.dataPath,t)))
@@ -134,6 +134,10 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
                 }
                 AssetDatabase.Refresh();
                 sentence.audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(sentence.audioClipPath);
+            }
+            if (GUILayout.Button("FindMissing"))
+            {
+                sentence.audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(sentence.audioClipPath.Replace('\\','/'));
             }
             EditorGUILayout.EndHorizontal();
             
