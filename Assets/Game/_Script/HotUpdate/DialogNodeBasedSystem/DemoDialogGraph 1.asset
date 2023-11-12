@@ -27,7 +27,7 @@ MonoBehaviour:
     text: Next for second sentence
     characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     audioClip: {fileID: 0}
-    audioClipPath: 
+    audioClipName: 
   parentNode: {fileID: -1472394571577278601}
   childNode: {fileID: -1868073505810880904}
 --- !u!114 &-7005990012105804485
@@ -90,7 +90,7 @@ MonoBehaviour:
     text: Third answer sentence
     characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     audioClip: {fileID: 0}
-    audioClipPath: Assets/Game/DependRes/Voice/_01_53_41.wav
+    audioClipName: 
   parentNode: {fileID: 6625198195364614332}
   childNode: {fileID: -635558158322049731}
 --- !u!114 &-4174725588328313673
@@ -120,7 +120,7 @@ MonoBehaviour:
     text: Next for fourth sentence
     characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     audioClip: {fileID: 0}
-    audioClipPath: 
+    audioClipName: 
   parentNode: {fileID: -2480446064533067935}
   childNode: {fileID: -1868073505810880904}
 --- !u!114 &-2480446064533067935
@@ -150,7 +150,7 @@ MonoBehaviour:
     text: Fourth answer sentence
     characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     audioClip: {fileID: 0}
-    audioClipPath: Assets/Game/DependRes/Voice/_01_54_46.wav
+    audioClipName: 
   parentNode: {fileID: 6625198195364614332}
   childNode: {fileID: -4174725588328313673}
 --- !u!114 &-2145396162764325557
@@ -180,7 +180,7 @@ MonoBehaviour:
     text: 
     characterSprite: {fileID: 0}
     audioClip: {fileID: 0}
-    audioClipPath: 
+    audioClipName: 
   parentNode: {fileID: 0}
   childNode: {fileID: 0}
 --- !u!114 &-1868073505810880904
@@ -243,7 +243,7 @@ MonoBehaviour:
     text: Second answer sentence
     characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     audioClip: {fileID: 0}
-    audioClipPath: 
+    audioClipName: 
   parentNode: {fileID: 6625198195364614332}
   childNode: {fileID: -8954450167078482790}
 --- !u!114 &-635558158322049731
@@ -273,7 +273,7 @@ MonoBehaviour:
     text: Next for third sentence
     characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     audioClip: {fileID: 0}
-    audioClipPath: 
+    audioClipName: 
   parentNode: {fileID: -4306302213135558005}
   childNode: {fileID: -1868073505810880904}
 --- !u!114 &11400000
@@ -333,7 +333,7 @@ MonoBehaviour:
     text: Last sentence
     characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     audioClip: {fileID: 0}
-    audioClipPath: 
+    audioClipName: 
   parentNode: {fileID: -1868073505810880904}
   childNode: {fileID: 0}
 --- !u!114 &2970576600738842132
@@ -357,13 +357,13 @@ MonoBehaviour:
     width: 220
     height: 180
   isDragging: 0
-  isSelected: 1
+  isSelected: 0
   sentence:
     characterName: cherrydev
-    text: "\u3053\u3093\u306B\u3061\u306F"
+    text: 1
     characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     audioClip: {fileID: 0}
-    audioClipPath: Asset\Game\DependRes\Voice\_03_24_57.wav
+    audioClipName: 
   parentNode: {fileID: 0}
   childNode: {fileID: 6625198195364614332}
 --- !u!114 &4252937235876148062
@@ -393,7 +393,7 @@ MonoBehaviour:
     text: "\u4F55\u5352\u3088\u308D\u3057\u304F\u304A\u9858\u3044\u7533\u3057\u4E0A\u3052\u307E\u3059\u3002"
     characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     audioClip: {fileID: 0}
-    audioClipPath: Assets/Game/DependRes/Voice/_03_26_02.wav
+    audioClipName: 
   parentNode: {fileID: 6625198195364614332}
   childNode: {fileID: 8393938792172885860}
 --- !u!114 &6625198195364614332
@@ -456,7 +456,7 @@ MonoBehaviour:
     text: 
     characterSprite: {fileID: 0}
     audioClip: {fileID: 0}
-    audioClipPath: 
+    audioClipName: 
   parentNode: {fileID: 0}
   childNode: {fileID: 0}
 --- !u!114 &8393938792172885860
@@ -486,6 +486,6 @@ MonoBehaviour:
     text: Next for first sentence
     characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     audioClip: {fileID: 0}
-    audioClipPath: 
+    audioClipName: 
   parentNode: {fileID: 4252937235876148062}
   childNode: {fileID: -1868073505810880904}
