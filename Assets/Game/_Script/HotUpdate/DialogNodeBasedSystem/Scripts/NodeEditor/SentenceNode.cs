@@ -95,8 +95,10 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
             
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField($"声音文件 ", GUILayout.Width(lableFieldSpace));
-            sentence.audioClip = (AudioClip)EditorGUILayout.ObjectField(sentence.audioClip,
-                typeof(AudioClip), false, GUILayout.Width(textFieldWidth-60));
+            //sentence.audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(sentence.audioClipPath);
+
+            sentence.audioClip = (AudioClip)EditorGUILayout.ObjectField(sentence.audioClip, typeof(AudioClip), false,
+                GUILayout.Width(textFieldWidth - 60));
             
             
             if (GUILayout.Button("Play"))
@@ -119,7 +121,7 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
             
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField($"创建声音 ", GUILayout.Width(lableFieldSpace));
-            if (GUILayout.Button("Press Me"))
+            if (GUILayout.Button("AI生成"))
             {
                 var t = VoiceCreator.VoiceCreat(sentence.text);
                 sentence.audioClipPath= "Assets/"+VoiceCreator.VoiceCreat(sentence.text).Replace('\\', '/');
