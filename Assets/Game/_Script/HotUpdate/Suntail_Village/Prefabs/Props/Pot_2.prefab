@@ -11,16 +11,15 @@ GameObject:
   - component: {fileID: 1546941306263734461}
   - component: {fileID: 2510771606913386264}
   - component: {fileID: 377451555611571154}
-  - component: {fileID: -1585836541852309897}
   - component: {fileID: 2135577889134009885}
   - component: {fileID: 6091291389283095312}
   - component: {fileID: 1368372531877992337}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Pot_2
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1546941306263734461
 Transform:
@@ -88,28 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-1585836541852309897
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2178623194146722311}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5370662129720915373, guid: 3aa64d298a6b5b642a0d3b92e9b4d31b, type: 3}
 --- !u!54 &2135577889134009885
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -132,7 +109,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 0
@@ -267,12 +244,12 @@ GameObject:
   - component: {fileID: 1214807383148495646}
   - component: {fileID: 3891409430419679252}
   - component: {fileID: 6551094091664980781}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Pot_2_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1214807383148495646
 Transform:

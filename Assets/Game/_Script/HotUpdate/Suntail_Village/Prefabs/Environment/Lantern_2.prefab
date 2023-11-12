@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 3609419586079938843}
   - component: {fileID: 1581832970215435729}
   - component: {fileID: 6347241987735451213}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Lantern_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &412326104119826110
 Transform:
@@ -119,12 +119,12 @@ GameObject:
   - component: {fileID: 5887218250079517}
   - component: {fileID: 2796215051970770455}
   - component: {fileID: 5342711553039639854}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Lantern_2_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5887218250079517
 Transform:

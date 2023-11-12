@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 8681843276767901897}
   - component: {fileID: 6820374894733071299}
   - component: {fileID: 3624816930991522042}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Hoe_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8681843276767901897
 Transform:
@@ -94,16 +94,15 @@ GameObject:
   - component: {fileID: 9065764169767269226}
   - component: {fileID: 5368233510798507215}
   - component: {fileID: 7897973057072842757}
-  - component: {fileID: 3332477516029705169}
   - component: {fileID: 2721571135929191032}
   - component: {fileID: 8276405851233252428}
   - component: {fileID: 4149475377971192143}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Hoe
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9065764169767269226
 Transform:
@@ -171,28 +170,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3332477516029705169
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8546636744408263120}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3388466853955239842, guid: 5056046bc0c6f904d83108462fcecd54, type: 3}
 --- !u!54 &2721571135929191032
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,7 +192,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 0

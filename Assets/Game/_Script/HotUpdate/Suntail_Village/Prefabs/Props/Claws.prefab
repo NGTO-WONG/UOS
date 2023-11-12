@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 8229444457586554162}
   - component: {fileID: 6119847100375326264}
   - component: {fileID: 4036678394917653761}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Claws_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8229444457586554162
 Transform:
@@ -94,16 +94,15 @@ GameObject:
   - component: {fileID: 8617873376245776017}
   - component: {fileID: 4627182227554562356}
   - component: {fileID: 7481599321980470782}
-  - component: {fileID: -5772197424747129808}
   - component: {fileID: -1984031758048448608}
   - component: {fileID: -1949117921938135409}
   - component: {fileID: 3779509208154314468}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Claws
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8617873376245776017
 Transform:
@@ -171,28 +170,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-5772197424747129808
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8994540034138612779}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3640293464848893041, guid: dc7d7628e02f92f4c97ea8a8b23095fc, type: 3}
 --- !u!54 &-1984031758048448608
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,7 +192,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 0

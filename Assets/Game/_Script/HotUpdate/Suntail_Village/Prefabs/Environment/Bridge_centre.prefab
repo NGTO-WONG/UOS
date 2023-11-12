@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 4406684382121740252}
   - component: {fileID: 4593821151295463492}
   - component: {fileID: 1663254783125546114}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Bridge_centre_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4406684382121740252
 Transform:
@@ -94,12 +94,12 @@ GameObject:
   - component: {fileID: 3968936599313417967}
   - component: {fileID: 1803914384939866385}
   - component: {fileID: 6520896250057741310}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Bridge_centre_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3968936599313417967
 Transform:
@@ -178,12 +178,12 @@ GameObject:
   - component: {fileID: 4607470268010089885}
   - component: {fileID: 7840077176570491236}
   - component: {fileID: 563151979411942400}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Bridge_centre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4803655745187182507
 Transform:
@@ -195,7 +195,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.87, y: 0.87, z: 0.87}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3968936599313417967}

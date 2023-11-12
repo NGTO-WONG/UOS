@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7447432049894086808}
   - component: {fileID: 4719872873971872658}
   - component: {fileID: 3272817584151765163}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Pot_1_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7447432049894086808
 Transform:
@@ -94,16 +94,15 @@ GameObject:
   - component: {fileID: 7131060719908803387}
   - component: {fileID: 6150024161997151390}
   - component: {fileID: 8267959301880424532}
-  - component: {fileID: -7988461792589670022}
   - component: {fileID: -1166396306237214262}
   - component: {fileID: -636476909193200169}
   - component: {fileID: 7312760080694941282}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Pot_1
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7131060719908803387
 Transform:
@@ -171,28 +170,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-7988461792589670022
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7619331209685338497}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2198864479405965357, guid: 54f477989e9ad474f8d3cfd37af0b434, type: 3}
 --- !u!54 &-1166396306237214262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,7 +192,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 0

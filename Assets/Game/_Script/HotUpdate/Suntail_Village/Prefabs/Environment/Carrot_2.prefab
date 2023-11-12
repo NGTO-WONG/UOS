@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 8218696992125761275}
   - component: {fileID: 6112618329827548657}
   - component: {fileID: 4053055924807749320}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Carrot_2_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8218696992125761275
 Transform:
@@ -95,12 +95,12 @@ GameObject:
   - component: {fileID: 4615482387484717821}
   - component: {fileID: 7487669301357954615}
   - component: {fileID: 6242229528293204557}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Carrot_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8620636608629456216
 Transform:

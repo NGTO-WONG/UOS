@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 5928052459976096699}
   - component: {fileID: 1709896614423226767}
   - component: {fileID: 6255716445025458050}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cart_1_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5928052459976096699
 Transform:
@@ -95,12 +95,12 @@ GameObject:
   - component: {fileID: 1918590709762357283}
   - component: {fileID: 4414868335551778025}
   - component: {fileID: 473667071170225583}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cart_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3247077191987558278
 Transform:
@@ -112,7 +112,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.88172, y: 0.88172, z: 0.88172}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2928436574286576677}
@@ -207,12 +207,12 @@ GameObject:
   - component: {fileID: 2928436574286576677}
   - component: {fileID: 1042910070373832495}
   - component: {fileID: 7102757366790325270}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cart_1_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2928436574286576677
 Transform:

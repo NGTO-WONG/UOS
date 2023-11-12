@@ -10,17 +10,16 @@ GameObject:
   m_Component:
   - component: {fileID: 365171047615287973}
   - component: {fileID: 3656503671192214784}
-  - component: {fileID: 4026556402291745504}
   - component: {fileID: 8671176652836262041}
   - component: {fileID: 1538671959221610954}
   - component: {fileID: 5640830044895933194}
   - component: {fileID: 6966266094170047430}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Apple_1
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &365171047615287973
 Transform:
@@ -32,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.90764, y: 0.90764, z: 0.90764}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 53290231531690246}
@@ -45,28 +44,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034290309928683551}
-  m_Mesh: {fileID: 1869579138724802433, guid: 4591102eb4728694ea5a98a1a4350483, type: 3}
---- !u!64 &4026556402291745504
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1034290309928683551}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
   m_Mesh: {fileID: 1869579138724802433, guid: 4591102eb4728694ea5a98a1a4350483, type: 3}
 --- !u!54 &8671176652836262041
 Rigidbody:
@@ -90,7 +67,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 0
@@ -267,12 +244,12 @@ GameObject:
   - component: {fileID: 53290231531690246}
   - component: {fileID: 2767355921307955724}
   - component: {fileID: 5371851610009805109}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Apple_1_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &53290231531690246
 Transform:

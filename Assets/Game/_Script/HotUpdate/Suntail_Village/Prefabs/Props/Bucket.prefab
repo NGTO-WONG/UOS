@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 6057678370137484561}
   - component: {fileID: 8271985256204011035}
   - component: {fileID: 2170954771980342562}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Bucket_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6057678370137484561
 Transform:
@@ -93,17 +93,16 @@ GameObject:
   m_Component:
   - component: {fileID: 5889925928753079986}
   - component: {fileID: 7355191797196237079}
-  - component: {fileID: 2025136645851117339}
   - component: {fileID: 68722450852182899}
   - component: {fileID: 4753009210343513565}
   - component: {fileID: 6777975865145466511}
   - component: {fileID: 6212576118546743973}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Bucket
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5889925928753079986
 Transform:
@@ -129,28 +128,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6554682225625988104}
   m_Mesh: {fileID: -944563635335726766, guid: 2101e05a050160344a3f3095d017b0cf, type: 3}
---- !u!64 &2025136645851117339
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6554682225625988104}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -944563635335726766, guid: 2101e05a050160344a3f3095d017b0cf, type: 3}
 --- !u!54 &68722450852182899
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -173,7 +150,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 0

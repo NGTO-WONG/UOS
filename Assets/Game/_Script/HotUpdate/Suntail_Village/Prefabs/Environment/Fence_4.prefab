@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 4648716322990743127}
   - component: {fileID: 7374998978791732573}
   - component: {fileID: 770814141528221284}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Fence_4_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4648716322990743127
 Transform:
@@ -95,12 +95,12 @@ GameObject:
   - component: {fileID: 8250699263077472849}
   - component: {fileID: 6153227768682229403}
   - component: {fileID: 4802312388393252003}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Fence_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 20
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4985349346816972276
 Transform:

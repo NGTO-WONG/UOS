@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7835970802320568644}
   - component: {fileID: 5360472468051319374}
   - component: {fileID: 2778439841365952887}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Plate_1_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7835970802320568644
 Transform:
@@ -94,16 +94,15 @@ GameObject:
   - component: {fileID: 7571395267166632679}
   - component: {fileID: 6826652691595621698}
   - component: {fileID: 8744252413777904008}
-  - component: {fileID: -5306469362149636891}
   - component: {fileID: -6272550797924371661}
   - component: {fileID: -5334656992918600783}
   - component: {fileID: 7969197178590310678}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Plate_1
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7571395267166632679
 Transform:
@@ -115,7 +114,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.79586, y: 0.79586, z: 0.79586}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7835970802320568644}
@@ -171,28 +170,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-5306469362149636891
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7086747500483846237}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1066635853614448752, guid: dc1ddb2c20d0e4849a723cbcd88ea45b, type: 3}
 --- !u!54 &-6272550797924371661
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,7 +192,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 0

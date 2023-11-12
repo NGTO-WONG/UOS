@@ -11,16 +11,15 @@ GameObject:
   - component: {fileID: 806976992421345428}
   - component: {fileID: 4367698726536410929}
   - component: {fileID: 1979852724294910971}
-  - component: {fileID: 6319127392834368384}
   - component: {fileID: -2726597775570064904}
   - component: {fileID: 266678875343593764}
   - component: {fileID: 1061624324778084150}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Maul
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &806976992421345428
 Transform:
@@ -88,28 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6319127392834368384
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34100116547674670}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8670216701396003157, guid: d1981dee0a07b35498245cfa784b6492, type: 3}
 --- !u!54 &-2726597775570064904
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -132,7 +109,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 0
@@ -267,12 +244,12 @@ GameObject:
   - component: {fileID: 1053560014939353911}
   - component: {fileID: 2901501109460817981}
   - component: {fileID: 4949186599273138948}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Maul_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1053560014939353911
 Transform:

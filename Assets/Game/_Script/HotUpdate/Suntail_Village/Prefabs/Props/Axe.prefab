@@ -11,16 +11,15 @@ GameObject:
   - component: {fileID: 642721365862165518}
   - component: {fileID: 4558975671707870123}
   - component: {fileID: 1774501205676611425}
-  - component: {fileID: -2060154243522245680}
   - component: {fileID: -2344582404734784387}
   - component: {fileID: -9034284863912916966}
   - component: {fileID: 7678345992183667590}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Axe
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &642721365862165518
 Transform:
@@ -88,28 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-2060154243522245680
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261409996925105844}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8287839383430266118, guid: 71b2704f34c1dad4dbfde4df03d4ba41, type: 3}
 --- !u!54 &-2344582404734784387
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -132,7 +109,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 0
@@ -267,12 +244,12 @@ GameObject:
   - component: {fileID: 956853986964055981}
   - component: {fileID: 3142845149805743271}
   - component: {fileID: 5149470473094422430}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Axe_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &956853986964055981
 Transform:
