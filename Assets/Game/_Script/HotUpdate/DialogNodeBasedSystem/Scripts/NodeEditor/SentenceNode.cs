@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Others;
@@ -12,10 +13,13 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
     [CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Sentence Node", fileName = "New Sentence Node")]
     public class SentenceNode : Node
     {
-        [SerializeField] private Sentence sentence;
+        public string characterName;
+        public string text;
+        public Sprite characterSprite;
+        public AudioClip audioClip;
+        public string audioClipName;
 
-        [Space(10)]
-        public Node parentNode;
+        [Space(10)] public Node parentNode;
 
         public Node childNode;
 
@@ -28,7 +32,12 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
         /// <returns></returns>
         public string GetSentenceCharacterName()
         {
-            return sentence.characterName;
+            return characterName;
+        }
+
+        private void OnValidate()
+        {
+            UnityEngine.Debug.Log("AS");
         }
 
         /// <summary>
@@ -37,19 +46,19 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
         /// <returns></returns>
         public string GetSentenceText()
         {
-            var _=Play();
+            var _ = Play();
+
             async Task Play()
             {
                 GameObject previewer = new GameObject("AudioPreviewer");
                 var previewSource = previewer.AddComponent<AudioSource>();
-                previewSource.clip = sentence.audioClip;
+                previewSource.clip = audioClip;
                 previewSource.Play();
-                await Task.Delay((int)sentence.audioClip.length * 1000+1000);
+                await Task.Delay((int)audioClip.length * 1000 + 1000);
                 DestroyImmediate(previewer);
             }
-            
-            return sentence.text;
 
+            return text;
         }
 
         /// <summary>
@@ -58,7 +67,7 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
         /// <returns></returns>
         public Sprite GetCharacterSprite()
         {
-            return sentence.characterSprite;
+            return characterSprite;
         }
 
 #if UNITY_EDITOR
@@ -70,6 +79,7 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
         /// <param name="lableStyle"></param>
         public override void Draw(GUIStyle nodeStyle, GUIStyle lableStyle)
         {
+            EditorUtility.SetDirty(this);
             base.Draw(nodeStyle, lableStyle);
 
             rect.size = new Vector2(220, 180);
@@ -79,52 +89,51 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField($"Name ", GUILayout.Width(lableFieldSpace));
-            sentence.characterName = EditorGUILayout.TextField(sentence.characterName, GUILayout.Width(textFieldWidth));
+            characterName = EditorGUILayout.TextField(characterName, GUILayout.Width(textFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField($"Text ", GUILayout.Width(lableFieldSpace));
-            sentence.text = EditorGUILayout.TextField(sentence.text, GUILayout.Width(textFieldWidth));
+            text = EditorGUILayout.TextField(text, GUILayout.Width(textFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField($"Sprite ", GUILayout.Width(lableFieldSpace));
-            sentence.characterSprite = (Sprite)EditorGUILayout.ObjectField(sentence.characterSprite,
+            characterSprite = (Sprite)EditorGUILayout.ObjectField(characterSprite,
                 typeof(Sprite), false, GUILayout.Width(textFieldWidth));
             EditorGUILayout.EndHorizontal();
-            
+
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField($"声音文件 ", GUILayout.Width(lableFieldSpace));
-            //sentence.audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(sentence.audioClipPath);
+            // audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>( audioClipPath);
 
-            sentence.audioClip = (AudioClip)EditorGUILayout.ObjectField(sentence.audioClip, typeof(AudioClip), false,
+            audioClip = (AudioClip)EditorGUILayout.ObjectField(audioClip, typeof(AudioClip), false,
                 GUILayout.Width(textFieldWidth - 60));
-            
-            
+
+
             if (GUILayout.Button("Play"))
             {
-                
-                var _= Play();
+                var _ = Play();
 
                 async Task Play()
                 {
                     GameObject previewer = new GameObject("AudioPreviewer");
                     var previewSource = previewer.AddComponent<AudioSource>();
-                    previewSource.clip = sentence.audioClip;
+                    previewSource.clip = audioClip;
                     previewSource.Play();
-                    await Task.Delay((int)sentence.audioClip.length * 1000+1000);
+                    await Task.Delay((int)audioClip.length * 1000 + 1000);
                     DestroyImmediate(previewer);
                 }
-                
             }
+
             EditorGUILayout.EndHorizontal();
-            
+
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField($"创建声音 ", GUILayout.Width(lableFieldSpace));
             if (GUILayout.Button("AI生成"))
             {
-                sentence.audioClipName = VoiceCreator.VoiceCreat(sentence.text);
-                var path = Path.Combine(Application.dataPath, "Game", "DependRes", "Voice", sentence.audioClipName);
+                audioClipName = VoiceCreator.VoiceCreat(text);
+                var path = Path.Combine(Application.dataPath, "Game", "DependRes", "Voice", audioClipName);
                 while (true)
                 {
                     if (File.Exists(path))
@@ -132,17 +141,16 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
                         break;
                     }
                 }
+
                 AssetDatabase.Refresh();
-                sentence.audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(Path.Combine("Assets", "Game", "DependRes", "Voice", sentence.audioClipName));
+                audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(Path.Combine("Assets", "Game", "DependRes",
+                    "Voice", audioClipName));
+                rect.position += new Vector2(0.01f, 0);
             }
-            if (GUILayout.Button("FindMissing"))
-            {
-                var path = Path.Combine("Assets", "Game", "DependRes", "Voice", sentence.audioClipName);
-                sentence.audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(path);
-            }
+
+
             EditorGUILayout.EndHorizontal();
-            
-            
+
 
             GUILayout.EndArea();
         }

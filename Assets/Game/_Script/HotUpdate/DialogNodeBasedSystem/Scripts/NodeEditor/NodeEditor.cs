@@ -66,7 +66,6 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
         private void OnDisable()
         {
             Selection.selectionChanged -= ChangeEditorWindowOnSelection;
-
             AssetDatabase.SaveAssets();
             SaveChanges();
         }
@@ -94,6 +93,7 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
             return false;
         }
 
+        private bool hasChanges = false;
         /// <summary>
         /// Open Node Editor window
         /// </summary>

@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -16,6 +17,11 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
 
         [HideInInspector] public bool isDragging;
         [HideInInspector] public bool isSelected;
+
+        private void OnValidate()
+        {
+            UnityEngine.Debug.Log("asdv");
+        }
 
 #if UNITY_EDITOR
 

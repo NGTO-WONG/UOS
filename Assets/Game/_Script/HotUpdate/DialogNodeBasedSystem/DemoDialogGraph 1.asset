@@ -16,18 +16,17 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 727
-    y: 138.19995
+    x: 725.01
+    y: 270.19998
     width: 220
     height: 180
   isDragging: 0
   isSelected: 0
-  sentence:
-    characterName: cherrydev
-    text: Next for second sentence
-    characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
-    audioClip: {fileID: 0}
-    audioClipPath: 
+  characterName: 1234
+  text: "\u79C1\u306E\u540D\u524D\u306F\u5409\u826F\u5409\u5F71\u3000\u5E74\u9F62\uFF13\uFF10"
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 8300000, guid: 22cf436a9be1fd94daa94cdfa210251a, type: 3}
+  audioClipName: _05_00_32.wav
   parentNode: {fileID: -1472394571577278601}
   childNode: {fileID: -1868073505810880904}
 --- !u!114 &-7005990012105804485
@@ -46,8 +45,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 330.99997
-    y: 730.6667
+    x: 328.99997
+    y: 862.66675
     width: 190
     height: 145
   isDragging: 0
@@ -79,18 +78,17 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 472
-    y: 281.19995
+    x: 470
+    y: 413.19998
     width: 220
     height: 180
   isDragging: 0
   isSelected: 0
-  sentence:
-    characterName: cherrydev
-    text: Third answer sentence
-    characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
-    audioClip: {fileID: 0}
-    audioClipPath: Assets/Game/DependRes/Voice/_01_53_41.wav
+  characterName: 
+  text: " \u304A\u306F\u3088\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 0}
+  audioClipName: 
   parentNode: {fileID: 6625198195364614332}
   childNode: {fileID: -635558158322049731}
 --- !u!114 &-4174725588328313673
@@ -109,18 +107,17 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 734
-    y: 494.19995
+    x: 732
+    y: 626.19995
     width: 220
     height: 180
   isDragging: 0
   isSelected: 0
-  sentence:
-    characterName: cherrydev
-    text: Next for fourth sentence
-    characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
-    audioClip: {fileID: 0}
-    audioClipPath: 
+  characterName: 
+  text: " \u304A\u306F\u3088\u3046\u3054\u3056\u3044\u307E\u3059\u3002 \u304A\u306F\u3088\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 0}
+  audioClipName: 
   parentNode: {fileID: -2480446064533067935}
   childNode: {fileID: -1868073505810880904}
 --- !u!114 &-2480446064533067935
@@ -139,18 +136,17 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 477
-    y: 476.19995
+    x: 475.01
+    y: 608.19995
     width: 220
     height: 180
   isDragging: 0
   isSelected: 0
-  sentence:
-    characterName: cherrydev
-    text: Fourth answer sentence
-    characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
-    audioClip: {fileID: 0}
-    audioClipPath: Assets/Game/DependRes/Voice/_01_54_46.wav
+  characterName: "\u3042\u3044\u3046\u308D"
+  text: " \u304A\u306F\u3088\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 8300000, guid: 54ec6ec4a54e92347a1f8a40b24450c1, type: 3}
+  audioClipName: _04_52_28.wav
   parentNode: {fileID: 6625198195364614332}
   childNode: {fileID: -4174725588328313673}
 --- !u!114 &-2145396162764325557
@@ -169,18 +165,17 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 53.99997
-    y: 531.6666
+    x: 51.99997
+    y: 663.6666
     width: 220
     height: 180
   isDragging: 0
   isSelected: 0
-  sentence:
-    characterName: 
-    text: 
-    characterSprite: {fileID: 0}
-    audioClip: {fileID: 0}
-    audioClipPath: 
+  characterName: 
+  text: 
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 0}
+  audioClipName: 
   parentNode: {fileID: 0}
   childNode: {fileID: 0}
 --- !u!114 &-1868073505810880904
@@ -199,15 +194,15 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 979
-    y: 155.19995
+    x: 977
+    y: 287.19998
     width: 190
     height: 145
   isDragging: 0
   isSelected: 0
   answers:
   - End dialog
-  - 
+  - 123
   - 
   - 
   parentSentenceNode: {fileID: -4174725588328313673}
@@ -232,18 +227,17 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 495
-    y: 123.19995
+    x: 493
+    y: 255.19998
     width: 220
     height: 180
   isDragging: 0
   isSelected: 0
-  sentence:
-    characterName: cherrydev
-    text: Second answer sentence
-    characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
-    audioClip: {fileID: 0}
-    audioClipPath: 
+  characterName: 
+  text: 
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 0}
+  audioClipName: 
   parentNode: {fileID: 6625198195364614332}
   childNode: {fileID: -8954450167078482790}
 --- !u!114 &-635558158322049731
@@ -262,18 +256,17 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 726
-    y: 305.19995
+    x: 724
+    y: 437.19998
     width: 220
     height: 180
   isDragging: 0
   isSelected: 0
-  sentence:
-    characterName: cherrydev
-    text: Next for third sentence
-    characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
-    audioClip: {fileID: 0}
-    audioClipPath: 
+  characterName: 
+  text: " \u304A\u306F\u3088\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 0}
+  audioClipName: 
   parentNode: {fileID: -4306302213135558005}
   childNode: {fileID: -1868073505810880904}
 --- !u!114 &11400000
@@ -322,18 +315,17 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 1165
-    y: 157.19995
+    x: 1163
+    y: 289.19998
     width: 220
     height: 180
   isDragging: 0
   isSelected: 0
-  sentence:
-    characterName: cherrydev
-    text: Last sentence
-    characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
-    audioClip: {fileID: 0}
-    audioClipPath: 
+  characterName: 
+  text: 
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 0}
+  audioClipName: 
   parentNode: {fileID: -1868073505810880904}
   childNode: {fileID: 0}
 --- !u!114 &2970576600738842132
@@ -352,18 +344,17 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 37.99997
-    y: 131.19995
+    x: 44.019966
+    y: 243.2
     width: 220
     height: 180
   isDragging: 0
-  isSelected: 1
-  sentence:
-    characterName: cherrydev
-    text: "\u3053\u3093\u306B\u3061\u306F"
-    characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
-    audioClip: {fileID: 0}
-    audioClipPath: Asset\Game\DependRes\Voice\_03_24_57.wav
+  isSelected: 0
+  characterName: 12321312312312123
+  text: "\u304A\u306F\u3088\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 8300000, guid: cdd12cd1721d83e40afd548dff3f9924, type: 3}
+  audioClipName: _04_55_02.wav
   parentNode: {fileID: 0}
   childNode: {fileID: 6625198195364614332}
 --- !u!114 &4252937235876148062
@@ -382,18 +373,17 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 486
-    y: -60.80008
+    x: 484.01
+    y: 71.19995
     width: 220
     height: 180
   isDragging: 0
-  isSelected: 0
-  sentence:
-    characterName: cherrydev
-    text: "\u4F55\u5352\u3088\u308D\u3057\u304F\u304A\u9858\u3044\u7533\u3057\u4E0A\u3052\u307E\u3059\u3002"
-    characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
-    audioClip: {fileID: 0}
-    audioClipPath: Assets/Game/DependRes/Voice/_03_26_02.wav
+  isSelected: 1
+  characterName: asd
+  text: "\u4F55\u305D\u308C "
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 8300000, guid: 334a6effd77bd5642a1bbe912fc72e98, type: 3}
+  audioClipName: _04_55_52.wav
   parentNode: {fileID: 6625198195364614332}
   childNode: {fileID: 8393938792172885860}
 --- !u!114 &6625198195364614332
@@ -412,8 +402,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 280.99997
-    y: 119.19995
+    x: 278.99997
+    y: 250.19998
     width: 190
     height: 145
   isDragging: 0
@@ -445,18 +435,17 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 669
-    y: 729.6667
+    x: 667
+    y: 861.66675
     width: 220
     height: 180
   isDragging: 0
   isSelected: 0
-  sentence:
-    characterName: 
-    text: 
-    characterSprite: {fileID: 0}
-    audioClip: {fileID: 0}
-    audioClipPath: 
+  characterName: 
+  text: 
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 0}
+  audioClipName: 
   parentNode: {fileID: 0}
   childNode: {fileID: 0}
 --- !u!114 &8393938792172885860
@@ -475,17 +464,16 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 744
-    y: -33.80008
+    x: 742.02
+    y: 98.19995
     width: 220
     height: 180
   isDragging: 0
-  isSelected: 0
-  sentence:
-    characterName: cherrydev
-    text: Next for first sentence
-    characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
-    audioClip: {fileID: 0}
-    audioClipPath: 
+  isSelected: 1
+  characterName: 
+  text: "\u30DE\u30B8\u3067\u306B\u3084\u3070\u3044\u3067\u3059\u306D"
+  characterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
+  audioClip: {fileID: 8300000, guid: 20aa943ba8d121b44ae20c060cfe0dfd, type: 3}
+  audioClipName: _04_57_48.wav
   parentNode: {fileID: 4252937235876148062}
   childNode: {fileID: -1868073505810880904}
