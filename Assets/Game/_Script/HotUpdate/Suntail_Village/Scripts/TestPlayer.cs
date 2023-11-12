@@ -14,7 +14,7 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
     
         void Start()
         {
-            Application.targetFrameRate = 144;
+            Application.targetFrameRate = 30;
             QualitySettings.vSyncCount = 1;
 
             capsuleCollider.transform.GetAsyncTriggerEnterTrigger().ForEachAsync((collision) =>
