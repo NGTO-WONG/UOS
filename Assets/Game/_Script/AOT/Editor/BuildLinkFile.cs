@@ -282,7 +282,7 @@ namespace Game._Script.AOT.Editor
             writer.WriteEndDocument();
             writer.Close();
 
-            checkass(Path.Combine(Application.dataPath, "Plugins", "HybridCLR", "Generated", "ReservedAssembly.cs"));
+            //checkass(Path.Combine(Application.dataPath, "Plugins", "HybridCLR", "Generated", "ReservedAssembly.cs"));
         }
 
         public class AssemblyComp : IComparable
