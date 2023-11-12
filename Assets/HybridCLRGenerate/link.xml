@@ -93,6 +93,48 @@
     <type fullname="Game._Script.AOT.Root+&lt;UpdatePackageManifest&gt;d__11" preserve="all" />
     <type fullname="Game._Script.AOT.Root+&lt;UpdatePackageVersion&gt;d__10" preserve="all" />
   </assembly>
+  <assembly fullname="com.alteregogames.aeg-fsr.Runtime">
+    <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
+    <type fullname="FidelityFX.Fsr2" preserve="all" />
+    <type fullname="FidelityFX.IFsr2Callbacks" preserve="all" />
+    <type fullname="FidelityFX.Fsr2CallbacksBase" preserve="all" />
+    <type fullname="FidelityFX.Fsr2Context" preserve="all" />
+    <type fullname="FidelityFX.Fsr2Pipeline" preserve="all" />
+    <type fullname="FidelityFX.Fsr2ComputeLuminancePyramidPipeline" preserve="all" />
+    <type fullname="FidelityFX.Fsr2ReconstructPreviousDepthPipeline" preserve="all" />
+    <type fullname="FidelityFX.Fsr2DepthClipPipeline" preserve="all" />
+    <type fullname="FidelityFX.Fsr2LockPipeline" preserve="all" />
+    <type fullname="FidelityFX.Fsr2AccumulatePipeline" preserve="all" />
+    <type fullname="FidelityFX.Fsr2RcasPipeline" preserve="all" />
+    <type fullname="FidelityFX.Fsr2GenerateReactivePipeline" preserve="all" />
+    <type fullname="FidelityFX.Fsr2TcrAutogeneratePipeline" preserve="all" />
+    <type fullname="FidelityFX.Fsr2Resources" preserve="all" />
+    <type fullname="FidelityFX.Fsr2ShaderIDs" preserve="all" />
+    <type fullname="AEG.FSR.FSR_Quality" preserve="all" />
+    <type fullname="AEG.FSR.FSR2_BASE" preserve="all" />
+    <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1+MonoScriptData" preserve="all" />
+    <type fullname="FidelityFX.Fsr2+QualityMode" preserve="all" />
+    <type fullname="FidelityFX.Fsr2+InitializationFlags" preserve="all" />
+    <type fullname="FidelityFX.Fsr2+ContextDescription" preserve="all" />
+    <type fullname="FidelityFX.Fsr2+DispatchDescription" preserve="all" />
+    <type fullname="FidelityFX.Fsr2+GenerateReactiveDescription" preserve="all" />
+    <type fullname="FidelityFX.Fsr2+GenerateReactiveFlags" preserve="all" />
+    <type fullname="FidelityFX.Fsr2+Fsr2Constants" preserve="all" />
+    <type fullname="FidelityFX.Fsr2+SpdConstants" preserve="all" />
+    <type fullname="FidelityFX.Fsr2+GenerateReactiveConstants" preserve="all" />
+    <type fullname="FidelityFX.Fsr2+GenerateReactiveConstants2" preserve="all" />
+    <type fullname="FidelityFX.Fsr2+RcasConstants" preserve="all" />
+  </assembly>
+  <assembly fullname="com.alteregogames.aeg-fsr.Runtime.URP">
+    <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
+    <type fullname="AEG.FSR.FSR2_URP" preserve="all" />
+    <type fullname="AEG.FSR.FSRRenderPass" preserve="all" />
+    <type fullname="AEG.FSR.FSRBufferPass" preserve="all" />
+    <type fullname="AEG.FSR.FSROpaqueOnlyPass" preserve="all" />
+    <type fullname="AEG.FSR.FSRTransparentPass" preserve="all" />
+    <type fullname="AEG.FSR.FSRScriptableRenderFeature" preserve="all" />
+    <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1+MonoScriptData" preserve="all" />
+  </assembly>
   <assembly fullname="HybridCLR.Runtime">
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
     <type fullname="HybridCLR.HomologousImageMode" preserve="all" />

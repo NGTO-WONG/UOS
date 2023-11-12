@@ -1,22 +1,10 @@
 {
-    "ShaderTotalCount": 32,
-    "VariantTotalCount": 60,
+    "ShaderTotalCount": 31,
+    "VariantTotalCount": 59,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
             "ShaderName": "Hidden/BlitCopy",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        ""
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Resources/unity_builtin_extra",
-            "ShaderName": "Hidden/BlitCopyHDRTonemap",
             "ShaderVariantElements": [
                 {
                     "PassType": 0,
@@ -159,13 +147,13 @@
             ]
         },
         {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/BlitHDROverlay.shader",
-            "ShaderName": "Hidden/Universal/BlitHDROverlay",
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CoreBlit.shader",
+            "ShaderName": "Hidden/Universal/CoreBlit",
             "ShaderVariantElements": [
                 {
                     "PassType": 0,
                     "Keywords": [
-                        "HDR_COLORSPACE_CONVERSION_AND_ENCODING"
+                        ""
                     ]
                 }
             ]
