@@ -116,6 +116,8 @@ namespace Game._Script.AOT.Editor
         /// <param name="buildTarget"></param>
         public static void Compile(BuildTarget buildTarget)
         {
+            PrebuildCommand.GenerateAll();
+            return;
             
             CompileDllCommand.CompileDll(buildTarget,BuildConfigAccessor.Instance.IsDevelopmentBuild.Equals("1"));
             Il2CppDefGeneratorCommand.GenerateIl2CppDef();
