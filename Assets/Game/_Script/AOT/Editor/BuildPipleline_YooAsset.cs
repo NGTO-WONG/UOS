@@ -67,6 +67,7 @@ namespace Game._Script.AOT.Editor
 
         private static void BuildAssetBundles(BuildTarget buildTarget, EBuildMode eBuildMode)
         {
+            AssetBundleCollectorSettingData.FixFile();
             string packageVersion = $"V{BuildConfigAccessor.Instance.BuildVersion}.{BuildConfigAccessor.Instance.HotUpdateVersion}";
             BuildParameters buildParameters = new BuildParameters
             {
