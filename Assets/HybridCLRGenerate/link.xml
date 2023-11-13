@@ -188,6 +188,16 @@
     <type fullname="Cysharp.Threading.Tasks.TextMeshProAsyncExtensions+&lt;BindToCore&gt;d__2" preserve="all" />
     <type fullname="Cysharp.Threading.Tasks.TextMeshProAsyncExtensions+&lt;BindToCore&gt;d__6`1" preserve="all" />
   </assembly>
+  <assembly fullname="UniTask.YooAsset">
+    <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
+    <type fullname="Cysharp.Threading.Tasks.AsyncOperationBaseExtensions" preserve="all" />
+    <type fullname="Cysharp.Threading.Tasks.OperationHandleBaseExtensions" preserve="all" />
+    <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1+MonoScriptData" preserve="all" />
+    <type fullname="Cysharp.Threading.Tasks.AsyncOperationBaseExtensions+AsyncOperationBaserConfiguredSource" preserve="all" />
+    <type fullname="Cysharp.Threading.Tasks.OperationHandleBaseExtensions+OperationHandleBaserConfiguredSource" preserve="all" />
+    <type fullname="Cysharp.Threading.Tasks.AsyncOperationBaseExtensions+AsyncOperationBaserConfiguredSource+&lt;&gt;c" preserve="all" />
+    <type fullname="Cysharp.Threading.Tasks.OperationHandleBaseExtensions+OperationHandleBaserConfiguredSource+&lt;&gt;c" preserve="all" />
+  </assembly>
   <assembly fullname="Unity.2D.IK.Runtime">
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
     <type fullname="UnityEngine.U2D.IK.CCDSolver2D" preserve="all" />
