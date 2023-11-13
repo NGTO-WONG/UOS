@@ -400,14 +400,22 @@ public class GitCommitWindow : EditorWindow
         {
             alignment = TextAnchor.MiddleLeft
         };
-        foreach (string file in availableFiles)
+
+        try
         {
-            if (GUILayout.Button(file, leftAlignedButtonStyle))
+            foreach (string file in availableFiles)
             {
-                selectedFiles.Add(file);
-                availableFiles.Remove(file);
-                break; // Important to break to avoid modifying the collection during iteration.
+                if (GUILayout.Button(file, leftAlignedButtonStyle))
+                {
+                    selectedFiles.Add(file);
+                    availableFiles.Remove(file);
+                    break; // Important to break to avoid modifying the collection during iteration.
+                }
             }
+        }
+        catch
+        {
+            Debug.Log("无变更文件");
         }
 
         GUILayout.EndScrollView();

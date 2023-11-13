@@ -35,10 +35,6 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
             return characterName;
         }
 
-        private void OnValidate()
-        {
-            UnityEngine.Debug.Log("AS");
-        }
 
         /// <summary>
         /// Returning sentence text
