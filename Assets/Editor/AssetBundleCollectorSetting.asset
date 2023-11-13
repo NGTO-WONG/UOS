@@ -109,7 +109,7 @@ MonoBehaviour:
     - GroupName: DependRes
       GroupDesc: 
       AssetTags: 
-      ActiveRuleName: EnableGroup
+      ActiveRuleName: DisableGroup
       Collectors:
       - CollectPath: Assets/Game/DependRes
         CollectorGUID: cb4017d0239a09c4d8aaa251330b66ae
@@ -119,7 +119,7 @@ MonoBehaviour:
         FilterRuleName: CollectSprite
         AssetTags: 
         UserData: 
-    - GroupName: Test
+    - GroupName: ShaderVariants
       GroupDesc: 
       AssetTags: 
       ActiveRuleName: EnableGroup
@@ -140,6 +140,19 @@ MonoBehaviour:
       - CollectPath: Assets/Game/Content
         CollectorGUID: 2a5c7a1ed19c317489dce39df6d1ae6d
         CollectorType: 1
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Voice
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Game/DependRes/Voice
+        CollectorGUID: bf75ff85b7dcdc140b7ecf55412c8f51
+        CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll

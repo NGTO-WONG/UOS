@@ -1,12 +1,14 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Others;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 using UnityEngine;
+using YooAsset;
 
 namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
 {
@@ -42,16 +44,21 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
         /// <returns></returns>
         public string GetSentenceText()
         {
-            var _ = Play();
+            Play().Forget();
 
-            async Task Play()
+            async UniTask Play()
             {
+                var package=YooAssets.GetPackage("DefaultPackage");
+                AssetOperationHandle handle = package.LoadAssetAsync<AudioClip>(audioClipName.Replace(".wav",""));
+                await handle.ToUniTask();   
+                AudioClip audio = handle.AssetObject as AudioClip;
+                
                 GameObject previewer = new GameObject("AudioPreviewer");
                 var previewSource = previewer.AddComponent<AudioSource>();
-                previewSource.clip = audioClip;
+                previewSource.clip = audio;
                 previewSource.Play();
-                await Task.Delay((int)audioClip.length * 1000 + 1000);
-                DestroyImmediate(previewer);
+                await UniTask.Delay((int)audioClip.length * 1000 + 1000);
+                Destroy(previewer);
             }
 
             return text;
