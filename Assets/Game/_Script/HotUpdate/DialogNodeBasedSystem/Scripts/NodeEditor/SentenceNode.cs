@@ -48,12 +48,12 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.NodeEditor
 
             async UniTask Play()
             {
+                GameObject previewer = new GameObject("AudioPreviewer");
                 var package=YooAssets.GetPackage("DefaultPackage");
                 AssetOperationHandle handle = package.LoadAssetAsync<AudioClip>(audioClipName.Replace(".wav",""));
-                await handle.ToUniTask();   
+                await handle.ToUniTask(null,PlayerLoopTiming.Update);   
                 AudioClip audio = handle.AssetObject as AudioClip;
                 
-                GameObject previewer = new GameObject("AudioPreviewer");
                 var previewSource = previewer.AddComponent<AudioSource>();
                 previewSource.clip = audio;
                 previewSource.Play();
