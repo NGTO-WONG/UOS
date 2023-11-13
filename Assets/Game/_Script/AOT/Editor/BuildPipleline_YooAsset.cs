@@ -61,6 +61,8 @@ namespace Game._Script.AOT.Editor
                 string dstPath = Path.Combine(BuildConfigAccessor.Instance.HotfixAssembliesDstDir, $"{dll}.bytes");
                 File.Copy(sourcePath, dstPath, true);
             }
+            AssetDatabase.Refresh();
+            AssetBundleCollectorSettingData.FixFile();
         }
 
         private static void BuildAssetBundles(BuildTarget buildTarget, EBuildMode eBuildMode)
