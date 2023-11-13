@@ -10,6 +10,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		"UniTask.Linq.dll",
 		"UniTask.dll",
 		"UnityEngine.CoreModule.dll",
+		"YooAsset.dll",
 		"mscorlib.dll",
 	};
 	// }}
@@ -338,5 +339,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object UnityEngine.Object.Instantiate<object>(object,UnityEngine.Transform)
 		// object UnityEngine.Object.Instantiate<object>(object,UnityEngine.Transform,bool)
 		// object UnityEngine.Resources.Load<object>(string)
+		// YooAsset.AssetOperationHandle YooAsset.ResourcePackage.LoadAssetAsync<object>(string)
 	}
 }
