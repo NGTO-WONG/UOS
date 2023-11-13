@@ -70,7 +70,6 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Dialog
                     sentenceNode.GetCharacterSprite());
 
                 WriteDialogText(sentenceNode.GetSentenceText());
-                
             }
             else if (currentNode.GetType() == typeof(AnswerNode))
             {
@@ -137,7 +136,9 @@ namespace Game._Script.HotUpdate.DialogNodeBasedSystem.Scripts.Dialog
                 OnDialogTextCharWrote?.Invoke(textChar);
             }
 
-            yield return new WaitUntil(() => Input.GetKeyDown(nextSentenceKeyCode));
+            yield return new WaitUntil(() =>
+                Input.GetKeyDown(nextSentenceKeyCode) 
+                || Input.touchCount > 0);
 
             OnDialogSentenceEnd?.Invoke();
             CheckForDialogNextNode();
