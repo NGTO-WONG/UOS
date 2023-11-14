@@ -13,8 +13,6 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
         [SerializeField] private GameObject ui;
         [SerializeField] private Button closeButton;
         [SerializeField] private Button confirmButton;
-        private bool _isOn=false;
-        private TestPlayer _player;
 
         private void Start()
         {
@@ -40,7 +38,7 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
 
         public override void Interact(TestPlayer player)
         {           
-            _isOn = !_isOn;
+            base.Interact(player);
             _player = player;
             vc.gameObject.SetActive(_isOn);
             ui.gameObject.SetActive(_isOn);

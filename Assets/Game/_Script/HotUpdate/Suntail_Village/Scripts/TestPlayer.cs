@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks.Linq;
 using Cysharp.Threading.Tasks.Triggers;
 using TMPro;
@@ -11,7 +12,12 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
         [SerializeField] private Button interactButton;
         [SerializeField] private CapsuleCollider capsuleCollider;
         private BaseInteractObj _interactObj;
-    
+
+        public void HideButton()
+        {
+            interactButton.gameObject.SetActive(false);
+        }
+
         void Start()
         {
             Application.targetFrameRate = 30;
@@ -38,7 +44,6 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
             
             interactButton.onClick.AddListener(()=>_interactObj.Interact(this));
         }
-        
 
 
     }
