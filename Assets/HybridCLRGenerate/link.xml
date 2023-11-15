@@ -54,9 +54,11 @@
   </assembly>
   <assembly fullname="System">
     <type fullname="System.CodeDom.Compiler.GeneratedCodeAttribute" preserve="all" />
-    <type fullname="System.Collections.Generic.Queue`1" preserve="all" />
     <type fullname="System.ComponentModel.EditorBrowsableAttribute" preserve="all" />
     <type fullname="System.ComponentModel.EditorBrowsableState" preserve="all" />
+    <type fullname="System.ComponentModel.ISynchronizeInvoke" preserve="all" />
+    <type fullname="System.Diagnostics.Process" preserve="all" />
+    <type fullname="System.Diagnostics.ProcessStartInfo" preserve="all" />
     <type fullname="System.Text.RegularExpressions.Capture" preserve="all" />
     <type fullname="System.Text.RegularExpressions.Match" preserve="all" />
     <type fullname="System.Text.RegularExpressions.MatchCollection" preserve="all" />
@@ -67,11 +69,7 @@
   </assembly>
   <assembly fullname="UniTask">
     <type fullname="Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder" preserve="all" />
-    <type fullname="Cysharp.Threading.Tasks.IUniTaskAsyncDisposable" preserve="all" />
     <type fullname="Cysharp.Threading.Tasks.IUniTaskAsyncEnumerable`1" preserve="all" />
-    <type fullname="Cysharp.Threading.Tasks.IUniTaskAsyncEnumerator`1" preserve="all" />
-    <type fullname="Cysharp.Threading.Tasks.PlayerLoopTiming" preserve="all" />
-    <type fullname="Cysharp.Threading.Tasks.Triggers.AsyncTriggerBase`1" preserve="all" />
     <type fullname="Cysharp.Threading.Tasks.Triggers.AsyncTriggerEnterTrigger" preserve="all" />
     <type fullname="Cysharp.Threading.Tasks.Triggers.AsyncTriggerExitTrigger" preserve="all" />
     <type fullname="Cysharp.Threading.Tasks.Triggers.AsyncTriggerExtensions" preserve="all" />
@@ -81,17 +79,8 @@
     <type fullname="Cysharp.Threading.Tasks.UniTask`1" preserve="all" />
     <type fullname="Cysharp.Threading.Tasks.UniTask`1/Awaiter" preserve="all" />
   </assembly>
-  <assembly fullname="UniTask.DOTween">
-    <type fullname="Cysharp.Threading.Tasks.DOTweenAsyncExtensions" preserve="all" />
-  </assembly>
   <assembly fullname="UniTask.Linq">
     <type fullname="Cysharp.Threading.Tasks.Linq.UniTaskAsyncEnumerable" preserve="all" />
-  </assembly>
-  <assembly fullname="Unity.RenderPipelines.Universal.Runtime">
-    <type fullname="UnityEngine.Rendering.Universal.RenderingData" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.ScriptableRenderPass" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.ScriptableRenderer" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.ScriptableRendererFeature" preserve="all" />
   </assembly>
   <assembly fullname="Unity.TextMeshPro">
     <type fullname="TMPro.TMP_CharacterInfo" preserve="all" />
@@ -129,33 +118,25 @@
     <type fullname="UnityEngine.GradientColorKey" preserve="all" />
     <type fullname="UnityEngine.HeaderAttribute" preserve="all" />
     <type fullname="UnityEngine.HideInInspector" preserve="all" />
-    <type fullname="UnityEngine.KeyCode" preserve="all" />
     <type fullname="UnityEngine.Keyframe" preserve="all" />
-    <type fullname="UnityEngine.LayerMask" preserve="all" />
     <type fullname="UnityEngine.Material" preserve="all" />
     <type fullname="UnityEngine.Mathf" preserve="all" />
     <type fullname="UnityEngine.Matrix4x4" preserve="all" />
     <type fullname="UnityEngine.Mesh" preserve="all" />
     <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
-    <type fullname="UnityEngine.Pool.IObjectPool`1" preserve="all" />
-    <type fullname="UnityEngine.Pool.PooledObject`1" preserve="all" />
     <type fullname="UnityEngine.QualitySettings" preserve="all" />
     <type fullname="UnityEngine.Quaternion" preserve="all" />
     <type fullname="UnityEngine.Random" preserve="all" />
-    <type fullname="UnityEngine.Ray" preserve="all" />
     <type fullname="UnityEngine.Rect" preserve="all" />
     <type fullname="UnityEngine.RectTransform" preserve="all" />
-    <type fullname="UnityEngine.Rendering.ScriptableRenderContext" preserve="all" />
     <type fullname="UnityEngine.RequireComponent" preserve="all" />
     <type fullname="UnityEngine.Resources" preserve="all" />
     <type fullname="UnityEngine.SceneManagement.LoadSceneMode" preserve="all" />
-    <type fullname="UnityEngine.SceneManagement.SceneManager" preserve="all" />
     <type fullname="UnityEngine.Screen" preserve="all" />
     <type fullname="UnityEngine.ScriptableObject" preserve="all" />
     <type fullname="UnityEngine.Scripting.PreserveAttribute" preserve="all" />
     <type fullname="UnityEngine.SerializeField" preserve="all" />
-    <type fullname="UnityEngine.SpaceAttribute" preserve="all" />
     <type fullname="UnityEngine.SpriteRenderer" preserve="all" />
     <type fullname="UnityEngine.TextAreaAttribute" preserve="all" />
     <type fullname="UnityEngine.Time" preserve="all" />
@@ -166,32 +147,21 @@
     <type fullname="UnityEngine.WaitForSeconds" preserve="all" />
     <type fullname="UnityEngine.WrapMode" preserve="all" />
   </assembly>
-  <assembly fullname="UnityEngine.InputLegacyModule">
-    <type fullname="UnityEngine.Input" preserve="all" />
-  </assembly>
   <assembly fullname="UnityEngine.Physics2DModule">
     <type fullname="UnityEngine.Rigidbody2D" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.PhysicsModule">
     <type fullname="UnityEngine.CapsuleCollider" preserve="all" />
     <type fullname="UnityEngine.Collider" preserve="all" />
-    <type fullname="UnityEngine.Physics" preserve="all" />
-    <type fullname="UnityEngine.RaycastHit" preserve="all" />
     <type fullname="UnityEngine.Rigidbody" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.UI">
-    <type fullname="UnityEngine.EventSystems.IBeginDragHandler" preserve="all" />
-    <type fullname="UnityEngine.EventSystems.IDragHandler" preserve="all" />
-    <type fullname="UnityEngine.EventSystems.IEndDragHandler" preserve="all" />
-    <type fullname="UnityEngine.EventSystems.IEventSystemHandler" preserve="all" />
-    <type fullname="UnityEngine.EventSystems.PointerEventData" preserve="all" />
     <type fullname="UnityEngine.UI.Button" preserve="all" />
     <type fullname="UnityEngine.UI.Button/ButtonClickedEvent" preserve="all" />
     <type fullname="UnityEngine.UI.CanvasScaler" preserve="all" />
     <type fullname="UnityEngine.UI.CanvasScaler/ScaleMode" preserve="all" />
     <type fullname="UnityEngine.UI.Graphic" preserve="all" />
     <type fullname="UnityEngine.UI.Image" preserve="all" />
-    <type fullname="UnityEngine.UI.InputField" preserve="all" />
     <type fullname="UnityEngine.UI.LayoutElement" preserve="all" />
     <type fullname="UnityEngine.UI.Outline" preserve="all" />
     <type fullname="UnityEngine.UI.ScrollRect" preserve="all" />
@@ -240,11 +210,14 @@
     <type fullname="System.Collections.Generic.List`1" preserve="all" />
     <type fullname="System.Collections.Generic.List`1/Enumerator" preserve="all" />
     <type fullname="System.Collections.IEnumerator" preserve="all" />
+    <type fullname="System.DateTime" preserve="all" />
     <type fullname="System.Delegate" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute/DebuggingModes" preserve="all" />
     <type fullname="System.Diagnostics.DebuggerHiddenAttribute" preserve="all" />
     <type fullname="System.Enum" preserve="all" />
+    <type fullname="System.EventArgs" preserve="all" />
+    <type fullname="System.EventHandler" preserve="all" />
     <type fullname="System.Exception" preserve="all" />
     <type fullname="System.Func`3" preserve="all" />
     <type fullname="System.Globalization.CultureInfo" preserve="all" />
@@ -252,6 +225,9 @@
     <type fullname="System.IAsyncResult" preserve="all" />
     <type fullname="System.IDisposable" preserve="all" />
     <type fullname="System.IFormatProvider" preserve="all" />
+    <type fullname="System.IO.Path" preserve="all" />
+    <type fullname="System.IO.StreamWriter" preserve="all" />
+    <type fullname="System.IO.TextWriter" preserve="all" />
     <type fullname="System.Int32" preserve="all" />
     <type fullname="System.MulticastDelegate" preserve="all" />
     <type fullname="System.NotSupportedException" preserve="all" />
@@ -274,11 +250,11 @@
     <type fullname="System.Runtime.CompilerServices.TaskAwaiter" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.YieldAwaitable" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.YieldAwaitable/YieldAwaiter" preserve="all" />
-    <type fullname="System.Runtime.ExceptionServices.ExceptionDispatchInfo" preserve="all" />
     <type fullname="System.RuntimeFieldHandle" preserve="all" />
     <type fullname="System.RuntimeTypeHandle" preserve="all" />
     <type fullname="System.Single" preserve="all" />
     <type fullname="System.String" preserve="all" />
+    <type fullname="System.Text.Encoding" preserve="all" />
     <type fullname="System.Threading.CancellationToken" preserve="all" />
     <type fullname="System.Threading.CancellationTokenSource" preserve="all" />
     <type fullname="System.Threading.Interlocked" preserve="all" />

@@ -427,6 +427,10 @@ namespace GameMain.Scripts.HybridCLR
                 {
                     continue;
                 }
+                if (ass.FullName.Contains("XNodeEditor"))
+                {
+                    continue;
+                }
 
                 var hasEditor = false;
                 var ras = ass.GetReferencedAssemblies();

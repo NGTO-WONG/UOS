@@ -16,30 +16,34 @@ namespace GameMain.Scripts.HybridCLR
 
 			Reserved<Microsoft.Win32.SafeHandles.SafeFileHandle>(); // mscorlib.dll
 			Reserved<AOT.MonoPInvokeCallbackAttribute>(); // UnityEngine.CoreModule.dll
-			Reserved<Microsoft.VisualBasic.VBCodeProvider>(); // System.dll
-			Reserved<DG.Tweening.Color2>(); // DOTween.dll
-			Reserved<Cysharp.Threading.Tasks.AsyncLazy>(); // UniTask.dll
-			Reserved<UnityEngine.ControllerColliderHit>(); // UnityEngine.PhysicsModule.dll
+			Reserved<UnityEngine.AudioSettings>(); // UnityEngine.AudioModule.dll
+			Reserved<CinemachineCameraOffset>(); // Cinemachine.dll
+			Reserved<NodeEnumAttribute>(); // XNode.dll
+			Reserved<UnityEngine.CanvasGroup>(); // UnityEngine.UIModule.dll
 			Reserved<UnityEngine.UI.AnimationTriggers>(); // UnityEngine.UI.dll
 			Reserved<TMPro.FastAction>(); // Unity.TextMeshPro.dll
-			Reserved<FullScreenPassRendererFeature>(); // Unity.RenderPipelines.Universal.Runtime.dll
+			Reserved<Microsoft.VisualBasic.VBCodeProvider>(); // System.dll
+			Reserved<UnityEngine.ControllerColliderHit>(); // UnityEngine.PhysicsModule.dll
 			Reserved<Spine.BoneMatrix>(); // spine-unity.dll
-			Reserved<UnityEngine.AudioSettings>(); // UnityEngine.AudioModule.dll
+			Reserved<DG.Tweening.Color2>(); // DOTween.dll
+			Reserved<UnityEngine.Physics2D>(); // UnityEngine.Physics2DModule.dll
 			Reserved<YooAsset.DownloadRequestDelegate>(); // YooAsset.dll
-			Reserved<CinemachineCameraOffset>(); // Cinemachine.dll
 			Reserved<SharpJson.JsonDecoder>(); // spine-csharp.dll
-			Reserved<UnityEngine.Event>(); // UnityEngine.IMGUIModule.dll
-			Reserved<UnityEngine.TextGenerator>(); // UnityEngine.TextRenderingModule.dll
-			Reserved<UnityEngine.LocationService>(); // UnityEngine.InputLegacyModule.dll
+			Reserved<Cysharp.Threading.Tasks.AsyncLazy>(); // UniTask.dll
+			Reserved<PlayTextSupport.AudioMgr>(); // PlayText.dll
+			//Reserved<XNodeEditor.NodeEnumDrawer>(); // XNodeEditor.dll
 			Reserved<Microsoft.Win32.SafeHandles.SafePipeHandle>(); // System.Core.dll
 			Reserved<UnityEngine.U2D.IK.CCDSolver2D>(); // Unity.2D.IK.Runtime.dll
 			Reserved<UnityEngine.SharedBetweenAnimatorsAttribute>(); // UnityEngine.AnimationModule.dll
+			Reserved<UnityEngine.Event>(); // UnityEngine.IMGUIModule.dll
 			Reserved<UnityEngine.Experimental.Rendering.XRLayout>(); // Unity.RenderPipelines.Core.Runtime.dll
 			Reserved<UnityEngine.XR.InputDevices>(); // UnityEngine.XRModule.dll
 			Reserved<Unity.XR.OpenVR.OpenVRHMD>(); // Unity.InputSystem.dll
 			Reserved<UnityEngine.Terrain>(); // UnityEngine.TerrainModule.dll
 			Reserved<UnityEngine.IntegratedSubsystem>(); // UnityEngine.SubsystemsModule.dll
 			Reserved<UnityEngineInternal.XR.WSA.RemoteSpeechAccess>(); // UnityEngine.VRModule.dll
+			Reserved<UnityEngine.LocationService>(); // UnityEngine.InputLegacyModule.dll
+			Reserved<UnityEngine.TextGenerator>(); // UnityEngine.TextRenderingModule.dll
 			Reserved<Unity.AI.Navigation.NavMeshLink>(); // Unity.AI.Navigation.dll
 			Reserved<UnityEngine.Experimental.AI.NavMeshQuery>(); // UnityEngine.AIModule.dll
 			Reserved<UnityEngine.AssetBundleCreateRequest>(); // UnityEngine.AssetBundleModule.dll
@@ -48,14 +52,15 @@ namespace GameMain.Scripts.HybridCLR
 			Reserved<Unity.Collections.BitField32>(); // Unity.Collections.dll
 			Reserved<Unity.Burst.BurstCompileAttribute>(); // Unity.Burst.dll
 			Reserved<Unity.Mathematics.bool2>(); // Unity.Mathematics.dll
-			Reserved<UnityEngine.CanvasGroup>(); // UnityEngine.UIModule.dll
+			Reserved<UnityEngine.U2D.Spline>(); // Unity.2D.SpriteShape.Runtime.dll
+			Reserved<UnityEngine.U2D.SpriteShapeRenderer>(); // UnityEngine.SpriteShapeModule.dll
+			Reserved<UnityEngine.U2D.CinemachinePixelPerfect>(); // Unity.2D.PixelPerfect.dll
 			Reserved<UnityEngine.TextCore.GlyphRect>(); // UnityEngine.TextCoreFontEngineModule.dll
-			Reserved<UnityEngine.Physics2D>(); // UnityEngine.Physics2DModule.dll
+			Reserved<FullScreenPassRendererFeature>(); // Unity.RenderPipelines.Universal.Runtime.dll
 			Reserved<UnityEngine.VFX.VFXEventAttribute>(); // UnityEngine.VFXModule.dll
 			Reserved<UnityEngine.U2D.Animation.SkeletonAsset>(); // Unity.2D.Animation.Runtime.dll
 			Reserved<UnityEngine.UIElements.DynamicAtlasCustomFilter>(); // UnityEngine.UIElementsModule.dll
 			Reserved<UnityEngine.CustomGridBrushAttribute>(); // UnityEngine.TilemapModule.dll
-			Reserved<UnityEngine.U2D.SpriteShapeRenderer>(); // UnityEngine.SpriteShapeModule.dll
 			Reserved<FidelityFX.Fsr2CallbacksBase>(); // com.alteregogames.aeg-fsr.Runtime.dll
 			Reserved<UnityEngine.Timeline.ActivationTrack>(); // Unity.Timeline.dll
 			Reserved<UnityEngine.Playables.PlayableDirector>(); // UnityEngine.DirectorModule.dll
