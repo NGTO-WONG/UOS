@@ -74,6 +74,7 @@
   <assembly fullname="YooAsset" preserve="all" />
   <assembly fullname="Assembly-CSharp-firstpass">
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
+    <type fullname="GameMain.Scripts.HybridCLR.ReservedAssembly" preserve="all" />
     <type fullname="AmazingAssets.TerrainToMesh.Example.ExportDetailMesh" preserve="all" />
     <type fullname="AmazingAssets.TerrainToMesh.Example.ExportGrass" preserve="all" />
     <type fullname="AmazingAssets.TerrainToMesh.Example.ExportMesh" preserve="all" />
@@ -83,6 +84,7 @@
     <type fullname="AmazingAssets.TerrainToMesh.Example.ExportMeshWithEdgeFall" preserve="all" />
     <type fullname="AmazingAssets.TerrainToMesh.Example.ExportTrees" preserve="all" />
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1+MonoScriptData" preserve="all" />
+    <type fullname="GameMain.Scripts.HybridCLR.ReservedAssembly+&lt;&gt;c__DisplayClass0_0" preserve="all" />
   </assembly>
   <assembly fullname="com.alteregogames.aeg-fsr.Runtime">
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
