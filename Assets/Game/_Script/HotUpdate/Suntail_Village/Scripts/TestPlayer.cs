@@ -10,6 +10,7 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
     public class TestPlayer : MonoBehaviour
     {
         [SerializeField] private Button interactButton;
+        [SerializeField] private Button jumpButton;
         [SerializeField] private CapsuleCollider capsuleCollider;
         private BaseInteractObj _interactObj;
 
@@ -43,6 +44,10 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
             });
             
             interactButton.onClick.AddListener(()=>_interactObj.Interact(this));
+            jumpButton.onClick.AddListener(()=>
+            {
+                GetComponent<Rigidbody>().AddForce(Vector3.up*10);
+            });
         }
 
 
