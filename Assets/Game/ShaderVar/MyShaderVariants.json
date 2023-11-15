@@ -1,6 +1,6 @@
 {
-    "ShaderTotalCount": 31,
-    "VariantTotalCount": 58,
+    "ShaderTotalCount": 30,
+    "VariantTotalCount": 57,
     "ShaderVariantInfos": [
         {
             "AssetPath": "Resources/unity_builtin_extra",
@@ -130,43 +130,6 @@
                     "PassType": 0,
                     "Keywords": [
                         ""
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CopyDepth.shader",
-            "ShaderName": "Hidden/Universal Render Pipeline/CopyDepth",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        "_OUTPUT_DEPTH"
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/LutBuilderHdr.shader",
-            "ShaderName": "Hidden/Universal Render Pipeline/LutBuilderHdr",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        ""
-                    ]
-                }
-            ]
-        },
-        {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/UberPost.shader",
-            "ShaderName": "Hidden/Universal Render Pipeline/UberPost",
-            "ShaderVariantElements": [
-                {
-                    "PassType": 0,
-                    "Keywords": [
-                        "_HDR_GRADING",
-                        "_USE_FAST_SRGB_LINEAR_CONVERSION"
                     ]
                 }
             ]
@@ -316,6 +279,18 @@
             ]
         },
         {
+            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/Spine-Skeleton.shader",
+            "ShaderName": "Spine/Skeleton",
+            "ShaderVariantElements": [
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
             "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/BlendModes/Spine-Skeleton-PMA-Additive.shader",
             "ShaderName": "Spine/Blend Modes/Skeleton PMA Additive",
             "ShaderVariantElements": [
@@ -325,6 +300,18 @@
                         ""
                     ]
                 },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/Spine-Skeleton-Fill.shader",
+            "ShaderName": "Spine/Skeleton Fill",
+            "ShaderVariantElements": [
                 {
                     "PassType": 8,
                     "Keywords": [
@@ -484,26 +471,13 @@
             ]
         },
         {
-            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLit.shader",
-            "ShaderName": "Universal Render Pipeline/Simple Lit",
+            "AssetPath": "Packages/com.esotericsoftware.spine.spine-unity/Runtime/spine-unity/Shaders/Spine-Skeleton-Tint.shader",
+            "ShaderName": "Spine/Skeleton Tint",
             "ShaderVariantElements": [
                 {
                     "PassType": 8,
                     "Keywords": [
                         ""
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        ""
-                    ]
-                },
-                {
-                    "PassType": 13,
-                    "Keywords": [
-                        "_MAIN_LIGHT_SHADOWS_CASCADE",
-                        "_SHADOWS_SOFT"
                     ]
                 }
             ]
@@ -525,6 +499,12 @@
             "AssetPath": "Assets/Game/Matreial/BlobShadow_Graph.shadergraph",
             "ShaderName": "Shader Graphs/BlobShadow_Graph",
             "ShaderVariantElements": [
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        ""
+                    ]
+                },
                 {
                     "PassType": 13,
                     "Keywords": [
@@ -555,6 +535,15 @@
                     "PassType": 0,
                     "Keywords": [
                         ""
+                    ]
+                },
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_INTERLEAVED_GRADIENT",
+                        "_ORTHOGRAPHIC",
+                        "_SAMPLE_COUNT_LOW",
+                        "_SOURCE_DEPTH_NORMALS"
                     ]
                 },
                 {
