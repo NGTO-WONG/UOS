@@ -553,15 +553,15 @@ namespace GameMain.Scripts.HybridCLR
             foreach (var k in keys)
             {
                 var x = info[k];
-                // if (k is "UnityEngine.InputManagerEntry")
-                // {
-                //     continue;
-                // }
-                //
-                // if (Path.GetFileName(x) is "HotUpdate.dll")
-                // {
-                //     continue;
-                // }
+                if (k is "UnityEngine.InputManagerEntry")
+                {
+                    continue;
+                }
+                
+                if (Path.GetFileName(x) is "HotUpdate.dll")
+                {
+                    continue;
+                }
                 sb.AppendLine($"\t\t\tReserved<{k}>(); // {Path.GetFileName(x)}");
             }
 
