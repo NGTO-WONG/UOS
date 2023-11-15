@@ -98,34 +98,6 @@ namespace GraphSpace
                 return temp;
             }
 
-            //NodePort exitPort = GetOutputPort("Output");
-            //if (!exitPort.IsConnected)
-            //{
-            //    EventCenter.GetInstance().EventTriggered("PlayText.TalkingFinished");
-            //    return null;
-            //}
-
-            //Node node = exitPort.Connection.node;
-            //DialogueNode dia = node as DialogueNode;
-            //if (dia != null)
-            //{
-            //    return dia;
-            //}
-
-            //OptionNode opt = node as OptionNode;
-            //if (opt != null)
-            //{
-            //    return opt;
-            //}
-
-            //EventNode evt = node as EventNode;
-            //if (evt != null)
-            //{
-            //    return evt;
-            //}
-
-            //EventCenter.GetInstance().EventTriggered("PlayText.TalkingFinished");
-            //return null;
         }
 
         public string GetBriefEvent()

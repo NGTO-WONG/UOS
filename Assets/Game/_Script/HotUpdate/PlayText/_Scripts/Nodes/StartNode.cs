@@ -31,17 +31,19 @@ namespace GraphSpace
         public Node MoveNext()
         {
             NodePort exitPort = GetOutputPort("Ouput");
-
             if (!exitPort.IsConnected)
             {
                 EventCenter.GetInstance().EventTriggered("PlayText.TalkingFinished");
                 Debug.LogWarning("Start Node isn't connected");
                 return this;
             }
-
+            
+            
             Node node = exitPort.Connection.node;
             if (DialogueGraph.IsVaildNodeForMoveNext(node))
+            {
                 return node;
+            }
             else
             {
                 EventCenter.GetInstance().EventTriggered("PlayText.TalkingFinished");
