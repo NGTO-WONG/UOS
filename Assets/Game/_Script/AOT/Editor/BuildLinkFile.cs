@@ -80,7 +80,7 @@ namespace Game._Script.AOT.Editor
             "editor", "netstandard", "Bee.", "dnlib", ".framework", "Test", "plastic", "Gradle", "log4net", "Analytics", "System.Drawing",
             "NVIDIA", "VisualScripting", "UIElements", "IMGUIModule", ".Cecil", "GIModule", "GridModule", "HotReloadModule", "StreamingModule",
             "TLSModule", "XRModule", "WindModule", "VRModule", "VirtualTexturingModule", "compiler", "BuildProgram", "NiceIO", "ClothModule",
-            "VFXModule", "ExCSS", "GeneratedCode", "mscorlib", "System", "SyncToolsDef", "ReportGeneratorMerged"
+            "VFXModule", "ExCSS", "GeneratedCode", "mscorlib", "System", "SyncToolsDef", "ReportGeneratorMerged","XNodeEditor"
         };
         private static bool IsIngoreClass(string classFullName)
         {
@@ -143,6 +143,7 @@ namespace Game._Script.AOT.Editor
                     {
                         continue;
                     }
+
 
                     if (!hashAss.Contains(name))
                     {
@@ -427,10 +428,6 @@ namespace GameMain.Scripts.HybridCLR
                 {
                     continue;
                 }
-                if (ass.FullName.Contains("XNodeEditor"))
-                {
-                    continue;
-                }
 
                 var hasEditor = false;
                 var ras = ass.GetReferencedAssemblies();
@@ -561,7 +558,7 @@ namespace GameMain.Scripts.HybridCLR
             foreach (var k in keys)
             {
                 var x = info[k];
-                if (Path.GetFileName(x)=="HotUpdate.dll")
+                if (Path.GetFileName(x) is "HotUpdate.dll" or "XNodeEditor.dll")
                 {
                     continue;   
                 }

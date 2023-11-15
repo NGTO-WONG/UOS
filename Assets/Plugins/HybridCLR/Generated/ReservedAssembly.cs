@@ -31,7 +31,6 @@ namespace GameMain.Scripts.HybridCLR
 			Reserved<SharpJson.JsonDecoder>(); // spine-csharp.dll
 			Reserved<Cysharp.Threading.Tasks.AsyncLazy>(); // UniTask.dll
 			Reserved<PlayTextSupport.AudioMgr>(); // PlayText.dll
-			//Reserved<XNodeEditor.NodeEnumDrawer>(); // XNodeEditor.dll
 			Reserved<Microsoft.Win32.SafeHandles.SafePipeHandle>(); // System.Core.dll
 			Reserved<UnityEngine.U2D.IK.CCDSolver2D>(); // Unity.2D.IK.Runtime.dll
 			Reserved<UnityEngine.SharedBetweenAnimatorsAttribute>(); // UnityEngine.AnimationModule.dll
