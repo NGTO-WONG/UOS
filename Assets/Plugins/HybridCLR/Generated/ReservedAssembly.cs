@@ -14,7 +14,6 @@ namespace GameMain.Scripts.HybridCLR
 				sb.AppendLine(typeof(T).ToString());
 			}
 
-			Reserved<DialogueProfile>(); // HotUpdate.dll
 			Reserved<Microsoft.Win32.SafeHandles.SafeFileHandle>(); // mscorlib.dll
 			Reserved<AOT.MonoPInvokeCallbackAttribute>(); // UnityEngine.CoreModule.dll
 			Reserved<UnityEngine.AudioSettings>(); // UnityEngine.AudioModule.dll
@@ -35,7 +34,6 @@ namespace GameMain.Scripts.HybridCLR
 			Reserved<UnityEngine.U2D.IK.CCDSolver2D>(); // Unity.2D.IK.Runtime.dll
 			Reserved<UnityEngine.SharedBetweenAnimatorsAttribute>(); // UnityEngine.AnimationModule.dll
 			Reserved<UnityEngine.Event>(); // UnityEngine.IMGUIModule.dll
-			Reserved<UnityEngine.InputManagerEntry>(); // Unity.RenderPipelines.Core.Runtime.dll
 			Reserved<UnityEngine.XR.InputDevices>(); // UnityEngine.XRModule.dll
 			Reserved<Unity.XR.OpenVR.OpenVRHMD>(); // Unity.InputSystem.dll
 			Reserved<UnityEngine.Terrain>(); // UnityEngine.TerrainModule.dll
