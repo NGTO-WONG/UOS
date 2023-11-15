@@ -59,7 +59,6 @@ namespace GameMain.Scripts.HybridCLR
 			Reserved<UnityEngine.U2D.Animation.SkeletonAsset>(); // Unity.2D.Animation.Runtime.dll
 			Reserved<UnityEngine.UIElements.DynamicAtlasCustomFilter>(); // UnityEngine.UIElementsModule.dll
 			Reserved<UnityEngine.CustomGridBrushAttribute>(); // UnityEngine.TilemapModule.dll
-			Reserved<FidelityFX.Fsr2CallbacksBase>(); // com.alteregogames.aeg-fsr.Runtime.dll
 			Reserved<UnityEngine.Timeline.ActivationTrack>(); // Unity.Timeline.dll
 			Reserved<UnityEngine.Playables.PlayableDirector>(); // UnityEngine.DirectorModule.dll
 			Reserved<UnityEngine.ParticleSystem>(); // UnityEngine.ParticleSystemModule.dll
