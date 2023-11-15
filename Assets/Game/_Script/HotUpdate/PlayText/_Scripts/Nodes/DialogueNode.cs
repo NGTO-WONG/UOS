@@ -33,7 +33,7 @@ namespace GraphSpace
         private void Awake()
         {
 #if UNITY_EDITOR
-            CameraFollow = XNodeEditor.NodeEditorPreferences.GetSettings().CameraFollow;
+            //CameraFollow = XNodeEditor.NodeEditorPreferences.GetSettings().CameraFollow;
 #endif
         }
 

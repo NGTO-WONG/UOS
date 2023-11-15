@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <linker>
   <assembly fullname="AmazingAssets.TerrainToMesh" preserve="all" />
+  <assembly fullname="Assembly-CSharp" preserve="all" />
   <assembly fullname="Cinemachine" preserve="all" />
   <assembly fullname="DOTween" preserve="all" />
   <assembly fullname="Mono.Posix" preserve="all" />
@@ -71,35 +72,8 @@
   <assembly fullname="UnityEngine.VideoModule" preserve="all" />
   <assembly fullname="XNode" preserve="all" />
   <assembly fullname="YooAsset" preserve="all" />
-  <assembly fullname="Assembly-CSharp">
-    <type fullname="BackGroundBahaviour" preserve="all" />
-    <type fullname="AOTGenericReferences" preserve="all" />
-    <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
-    <type fullname="Game.Script.AOT.YooAsset.BuildinFileManifest" preserve="all" />
-    <type fullname="Game.Script.AOT.YooAsset.GameDecryptionServices" preserve="all" />
-    <type fullname="Game.Script.AOT.YooAsset.BundleStream" preserve="all" />
-    <type fullname="Game.Script.AOT.YooAsset.StreamingAssetsDefine" preserve="all" />
-    <type fullname="Game.Script.AOT.YooAsset.GameQueryServices" preserve="all" />
-    <type fullname="Game.Script.AOT.YooAsset.StreamingAssetsHelper" preserve="all" />
-    <type fullname="Game.Script.AOT.YooAsset.PreprocessBuild" preserve="all" />
-    <type fullname="Game._Script.AOT.BuildConfigAccessor" preserve="all" />
-    <type fullname="Game._Script.AOT.BuildConfig" preserve="all" />
-    <type fullname="Game._Script.AOT.Root" preserve="all" />
-    <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1+MonoScriptData" preserve="all" />
-    <type fullname="Game._Script.AOT.Root+&lt;&gt;c" preserve="all" />
-    <type fullname="Game._Script.AOT.Root+&lt;&gt;c__DisplayClass12_0" preserve="all" />
-    <type fullname="Game._Script.AOT.Root+&lt;Download&gt;d__12" preserve="all" />
-    <type fullname="Game._Script.AOT.Root+&lt;InitializeYooAsset&gt;d__9" preserve="all" />
-    <type fullname="Game._Script.AOT.Root+&lt;LoadHotUpdateDll&gt;d__8" preserve="all" />
-    <type fullname="Game._Script.AOT.Root+&lt;LoadMetadataForAOTAssembly&gt;d__7" preserve="all" />
-    <type fullname="Game._Script.AOT.Root+&lt;Start&gt;d__6" preserve="all" />
-    <type fullname="Game._Script.AOT.Root+&lt;StartGame&gt;d__13" preserve="all" />
-    <type fullname="Game._Script.AOT.Root+&lt;UpdatePackageManifest&gt;d__11" preserve="all" />
-    <type fullname="Game._Script.AOT.Root+&lt;UpdatePackageVersion&gt;d__10" preserve="all" />
-  </assembly>
   <assembly fullname="Assembly-CSharp-firstpass">
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
-    <type fullname="GameMain.Scripts.HybridCLR.ReservedAssembly" preserve="all" />
     <type fullname="AmazingAssets.TerrainToMesh.Example.ExportDetailMesh" preserve="all" />
     <type fullname="AmazingAssets.TerrainToMesh.Example.ExportGrass" preserve="all" />
     <type fullname="AmazingAssets.TerrainToMesh.Example.ExportMesh" preserve="all" />
@@ -109,7 +83,6 @@
     <type fullname="AmazingAssets.TerrainToMesh.Example.ExportMeshWithEdgeFall" preserve="all" />
     <type fullname="AmazingAssets.TerrainToMesh.Example.ExportTrees" preserve="all" />
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1+MonoScriptData" preserve="all" />
-    <type fullname="GameMain.Scripts.HybridCLR.ReservedAssembly+&lt;&gt;c__DisplayClass0_0" preserve="all" />
   </assembly>
   <assembly fullname="com.alteregogames.aeg-fsr.Runtime">
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />

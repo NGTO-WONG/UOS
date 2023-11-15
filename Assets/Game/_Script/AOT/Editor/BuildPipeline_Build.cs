@@ -53,6 +53,13 @@ namespace Game._Script.AOT.Editor
             Compile(BuildTarget.iOS);    
         }
 
+        [MenuItem("HybridCLR/MyFunc/test2", priority = 101)]
+        public static void test2()
+        {
+            var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
+            BuildLinkFilev2.GenerateLinkfile(xmlPath);//生成link文件 然后根据link文件创建一个调用所有组建的脚本到ReservedAssembly.cs
+        }
+
         static void Build(BuildTarget buildTarget)
         {
             Compile(buildTarget);           
@@ -120,7 +127,7 @@ namespace Game._Script.AOT.Editor
             CompileDllCommand.CompileDll(buildTarget,BuildConfigAccessor.Instance.IsDevelopmentBuild.Equals("1"));
             Il2CppDefGeneratorCommand.GenerateIl2CppDef();
             var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
-            BuildLinkFile.GenerateLinkfile(xmlPath);//生成link文件 然后根据link文件创建一个调用所有组建的脚本到ReservedAssembly.cs
+            BuildLinkFilev2.GenerateLinkfile(xmlPath);//生成link文件 然后根据link文件创建一个调用所有组建的脚本到ReservedAssembly.cs
             
             // 生成裁剪后的aot dll
             StripAOTDllCommand.GenerateStripedAOTDlls(buildTarget);

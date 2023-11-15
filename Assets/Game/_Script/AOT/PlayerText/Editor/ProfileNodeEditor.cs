@@ -1,7 +1,5 @@
 ﻿using UnityEditor;
-using UnityEngine;
 using XNodeEditor;
-using XNode;
 
 namespace GraphSpace
 {
