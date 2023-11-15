@@ -70,6 +70,7 @@ public class TalkingPersonClass
     public AudioClip Voice;
     [SerializeField]
     public List<string> Expression;
+
     public TalkingPersonClass()
     {
         Name = string.Empty;

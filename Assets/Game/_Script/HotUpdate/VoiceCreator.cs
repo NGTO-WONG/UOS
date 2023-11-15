@@ -15,18 +15,18 @@ public static class VoiceCreator
 
 
 
-    public static string VoiceCreat(string text)
+    public static string VoiceCreat(string text,string charaVoiceId)
     {
         var modelPath = @"C:\Users\a4549\Desktop\voice\H_excluded.pth";
         var configJson = @"C:\Users\a4549\Desktop\voice\config.json";
         string fileName = $@"_{DateTime.Now:hh_mm_ss}.wav";
         string outPutPath = Path.Combine(Application.dataPath, "Game", "DependRes", "Voice", fileName);
-        VoiceCreat(modelPath, configJson, text, outPutPath);
+        VoiceCreat(modelPath, configJson, text, outPutPath,charaVoiceId);
         return fileName;
     }
 
 
-    private static void VoiceCreat(string modelPath, string configJson, string text, string outPutPath)
+    private static void VoiceCreat(string modelPath, string configJson, string text, string outPutPath,string charaVoiceId)
     {
         //var text = "こんにちは,こんにちは,こんにちは";
         var process = new Process
@@ -63,7 +63,7 @@ public static class VoiceCreator
             configJson,
             "t",
             $"[LENGTH=1][NOISE=0][NOISEW=0],{text}",
-            "1",
+            charaVoiceId,
             outPutPath,
             "n",
         };

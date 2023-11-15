@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using XNodeEditor;
@@ -22,6 +23,8 @@ namespace GraphSpace
             dialogueNode.name = temp;
             GUILayout.Label(temp, NodeEditorResources.styles.nodeHeader, GUILayout.Height(30));
         }
+
+        private string charaVoiceId = "0";
 
         public override void OnBodyGUI()
         {
@@ -139,6 +142,30 @@ namespace GraphSpace
                 EditorGUILayout.EndHorizontal();
 
                 NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("Audio"));
+                
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Label("角色声音id ");
+                charaVoiceId = GUILayout.TextArea(charaVoiceId);
+                if (GUILayout.Button("AI生成语音"))
+                {
+                    var text = dialogueNode.Dialogue[0];
+                    var fileName = VoiceCreator.VoiceCreat(text,charaVoiceId);
+                    var path = Path.Combine("Assets", "Game", "DependRes", "Voice", fileName);
+                    while (true)
+                    {
+                        if (File.Exists( Path.Combine(Application.dataPath, "Game", "DependRes", "Voice", fileName)))
+                        {
+                            break;
+                        }
+                        System.Threading.Thread.Sleep(100);
+                    }
+                    AssetDatabase.Refresh();
+                    dialogueNode.Audio = AssetDatabase.LoadAssetAtPath<AudioClip>(path);
+                    AssetDatabase.Refresh();
+                }
+                
+                EditorGUILayout.EndHorizontal();
+                
                 if(dialogueNode.Audio != null)
                 {
                     EditorGUILayout.BeginHorizontal();
