@@ -2,6 +2,7 @@
 <linker>
   <assembly fullname="AmazingAssets.TerrainToMesh" preserve="all" />
   <assembly fullname="Assembly-CSharp" preserve="all" />
+  <assembly fullname="Assembly-CSharp-firstpass" preserve="all" />
   <assembly fullname="Cinemachine" preserve="all" />
   <assembly fullname="DOTween" preserve="all" />
   <assembly fullname="Mono.Posix" preserve="all" />
@@ -72,12 +73,6 @@
   <assembly fullname="UnityEngine.VideoModule" preserve="all" />
   <assembly fullname="XNode" preserve="all" />
   <assembly fullname="YooAsset" preserve="all" />
-  <assembly fullname="Assembly-CSharp-firstpass">
-    <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
-    <type fullname="GameMain.Scripts.HybridCLR.ReservedAssembly" preserve="all" />
-    <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1+MonoScriptData" preserve="all" />
-    <type fullname="GameMain.Scripts.HybridCLR.ReservedAssembly+&lt;&gt;c__DisplayClass0_0" preserve="all" />
-  </assembly>
   <assembly fullname="HybridCLR.Runtime">
     <type fullname="UnitySourceGeneratedAssemblyMonoScriptTypes_v1" preserve="all" />
     <type fullname="HybridCLR.HomologousImageMode" preserve="all" />
