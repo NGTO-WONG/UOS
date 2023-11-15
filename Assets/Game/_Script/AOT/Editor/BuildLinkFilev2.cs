@@ -552,6 +552,11 @@ namespace GameMain.Scripts.HybridCLR
                 {
                     continue;
                 }
+
+                if (Path.GetFileName(x) is "HotUpdate.dll")
+                {
+                    continue;
+                }
                 sb.AppendLine($"\t\t\tReserved<{k}>(); // {Path.GetFileName(x)}");
             }
 
