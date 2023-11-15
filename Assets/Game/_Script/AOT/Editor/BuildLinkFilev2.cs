@@ -525,6 +525,7 @@ namespace GameMain.Scripts.HybridCLR
                         {
                             if (c.IsConstructor && c.IsPublic)
                             {
+                                Debug.Log("con true:" +type.FullName);
                                 if (info.TryGetValue(type.FullName, out var val))
                                 {
                                     Debug.LogError($"{type.FullName} {val} {ass.Location}");
@@ -536,6 +537,10 @@ namespace GameMain.Scripts.HybridCLR
                                 }
                                 classOk = true;
                                 break;
+                            }
+                            else
+                            {
+                                Debug.Log("con false:" +type.FullName);
                             }
                         }
                     }
@@ -559,6 +564,9 @@ namespace GameMain.Scripts.HybridCLR
                 // }
                 sb.AppendLine($"\t\t\tReserved<{k}>(); // {Path.GetFileName(x)}");
             }
+
+            var temp = "System.Text.RegularExpressions.Regex";
+            sb.AppendLine($"\t\t\tReserved<{temp}>(); // {Path.GetFileName(temp)}");
 
             File.WriteAllText(fileName, codeTemplate.Replace("//Replace This", sb.ToString()));
         }
