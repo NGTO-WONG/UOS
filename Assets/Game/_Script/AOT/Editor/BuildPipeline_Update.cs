@@ -25,15 +25,13 @@ namespace Game._Script.AOT.Editor
         public static void UpdateAndroid()
         {
             GetAndSaveEnvironmentVariable_Update();
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
              IncrementalBuild(BuildTarget.Android);
         }
 
         public static void UpdateiOS()
         {
             GetAndSaveEnvironmentVariable_Update();
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
-             IncrementalBuild(BuildTarget.iOS);
+            IncrementalBuild(BuildTarget.iOS);
         }
 
 
@@ -49,19 +47,6 @@ namespace Game._Script.AOT.Editor
                     CompileDllCommand.CompileDllAndroid();
                     break;
             }
-
-            // //拷贝dll
-            // string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
-            //
-            // foreach (var hotUpdateDll in SettingsUtil.HotUpdateAssemblyFilesExcludePreserved)
-            // {
-            //     string sourcePath = Path.Combine($"{Directory.GetParent(Application.dataPath)}", $"{hotfixDllSrcDir}",
-            //         $"{hotUpdateDll}");
-            //     string dstPath = Path.Combine($"{BuildConfigAccessor.Instance.HotfixAssembliesDstDir}",
-            //         $"{hotUpdateDll}.bytes");
-            //
-            //     File.Copy(sourcePath, dstPath, true);
-            // }
 
             //yooAsset打包
             BuildPipleline_YooAsset.YooAssetBuild(EBuildMode.IncrementalBuild, target);
