@@ -46,7 +46,8 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
             interactButton.onClick.AddListener(()=>_interactObj.Interact(this));
             jumpButton.onClick.AddListener(()=>
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.up*10);
+                Debug.Log("Jump");
+                GetComponent<Rigidbody>().AddForce(Vector3.up*100);
             });
         }
 
