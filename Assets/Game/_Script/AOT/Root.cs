@@ -45,12 +45,6 @@ namespace Game._Script.AOT
                 await UpdatePackageManifest(packageVersion);
                 //4 资源包下载 
                 await Download();
-                //5 补充AOT泛型
-                await LoadMetadataForAOTAssembly();
-                //6 读取HotUpdate热更新文件 
-                await LoadHotUpdateDll();
-                //7 更新结束 开始游戏
-                await StartGame(BuildConfigAccessor.Instance.GamePlayScene);
             }
             catch
             {
@@ -61,13 +55,14 @@ namespace Game._Script.AOT
                 await UpdatePackageManifest(packageVersion);
                 //4 资源包下载 
                 await Download();
-                //5 补充AOT泛型
-                await LoadMetadataForAOTAssembly();
-                //6 读取HotUpdate热更新文件 
-                await LoadHotUpdateDll();
-                //7 更新结束 开始游戏
-                await StartGame(BuildConfigAccessor.Instance.GamePlayScene);
             }
+            
+            //5 补充AOT泛型
+            await LoadMetadataForAOTAssembly();
+            //6 读取HotUpdate热更新文件 
+            await LoadHotUpdateDll();
+            //7 更新结束 开始游戏
+            await StartGame(BuildConfigAccessor.Instance.GamePlayScene);
         }
 
         /// <summary>
