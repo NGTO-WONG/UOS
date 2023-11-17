@@ -17,6 +17,8 @@ public static class VoiceCreator
     public static string modelPath = Path.Combine(folder, "H_excluded.pth");
     public static string configJson = Path.Combine(folder, "config.json");
     public static string exePath = Path.Combine(folder, "MoeGoe", "MoeGoe.exe");
+    
+    
     public static string outPutPath = Path.Combine(Application.dataPath, "Game", "DependRes", "Voice");
 
     public static string VoiceCreat(string text,string charaVoiceId)
