@@ -153,7 +153,7 @@ namespace GraphSpace
                     var path = Path.Combine("Assets", "Game", "DependRes", "Voice", fileName);
                     while (true)
                     {
-                        if (File.Exists( Path.Combine(Application.dataPath, "Game", "DependRes", "Voice", fileName)))
+                        if (File.Exists( Path.Combine(VoiceCreator.outPutPath, fileName)))
                         {
                             break;
                         }

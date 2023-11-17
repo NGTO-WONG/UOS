@@ -13,20 +13,22 @@ public static class VoiceCreator
     private static int SelectedIndex = 0;
     private static int TTSorVC = 0;
 
-
+    public static string folder = Path.Combine(Application.dataPath, "Game", "DependRes", "Moe");
+    public static string modelPath = Path.Combine(folder, "H_excluded.pth");
+    public static string configJson = Path.Combine(folder, "config.json");
+    public static string exePath = Path.Combine(folder, "MoeGoe", "MoeGoe.exe");
+    public static string outPutPath = Path.Combine(Application.dataPath, "Game", "DependRes", "Voice");
 
     public static string VoiceCreat(string text,string charaVoiceId)
     {
-        var modelPath = @"C:\Users\a4549\Desktop\voice\H_excluded.pth";
-        var configJson = @"C:\Users\a4549\Desktop\voice\config.json";
         string fileName = $@"_{DateTime.Now:hh_mm_ss}.wav";
-        string outPutPath = Path.Combine(Application.dataPath, "Game", "DependRes", "Voice", fileName);
-        VoiceCreat(modelPath, configJson, text, outPutPath,charaVoiceId);
+        var filePath= Path.Combine(outPutPath, fileName);
+        VoiceCreat(modelPath, configJson,exePath, text, filePath,charaVoiceId);
         return fileName;
     }
 
 
-    private static void VoiceCreat(string modelPath, string configJson, string text, string outPutPath,string charaVoiceId)
+    private static void VoiceCreat(string modelPath, string configJson,string exePath, string text, string outPutPath,string charaVoiceId)
     {
         //var text = "こんにちは,こんにちは,こんにちは";
         var process = new Process
@@ -62,14 +64,13 @@ public static class VoiceCreator
             modelPath,
             configJson,
             "t",
-            $"[LENGTH=1][NOISE=0][NOISEW=0],{text}",
+            $"[LENGTH=1][NOISE=0][NOISEW=0],{text}",//todo 暴露参数
             charaVoiceId,
             outPutPath,
             "n",
         };
         
-        string appPath = @"C:\Users\a4549\Desktop\voice\MoeGoe\MoeGoe\MoeGoe.exe";
-        process.StandardInput.WriteLine($"\"{appPath}\" --escape");
+        process.StandardInput.WriteLine($"\"{exePath}\" --escape");
         foreach (var command in commands)
         {
             process.StandardInput.WriteLine(command);
