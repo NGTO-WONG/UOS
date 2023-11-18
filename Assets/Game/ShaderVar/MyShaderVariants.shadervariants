@@ -118,7 +118,7 @@ ShaderVariantCollection:
   - first: {fileID: -6465566751694194690, guid: 0bb4596125b68476b9ce0035f4d8b8cf, type: 3}
     second:
       variants:
-      - keywords: _DECAL_NORMAL_BLEND_LOW _MAIN_LIGHT_SHADOWS_CASCADE
+      - keywords: 
         passType: 13
       - keywords: _DECAL_NORMAL_BLEND_LOW _MAIN_LIGHT_SHADOWS_CASCADE _SHADOWS_SOFT
         passType: 13

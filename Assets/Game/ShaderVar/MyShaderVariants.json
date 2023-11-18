@@ -277,8 +277,7 @@
                 {
                     "PassType": 13,
                     "Keywords": [
-                        "_DECAL_NORMAL_BLEND_LOW",
-                        "_MAIN_LIGHT_SHADOWS_CASCADE"
+                        ""
                     ]
                 },
                 {
