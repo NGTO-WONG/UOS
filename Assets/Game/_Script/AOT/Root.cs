@@ -7,7 +7,6 @@ using Cysharp.Threading.Tasks;
 using HybridCLR;
 using System.Reflection;
 using DG.Tweening;
-using Game._Script.HotUpdate.Base;
 using TMPro;
 using UnityEngine.UI;
 

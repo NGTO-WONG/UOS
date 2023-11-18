@@ -57,7 +57,7 @@ namespace Game._Script.AOT.Editor
         public static void test2()
         {
             var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
-            BuildLinkFilev2.GenerateLinkfile(xmlPath);//生成link文件 然后根据link文件创建一个调用所有组建的脚本到ReservedAssembly.cs
+            //BuildLinkFilev2.GenerateLinkfile(xmlPath);//生成link文件 然后根据link文件创建一个调用所有组建的脚本到ReservedAssembly.cs
         }
 
         static void Build(BuildTarget buildTarget)
@@ -123,16 +123,14 @@ namespace Game._Script.AOT.Editor
         /// <param name="buildTarget"></param>
         public static void Compile(BuildTarget buildTarget)
         {
-            // PrebuildCommand.GenerateAll();
-            // AssetDatabase.Refresh();
-            // File.Copy(Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml"),Path.Combine(Application.dataPath, "link.xml"),true);
-            //
-            //return;
+             PrebuildCommand.GenerateAll();
+             AssetDatabase.Refresh();
+            return;
             
             CompileDllCommand.CompileDll(buildTarget,BuildConfigAccessor.Instance.IsDevelopmentBuild.Equals("1"));
             Il2CppDefGeneratorCommand.GenerateIl2CppDef();
-            var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
-            BuildLinkFilev2.GenerateLinkfile(xmlPath);//生成link文件 然后根据link文件创建一个调用所有组建的脚本到ReservedAssembly.cs
+          //  var xmlPath = Path.Combine(Application.dataPath, "HybridCLRGenerate", "link.xml");
+          //  BuildLinkFilev2.GenerateLinkfile(xmlPath);//生成link文件 然后根据link文件创建一个调用所有组建的脚本到ReservedAssembly.cs
             
             // 生成裁剪后的aot dll
             StripAOTDllCommand.GenerateStripedAOTDlls(buildTarget);
