@@ -1,22 +1,23 @@
 using UnityEngine;
-//using UnityEngine.AI;
+using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
     private Rigidbody rigidbody;
-   // [SerializeField] private NavMeshAgent navMeshAgent;
+    private NavMeshAgent navMeshAgent;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-       // navMeshAgent = rigidbody.gameObject.GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
-    
+
     void Update()
     {
-        if (Input.touchCount>0 || Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
-            rigidbody.AddForce(Vector3.up*200);
-            //navMeshAgent.SetDestination(Vector3.zero);
+            rigidbody.AddForce(Vector3.up * 200);
+            navMeshAgent.SetDestination(Vector3.zero);
         }
     }
 }
