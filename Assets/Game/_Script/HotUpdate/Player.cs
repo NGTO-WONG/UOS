@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Logg : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;
     // Start is called before the first frame update
