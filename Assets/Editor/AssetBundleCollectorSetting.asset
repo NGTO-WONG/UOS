@@ -48,22 +48,6 @@ MonoBehaviour:
         FilterRuleName: CollectPrefab
         AssetTags: 
         UserData: 
-      - CollectPath: Assets/Game/_Script/HotUpdate/Suntail_Village
-        CollectorGUID: 4bf005cf732d64ee2b1497d19a5a5076
-        CollectorType: 0
-        AddressRuleName: AddressByFolderAndFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: CollectPrefab
-        AssetTags: 
-        UserData: 
-      - CollectPath: Assets/Game/_Script/HotUpdate/SimpleTouchController/Prefabs
-        CollectorGUID: 04f2dca2005d59f4283252efe5dad39d
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: CollectPrefab
-        AssetTags: 
-        UserData: 
     - GroupName: HotUpdateDll
       GroupDesc: 
       AssetTags: 
