@@ -5,6 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;
+    [SerializeField] Rigidbody rigidbody;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,7 @@ public class Player : MonoBehaviour
         if (Input.touchCount>0 || Input.GetMouseButtonDown(0))
         {
             rigidbody2D.AddForce(Vector2.up*200);
+            rigidbody.AddForce(Vector3.up*200);
         }
     }
 }
