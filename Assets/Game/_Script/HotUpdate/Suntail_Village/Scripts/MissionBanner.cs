@@ -1,6 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Game._Script.HotUpdate.Base;
 using Spine.Unity;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Animation = Spine.Animation;
@@ -27,10 +30,18 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
             {
                 var anim = _player.GetComponentInChildren<SkeletonAnimation>();
                 var tr= anim.AnimationState.AddAnimation(1, "04_joy_short", false, 0);
-                tr.Complete += entry =>
+                tr.Complete += async entry =>
                 {
                     Interact(_player);
                     anim.AnimationState.ClearTrack(tr.TrackIndex);
+                    var t = new BattleParam
+                    {
+                        Player = new List<string>() { "Prefab_Spine_GameObject_100361" },
+                        Enemy = new List<string>() { "Prefab_Spine_GameObject_111031" },
+                        EnvId = 0
+                    };
+
+                     await SceneMgr.Instance.EnterBattleScene(t);
                 };
             });
             
