@@ -31,11 +31,11 @@ namespace Game._Script.HotUpdate.Base
             if (instance == null)
             {
                 instance = this as T;
-                DontDestroyOnLoad(gameObject);
+                //DontDestroyOnLoad(gameObject);
             }
             else
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
     }

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Game._Script.HotUpdate.Battle;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using YooAsset;
@@ -7,7 +8,7 @@ namespace Game._Script.HotUpdate.Base
 {
     public class SceneMgr : Singleton<SceneMgr>
     {
-        public async UniTask EnterBattleScene(BattleParam param)
+        public async UniTask EnterBattleScene(BattleStartParam startParam)
         {
             
             Scene oldScene = SceneManager.GetActiveScene();
@@ -17,7 +18,7 @@ namespace Game._Script.HotUpdate.Base
             var package = YooAssets.GetPackage("DefaultPackage");
             SceneOperationHandle handle = package.LoadSceneAsync("Battle", LoadSceneMode.Additive);
             await handle.Task;
-            await BattleMgr.Instance.BattleBegin(param);
+            var result = await BattleMgr.Instance.BattleBegin(startParam);
             SceneManager.UnloadSceneAsync(handle.SceneObject);
             
             //战斗完后恢复

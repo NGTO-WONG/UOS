@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using Game._Script.HotUpdate.Base;
+using Game._Script.HotUpdate.Battle;
 using Spine.Unity;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -34,10 +35,10 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
                 {
                     Interact(_player);
                     anim.AnimationState.ClearTrack(tr.TrackIndex);
-                    var t = new BattleParam
+                    var t = new BattleStartParam
                     {
-                        Player = new List<string>() { "Prefab_Spine_GameObject_100361" },
-                        Enemy = new List<string>() { "Prefab_Spine_GameObject_111031" },
+                        Player = new List<string>() { "Prefab_Battle_Ren","Prefab_Battle_Ren" },
+                        Enemy = new List<string>() { "Prefab_Battle_Peko","Prefab_Battle_Peko" },
                         EnvId = 0
                     };
 
