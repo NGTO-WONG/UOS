@@ -1,6 +1,7 @@
+using Game._Script.HotUpdate.Suntail_Village.Scripts;
 using UnityEngine;
 
-namespace Game._Script.HotUpdate.Suntail_Village.Scripts
+namespace Game._Script.HotUpdate.Battle.ChessBoard
 {
     public abstract class BaseInteractObj : MonoBehaviour
     {        

@@ -197,6 +197,8 @@ namespace Game._Script.AOT.Editor
                 }
                 catch (Exception ex)
                 {
+                    Debug.Log(ex);
+                    // ignored
                 }
             }
 

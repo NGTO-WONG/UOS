@@ -1,10 +1,10 @@
+using Game._Script.HotUpdate.Suntail_Village.Scripts;
 using GraphSpace;
 using PlayTextSupport;
 using Spine.Unity;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Game._Script.HotUpdate.Suntail_Village.Scripts
+namespace Game._Script.HotUpdate.Battle.ChessBoard
 {
     public class NPC_Uni : BaseInteractObj
     {

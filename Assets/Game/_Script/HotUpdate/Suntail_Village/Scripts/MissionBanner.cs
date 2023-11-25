@@ -3,6 +3,7 @@ using UnityEngine;
 using Cinemachine;
 using Game._Script.HotUpdate.Base;
 using Game._Script.HotUpdate.Battle;
+using Game._Script.HotUpdate.Battle.ChessBoard;
 using Spine.Unity;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -37,12 +38,12 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
                     anim.AnimationState.ClearTrack(tr.TrackIndex);
                     var t = new BattleStartParam
                     {
-                        Player = new List<string>() { "Prefab_Battle_Ren","Prefab_Battle_Ren" },
-                        Enemy = new List<string>() { "Prefab_Battle_Peko","Prefab_Battle_Peko" },
+                        Attacker = new List<string>() { "Prefab_Battle_Ren","Prefab_Battle_Ren" },
+                        Defender = new List<string>() { "Prefab_Battle_Peko","Prefab_Battle_Peko" },
                         EnvId = 0
                     };
 
-                     await SceneMgr.Instance.EnterBattleScene(t);
+                     await SceneMgr.Instance.StartBattleAsync(t);
                 };
             });
             

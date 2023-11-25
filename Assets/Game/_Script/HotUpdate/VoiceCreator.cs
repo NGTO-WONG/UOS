@@ -10,8 +10,8 @@ using UnityEngine;
 
 public static class VoiceCreator
 {
-    private static int SelectedIndex = 0;
-    private static int TTSorVC = 0;
+   // private static int _selectedIndex = 0;
+    //private static int TTSorVC = 0;
 
 
 

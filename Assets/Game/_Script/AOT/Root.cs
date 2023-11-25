@@ -107,27 +107,27 @@ namespace Game._Script.AOT
                 Debug.Log("编辑器模式无需加载热更Dll ");
 #endif
             }
-            else
-            {
-                var package = YooAssets.GetPackage("DefaultPackage");
-                foreach (var item in package.GetAssetInfos("HotUpdateDll"))
-                {
-                    string location = item.Address;
-                    if (AOTGenericReferences.PatchedAOTAssemblyList.Contains(location))
-                    {
-                        continue;
-                    }
-
-                    RawFileOperationHandle handle = package.LoadRawFileAsync(location);
-                    await handle.ToUniTask(this);
-                    byte[] hotUpdateData = handle.GetRawFileData();
-#if !UNITY_EDITOR
-                    Assembly.Load(hotUpdateData);
-#else
-                    Debug.Log("编辑器模式无需加载热更Dll " + hotUpdateData);
-#endif
-                }
-            }
+//             else
+//             {
+//                 var package = YooAssets.GetPackage("DefaultPackage");
+//                 foreach (var item in package.GetAssetInfos("HotUpdateDll"))
+//                 {
+//                     string location = item.Address;
+//                     if (AOTGenericReferences.PatchedAOTAssemblyList.Contains(location))
+//                     {
+//                         continue;
+//                     }
+//
+//                     RawFileOperationHandle handle = package.LoadRawFileAsync(location);
+//                     await handle.ToUniTask(this);
+//                     byte[] hotUpdateData = handle.GetRawFileData();
+// #if !UNITY_EDITOR
+//                     Assembly.Load(hotUpdateData);
+// #else
+//                     Debug.Log("编辑器模式无需加载热更Dll " + hotUpdateData);
+// #endif
+//                 }
+//             }
         }
 
         private async UniTask InitializeYooAsset()

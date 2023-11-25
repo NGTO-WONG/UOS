@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Game._Script.HotUpdate.Battle.ChessBoard;
 
 namespace Game._Script.HotUpdate.Suntail_Village.Scripts
 {

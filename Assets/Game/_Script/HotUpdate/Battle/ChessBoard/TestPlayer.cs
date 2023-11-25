@@ -1,16 +1,14 @@
-using System;
 using Cysharp.Threading.Tasks.Linq;
 using Cysharp.Threading.Tasks.Triggers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game._Script.HotUpdate.Suntail_Village.Scripts
+namespace Game._Script.HotUpdate.Battle.ChessBoard
 {
     public class TestPlayer : MonoBehaviour
     {
         [SerializeField] private Button interactButton;
-        [SerializeField] private Button jumpButton;
         [SerializeField] private CapsuleCollider capsuleCollider;
         private BaseInteractObj _interactObj;
 
@@ -44,11 +42,6 @@ namespace Game._Script.HotUpdate.Suntail_Village.Scripts
             });
             
             interactButton.onClick.AddListener(()=>_interactObj.Interact(this));
-            jumpButton.onClick.AddListener(()=>
-            {
-                Debug.Log("Jump");
-                GetComponent<Rigidbody>().AddForce(Vector3.up*1000);
-            });
         }
 
 
