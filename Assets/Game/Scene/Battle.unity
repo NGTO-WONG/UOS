@@ -123,6 +123,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &38482360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8738391278388178452, guid: 14029908c4a936948bdf8fe20fc68b63, type: 3}
+  m_PrefabInstance: {fileID: 5810815770136518748}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &38482362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38482360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5b27ba8b1a441d09001c0a34698df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &193249915
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 408732360}
+  - component: {fileID: 408732361}
   m_Layer: 0
   m_Name: Timeline
   m_TagString: Untagged
@@ -264,6 +282,18 @@ Transform:
   - {fileID: 1941587026}
   m_Father: {fileID: 1166687676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &408732361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408732359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5b27ba8b1a441d09001c0a34698df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &540317933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,7 +1468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1842335282
 Transform:
   m_ObjectHideFlags: 0
@@ -1484,12 +1514,12 @@ GameObject:
   - component: {fileID: 1941587026}
   - component: {fileID: 1941587027}
   m_Layer: 0
-  m_Name: Attack_Melee
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1941587026
 Transform:
   m_ObjectHideFlags: 0
@@ -1582,6 +1612,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6742397957769086671, guid: 03705f544a2a14fadb831fad01b7dd01, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039716261414312865, guid: 03705f544a2a14fadb831fad01b7dd01, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1649,9 +1687,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3808454362465062771, guid: 14029908c4a936948bdf8fe20fc68b63, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4298082370134766569, guid: 14029908c4a936948bdf8fe20fc68b63, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305385187898002414, guid: 14029908c4a936948bdf8fe20fc68b63, type: 3}
+      propertyPath: m_Name
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305385187898002414, guid: 14029908c4a936948bdf8fe20fc68b63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9176640333228424831, guid: 14029908c4a936948bdf8fe20fc68b63, type: 3}
       propertyPath: m_Name
@@ -1660,7 +1710,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8738391278388178452, guid: 14029908c4a936948bdf8fe20fc68b63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 38482362}
   m_SourcePrefab: {fileID: 100100000, guid: 14029908c4a936948bdf8fe20fc68b63, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
