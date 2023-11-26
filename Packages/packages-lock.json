@@ -14,26 +14,39 @@
       "dependencies": {}
     },
     "com.esotericsoftware.spine.spine-csharp": {
-      "version": "file:com.esotericsoftware.spine.spine-csharp@83796890a2",
+      "version": "https://github.com/EsotericSoftware/spine-runtimes.git?path=spine-csharp/src#4.2-beta",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "f60217769740aa4cc39ab10f0c8fad7144f147c6"
     },
     "com.esotericsoftware.spine.spine-unity": {
-      "version": "file:com.esotericsoftware.spine.spine-unity@83796890a2",
+      "version": "https://github.com/EsotericSoftware/spine-runtimes.git?path=spine-unity/Assets/Spine#4.2-beta",
       "depth": 0,
-      "source": "embedded",
+      "source": "git",
       "dependencies": {
         "com.esotericsoftware.spine.spine-csharp": "4.2.0"
-      }
+      },
+      "hash": "f60217769740aa4cc39ab10f0c8fad7144f147c6"
+    },
+    "com.esotericsoftware.spine.timeline": {
+      "version": "https://github.com/EsotericSoftware/spine-runtimes.git?path=spine-unity/Modules/com.esotericsoftware.spine.timeline#4.2-beta",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.timeline": "1.2.10",
+        "com.esotericsoftware.spine.spine-unity": "4.2.13"
+      },
+      "hash": "f60217769740aa4cc39ab10f0c8fad7144f147c6"
     },
     "com.esotericsoftware.spine.urp-shaders": {
-      "version": "file:com.esotericsoftware.spine.urp-shaders@83796890a2",
+      "version": "https://github.com/EsotericSoftware/spine-runtimes.git?path=spine-unity/Modules/com.esotericsoftware.spine.urp-shaders#4.2-beta",
       "depth": 0,
-      "source": "embedded",
+      "source": "git",
       "dependencies": {
         "com.unity.render-pipelines.universal": "7.1.5"
-      }
+      },
+      "hash": "f60217769740aa4cc39ab10f0c8fad7144f147c6"
     },
     "com.tuyoogame.yooasset": {
       "version": "1.5.0",
