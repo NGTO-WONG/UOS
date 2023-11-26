@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ENABLEADDCOLOR_ON
   - _SHADERFADING_FULL
   - _SHADERSPACE_UV
   - _TEXTURELAYER1SHEETTOGGLE_ON
@@ -136,7 +137,7 @@ Material:
     m_Floats:
     - _AddColorContrast: 0.5
     - _AddColorContrastToggle: 0
-    - _AddColorFade: 1
+    - _AddColorFade: 0
     - _AddColorMaskToggle: 0
     - _AddHueBrightness: 2
     - _AddHueContrast: 0.5
@@ -194,7 +195,7 @@ Material:
     - _DirectionalGlowFadeRotation: 0
     - _DirectionalGlowFadeWidth: 0.1
     - _EmissionToggle: 0
-    - _EnableAddColor: 0
+    - _EnableAddColor: 1
     - _EnableAddHue: 0
     - _EnableAlphaTint: 0
     - _EnableBlackTint: 0

@@ -63,7 +63,6 @@ namespace Game._Script.HotUpdate.Battle
                 await t.ToUniTask(); // 等待资源加载完成
                 var tempPlayer=Instantiate(t.AssetObject as GameObject,this.transform); // 实例化攻击方对象
                 tempPlayer.transform.position = new Vector3(attackerStand.transform.position.x+10,0,0); // 设置位置
-                tempPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f); // 设置旋转
                 attackers.Add(tempPlayer.GetComponent<BattleBaseCharacter>()); // 添加到攻击方角色列表
             }
         
@@ -75,6 +74,7 @@ namespace Game._Script.HotUpdate.Battle
                 await t.ToUniTask(); // 等待资源加载完成
                 var tempEnemy= Instantiate(t.AssetObject as GameObject,this.transform); // 实例化防守方对象
                 tempEnemy.transform.localPosition = new Vector3(defenderStand.transform.position.x-10,0,0); // 设置位置
+                tempEnemy.transform.localScale = new Vector3(-1,1,1);
                 defenders.Add(tempEnemy.GetComponent<BattleBaseCharacter>()); // 添加到防守方角色列表
             }
         
