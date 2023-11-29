@@ -121,7 +121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7190695942709237371
 Transform:
   m_ObjectHideFlags: 0
@@ -176,12 +176,12 @@ GameObject:
   - component: {fileID: 1712138555341618216}
   - component: {fileID: 247442399273355509}
   m_Layer: 0
-  m_Name: Attack_Shoot
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1712138555341618216
 Transform:
   m_ObjectHideFlags: 0
@@ -285,6 +285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4148256120703824008}
+  - component: {fileID: 1602482085999491435}
   m_Layer: 0
   m_Name: Timeline
   m_TagString: Untagged
@@ -310,6 +311,18 @@ Transform:
   - {fileID: 1333096069316291197}
   m_Father: {fileID: 3179210354043563110}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1602482085999491435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738391278388178452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5b27ba8b1a441d09001c0a34698df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9176640333228424831
 GameObject:
   m_ObjectHideFlags: 0
