@@ -83,37 +83,28 @@ namespace Game._Script.HotUpdate.Battle
             for (int i = 0; i < attackers.Count; i++)
             {
                 var player = attackers[i];
-                await player.PlayEnterAnimation(attackerStand.position+new Vector3(2*i,0,0), 2f); // 播放进场动画
+                await player.PlayEnterAnimation(attackerStand.position+new Vector3(2*i,0,0)); // 播放进场动画
             }
             await MoveVirtualCameraAsync(defenderVc); // 移动虚拟摄像头到防守方方
             //防守方入场动画
             for (int i = 0; i < defenders.Count; i++)
             {
                 var enemy = defenders[i];
-                await enemy.PlayEnterAnimation(defenderStand.position-new Vector3(2*i,0,0), 2f); // 播放进场动画
+                await enemy.PlayEnterAnimation(defenderStand.position-new Vector3(2*i,0,0)); // 播放进场动画
             }
         
             //攻击方攻击逻辑
-            foreach (var player in attackers) // 遍历攻击方角色列表
+            foreach (var attacker in attackers) // 遍历攻击方角色列表
             {
                 var target = defenders[0]; // 目标设为第一个防守方
-                await MoveVirtualCameraAsync(attackerVc); // 移动虚拟摄像头到攻击方方
-                await UniTask.Delay(300);
-                await player.Attack_Part1(target);//角色移动
-                await MoveVirtualCameraAsync(defenderVc); // 移动虚拟摄像头到防守方方
-                await player.Attack_Part2(target); // 角色攻击
+                await attacker.Attack(target);
             }
         
-            //敌方攻击逻辑
-            foreach (var player in defenders) // 遍历防守方角色列表
+            //防守方攻击逻辑
+            foreach (var defender in defenders) // 遍历防守方角色列表
             {
                 var target = attackers[0]; // 目标设为第一个攻击方
-                await MoveVirtualCameraAsync(defenderVc); // 移动虚拟摄像头到防守方方
-                await UniTask.Delay(300);
-                await player.Attack_Part1(target);//角色移动
-                await MoveVirtualCameraAsync(attackerVc); // 移动虚拟摄像头到攻击方方
-                await player.Attack_Part2(target); // 角色攻击
-                await MoveVirtualCameraAsync(defenderVc); // 移动虚拟摄像头到防守方方
+                await defender.Attack(target);
             }
 
             //todo 胜利条件判断

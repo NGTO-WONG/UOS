@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using Game._Script.HotUpdate.Base;
 using Spine.Unity;
@@ -5,30 +6,39 @@ using UnityEngine;
 
 namespace Game._Script.HotUpdate.Battle
 {
-    [RequireComponent(typeof(SkeletonAnimation))]
     public abstract class BattleBaseCharacter : MonoBehaviour
     {
-        protected SkeletonAnimation skeletonAnimation=>GetComponent<SkeletonAnimation>();
-        [SpineAnimation] public string animation_Enter;
-        [SpineAnimation] public string animation_Run;
-        [SpineAnimation] public string animation_Attack;
-        [SpineAnimation] public string animation_Hurt;
-        [SpineAnimation] public string animation_idle;
-        [SpineAnimation] public string animation_win;
-        [SpineAnimation] public string animation_die;
-        public abstract UniTask Attack_Part1(BattleBaseCharacter target);
-        public abstract UniTask Attack_Part2(BattleBaseCharacter target);
+        protected SkeletonAnimation skeletonAnimation;
+        protected TimelinePlayer timelinePlayer;
+        protected Transform target;
 
+        private void Start()
+        {
+            skeletonAnimation=GetComponentInChildren<SkeletonAnimation>();
+            timelinePlayer = GetComponentInChildren<TimelinePlayer>();
+            target = transform.Find("Timeline/timelineTarget");
+        }
+
+        public virtual async UniTask Attack(BattleBaseCharacter targetCharacter)
+        {
+            target.transform.position = targetCharacter.gameObject.transform.position;
+            await timelinePlayer.PlayTimelineAsync("Attack");
+        }
         public virtual async UniTask GetHurt()
         {
-            await skeletonAnimation.PlayAnimationAsync(animation_Hurt);
+            //await skeletonAnimation.PlayAnimationAsync(animation_Hurt);
             Debug.Log("hurt");
         }
-        public abstract UniTask PlayEnterAnimation(Vector3 playerStandPosition, float duration);
+
+        public virtual async UniTask PlayEnterAnimation(Vector3 playerStandPosition)
+        {
+            target.position = playerStandPosition;
+            await timelinePlayer.PlayTimelineAsync("Enter");
+        }
 
         public virtual async UniTask PlayWinAnimationAsync()
         {
-             await skeletonAnimation.PlayAnimationAsync(animation_win);
+             //await skeletonAnimation.PlayAnimationAsync(animation_win);
         }
     }
 }

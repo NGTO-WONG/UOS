@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ENABLEADDCOLOR_ON
   - _SHADERFADING_NONE
   - _SHADERSPACE_UV
   - _TEXTURELAYER1SHEETTOGGLE_ON
@@ -139,7 +140,7 @@ Material:
     m_Floats:
     - _AddColorContrast: 0.5
     - _AddColorContrastToggle: 0
-    - _AddColorFade: 1
+    - _AddColorFade: 0
     - _AddColorMaskToggle: 0
     - _AddHueBrightness: 2
     - _AddHueContrast: 0.5
@@ -154,7 +155,7 @@ Material:
     - _BakedMaterial: 0
     - _BlackTintFade: 1
     - _BlackTintPower: 4
-    - _Brightness: 1
+    - _Brightness: 3.66
     - _BurnEdgeNoiseFactor: 0.5
     - _BurnFade: 1
     - _BurnInsideContrast: 2
@@ -198,7 +199,7 @@ Material:
     - _DirectionalGlowFadeWidth: 0.1
     - _DoubleSidedLighting: 1
     - _EmissionToggle: 0
-    - _EnableAddColor: 0
+    - _EnableAddColor: 1
     - _EnableAddHue: 0
     - _EnableAlphaTint: 0
     - _EnableBlackTint: 0
@@ -288,7 +289,7 @@ Material:
     - _FrozenHighlightDensity: 1
     - _FrozenSnowContrast: 1
     - _FrozenSnowDensity: 0.25
-    - _FullAlphaDissolveFade: 0.5
+    - _FullAlphaDissolveFade: 1
     - _FullAlphaDissolveWidth: 0.5
     - _FullDistortionFade: 1
     - _FullGlowDissolveFade: 0.5
@@ -308,19 +309,19 @@ Material:
     - _HologramDistortionOffset: 0.5
     - _HologramDistortionScale: 10
     - _HologramDistortionSpeed: 2
-    - _HologramFade: 1
+    - _HologramFade: 0
     - _HologramLineFrequency: 500
     - _HologramLineGap: 3
     - _HologramLineSpeed: 0.01
     - _HologramMinAlpha: 0.2
-    - _Hue: 0
+    - _Hue: 1
     - _InkSpreadContrast: 2
     - _InkSpreadDistance: 3
     - _InkSpreadFade: 1
     - _InkSpreadNoiseFactor: 0.5
     - _InkSpreadWidth: 0.2
     - _InnerOutlineDistortionToggle: 0
-    - _InnerOutlineFade: 1
+    - _InnerOutlineFade: 0
     - _InnerOutlineOutlineOnlyToggle: 0
     - _InnerOutlineTextureToggle: 0
     - _InnerOutlineWidth: 0.02
@@ -357,11 +358,11 @@ Material:
     - _PixelatePixelDensity: 16
     - _PixelatePixelsPerUnit: 100
     - _PixelsPerUnit: 100
-    - _PoisonDensity: 3
+    - _PoisonDensity: 2.71
     - _PoisonFade: 1
     - _PoisonNoiseBrightness: 2
     - _PoisonRecolorFactor: 0.5
-    - _PoisonShiftSpeed: 0.2
+    - _PoisonShiftSpeed: 2
     - _QueueControl: -1
     - _QueueOffset: 0
     - _RainbowBrightness: 2
@@ -386,7 +387,7 @@ Material:
     - _ShadowClip: 0.5
     - _ShadowFade: 1
     - _SharpenFactor: 4
-    - _SharpenFade: 1
+    - _SharpenFade: 0.93
     - _SharpenOffset: 2
     - _ShiftHueSpeed: 0.5
     - _ShiftingBrightness: 1
@@ -415,7 +416,7 @@ Material:
     - _SineRotateAngle: 15
     - _SineRotateFade: 1
     - _SineRotateFrequency: 1
-    - _SineScaleFrequency: 2
+    - _SineScaleFrequency: 5.22
     - _SmokeAlpha: 1
     - _SmokeDarkEdge: 1
     - _SmokeNoiseFactor: 0.4
@@ -514,7 +515,7 @@ Material:
     - _WorldTilingPixelsPerUnit: 100
     - _ZWrite: 0
     m_Colors:
-    - _AddColorColor: {r: 2.996078, g: 0, b: 0, a: 0}
+    - _AddColorColor: {r: 1, g: 0.06209462, b: 0, a: 1}
     - _AlphaTintColor: {r: 95.87451, g: 5.019608, b: 95.87451, a: 0}
     - _Black: {r: 0, g: 0, b: 0, a: 0}
     - _BlackTintColor: {r: 0, g: 0, b: 1, a: 0}
@@ -575,7 +576,7 @@ Material:
     - _GlitchNoiseScale: {r: 0, g: 3, b: 0, a: 0}
     - _GlitchNoiseSpeed: {r: 0, g: 1, b: 0, a: 0}
     - _HalftonePosition: {r: 0, g: 0, b: 0, a: 0}
-    - _HologramTint: {r: 0.3137255, g: 1.662745, b: 2.996078, a: 1}
+    - _HologramTint: {r: 0.20754717, g: 2.1260815, b: 3.9999998, a: 1}
     - _InkSpreadColor: {r: 8.47419, g: 5.013525, b: 0.08873497, a: 0}
     - _InkSpreadNoiseScale: {r: 0.4, g: 0.4, b: 0, a: 0}
     - _InkSpreadPosition: {r: 0.5, g: -1, b: 0, a: 0}
