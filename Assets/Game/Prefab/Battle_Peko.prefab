@@ -310,7 +310,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 4029063620289304988}
+        - m_Target: {fileID: 3235318484859909244}
           m_TargetAssemblyTypeName: Game._Script.HotUpdate.Battle.BattleBaseCharacter,
             HotUpdate
           m_MethodName: AttackEventHandler
@@ -332,9 +332,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9140190910978322086}
-  - component: {fileID: 4029063620289304988}
+  - component: {fileID: 3235318484859909244}
   m_Layer: 0
-  m_Name: Battle_Ren
+  m_Name: Battle_Peko
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,7 +357,7 @@ Transform:
   - {fileID: 6267128172802317708}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4029063620289304988
+--- !u!114 &3235318484859909244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

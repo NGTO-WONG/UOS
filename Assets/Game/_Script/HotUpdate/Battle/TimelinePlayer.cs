@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game._Script.HotUpdate.Battle.Timeline;
-using Game._Script.HotUpdate.Battle.Timeline.Position;
+using Game._Script.HotUpdate.Battle.Timeline.Move;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -22,56 +21,23 @@ namespace Game._Script.HotUpdate.Battle
     
     public class TimelinePlayer : MonoBehaviour
     {
-        CancellationTokenSource _cancellationTokenSource;
         public Dictionary<string, PlayableDirector> timelineDic = new Dictionary<string, PlayableDirector>();
-       
-        [SerializeField] private Transform born;
-        [SerializeField] private Transform stand;
-        [SerializeField] private Transform enemy;
-    
         private async void Update()
         {
-            
+
             if (Input.GetKeyDown(KeyCode.A))
             {
-                SetClipBinding<MoveClip>(TimelineEnum.Enter, "Move", "1", (born.position,stand.position));
-                await PlayTimelineAsync(TimelineEnum.Enter,true,_cancellationTokenSource);
+               // SetClipBinding<MoveClip>(TimelineEnum.Enter, "Move", "1", (born.position,stand.position));
+                await PlayTimelineAsync(TimelineEnum.Enter,true);
             }
             if (Input.GetKeyDown(KeyCode.B))
             {
-                SetClipBinding<MoveClip>(TimelineEnum.Attack, "Move", "1", (stand.position,enemy.position));
-                SetClipBinding<MoveClip>(TimelineEnum.Attack, "Move", "2", (enemy.position,stand.position));
-                await PlayTimelineAsync(TimelineEnum.Attack,true,_cancellationTokenSource);
+               // SetClipBinding<MoveClip>(TimelineEnum.Attack, "Move", "1", (stand.position,enemy.position));
+               // SetClipBinding<MoveClip>(TimelineEnum.Attack, "Move", "2", (enemy.position,stand.position));
+               // SetClipBinding<EventClip>(TimelineEnum.Attack, "AttackEvent", "1", (attacker,defender));
+               // await PlayTimelineAsync(TimelineEnum.Attack,true,_cancellationTokenSource);
             }
             
-            // if (Input.GetKeyDown(KeyCode.C))
-            // {
-            //     SetClipBinding<MoveClip>(TimelineEnum.Attack, "Move", "1", (born.position,stand.position));
-            //     await PlayTimelineAsync(TimelineEnum.Enter,false,_cancellationTokenSource);
-            // }
-            
-            return;
-            // if (Input.GetKeyDown(KeyCode.C))
-            // {
-            //     SetClipBinding<MoveClip>(TimelineEnum.Attack, "Move", "1", (testTr.position,testTr2.position));
-            //     await PlayTimelineAsync(TimelineEnum.Attack,false,_cancellationTokenSource);
-            // }
-            //
-            // if (Input.GetKeyDown(KeyCode.D))
-            // {
-            //     SetClipBinding<MoveClip>(TimelineEnum.Attack, "Move", "1", (testTr2.position,testTr.position));
-            //     await PlayTimelineAsync(TimelineEnum.Attack,false,_cancellationTokenSource);
-            // }
-            // if (Input.GetKeyDown(KeyCode.A))
-            // {
-            //     var timelineAsset = timelineDic[TimelineEnum.Attack].playableAsset as TimelineAsset;
-            //
-            //     Debug.Log(timelineAsset.GetOutputTracks().Count());
-            //     foreach (var trackAsset in timelineAsset.GetOutputTracks())
-            //     {
-            //         Debug.Log(trackAsset.name);
-            //     }
-            // }
         }
 
         private void Start()
@@ -85,13 +51,8 @@ namespace Game._Script.HotUpdate.Battle
             }
         }
 
-        public async UniTask PlayTimelineAsync(string name, bool backToIdle = true,CancellationTokenSource cancellationTokenSource=null)
+        public async UniTask PlayTimelineAsync(string name, bool backToIdle = true)
         {
-            if (cancellationTokenSource!=null)
-            {
-                cancellationTokenSource.Cancel();
-            }
-            cancellationTokenSource = new CancellationTokenSource();
             foreach (var playableDirector in timelineDic)
             {
                 if (playableDirector.Key == name)
@@ -106,7 +67,7 @@ namespace Game._Script.HotUpdate.Battle
             }
 
             int length = (int)(timelineDic[name].duration * 1000);
-            await UniTask.Delay(length,cancellationToken:cancellationTokenSource.Token);
+            await UniTask.Delay(length);
             if (backToIdle)
             {
                 foreach (var playableDirector in timelineDic)
@@ -114,7 +75,6 @@ namespace Game._Script.HotUpdate.Battle
                     playableDirector.Value.gameObject.SetActive(playableDirector.Key == "Idle");
                 }
             }
-            cancellationTokenSource.Dispose();
         }
 
         public void SetClipBinding<T>(string name,string trackName,string clipName,object value) where T:class,ISettableAsset

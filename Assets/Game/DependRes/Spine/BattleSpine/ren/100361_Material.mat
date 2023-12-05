@@ -40,6 +40,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _CustomFadeFadeMask:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -138,9 +142,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - PixelSnap: 0
     - _AddColorContrast: 0.5
     - _AddColorContrastToggle: 0
-    - _AddColorFade: 0
+    - _AddColorFade: 0.011531234
     - _AddColorMaskToggle: 0
     - _AddHueBrightness: 2
     - _AddHueContrast: 0.5

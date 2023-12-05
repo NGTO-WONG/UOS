@@ -1,4 +1,4 @@
-namespace Game._Script.HotUpdate.Battle.Timeline.Position
+namespace Game._Script.HotUpdate.Battle.Timeline.Move
 {
     public interface ISettableAsset
     {

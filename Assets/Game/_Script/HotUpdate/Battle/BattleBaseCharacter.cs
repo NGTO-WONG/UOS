@@ -1,38 +1,57 @@
-using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Game._Script.HotUpdate.Base;
+using Game._Script.HotUpdate.Battle.Timeline.Move;
 using Spine.Unity;
 using UnityEngine;
 
 namespace Game._Script.HotUpdate.Battle
 {
-    public abstract class BattleBaseCharacter : MonoBehaviour
+    public class BattleBaseCharacter : MonoBehaviour
     {
-        protected SkeletonAnimation skeletonAnimation;
+        [HideInInspector] public SkeletonAnimation skeletonAnimation;
         protected TimelinePlayer timelinePlayer;
-        protected Transform target;
+
+        private List<BattleBaseCharacter> targetBuffer=new List<BattleBaseCharacter>();//临时存储敌人 用来播放动画
 
         private void Start()
         {
             skeletonAnimation=GetComponentInChildren<SkeletonAnimation>();
             timelinePlayer = GetComponentInChildren<TimelinePlayer>();
-            target = transform.Find("Timeline/timelineTarget");
         }
 
-        public virtual async UniTask Attack(BattleBaseCharacter targetCharacter)
+        
+        /// <summary>
+        /// 攻击动画的触发帧 触发敌人的收击动画
+        /// </summary>
+        public void AttackEventHandler()
         {
-            target.transform.position = targetCharacter.gameObject.transform.position;
+            foreach (var target in targetBuffer)
+            {
+                target.GetHurt(this,target).Forget();
+            }
+        }
+        
+        private async UniTask GetHurt(BattleBaseCharacter attacker, BattleBaseCharacter defender)
+        {
+            Debug.Log($"attacker: {attacker.gameObject.name} defender: {defender.gameObject.name}");
+            await timelinePlayer.PlayTimelineAsync(TimelineEnum.Hurt);   
+        }
+
+        public virtual async UniTask Attack_Melee(BattleBaseCharacter targetCharacter)
+        {
+            targetBuffer.Clear();
+            targetBuffer.Add(targetCharacter);
+            var enemyPos = targetCharacter.skeletonAnimation.transform.position;
+            var standPos = skeletonAnimation.transform.position;
+            var offset = (enemyPos - standPos).normalized * 2;
+            timelinePlayer.SetClipBinding<MoveClip>(TimelineEnum.Attack, "Move", "1", (standPos,enemyPos-offset));
+            timelinePlayer.SetClipBinding<MoveClip>(TimelineEnum.Attack, "Move", "2", (enemyPos-offset,standPos));
             await timelinePlayer.PlayTimelineAsync("Attack");
         }
-        public virtual async UniTask GetHurt()
-        {
-            //await skeletonAnimation.PlayAnimationAsync(animation_Hurt);
-            Debug.Log("hurt");
-        }
 
-        public virtual async UniTask PlayEnterAnimation(Vector3 playerStandPosition)
+        public virtual async UniTask PlayEnterAnimation(Vector3 standPos)
         {
-            target.position = playerStandPosition;
+            timelinePlayer.SetClipBinding<MoveClip>(TimelineEnum.Enter, "Move", "1", (transform.position,standPos));
             await timelinePlayer.PlayTimelineAsync("Enter");
         }
 

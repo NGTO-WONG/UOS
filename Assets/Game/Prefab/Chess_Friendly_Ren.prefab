@@ -105,6 +105,7 @@ MonoBehaviour:
   teamMember:
   - Prefab_Battle_Ren
   - Prefab_Battle_Ren
+  attackLimit: 1
   collider: {fileID: 846031814188539048}
 --- !u!1 &125129534570742689
 GameObject:
@@ -403,27 +404,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3211715815140542860, guid: 6e9e2e16df50a45ddb1234a604199373, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9848078
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3211715815140542860, guid: 6e9e2e16df50a45ddb1234a604199373, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17364816
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3211715815140542860, guid: 6e9e2e16df50a45ddb1234a604199373, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.9848078
       objectReference: {fileID: 0}
     - target: {fileID: 3211715815140542860, guid: 6e9e2e16df50a45ddb1234a604199373, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.17364825
       objectReference: {fileID: 0}
     - target: {fileID: 3211715815140542860, guid: 6e9e2e16df50a45ddb1234a604199373, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 20
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 3211715815140542860, guid: 6e9e2e16df50a45ddb1234a604199373, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 3211715815140542860, guid: 6e9e2e16df50a45ddb1234a604199373, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

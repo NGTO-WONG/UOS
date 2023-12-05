@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 9140190910978322086}
   - component: {fileID: 4029063620289304988}
   m_Layer: 0
-  m_Name: Battle_Ren
+  m_Name: Battle_Uni
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -432,7 +432,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dc550a31bb1c4a96b10d83a7069bc04, type: 2}
+  - {fileID: 2100000, guid: 35a5a13d3ffca49c39e7f8bd1749eddf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 65f103051ca59416dac1bb82eae15044, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 3ac97f3a37f6d46ea897c6405cb04c23, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0

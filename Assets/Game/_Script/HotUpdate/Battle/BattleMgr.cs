@@ -45,7 +45,7 @@ namespace Game._Script.HotUpdate.Battle
             if (Camera.main != null) // 如果主摄像头不为空
             {
                 var blendTime = (int)Camera.main.GetComponent<CinemachineBrain>().m_DefaultBlend.BlendTime * 1000; // 获取混合时间
-                await UniTask.Delay(100); // 等待混合时间
+                await UniTask.Delay(1100); // 等待混合时间
             }
         }
     
@@ -61,7 +61,7 @@ namespace Game._Script.HotUpdate.Battle
             {
                 var t=YooAssets.LoadAssetAsync<GameObject>(attcker); // 加载攻击方资源
                 await t.ToUniTask(); // 等待资源加载完成
-                var tempPlayer=Instantiate(t.AssetObject as GameObject,this.transform); // 实例化攻击方对象
+                var tempPlayer=Instantiate(t.AssetObject as GameObject,attackerStand.transform); // 实例化攻击方对象
                 tempPlayer.transform.position = new Vector3(attackerStand.transform.position.x+10,0,0); // 设置位置
                 attackers.Add(tempPlayer.GetComponent<BattleBaseCharacter>()); // 添加到攻击方角色列表
             }
@@ -72,7 +72,7 @@ namespace Game._Script.HotUpdate.Battle
             {
                 var t=YooAssets.LoadAssetAsync<GameObject>(defender); // 加载防守方资源
                 await t.ToUniTask(); // 等待资源加载完成
-                var tempEnemy= Instantiate(t.AssetObject as GameObject,this.transform); // 实例化防守方对象
+                var tempEnemy= Instantiate(t.AssetObject as GameObject,defenderStand.transform); // 实例化防守方对象
                 tempEnemy.transform.localPosition = new Vector3(defenderStand.transform.position.x-10,0,0); // 设置位置
                 tempEnemy.transform.localScale = new Vector3(-1,1,1);
                 defenders.Add(tempEnemy.GetComponent<BattleBaseCharacter>()); // 添加到防守方角色列表
@@ -82,29 +82,34 @@ namespace Game._Script.HotUpdate.Battle
         
             for (int i = 0; i < attackers.Count; i++)
             {
-                var player = attackers[i];
-                await player.PlayEnterAnimation(attackerStand.position+new Vector3(2*i,0,0)); // 播放进场动画
+                await MoveVirtualCameraAsync(attackerVc); 
+                var attacker = attackers[i];
+                await attacker.PlayEnterAnimation(attackerStand.position+new Vector3(2*i,0,0)); // 播放进场动画
             }
+            await UniTask.Delay(1000);
             await MoveVirtualCameraAsync(defenderVc); // 移动虚拟摄像头到防守方方
             //防守方入场动画
             for (int i = 0; i < defenders.Count; i++)
             {
-                var enemy = defenders[i];
-                await enemy.PlayEnterAnimation(defenderStand.position-new Vector3(2*i,0,0)); // 播放进场动画
+                await MoveVirtualCameraAsync(defenderVc); 
+                var defender = defenders[i];
+                await defender.PlayEnterAnimation(defenderStand.position-new Vector3(2*i,0,0)); // 播放进场动画
             }
         
             //攻击方攻击逻辑
             foreach (var attacker in attackers) // 遍历攻击方角色列表
             {
+                await MoveVirtualCameraAsync(attackerVc); 
                 var target = defenders[0]; // 目标设为第一个防守方
-                await attacker.Attack(target);
+                await attacker.Attack_Melee(target);
             }
         
             //防守方攻击逻辑
             foreach (var defender in defenders) // 遍历防守方角色列表
             {
+                await MoveVirtualCameraAsync(defenderVc); 
                 var target = attackers[0]; // 目标设为第一个攻击方
-                await defender.Attack(target);
+                await defender.Attack_Melee(target);
             }
 
             //todo 胜利条件判断

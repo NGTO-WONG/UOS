@@ -51,20 +51,20 @@ namespace Game._Script.HotUpdate.Battle.ChessBoard
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                EventManager<bool>.Instance.TriggerEvent("StopPathFinding", true).Forget();
-            }
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                EventManager<bool>.Instance.TriggerEvent("StopPathFinding", false).Forget();
-            }
+            // if (Input.GetKeyDown(KeyCode.A))
+            // {
+            //     EventManager<bool>.Instance.TriggerEvent("StopPathFinding", true).Forget();
+            // }
+            // if (Input.GetKeyDown(KeyCode.B))
+            // {
+            //     EventManager<bool>.Instance.TriggerEvent("StopPathFinding", false).Forget();
+            // }
         }
         
 
         protected virtual void Start()
         {
-            EventManager<bool>.Instance.SubscribeEvent("StopPathFinding", async (b, token) =>
+            EventManager<bool>.Instance.SubscribeEvent(GlobalEventDic.StopPathFinding, async (b, token) =>
             {
                 navMeshAgent.isStopped = b;
             });

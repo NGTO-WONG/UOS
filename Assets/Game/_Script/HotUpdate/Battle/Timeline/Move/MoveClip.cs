@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Playables;
 
-namespace Game._Script.HotUpdate.Battle.Timeline.Position
+namespace Game._Script.HotUpdate.Battle.Timeline.Move
 {
     [System.Serializable]
     public class MoveClip : PlayableAsset, ISettableAsset
@@ -22,8 +22,8 @@ namespace Game._Script.HotUpdate.Battle.Timeline.Position
         public void SetBinding(object value)
         {
             var myTuple = (ValueTuple<Vector3, Vector3>)value;
-            startPosition = (Vector3)myTuple.Item1;
-            endPosition = (Vector3)myTuple.Item2;
+            startPosition = myTuple.Item1;
+            endPosition = myTuple.Item2;
         }
     }
 }

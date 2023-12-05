@@ -6,9 +6,15 @@ using UnityEngine;
 
 namespace Game._Script.HotUpdate.Base
 {
+    public class GlobalEventDic
+    {
+        public const string StopPathFinding = "StopPathFinding";
+        public const string TimelineEvent = "TimelineEvent";
+    }
+    
+    
     public class EventManager<T> : Singleton<EventManager<T>>
     {
-
         private readonly Dictionary<string, AwaitableCommand<T>> _commandDictionary = new();
 
         /// <summary>
@@ -116,15 +122,10 @@ namespace Game._Script.HotUpdate.Base
         public readonly List<Func<TT, CancellationToken, UniTask>> Works = new();
         public CancellationTokenSource CancellationTokenSource = new();
     }
-    
-    public static class EventNames
-    {
-        public static string DragEvent = "DragEvent";
-    }
 
     public enum AwaitableEventType
     {
-        All,
-        Any,
+        All,//等待所有事件完成后 await结束
+        Any,//任意事件完成后 await结束
     }
 }

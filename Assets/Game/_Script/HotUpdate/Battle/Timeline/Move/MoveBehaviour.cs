@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Playables;
 
-namespace Game._Script.HotUpdate.Battle.Timeline.Position
+namespace Game._Script.HotUpdate.Battle.Timeline.Move
 {
     public class MoveBehaviour : PlayableBehaviour
     {

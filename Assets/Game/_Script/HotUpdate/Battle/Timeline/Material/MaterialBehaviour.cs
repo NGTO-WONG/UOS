@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Playables;
+using MeshRenderer = UnityEngine.MeshRenderer;
 
 namespace Game._Script.HotUpdate.Battle.Timeline.Material
 {
@@ -22,7 +23,7 @@ namespace Game._Script.HotUpdate.Battle.Timeline.Material
         public AnimationCurve animationCurve;
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
-            var targetMaterial = playerData as UnityEngine.Material;
+            var targetMaterial = (playerData as MeshRenderer).materials[0];
             double progress = (playable.GetTime() / playable.GetDuration());
             switch (materialValueType)
             {
