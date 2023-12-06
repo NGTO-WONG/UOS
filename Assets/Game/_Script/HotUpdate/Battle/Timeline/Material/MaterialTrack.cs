@@ -5,7 +5,9 @@ using UnityEngine.Timeline;
 namespace Game._Script.HotUpdate.Battle.Timeline.Material
 {
     [TrackColor(0.8f, 0.3f, 0.1f)]
+    #if UNITY_EDITOR
     [TrackClipType(typeof(MaterialClip))]
+    #endif
     [TrackBindingType(typeof(MeshRenderer))]
     public class MaterialTrack : TrackAsset
     {

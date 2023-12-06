@@ -5,9 +5,16 @@ using MeshRenderer = UnityEngine.MeshRenderer;
 
 namespace Game._Script.HotUpdate.Battle.Timeline.Material
 {
+    public enum MaterialValueType
+    {
+        Float,
+        AnimationCurve,
+        Vector3,
+        Color,
+    }
     public class MaterialBehaviour : PlayableBehaviour
     {
-        public MaterialClip.MaterialValueType materialValueType;
+        public MaterialValueType materialValueType;
         public string propertyName;
         
         //Float
@@ -27,19 +34,19 @@ namespace Game._Script.HotUpdate.Battle.Timeline.Material
             double progress = (playable.GetTime() / playable.GetDuration());
             switch (materialValueType)
             {
-                case MaterialClip.MaterialValueType.Float:
+                case MaterialValueType.Float:
                     var v1 = Mathf.Lerp((float)startValue, (float)endValue, (float)progress);
                     targetMaterial.SetFloat(propertyName, v1);
                     break;
-                case MaterialClip.MaterialValueType.AnimationCurve:
+                case MaterialValueType.AnimationCurve:
                     var v2  = animationCurve.Evaluate((float)progress);
                     targetMaterial.SetFloat(propertyName, v2);
                     break;
-                case MaterialClip.MaterialValueType.Vector3:
+                case MaterialValueType.Vector3:
                     var v3 = Vector3.Lerp(startValue_Vector3, endValue_Vector3, (float)progress);
                     targetMaterial.SetVector(propertyName, v3);
                     break;
-                case MaterialClip.MaterialValueType.Color:
+                case MaterialValueType.Color:
                     var v4 = Color.Lerp(startValue_Color, endValue_Color, (float)progress);
                     targetMaterial.SetColor(propertyName, v4);
                     break;

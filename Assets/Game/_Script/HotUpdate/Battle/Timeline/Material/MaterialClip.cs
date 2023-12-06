@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System;
 using UnityEditor;
 using UnityEngine;
@@ -11,24 +12,24 @@ namespace Game._Script.HotUpdate.Battle.Timeline.Material
         public override void OnInspectorGUI()
         {
             MaterialClip script = (MaterialClip)target;
-            script.materialValueType = (MaterialClip.MaterialValueType)EditorGUILayout.EnumPopup("类型", script.materialValueType);
+            script.materialValueType = (MaterialValueType)EditorGUILayout.EnumPopup("类型", script.materialValueType);
             script.propertyName = EditorGUILayout.TextField ("材质变量名", script.propertyName);
             
             // 根据枚举值显示不同的字段
             switch (script.materialValueType)
             {
-                case MaterialClip.MaterialValueType.Float:
+                case MaterialValueType.Float:
                     script.startValue = EditorGUILayout.DoubleField("startValue", script.startValue);
                     script.endValue = EditorGUILayout.DoubleField("endValue", script.endValue);
                     break;
-                case MaterialClip.MaterialValueType.AnimationCurve:
+                case MaterialValueType.AnimationCurve:
                     script.animationCurve = EditorGUILayout.CurveField("animationCurve", script.animationCurve);
                     break;
-                case MaterialClip.MaterialValueType.Vector3:
+                case MaterialValueType.Vector3:
                     script.startValue_Vector3 = EditorGUILayout.Vector3Field("startValue", script.startValue_Vector3);
                     script.endValue_Vector3 = EditorGUILayout.Vector3Field("endValue", script.endValue_Vector3);
                     break;
-                case MaterialClip.MaterialValueType.Color:
+                case MaterialValueType.Color:
                     script.startValue_Color = EditorGUILayout.ColorField("startValue", script.startValue_Color);
                     script.endValue_Color = EditorGUILayout.ColorField("endValue", script.endValue_Color);
                     break;
@@ -42,13 +43,6 @@ namespace Game._Script.HotUpdate.Battle.Timeline.Material
     [System.Serializable]
     public class MaterialClip : PlayableAsset
     {
-        public enum MaterialValueType
-        {
-            Float,
-            AnimationCurve,
-            Vector3,
-            Color,
-        }
 
         public MaterialValueType materialValueType;
         
@@ -83,3 +77,4 @@ namespace Game._Script.HotUpdate.Battle.Timeline.Material
         }
     }
 }
+#endif

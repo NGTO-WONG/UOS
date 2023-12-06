@@ -104,7 +104,7 @@ MonoBehaviour:
   animation_lose: 04_die
   teamMember:
   - Prefab_Battle_Ren
-  - Prefab_Battle_Ren
+  - Prefab_Battle_Uni
   attackLimit: 1
   collider: {fileID: 846031814188539048}
 --- !u!1 &125129534570742689

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Cinemachine;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Game._Script.HotUpdate.Base;
 using UnityEngine;
 
@@ -13,8 +14,18 @@ namespace Game._Script.HotUpdate.Battle.ChessBoard
         private bool isDragging;
         private Vector3 targetPosition;
         private ChessCharacter selectingChessCharacter;
-        void Update()
+
+        
+        async void  Update()
         {
+
+            
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                await SceneMgr.Instance.StartAdvAsync("1001");
+            }
+            
+            
             // 检测鼠标左键点击
             if (Input.GetMouseButtonDown(0))
             {
@@ -61,8 +72,12 @@ namespace Game._Script.HotUpdate.Battle.ChessBoard
                 Defender = defender.teamMember,
                 EnvId = 0
             };
+            //镜头拉近
+            DOTween.To(() => virtualCamera.m_Lens.FieldOfView, x => virtualCamera.m_Lens.FieldOfView = x, 30, 1.5f);
+            
             //进入战斗系统+拿到战斗最后的结果
             var battleResult=await SceneMgr.Instance.StartBattleAsync(t);
+            virtualCamera.m_Lens.FieldOfView = 60;
             //战斗结束播放动画
             await UniTask.Delay(300);
             List<UniTask> taskList;
@@ -74,6 +89,10 @@ namespace Game._Script.HotUpdate.Battle.ChessBoard
                         attacker.BattleFinishAnimationAsync(true),
                         defender.BattleFinishAnimationAsync(false)
                     };
+                    var position = defender.transform.position;
+                    var dir = (position - attacker.transform.position).normalized*2;
+                    defender.transform.DOMove(position+dir, 0.2f);
+                    
                     await UniTask.WhenAll(taskList);
                     break;
                 case BattleResultParam.BattleResultWinner.Defender:
@@ -82,11 +101,15 @@ namespace Game._Script.HotUpdate.Battle.ChessBoard
                         attacker.BattleFinishAnimationAsync(false),
                         defender.BattleFinishAnimationAsync(true)
                     };
+                    var position1 = attacker.transform.position;
+                    var dir2 = (position1 - defender.transform.position).normalized*2;
+                    attacker.transform.DOMove(position1+dir2, 0.2f);
                     await UniTask.WhenAll(taskList);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            
         }
     }
 }

@@ -87,9 +87,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 4, z: 5}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -136,7 +136,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1343298048997747229}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: dbb5c337bbd2ee94d87a2211fd053e03, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: a01a0701eed074056932757f49d2c293, type: 2}
   m_InitialState: 0
   m_WrapMode: 1
   m_DirectorUpdateMode: 1
@@ -145,6 +145,10 @@ PlayableDirector:
   - key: {fileID: 5263929408581189473, guid: dbb5c337bbd2ee94d87a2211fd053e03, type: 2}
     value: {fileID: 4885601806481772516}
   - key: {fileID: -318381252671626219, guid: dbb5c337bbd2ee94d87a2211fd053e03, type: 2}
+    value: {fileID: 6267128172802317708}
+  - key: {fileID: 5263929408581189473, guid: a01a0701eed074056932757f49d2c293, type: 2}
+    value: {fileID: 4885601806481772516}
+  - key: {fileID: -318381252671626219, guid: a01a0701eed074056932757f49d2c293, type: 2}
     value: {fileID: 6267128172802317708}
   m_ExposedReferences:
     m_References:
@@ -191,7 +195,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1651769491136495603}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 52fc67c2526b14557bdb3a9d6a6aff6d, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 93c72ba92494d4b7abd453bbdc6973a3, type: 2}
   m_InitialState: 1
   m_WrapMode: 1
   m_DirectorUpdateMode: 1
@@ -205,6 +209,8 @@ PlayableDirector:
     value: {fileID: 4885601806481772516}
   - key: {fileID: 0}
     value: {fileID: 0}
+  - key: {fileID: 1813464721577621391, guid: 93c72ba92494d4b7abd453bbdc6973a3, type: 2}
+    value: {fileID: 4885601806481772516}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2495337793777190641
@@ -250,7 +256,7 @@ PlayableDirector:
   m_GameObject: {fileID: 2495337793777190641}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 4144aecaee46b55468ebdec8476558eb, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: e43c32f7d16c943b492601709d51fad0, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -264,6 +270,12 @@ PlayableDirector:
     value: {fileID: 3426860810970832607}
   - key: {fileID: -5217790346345718014, guid: 4144aecaee46b55468ebdec8476558eb, type: 2}
     value: {fileID: 6267128172802317708}
+  - key: {fileID: 1813464721577621391, guid: e43c32f7d16c943b492601709d51fad0, type: 2}
+    value: {fileID: 4885601806481772516}
+  - key: {fileID: -5217790346345718014, guid: e43c32f7d16c943b492601709d51fad0, type: 2}
+    value: {fileID: 6267128172802317708}
+  - key: {fileID: -1691870941309213983, guid: e43c32f7d16c943b492601709d51fad0, type: 2}
+    value: {fileID: 3426860810970832607}
   m_ExposedReferences:
     m_References:
     - 2feaa4adadc224095a0a1e11a7b37acf: {fileID: 5656489780439872778}
@@ -370,6 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonAnimation: {fileID: 0}
+  isShooter: 0
 --- !u!1 &3277415435970723536
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +445,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dc550a31bb1c4a96b10d83a7069bc04, type: 2}
+  - {fileID: 2100000, guid: 7a1d616f962b046ceb683c5710ff55f9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -466,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 65f103051ca59416dac1bb82eae15044, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: efb37f28508ba4a6db3725f65e6c1a60, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -491,7 +504,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: 04_walk
+  _animationName: 180401_idle
   loop: 1
   timeScale: 1
 --- !u!1 &3426860810970832607
@@ -607,7 +620,7 @@ PlayableDirector:
   m_GameObject: {fileID: 8421533110200174619}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 8fcdd8832f6c9f349844d28363779bdf, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: c72eea732897d4d949e5ed09d73a3e45, type: 2}
   m_InitialState: 0
   m_WrapMode: 1
   m_DirectorUpdateMode: 1
@@ -630,6 +643,10 @@ PlayableDirector:
   - key: {fileID: 1813464721577621391, guid: 8fcdd8832f6c9f349844d28363779bdf, type: 2}
     value: {fileID: 4885601806481772516}
   - key: {fileID: 67563165394461606, guid: 8fcdd8832f6c9f349844d28363779bdf, type: 2}
+    value: {fileID: 1595879299782089073}
+  - key: {fileID: 1813464721577621391, guid: c72eea732897d4d949e5ed09d73a3e45, type: 2}
+    value: {fileID: 4885601806481772516}
+  - key: {fileID: 67563165394461606, guid: c72eea732897d4d949e5ed09d73a3e45, type: 2}
     value: {fileID: 1595879299782089073}
   m_ExposedReferences:
     m_References: []

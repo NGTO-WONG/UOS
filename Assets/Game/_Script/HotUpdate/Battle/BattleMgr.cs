@@ -7,6 +7,7 @@ using Game._Script.HotUpdate.Base;
 using UnityEngine;
 using UnityEngine.Serialization;
 using YooAsset;
+using static Game._Script.HotUpdate.Battle.BattleResultParam.BattleResultWinner;
 
 namespace Game._Script.HotUpdate.Battle
 {
@@ -35,8 +36,8 @@ namespace Game._Script.HotUpdate.Battle
         [FormerlySerializedAs("playerVc")] [SerializeField] private CinemachineVirtualCamera attackerVc; // 攻击方虚拟摄像头
         [FormerlySerializedAs("enemyVc")] [SerializeField] private CinemachineVirtualCamera defenderVc; // 防守方虚拟摄像头
 
-        private List<BattleBaseCharacter> attackers=new List<BattleBaseCharacter>(); // 攻击方角色列表
-        private List<BattleBaseCharacter> defenders=new List<BattleBaseCharacter>(); // 防守方角色列表
+        private readonly List<BattleBaseCharacter> attackers=new List<BattleBaseCharacter>(); // 攻击方角色列表
+        private readonly List<BattleBaseCharacter> defenders=new List<BattleBaseCharacter>(); // 防守方角色列表
 
         async UniTask MoveVirtualCameraAsync(CinemachineVirtualCamera vc) // 移动虚拟摄像头异步方法
         {
@@ -45,7 +46,7 @@ namespace Game._Script.HotUpdate.Battle
             if (Camera.main != null) // 如果主摄像头不为空
             {
                 var blendTime = (int)Camera.main.GetComponent<CinemachineBrain>().m_DefaultBlend.BlendTime * 1000; // 获取混合时间
-                await UniTask.Delay(1100); // 等待混合时间
+                await UniTask.Delay(blendTime); // 等待混合时间
             }
         }
     
@@ -57,9 +58,9 @@ namespace Game._Script.HotUpdate.Battle
         
             Debug.Log("创建角色"); // 打印创建角色
 
-            foreach (var attcker in startParam.Attacker)
+            foreach (var attacker in startParam.Attacker)
             {
-                var t=YooAssets.LoadAssetAsync<GameObject>(attcker); // 加载攻击方资源
+                var t=YooAssets.LoadAssetAsync<GameObject>(attacker); // 加载攻击方资源
                 await t.ToUniTask(); // 等待资源加载完成
                 var tempPlayer=Instantiate(t.AssetObject as GameObject,attackerStand.transform); // 实例化攻击方对象
                 tempPlayer.transform.position = new Vector3(attackerStand.transform.position.x+10,0,0); // 设置位置
@@ -73,7 +74,7 @@ namespace Game._Script.HotUpdate.Battle
                 var t=YooAssets.LoadAssetAsync<GameObject>(defender); // 加载防守方资源
                 await t.ToUniTask(); // 等待资源加载完成
                 var tempEnemy= Instantiate(t.AssetObject as GameObject,defenderStand.transform); // 实例化防守方对象
-                tempEnemy.transform.localPosition = new Vector3(defenderStand.transform.position.x-10,0,0); // 设置位置
+                tempEnemy.transform.localPosition = new Vector3(defenderStand.transform.position.x-5,0,0); // 设置位置
                 tempEnemy.transform.localScale = new Vector3(-1,1,1);
                 defenders.Add(tempEnemy.GetComponent<BattleBaseCharacter>()); // 添加到防守方角色列表
             }
@@ -91,7 +92,6 @@ namespace Game._Script.HotUpdate.Battle
             //防守方入场动画
             for (int i = 0; i < defenders.Count; i++)
             {
-                await MoveVirtualCameraAsync(defenderVc); 
                 var defender = defenders[i];
                 await defender.PlayEnterAnimation(defenderStand.position-new Vector3(2*i,0,0)); // 播放进场动画
             }
@@ -101,7 +101,7 @@ namespace Game._Script.HotUpdate.Battle
             {
                 await MoveVirtualCameraAsync(attackerVc); 
                 var target = defenders[0]; // 目标设为第一个防守方
-                await attacker.Attack_Melee(target);
+                await attacker.Attack(target);
             }
         
             //防守方攻击逻辑
@@ -109,21 +109,19 @@ namespace Game._Script.HotUpdate.Battle
             {
                 await MoveVirtualCameraAsync(defenderVc); 
                 var target = attackers[0]; // 目标设为第一个攻击方
-                await defender.Attack_Melee(target);
+                await defender.Attack(target);
             }
 
             //todo 胜利条件判断
-            BattleResultParam.BattleResultWinner winner = BattleResultParam.BattleResultWinner.Attacker;
+            BattleResultParam.BattleResultWinner winner = Attacker;
             IEnumerable<UniTask> winAnimationList;
             switch (winner)
             { 
-                case BattleResultParam.BattleResultWinner.Attacker:
-                {
+                case Attacker:
                     await MoveVirtualCameraAsync(attackerVc);
                     winAnimationList = Enumerable.Select(attackers, chara => chara.PlayWinAnimationAsync());
                     break;
-                }
-                case BattleResultParam.BattleResultWinner.Defender:
+                case Defender:
                     await MoveVirtualCameraAsync(defenderVc);
                     winAnimationList = Enumerable.Select(defenders, chara => chara.PlayWinAnimationAsync());
                     break;
@@ -135,7 +133,7 @@ namespace Game._Script.HotUpdate.Battle
             
             return new BattleResultParam()
             {
-                Winner = BattleResultParam.BattleResultWinner.Attacker
+                Winner = Attacker
             };
 
         }

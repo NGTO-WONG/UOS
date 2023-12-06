@@ -74,10 +74,10 @@ namespace Game._Script.AOT
             var package = YooAssets.GetPackage("DefaultPackage");
             foreach (var aotDll in AOTGenericReferences.PatchedAOTAssemblyList)
             {
+#if !UNITY_EDITOR
                 RawFileOperationHandle handle = package.LoadRawFileAsync(aotDll);
                 await handle.ToUniTask(this);
                 // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
-#if !UNITY_EDITOR
                 var assemblyData = handle.GetRawFileData();
                 LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(assemblyData, mode);
                 Debug.Log($"LoadMetadataForAOTAssembly:{aotDll}. mode:{mode} ret:{err}");

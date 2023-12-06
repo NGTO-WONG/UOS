@@ -580,7 +580,7 @@ MonoBehaviour:
   eventNode: {fileID: 0}
   commentNode: {fileID: 0}
   profileNode: {fileID: 2594699492910324770}
-  current: {fileID: 2606802267890215981}
+  current: {fileID: 4360913854817027334}
 --- !u!114 &89064703671277662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,7 +857,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: 'Start: English'
+  m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -840, y: 232}
@@ -888,7 +888,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: "Start: \u4E2D\u6587"
+  m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -824, y: -216}
