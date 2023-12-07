@@ -1,4 +1,3 @@
-using Game._Script.HotUpdate.Suntail_Village.Scripts;
 using UnityEngine;
 
 namespace Game._Script.HotUpdate.Battle.ChessBoard
